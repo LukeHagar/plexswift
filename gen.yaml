@@ -7,6 +7,8 @@ generation:
   useClassNamesForArrayFields: true
   fixes:
     nameResolutionDec2023: false
+    parameterOrderingFeb2024: false
+    requestResponseComponentNamesFeb2024: false
 swift:
   version: 0.0.1
   author: LukeHagar

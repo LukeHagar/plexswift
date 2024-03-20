@@ -27,7 +27,13 @@ It has been generated successfully based on your OpenAPI spec. However, it is no
 
 ### Swift Package Manager
 
-You can add `plexswift` to your project directly in Xcode `(File > Add Packages...)` or by adding it to your project's Package.swift file.
+You can add `plexswift` to your project directly in Xcode `(File > Add Packages...)` or by adding it to your project's Package.swift file:
+
+```bash
+dependencies: [
+    .package(url: "https://github.com/LukeHagar/plexswift.git", .upToNextMajor(from: "0.0.2"))
+]
+```
 <!-- End SDK Installation [installation] -->
 
 <!-- Start SDK Example Usage [usage] -->

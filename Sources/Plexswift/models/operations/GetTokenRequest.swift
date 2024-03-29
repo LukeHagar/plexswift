@@ -11,7 +11,7 @@ extension Operations {
         /// This is used to track the client application and its usage
         /// (UUID, serial number, or other number unique per device)
         /// 
-        public let xPlexClientIdentifier: String
+        public let xPlexClientIdentifier: String?
 
         /// Creates an object with the specified parameters
         ///
@@ -21,7 +21,7 @@ extension Operations {
         /// (UUID, serial number, or other number unique per device)
         /// 
         ///
-        public init(pinID: String, xPlexClientIdentifier: String) {
+        public init(pinID: String, xPlexClientIdentifier: String? = nil) {
             self.pinID = pinID
             self.xPlexClientIdentifier = xPlexClientIdentifier
         }

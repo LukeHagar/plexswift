@@ -27,7 +27,7 @@ extension Operations.GetTokenRequest: PathParameterSerializable {
 extension Operations.GetTokenRequest: HeaderParameterSerializable {
     func serializedHeaderParameters() throws -> [SerializedParameter] {
         return [
-            SerializedParameter(name: "X-Plex-Client-Identifier", serialized: try xPlexClientIdentifier.serialize(with: .header(explode: false)))
+            SerializedParameter(name: "X-Plex-Client-Identifier", serialized: try xPlexClientIdentifier?.serialize(with: .header(explode: false)))
         ]
     }
 }

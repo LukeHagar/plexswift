@@ -1,18 +1,19 @@
 lockVersion: 2.0.0
 id: 5d77204e-e413-4fd0-a14a-bad3aee2247a
 management:
-  docChecksum: e34dac84738ebf2d447ea2b9055a6eeb
+  docChecksum: a91eaf9ec1e6a3a6f4bf0571f5b18bae
   docVersion: 0.0.3
-  speakeasyVersion: 1.213.0
-  generationVersion: 2.283.1
-  releaseVersion: 0.0.2
-  configChecksum: 9eb228df4cab70cbab8695a6a5458559
+  speakeasyVersion: 1.228.1
+  generationVersion: 2.292.0
+  releaseVersion: 0.1.0
+  configChecksum: b2cfa34ed4663bdec9d08c57f8e59960
   repoURL: https://github.com/LukeHagar/plexswift.git
 features:
   swift:
     core: 3.2.2
     globalSecurity: 2.81.5
     globalServerURLs: 2.82.1
+    globals: 2.81.3
     methodServerURLs: 3.0.1
     nameOverrides: 2.81.1
 generatedFiles:
@@ -32,6 +33,7 @@ generatedFiles:
   - Sources/Plexswift/internal/api/_SessionsAPI.swift
   - Sources/Plexswift/internal/api/_UpdaterAPI.swift
   - Sources/Plexswift/configuration/GlobalServer.swift
+  - Sources/Plexswift/configuration/GlobalParameters.swift
   - Sources/Plexswift/Client.swift
   - Package.swift
   - Sources/plexswift/AnyValue.swift

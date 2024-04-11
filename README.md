@@ -14,7 +14,6 @@ An Open API Spec for interacting with Plex.tv and Plex Servers
 The SDK supports iOS 13 and later.
 
 <!-- Start SDK Installation [installation] -->
-
 ## SDK Installation
 
 ### Swift Package Manager
@@ -23,14 +22,12 @@ You can add `plexswift` to your project directly in Xcode `(File > Add Packages.
 
 ```bash
 dependencies: [
-    .package(url: "https://github.com/LukeHagar/plexswift.git", .upToNextMajor(from: "0.1.1"))
+    .package(url: "https://github.com/LukeHagar/plexswift.git", .upToNextMajor(from: "0.1.2"))
 ]
 ```
-
 <!-- End SDK Installation [installation] -->
 
 <!-- Start SDK Example Usage [usage] -->
-
 ## SDK Example Usage
 
 ### Example
@@ -56,26 +53,24 @@ case .empty:
 }
 
 ```
-
 <!-- End SDK Example Usage [usage] -->
 
 <!-- Start Available Resources and Operations [operations] -->
-
 ## Available Resources and Operations
+
 
 <!-- End Available Resources and Operations [operations] -->
 
 <!-- Start Authentication [security] -->
-
 ## Authentication
 
 ### Global Security Schemes
 
 The SDK supports the following security scheme globally through the `Shared.Security` type:
 
-| Name           | Type   | Scheme  |
-| -------------- | ------ | ------- |
-| `.accessToken` | apiKey | API key |
+| Name           | Type           | Scheme         |
+| -------------- | -------------- | -------------- |
+| `.accessToken` | apiKey         | API key        |
 
 You can set the appropriate security parameters by passing a `Shared.Security` value for the `security` parameter when initializing the `Client` instance. For example:
 
@@ -100,28 +95,27 @@ case .empty:
 }
 
 ```
-
 <!-- End Authentication [security] -->
 
 <!-- Start Global Parameters [global-parameters] -->
-
 ## Global Parameters
 
 A parameter is configured globally. This parameter must be set on the SDK client instance itself during initialization. When configured as an option during SDK initialization, This global value will be used as the default on the operations that use it. When such operations are called, there is a place in each to override the global value, if needed.
 
 For example, you can set `X-Plex-Client-Identifier` to `"<value>"` at SDK initialization and then you do not have to pass the same value on calls to operations like `getPin`. But if you want to do so you may, which will locally override the global setting. See the example code below for a demonstration.
 
+
 ### Available Globals
 
 The following global parameter is available. The required parameter must be set when you initialize the SDK client.
 
-| Name                  | Type   | Required | Description                                      |
-| --------------------- | ------ | :------: | ------------------------------------------------ |
-| xPlexClientIdentifier | String |    ✔️    | The unique identifier for the client application |
-
+| Name | Type | Required | Description |
+| ---- | ---- |:--------:| ----------- |
+| xPlexClientIdentifier | String | ✔️ | The unique identifier for the client application
 This is used to track the client application and its usage
 (UUID, serial number, or other number unique per device)
-|
+ |
+
 
 ### Example
 
@@ -133,7 +127,7 @@ let client = Client()
 
 let response = try await client.plex.getPin(
     request: Operations.GetPinRequest(
-        strong: false,
+        strong: false, 
     )
 )
 
@@ -150,7 +144,6 @@ case .empty:
 }
 
 ```
-
 <!-- End Global Parameters [global-parameters] -->
 
 <!-- Placeholder for Future Speakeasy SDK Sections -->

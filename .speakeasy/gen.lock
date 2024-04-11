@@ -3,10 +3,10 @@ id: 5d77204e-e413-4fd0-a14a-bad3aee2247a
 management:
   docChecksum: a91eaf9ec1e6a3a6f4bf0571f5b18bae
   docVersion: 0.0.3
-  speakeasyVersion: 1.228.1
-  generationVersion: 2.292.0
-  releaseVersion: 0.1.0
-  configChecksum: b2cfa34ed4663bdec9d08c57f8e59960
+  speakeasyVersion: 1.246.1
+  generationVersion: 2.302.1
+  releaseVersion: 0.1.1
+  configChecksum: 37c5f191d3f2f642a81bb7a339bc3034
   repoURL: https://github.com/LukeHagar/plexswift.git
 features:
   swift:
@@ -15,7 +15,7 @@ features:
     globalServerURLs: 2.82.1
     globals: 2.81.3
     methodServerURLs: 3.0.1
-    nameOverrides: 2.81.1
+    nameOverrides: 2.81.2
 generatedFiles:
   - Sources/Plexswift/internal/api/_ServerAPI.swift
   - Sources/Plexswift/internal/api/_MediaAPI.swift

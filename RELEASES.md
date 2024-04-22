@@ -43,3 +43,13 @@ Based on:
 - [swift v0.1.2] .
 ### Releases
 - [Swift Package Manager v0.1.2] https://github.com/LukeHagar/plexswift/releases/tag/v0.1.2 - .
+
+## 2024-04-22 16:14:43
+### Changes
+Based on:
+- OpenAPI Doc  
+- Speakeasy CLI 1.267.2 (2.312.1) https://github.com/speakeasy-api/speakeasy
+### Generated
+- [swift v0.1.3] .
+### Releases
+- [Swift Package Manager v0.1.3] https://github.com/LukeHagar/plexswift/releases/tag/v0.1.3 - .

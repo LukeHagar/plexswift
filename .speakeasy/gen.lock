@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 5d77204e-e413-4fd0-a14a-bad3aee2247a
 management:
-  docChecksum: a91eaf9ec1e6a3a6f4bf0571f5b18bae
+  docChecksum: 7a43cd3413d535205cfaee20a4b6a250
   docVersion: 0.0.3
-  speakeasyVersion: 1.246.1
-  generationVersion: 2.302.1
-  releaseVersion: 0.1.2
-  configChecksum: c57b7cd54de36c27c47ae00f2afaf59d
+  speakeasyVersion: 1.267.2
+  generationVersion: 2.312.1
+  releaseVersion: 0.1.3
+  configChecksum: 1c9c391c9a0a4db77faec3465d280ed4
   repoURL: https://github.com/LukeHagar/plexswift.git
 features:
   swift:

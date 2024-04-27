@@ -3,348 +3,6 @@ info:
   title: CodeSamples overlay for swift target
   version: 0.0.0
 actions:
-  - target: $["paths"]["/playlists/{playlistID}/items"]["put"]
-    update:
-      x-codeSamples:
-        - lang: swift
-          label: addPlaylistContents
-          source: "import Foundation\nimport Plexswift\n\nlet client = Client(security: .accessToken(\"<YOUR_API_KEY_HERE>\"))\n\nlet response = try await client.addPlaylistContents(\n    request: Operations.AddPlaylistContentsRequest(\n        playlistID: 8502.01, \n        uri: \"server://12345/com.plexapp.plugins.library/library/metadata/1\", \n        playQueueID: 123\n    )\n)\n\nswitch response.data {\ncase .twoHundredApplicationJsonObject(let twoHundredApplicationJsonObject):\n    // Handle response\n    break\ncase .fourHundredAndOneApplicationJsonObject(let fourHundredAndOneApplicationJsonObject):\n    // Handle response\n    break\ncase .empty:\n    // Handle empty response\n    break\n}"
-  - target: $["paths"]["/playlists/upload"]["post"]
-    update:
-      x-codeSamples:
-        - lang: swift
-          label: uploadPlaylist
-          source: "import Foundation\nimport Plexswift\n\nlet client = Client(security: .accessToken(\"<YOUR_API_KEY_HERE>\"))\n\nlet response = try await client.uploadPlaylist(\n    request: Operations.UploadPlaylistRequest(\n        force: .zero, \n        path: \"/home/barkley/playlist.m3u\"\n    )\n)\n\nswitch response.data {\ncase .object(let object):\n    // Handle response\n    break\ncase .empty:\n    // Handle empty response\n    break\n}"
-  - target: $["paths"]["/clients"]["get"]
-    update:
-      x-codeSamples:
-        - lang: swift
-          label: getAvailableClients
-          source: |-
-            import Foundation
-            import Plexswift
-
-            let client = Client(security: .accessToken("<YOUR_API_KEY_HERE>"))
-
-            let response = try await client.getAvailableClients()
-
-            switch response.data {
-            case .twoHundredApplicationJsonObject(let twoHundredApplicationJsonObject):
-                // Handle response
-                break
-            case .fourHundredAndOneApplicationJsonObject(let fourHundredAndOneApplicationJsonObject):
-                // Handle response
-                break
-            case .empty:
-                // Handle empty response
-                break
-            }
-  - target: $["paths"]["/photo/:/transcode"]["get"]
-    update:
-      x-codeSamples:
-        - lang: swift
-          label: getResizedPhoto
-          source: "import Foundation\nimport Plexswift\n\nlet client = Client(security: .accessToken(\"<YOUR_API_KEY_HERE>\"))\n\nlet response = try await client.getResizedPhoto(\n    request: Operations.GetResizedPhotoRequest(\n        blur: 20, \n        height: 165, \n        minSize: .one, \n        opacity: 96541, \n        upscale: .zero, \n        url: \"/library/metadata/49564/thumb/1654258204\", \n        width: 110\n    )\n)\n\nswitch response.data {\ncase .object(let object):\n    // Handle response\n    break\ncase .empty:\n    // Handle empty response\n    break\n}"
-  - target: $["paths"]["/:/progress"]["post"]
-    update:
-      x-codeSamples:
-        - lang: swift
-          label: updatePlayProgress
-          source: "import Foundation\nimport Plexswift\n\nlet client = Client(security: .accessToken(\"<YOUR_API_KEY_HERE>\"))\n\nlet response = try await client.updatePlayProgress(\n    request: Operations.UpdatePlayProgressRequest(\n        key: \"<key>\", \n        state: \"Ohio\", \n        time: 8015.87\n    )\n)\n\nswitch response.data {\ncase .object(let object):\n    // Handle response\n    break\ncase .empty:\n    // Handle empty response\n    break\n}"
-  - target: $["paths"]["/butler"]["get"]
-    update:
-      x-codeSamples:
-        - lang: swift
-          label: getButlerTasks
-          source: |-
-            import Foundation
-            import Plexswift
-
-            let client = Client(security: .accessToken("<YOUR_API_KEY_HERE>"))
-
-            let response = try await client.getButlerTasks()
-
-            switch response.data {
-            case .twoHundredApplicationJsonObject(let twoHundredApplicationJsonObject):
-                // Handle response
-                break
-            case .fourHundredAndOneApplicationJsonObject(let fourHundredAndOneApplicationJsonObject):
-                // Handle response
-                break
-            case .empty:
-                // Handle empty response
-                break
-            }
-  - target: $["paths"]["/search"]["get"]
-    update:
-      x-codeSamples:
-        - lang: swift
-          label: getSearchResults
-          source: |-
-            import Foundation
-            import Plexswift
-
-            let client = Client(security: .accessToken("<YOUR_API_KEY_HERE>"))
-
-            let response = try await client.getSearchResults(
-                request: Operations.GetSearchResultsRequest(
-                    query: "110"
-                )
-            )
-
-            switch response.data {
-            case .twoHundredApplicationJsonObject(let twoHundredApplicationJsonObject):
-                // Handle response
-                break
-            case .fourHundredAndOneApplicationJsonObject(let fourHundredAndOneApplicationJsonObject):
-                // Handle response
-                break
-            case .empty:
-                // Handle empty response
-                break
-            }
-  - target: $["paths"]["/log"]["get"]
-    update:
-      x-codeSamples:
-        - lang: swift
-          label: logLine
-          source: "import Foundation\nimport Plexswift\n\nlet client = Client(security: .accessToken(\"<YOUR_API_KEY_HERE>\"))\n\nlet response = try await client.logLine(\n    request: Operations.LogLineRequest(\n        level: .three, \n        message: \"Test log message\", \n        source: \"Postman\"\n    )\n)\n\nswitch response.data {\ncase .object(let object):\n    // Handle response\n    break\ncase .empty:\n    // Handle empty response\n    break\n}"
-  - target: $["paths"]["/updater/status"]["get"]
-    update:
-      x-codeSamples:
-        - lang: swift
-          label: getUpdateStatus
-          source: |-
-            import Foundation
-            import Plexswift
-
-            let client = Client(security: .accessToken("<YOUR_API_KEY_HERE>"))
-
-            let response = try await client.getUpdateStatus()
-
-            switch response.data {
-            case .twoHundredApplicationJsonObject(let twoHundredApplicationJsonObject):
-                // Handle response
-                break
-            case .fourHundredAndOneApplicationJsonObject(let fourHundredAndOneApplicationJsonObject):
-                // Handle response
-                break
-            case .empty:
-                // Handle empty response
-                break
-            }
-  - target: $["paths"]["/devices"]["get"]
-    update:
-      x-codeSamples:
-        - lang: swift
-          label: getDevices
-          source: |-
-            import Foundation
-            import Plexswift
-
-            let client = Client(security: .accessToken("<YOUR_API_KEY_HERE>"))
-
-            let response = try await client.getDevices()
-
-            switch response.data {
-            case .twoHundredApplicationJsonObject(let twoHundredApplicationJsonObject):
-                // Handle response
-                break
-            case .fourHundredAndOneApplicationJsonObject(let fourHundredAndOneApplicationJsonObject):
-                // Handle response
-                break
-            case .empty:
-                // Handle empty response
-                break
-            }
-  - target: $["paths"]["/butler/{taskName}"]["post"]
-    update:
-      x-codeSamples:
-        - lang: swift
-          label: startTask
-          source: |-
-            import Foundation
-            import Plexswift
-
-            let client = Client(security: .accessToken("<YOUR_API_KEY_HERE>"))
-
-            let response = try await client.startTask(
-                request: Operations.StartTaskRequest(
-                    taskName: .cleanOldBundles
-                )
-            )
-
-            switch response.data {
-            case .object(let object):
-                // Handle response
-                break
-            case .empty:
-                // Handle empty response
-                break
-            }
-  - target: $["paths"]["/hubs/search/voice"]["get"]
-    update:
-      x-codeSamples:
-        - lang: swift
-          label: performVoiceSearch
-          source: "import Foundation\nimport Plexswift\n\nlet client = Client(security: .accessToken(\"<YOUR_API_KEY_HERE>\"))\n\nlet response = try await client.performVoiceSearch(\n    request: Operations.PerformVoiceSearchRequest(\n        query: \"dead+poop\", \n        limit: 5, \n        sectionId: 4094.8\n    )\n)\n\nswitch response.data {\ncase .object(let object):\n    // Handle response\n    break\ncase .empty:\n    // Handle empty response\n    break\n}"
-  - target: $["paths"]["/library/sections/{sectionId}/search"]["get"]
-    update:
-      x-codeSamples:
-        - lang: swift
-          label: searchLibrary
-          source: "import Foundation\nimport Plexswift\n\nlet client = Client(security: .accessToken(\"<YOUR_API_KEY_HERE>\"))\n\nlet response = try await client.searchLibrary(\n    request: Operations.SearchLibraryRequest(\n        sectionId: 933505, \n        type: .four\n    )\n)\n\nswitch response.data {\ncase .object(let object):\n    // Handle response\n    break\ncase .empty:\n    // Handle empty response\n    break\n}"
-  - target: $["paths"]["/playlists/{playlistID}"]["get"]
-    update:
-      x-codeSamples:
-        - lang: swift
-          label: getPlaylist
-          source: |-
-            import Foundation
-            import Plexswift
-
-            let client = Client(security: .accessToken("<YOUR_API_KEY_HERE>"))
-
-            let response = try await client.getPlaylist(
-                request: Operations.GetPlaylistRequest(
-                    playlistID: 4109.48
-                )
-            )
-
-            switch response.data {
-            case .twoHundredApplicationJsonObject(let twoHundredApplicationJsonObject):
-                // Handle response
-                break
-            case .fourHundredAndOneApplicationJsonObject(let fourHundredAndOneApplicationJsonObject):
-                // Handle response
-                break
-            case .empty:
-                // Handle empty response
-                break
-            }
-  - target: $["paths"]["/playlists/{playlistID}/items"]["get"]
-    update:
-      x-codeSamples:
-        - lang: swift
-          label: getPlaylistContents
-          source: "import Foundation\nimport Plexswift\n\nlet client = Client(security: .accessToken(\"<YOUR_API_KEY_HERE>\"))\n\nlet response = try await client.getPlaylistContents(\n    request: Operations.GetPlaylistContentsRequest(\n        playlistID: 5004.46, \n        type: 9403.59\n    )\n)\n\nswitch response.data {\ncase .twoHundredApplicationJsonObject(let twoHundredApplicationJsonObject):\n    // Handle response\n    break\ncase .fourHundredAndOneApplicationJsonObject(let fourHundredAndOneApplicationJsonObject):\n    // Handle response\n    break\ncase .empty:\n    // Handle empty response\n    break\n}"
-  - target: $["paths"]["/activities/{activityUUID}"]["delete"]
-    update:
-      x-codeSamples:
-        - lang: swift
-          label: cancelServerActivities
-          source: |-
-            import Foundation
-            import Plexswift
-
-            let client = Client(security: .accessToken("<YOUR_API_KEY_HERE>"))
-
-            let response = try await client.cancelServerActivities(
-                request: Operations.CancelServerActivitiesRequest(
-                    activityUUID: "<value>"
-                )
-            )
-
-            switch response.data {
-            case .object(let object):
-                // Handle response
-                break
-            case .empty:
-                // Handle empty response
-                break
-            }
-  - target: $["paths"]["/library/onDeck"]["get"]
-    update:
-      x-codeSamples:
-        - lang: swift
-          label: getOnDeck
-          source: |-
-            import Foundation
-            import Plexswift
-
-            let client = Client(security: .accessToken("<YOUR_API_KEY_HERE>"))
-
-            let response = try await client.getOnDeck()
-
-            switch response.data {
-            case .twoHundredApplicationJsonObject(let twoHundredApplicationJsonObject):
-                // Handle response
-                break
-            case .fourHundredAndOneApplicationJsonObject(let fourHundredAndOneApplicationJsonObject):
-                // Handle response
-                break
-            case .empty:
-                // Handle empty response
-                break
-            }
-  - target: $["paths"]["/playlists/{playlistID}"]["delete"]
-    update:
-      x-codeSamples:
-        - lang: swift
-          label: deletePlaylist
-          source: |-
-            import Foundation
-            import Plexswift
-
-            let client = Client(security: .accessToken("<YOUR_API_KEY_HERE>"))
-
-            let response = try await client.deletePlaylist(
-                request: Operations.DeletePlaylistRequest(
-                    playlistID: 216.22
-                )
-            )
-
-            switch response.data {
-            case .object(let object):
-                // Handle response
-                break
-            case .empty:
-                // Handle empty response
-                break
-            }
-  - target: $["paths"]["/video/:/transcode/universal/start.mpd"]["get"]
-    update:
-      x-codeSamples:
-        - lang: swift
-          label: startUniversalTranscode
-          source: "import Foundation\nimport Plexswift\n\nlet client = Client(security: .accessToken(\"<YOUR_API_KEY_HERE>\"))\n\nlet response = try await client.startUniversalTranscode(\n    request: Operations.StartUniversalTranscodeRequest(\n        hasMDE: 8924.99, \n        mediaIndex: 1194.97, \n        partIndex: 9962.95, \n        path: \"/etc/mail\", \n        `protocol`: \"<value>\", \n        addDebugOverlay: 1630.75, \n        audioBoost: 4531.53, \n        autoAdjustQuality: 4877.48, \n        directPlay: 3383.01, \n        directStream: 7970.18, \n        fastSeek: 2664.33, \n        location: \"<value>\", \n        mediaBufferSize: 4930.91, \n        session: \"<value>\", \n        subtites: \"<value>\", \n        subtitleSize: 2087.17\n    )\n)\n\nswitch response.data {\ncase .object(let object):\n    // Handle response\n    break\ncase .empty:\n    // Handle empty response\n    break\n}"
-  - target: $["paths"]["/hubs/search"]["get"]
-    update:
-      x-codeSamples:
-        - lang: swift
-          label: performSearch
-          source: "import Foundation\nimport Plexswift\n\nlet client = Client(security: .accessToken(\"<YOUR_API_KEY_HERE>\"))\n\nlet response = try await client.performSearch(\n    request: Operations.PerformSearchRequest(\n        query: \"dylan\", \n        limit: 5, \n        sectionId: 1516.53\n    )\n)\n\nswitch response.data {\ncase .object(let object):\n    // Handle response\n    break\ncase .empty:\n    // Handle empty response\n    break\n}"
-  - target: $["paths"]["/pins/{pinID}"]["get"]
-    update:
-      x-codeSamples:
-        - lang: swift
-          label: getToken
-          source: "import Foundation\nimport Plexswift\n\nlet client = Client()\n\nlet response = try await client.getToken(\n    request: Operations.GetTokenRequest(\n        pinID: \"<value>\", \n    )\n)\n\nswitch response.data {\ncase .object(let object):\n    // Handle response\n    break\ncase .empty:\n    // Handle empty response\n    break\n}"
-  - target: $["paths"]["/updater/check"]["put"]
-    update:
-      x-codeSamples:
-        - lang: swift
-          label: checkForUpdates
-          source: |-
-            import Foundation
-            import Plexswift
-
-            let client = Client(security: .accessToken("<YOUR_API_KEY_HERE>"))
-
-            let response = try await client.checkForUpdates(
-                request: Operations.CheckForUpdatesRequest(
-                    download: .one
-                )
-            )
-
-            switch response.data {
-            case .object(let object):
-                // Handle response
-                break
-            case .empty:
-                // Handle empty response
-                break
-            }
   - target: $["paths"]["/library/metadata/{ratingKey}/children"]["get"]
     update:
       x-codeSamples:
@@ -373,320 +31,24 @@ actions:
                 // Handle empty response
                 break
             }
-  - target: $["paths"]["/security/token"]["get"]
-    update:
-      x-codeSamples:
-        - lang: swift
-          label: getTransientToken
-          source: "import Foundation\nimport Plexswift\n\nlet client = Client(security: .accessToken(\"<YOUR_API_KEY_HERE>\"))\n\nlet response = try await client.getTransientToken(\n    request: Operations.GetTransientTokenRequest(\n        scope: .all, \n        type: .delegation\n    )\n)\n\nswitch response.data {\ncase .object(let object):\n    // Handle response\n    break\ncase .empty:\n    // Handle empty response\n    break\n}"
-  - target: $["paths"]["/transcode/sessions"]["get"]
-    update:
-      x-codeSamples:
-        - lang: swift
-          label: getTranscodeSessions
-          source: |-
-            import Foundation
-            import Plexswift
-
-            let client = Client(security: .accessToken("<YOUR_API_KEY_HERE>"))
-
-            let response = try await client.getTranscodeSessions()
-
-            switch response.data {
-            case .twoHundredApplicationJsonObject(let twoHundredApplicationJsonObject):
-                // Handle response
-                break
-            case .fourHundredAndOneApplicationJsonObject(let fourHundredAndOneApplicationJsonObject):
-                // Handle response
-                break
-            case .empty:
-                // Handle empty response
-                break
-            }
-  - target: $["paths"]["/butler/{taskName}"]["delete"]
-    update:
-      x-codeSamples:
-        - lang: swift
-          label: stopTask
-          source: |-
-            import Foundation
-            import Plexswift
-
-            let client = Client(security: .accessToken("<YOUR_API_KEY_HERE>"))
-
-            let response = try await client.stopTask(
-                request: Operations.StopTaskRequest(
-                    taskName: .backupDatabase
-                )
-            )
-
-            switch response.data {
-            case .object(let object):
-                // Handle response
-                break
-            case .empty:
-                // Handle empty response
-                break
-            }
-  - target: $["paths"]["/playlists"]["post"]
-    update:
-      x-codeSamples:
-        - lang: swift
-          label: createPlaylist
-          source: "import Foundation\nimport Plexswift\n\nlet client = Client(security: .accessToken(\"<YOUR_API_KEY_HERE>\"))\n\nlet response = try await client.createPlaylist(\n    request: Operations.CreatePlaylistRequest(\n        smart: .one, \n        title: \"<value>\", \n        type: .photo, \n        uri: \"https://inborn-brochure.biz\", \n        playQueueID: 3686.33\n    )\n)\n\nswitch response.data {\ncase .twoHundredApplicationJsonObject(let twoHundredApplicationJsonObject):\n    // Handle response\n    break\ncase .fourHundredAndOneApplicationJsonObject(let fourHundredAndOneApplicationJsonObject):\n    // Handle response\n    break\ncase .empty:\n    // Handle empty response\n    break\n}"
-  - target: $["paths"]["/playlists/{playlistID}/items"]["delete"]
-    update:
-      x-codeSamples:
-        - lang: swift
-          label: clearPlaylistContents
-          source: |-
-            import Foundation
-            import Plexswift
-
-            let client = Client(security: .accessToken("<YOUR_API_KEY_HERE>"))
-
-            let response = try await client.clearPlaylistContents(
-                request: Operations.ClearPlaylistContentsRequest(
-                    playlistID: 1893.18
-                )
-            )
-
-            switch response.data {
-            case .object(let object):
-                // Handle response
-                break
-            case .empty:
-                // Handle empty response
-                break
-            }
-  - target: $["paths"]["/hubs"]["get"]
-    update:
-      x-codeSamples:
-        - lang: swift
-          label: getGlobalHubs
-          source: "import Foundation\nimport Plexswift\n\nlet client = Client(security: .accessToken(\"<YOUR_API_KEY_HERE>\"))\n\nlet response = try await client.getGlobalHubs(\n    request: Operations.GetGlobalHubsRequest(\n        count: 1262.49, \n        onlyTransient: .one\n    )\n)\n\nswitch response.data {\ncase .twoHundredApplicationJsonObject(let twoHundredApplicationJsonObject):\n    // Handle response\n    break\ncase .fourHundredAndOneApplicationJsonObject(let fourHundredAndOneApplicationJsonObject):\n    // Handle response\n    break\ncase .empty:\n    // Handle empty response\n    break\n}"
-  - target: $["paths"]["/library/sections/{sectionId}/{tag}"]["get"]
-    update:
-      x-codeSamples:
-        - lang: swift
-          label: getLibraryItems
-          source: "import Foundation\nimport Plexswift\n\nlet client = Client(security: .accessToken(\"<YOUR_API_KEY_HERE>\"))\n\nlet response = try await client.getLibraryItems(\n    request: Operations.GetLibraryItemsRequest(\n        sectionId: 451092, \n        tag: .unwatched\n    )\n)\n\nswitch response.data {\ncase .object(let object):\n    // Handle response\n    break\ncase .empty:\n    // Handle empty response\n    break\n}"
-  - target: $["paths"]["/:/timeline"]["get"]
-    update:
-      x-codeSamples:
-        - lang: swift
-          label: getTimeline
-          source: "import Foundation\nimport Plexswift\n\nlet client = Client(security: .accessToken(\"<YOUR_API_KEY_HERE>\"))\n\nlet response = try await client.getTimeline(\n    request: Operations.GetTimelineRequest(\n        context: \"<value>\", \n        duration: 716.56, \n        hasMDE: 3771.92, \n        key: \"<key>\", \n        playBackTime: 7574.33, \n        playQueueItemID: 3327.51, \n        ratingKey: 7585.39, \n        row: 1406.21, \n        state: .playing, \n        time: 3536.42\n    )\n)\n\nswitch response.data {\ncase .object(let object):\n    // Handle response\n    break\ncase .empty:\n    // Handle empty response\n    break\n}"
-  - target: $["paths"]["/pins"]["post"]
-    update:
-      x-codeSamples:
-        - lang: swift
-          label: getPin
-          source: "import Foundation\nimport Plexswift\n\nlet client = Client()\n\nlet response = try await client.getPin(\n    request: Operations.GetPinRequest(\n        strong: false, \n    )\n)\n\nswitch response.data {\ncase .twoHundredApplicationJsonObject(let twoHundredApplicationJsonObject):\n    // Handle response\n    break\ncase .fourHundredApplicationJsonObject(let fourHundredApplicationJsonObject):\n    // Handle response\n    break\ncase .empty:\n    // Handle empty response\n    break\n}"
   - target: $["paths"]["/playlists"]["get"]
     update:
       x-codeSamples:
         - lang: swift
           label: getPlaylists
           source: "import Foundation\nimport Plexswift\n\nlet client = Client(security: .accessToken(\"<YOUR_API_KEY_HERE>\"))\n\nlet response = try await client.getPlaylists(\n    request: Operations.GetPlaylistsRequest(\n        playlistType: .audio, \n        smart: .zero\n    )\n)\n\nswitch response.data {\ncase .twoHundredApplicationJsonObject(let twoHundredApplicationJsonObject):\n    // Handle response\n    break\ncase .fourHundredAndOneApplicationJsonObject(let fourHundredAndOneApplicationJsonObject):\n    // Handle response\n    break\ncase .empty:\n    // Handle empty response\n    break\n}"
-  - target: $["paths"]["/status/sessions/history/all"]["get"]
+  - target: $["paths"]["/security/token"]["get"]
     update:
       x-codeSamples:
         - lang: swift
-          label: getSessionHistory
-          source: |-
-            import Foundation
-            import Plexswift
-
-            let client = Client(security: .accessToken("<YOUR_API_KEY_HERE>"))
-
-            let response = try await client.getSessionHistory()
-
-            switch response.data {
-            case .twoHundredApplicationJsonObject(let twoHundredApplicationJsonObject):
-                // Handle response
-                break
-            case .fourHundredAndOneApplicationJsonObject(let fourHundredAndOneApplicationJsonObject):
-                // Handle response
-                break
-            case .empty:
-                // Handle empty response
-                break
-            }
-  - target: $["paths"]["/updater/apply"]["put"]
+          label: getTransientToken
+          source: "import Foundation\nimport Plexswift\n\nlet client = Client(security: .accessToken(\"<YOUR_API_KEY_HERE>\"))\n\nlet response = try await client.getTransientToken(\n    request: Operations.GetTransientTokenRequest(\n        scope: .all, \n        type: .delegation\n    )\n)\n\nswitch response.data {\ncase .object(let object):\n    // Handle response\n    break\ncase .empty:\n    // Handle empty response\n    break\n}"
+  - target: $["paths"]["/pins/{pinID}"]["get"]
     update:
       x-codeSamples:
         - lang: swift
-          label: applyUpdates
-          source: "import Foundation\nimport Plexswift\n\nlet client = Client(security: .accessToken(\"<YOUR_API_KEY_HERE>\"))\n\nlet response = try await client.applyUpdates(\n    request: Operations.ApplyUpdatesRequest(\n        skip: .one, \n        tonight: .zero\n    )\n)\n\nswitch response.data {\ncase .object(let object):\n    // Handle response\n    break\ncase .empty:\n    // Handle empty response\n    break\n}"
-  - target: $["paths"]["/:/scrobble"]["get"]
-    update:
-      x-codeSamples:
-        - lang: swift
-          label: markPlayed
-          source: |-
-            import Foundation
-            import Plexswift
-
-            let client = Client(security: .accessToken("<YOUR_API_KEY_HERE>"))
-
-            let response = try await client.markPlayed(
-                request: Operations.MarkPlayedRequest(
-                    key: 59398
-                )
-            )
-
-            switch response.data {
-            case .object(let object):
-                // Handle response
-                break
-            case .empty:
-                // Handle empty response
-                break
-            }
-  - target: $["paths"]["/library/sections/{sectionId}"]["get"]
-    update:
-      x-codeSamples:
-        - lang: swift
-          label: getLibrary
-          source: "import Foundation\nimport Plexswift\n\nlet client = Client(security: .accessToken(\"<YOUR_API_KEY_HERE>\"))\n\nlet response = try await client.getLibrary(\n    request: Operations.GetLibraryRequest(\n        sectionId: 1000, \n        includeDetails: .zero\n    )\n)\n\nswitch response.data {\ncase .twoHundredApplicationJsonObject(let twoHundredApplicationJsonObject):\n    // Handle response\n    break\ncase .fourHundredAndOneApplicationJsonObject(let fourHundredAndOneApplicationJsonObject):\n    // Handle response\n    break\ncase .empty:\n    // Handle empty response\n    break\n}"
-  - target: $["paths"]["/library/sections/{sectionId}"]["delete"]
-    update:
-      x-codeSamples:
-        - lang: swift
-          label: deleteLibrary
-          source: |-
-            import Foundation
-            import Plexswift
-
-            let client = Client(security: .accessToken("<YOUR_API_KEY_HERE>"))
-
-            let response = try await client.deleteLibrary(
-                request: Operations.DeleteLibraryRequest(
-                    sectionId: 1000
-                )
-            )
-
-            switch response.data {
-            case .object(let object):
-                // Handle response
-                break
-            case .empty:
-                // Handle empty response
-                break
-            }
-  - target: $["paths"]["/"]["get"]
-    update:
-      x-codeSamples:
-        - lang: swift
-          label: getServerCapabilities
-          source: |-
-            import Foundation
-            import Plexswift
-
-            let client = Client(security: .accessToken("<YOUR_API_KEY_HERE>"))
-
-            let response = try await client.getServerCapabilities()
-
-            switch response.data {
-            case .twoHundredApplicationJsonObject(let twoHundredApplicationJsonObject):
-                // Handle response
-                break
-            case .fourHundredAndOneApplicationJsonObject(let fourHundredAndOneApplicationJsonObject):
-                // Handle response
-                break
-            case .empty:
-                // Handle empty response
-                break
-            }
-  - target: $["paths"]["/butler"]["post"]
-    update:
-      x-codeSamples:
-        - lang: swift
-          label: startAllTasks
-          source: |-
-            import Foundation
-            import Plexswift
-
-            let client = Client(security: .accessToken("<YOUR_API_KEY_HERE>"))
-
-            let response = try await client.startAllTasks()
-
-            switch response.data {
-            case .object(let object):
-                // Handle response
-                break
-            case .empty:
-                // Handle empty response
-                break
-            }
-  - target: $["paths"]["/butler"]["delete"]
-    update:
-      x-codeSamples:
-        - lang: swift
-          label: stopAllTasks
-          source: |-
-            import Foundation
-            import Plexswift
-
-            let client = Client(security: .accessToken("<YOUR_API_KEY_HERE>"))
-
-            let response = try await client.stopAllTasks()
-
-            switch response.data {
-            case .object(let object):
-                // Handle response
-                break
-            case .empty:
-                // Handle empty response
-                break
-            }
-  - target: $["paths"]["/library/sections/{sectionId}/refresh"]["get"]
-    update:
-      x-codeSamples:
-        - lang: swift
-          label: refreshLibrary
-          source: |-
-            import Foundation
-            import Plexswift
-
-            let client = Client(security: .accessToken("<YOUR_API_KEY_HERE>"))
-
-            let response = try await client.refreshLibrary(
-                request: Operations.RefreshLibraryRequest(
-                    sectionId: 934.16
-                )
-            )
-
-            switch response.data {
-            case .object(let object):
-                // Handle response
-                break
-            case .empty:
-                // Handle empty response
-                break
-            }
-  - target: $["paths"]["/log"]["post"]
-    update:
-      x-codeSamples:
-        - lang: swift
-          label: logMultiLine
-          source: |-
-            import Foundation
-            import Plexswift
-
-            let client = Client(security: .accessToken("<YOUR_API_KEY_HERE>"))
-
-            let response = try await client.logMultiLine()
-
-            switch response.data {
-            case .object(let object):
-                // Handle response
-                break
-            case .empty:
-                // Handle empty response
-                break
-            }
+          label: getToken
+          source: "import Foundation\nimport Plexswift\n\nlet client = Client()\n\nlet response = try await client.getToken(\n    request: Operations.GetTokenRequest(\n        pinID: \"<value>\", \n    )\n)\n\nswitch response.data {\ncase .object(let object):\n    // Handle response\n    break\ncase .empty:\n    // Handle empty response\n    break\n}"
   - target: $["paths"]["/security/resources"]["get"]
     update:
       x-codeSamples:
@@ -706,142 +68,6 @@ actions:
 
             switch response.data {
             case .object(let object):
-                // Handle response
-                break
-            case .empty:
-                // Handle empty response
-                break
-            }
-  - target: $["paths"]["/:/prefs"]["get"]
-    update:
-      x-codeSamples:
-        - lang: swift
-          label: getServerPreferences
-          source: |-
-            import Foundation
-            import Plexswift
-
-            let client = Client(security: .accessToken("<YOUR_API_KEY_HERE>"))
-
-            let response = try await client.getServerPreferences()
-
-            switch response.data {
-            case .twoHundredApplicationJsonObject(let twoHundredApplicationJsonObject):
-                // Handle response
-                break
-            case .fourHundredAndOneApplicationJsonObject(let fourHundredAndOneApplicationJsonObject):
-                // Handle response
-                break
-            case .empty:
-                // Handle empty response
-                break
-            }
-  - target: $["paths"]["/myplex/account"]["get"]
-    update:
-      x-codeSamples:
-        - lang: swift
-          label: getMyPlexAccount
-          source: |-
-            import Foundation
-            import Plexswift
-
-            let client = Client(security: .accessToken("<YOUR_API_KEY_HERE>"))
-
-            let response = try await client.getMyPlexAccount()
-
-            switch response.data {
-            case .twoHundredApplicationJsonObject(let twoHundredApplicationJsonObject):
-                // Handle response
-                break
-            case .fourHundredAndOneApplicationJsonObject(let fourHundredAndOneApplicationJsonObject):
-                // Handle response
-                break
-            case .empty:
-                // Handle empty response
-                break
-            }
-  - target: $["paths"]["/servers"]["get"]
-    update:
-      x-codeSamples:
-        - lang: swift
-          label: getServerList
-          source: |-
-            import Foundation
-            import Plexswift
-
-            let client = Client(security: .accessToken("<YOUR_API_KEY_HERE>"))
-
-            let response = try await client.getServerList()
-
-            switch response.data {
-            case .twoHundredApplicationJsonObject(let twoHundredApplicationJsonObject):
-                // Handle response
-                break
-            case .fourHundredAndOneApplicationJsonObject(let fourHundredAndOneApplicationJsonObject):
-                // Handle response
-                break
-            case .empty:
-                // Handle empty response
-                break
-            }
-  - target: $["paths"]["/library/hashes"]["get"]
-    update:
-      x-codeSamples:
-        - lang: swift
-          label: getFileHash
-          source: "import Foundation\nimport Plexswift\n\nlet client = Client(security: .accessToken(\"<YOUR_API_KEY_HERE>\"))\n\nlet response = try await client.getFileHash(\n    request: Operations.GetFileHashRequest(\n        url: \"file://C:\\Image.png&type=13\", \n        type: 4462.17\n    )\n)\n\nswitch response.data {\ncase .object(let object):\n    // Handle response\n    break\ncase .empty:\n    // Handle empty response\n    break\n}"
-  - target: $["paths"]["/playlists/{playlistID}"]["put"]
-    update:
-      x-codeSamples:
-        - lang: swift
-          label: updatePlaylist
-          source: "import Foundation\nimport Plexswift\n\nlet client = Client(security: .accessToken(\"<YOUR_API_KEY_HERE>\"))\n\nlet response = try await client.updatePlaylist(\n    request: Operations.UpdatePlaylistRequest(\n        playlistID: 3915, \n        summary: \"<value>\", \n        title: \"<value>\"\n    )\n)\n\nswitch response.data {\ncase .object(let object):\n    // Handle response\n    break\ncase .empty:\n    // Handle empty response\n    break\n}"
-  - target: $["paths"]["/statistics/media"]["get"]
-    update:
-      x-codeSamples:
-        - lang: swift
-          label: getStatistics
-          source: |-
-            import Foundation
-            import Plexswift
-
-            let client = Client(security: .accessToken("<YOUR_API_KEY_HERE>"))
-
-            let response = try await client.getStatistics(
-                request: Operations.GetStatisticsRequest(
-                    timespan: 411769
-                )
-            )
-
-            switch response.data {
-            case .twoHundredApplicationJsonObject(let twoHundredApplicationJsonObject):
-                // Handle response
-                break
-            case .fourHundredAndOneApplicationJsonObject(let fourHundredAndOneApplicationJsonObject):
-                // Handle response
-                break
-            case .empty:
-                // Handle empty response
-                break
-            }
-  - target: $["paths"]["/activities"]["get"]
-    update:
-      x-codeSamples:
-        - lang: swift
-          label: getServerActivities
-          source: |-
-            import Foundation
-            import Plexswift
-
-            let client = Client(security: .accessToken("<YOUR_API_KEY_HERE>"))
-
-            let response = try await client.getServerActivities()
-
-            switch response.data {
-            case .twoHundredApplicationJsonObject(let twoHundredApplicationJsonObject):
-                // Handle response
-                break
-            case .fourHundredAndOneApplicationJsonObject(let fourHundredAndOneApplicationJsonObject):
                 // Handle response
                 break
             case .empty:
@@ -872,20 +98,20 @@ actions:
                 // Handle empty response
                 break
             }
-  - target: $["paths"]["/transcode/sessions/{sessionKey}"]["delete"]
+  - target: $["paths"]["/updater/check"]["put"]
     update:
       x-codeSamples:
         - lang: swift
-          label: stopTranscodeSession
+          label: checkForUpdates
           source: |-
             import Foundation
             import Plexswift
 
             let client = Client(security: .accessToken("<YOUR_API_KEY_HERE>"))
 
-            let response = try await client.stopTranscodeSession(
-                request: Operations.StopTranscodeSessionRequest(
-                    sessionKey: "zz7llzqlx8w9vnrsbnwhbmep"
+            let response = try await client.checkForUpdates(
+                request: Operations.CheckForUpdatesRequest(
+                    download: .one
                 )
             )
 
@@ -897,73 +123,19 @@ actions:
                 // Handle empty response
                 break
             }
-  - target: $["paths"]["/hubs/sections/{sectionId}"]["get"]
+  - target: $["paths"]["/:/scrobble"]["get"]
     update:
       x-codeSamples:
         - lang: swift
-          label: getLibraryHubs
-          source: "import Foundation\nimport Plexswift\n\nlet client = Client(security: .accessToken(\"<YOUR_API_KEY_HERE>\"))\n\nlet response = try await client.getLibraryHubs(\n    request: Operations.GetLibraryHubsRequest(\n        sectionId: 6728.76, \n        count: 9010.22, \n        onlyTransient: .zero\n    )\n)\n\nswitch response.data {\ncase .twoHundredApplicationJsonObject(let twoHundredApplicationJsonObject):\n    // Handle response\n    break\ncase .fourHundredAndOneApplicationJsonObject(let fourHundredAndOneApplicationJsonObject):\n    // Handle response\n    break\ncase .empty:\n    // Handle empty response\n    break\n}"
-  - target: $["paths"]["/library/sections"]["get"]
-    update:
-      x-codeSamples:
-        - lang: swift
-          label: getLibraries
+          label: markPlayed
           source: |-
             import Foundation
             import Plexswift
 
             let client = Client(security: .accessToken("<YOUR_API_KEY_HERE>"))
 
-            let response = try await client.getLibraries()
-
-            switch response.data {
-            case .twoHundredApplicationJsonObject(let twoHundredApplicationJsonObject):
-                // Handle response
-                break
-            case .fourHundredAndOneApplicationJsonObject(let fourHundredAndOneApplicationJsonObject):
-                // Handle response
-                break
-            case .empty:
-                // Handle empty response
-                break
-            }
-  - target: $["paths"]["/identity"]["get"]
-    update:
-      x-codeSamples:
-        - lang: swift
-          label: getServerIdentity
-          source: |-
-            import Foundation
-            import Plexswift
-
-            let client = Client(security: .accessToken("<YOUR_API_KEY_HERE>"))
-
-            let response = try await client.getServerIdentity()
-
-            switch response.data {
-            case .twoHundredApplicationJsonObject(let twoHundredApplicationJsonObject):
-                // Handle response
-                break
-            case .fourHundredAndOneApplicationJsonObject(let fourHundredAndOneApplicationJsonObject):
-                // Handle response
-                break
-            case .empty:
-                // Handle empty response
-                break
-            }
-  - target: $["paths"]["/:/unscrobble"]["get"]
-    update:
-      x-codeSamples:
-        - lang: swift
-          label: markUnplayed
-          source: |-
-            import Foundation
-            import Plexswift
-
-            let client = Client(security: .accessToken("<YOUR_API_KEY_HERE>"))
-
-            let response = try await client.markUnplayed(
-                request: Operations.MarkUnplayedRequest(
+            let response = try await client.markPlayed(
+                request: Operations.MarkPlayedRequest(
                     key: 59398
                 )
             )
@@ -976,18 +148,18 @@ actions:
                 // Handle empty response
                 break
             }
-  - target: $["paths"]["/library/recentlyAdded"]["get"]
+  - target: $["paths"]["/butler"]["get"]
     update:
       x-codeSamples:
         - lang: swift
-          label: getRecentlyAdded
+          label: getButlerTasks
           source: |-
             import Foundation
             import Plexswift
 
             let client = Client(security: .accessToken("<YOUR_API_KEY_HERE>"))
 
-            let response = try await client.getRecentlyAdded()
+            let response = try await client.getButlerTasks()
 
             switch response.data {
             case .twoHundredApplicationJsonObject(let twoHundredApplicationJsonObject):
@@ -1028,6 +200,397 @@ actions:
                 // Handle empty response
                 break
             }
+  - target: $["paths"]["/myplex/account"]["get"]
+    update:
+      x-codeSamples:
+        - lang: swift
+          label: getMyPlexAccount
+          source: |-
+            import Foundation
+            import Plexswift
+
+            let client = Client(security: .accessToken("<YOUR_API_KEY_HERE>"))
+
+            let response = try await client.getMyPlexAccount()
+
+            switch response.data {
+            case .twoHundredApplicationJsonObject(let twoHundredApplicationJsonObject):
+                // Handle response
+                break
+            case .fourHundredAndOneApplicationJsonObject(let fourHundredAndOneApplicationJsonObject):
+                // Handle response
+                break
+            case .empty:
+                // Handle empty response
+                break
+            }
+  - target: $["paths"]["/pins"]["post"]
+    update:
+      x-codeSamples:
+        - lang: swift
+          label: getPin
+          source: "import Foundation\nimport Plexswift\n\nlet client = Client()\n\nlet response = try await client.getPin(\n    request: Operations.GetPinRequest(\n        strong: false, \n    )\n)\n\nswitch response.data {\ncase .twoHundredApplicationJsonObject(let twoHundredApplicationJsonObject):\n    // Handle response\n    break\ncase .fourHundredApplicationJsonObject(let fourHundredApplicationJsonObject):\n    // Handle response\n    break\ncase .empty:\n    // Handle empty response\n    break\n}"
+  - target: $["paths"]["/:/timeline"]["get"]
+    update:
+      x-codeSamples:
+        - lang: swift
+          label: getTimeline
+          source: "import Foundation\nimport Plexswift\n\nlet client = Client(security: .accessToken(\"<YOUR_API_KEY_HERE>\"))\n\nlet response = try await client.getTimeline(\n    request: Operations.GetTimelineRequest(\n        context: \"<value>\", \n        duration: 716.56, \n        hasMDE: 3771.92, \n        key: \"<key>\", \n        playBackTime: 7574.33, \n        playQueueItemID: 3327.51, \n        ratingKey: 7585.39, \n        row: 1406.21, \n        state: .playing, \n        time: 3536.42\n    )\n)\n\nswitch response.data {\ncase .object(let object):\n    // Handle response\n    break\ncase .empty:\n    // Handle empty response\n    break\n}"
+  - target: $["paths"]["/activities/{activityUUID}"]["delete"]
+    update:
+      x-codeSamples:
+        - lang: swift
+          label: cancelServerActivities
+          source: |-
+            import Foundation
+            import Plexswift
+
+            let client = Client(security: .accessToken("<YOUR_API_KEY_HERE>"))
+
+            let response = try await client.cancelServerActivities(
+                request: Operations.CancelServerActivitiesRequest(
+                    activityUUID: "<value>"
+                )
+            )
+
+            switch response.data {
+            case .object(let object):
+                // Handle response
+                break
+            case .empty:
+                // Handle empty response
+                break
+            }
+  - target: $["paths"]["/hubs/search"]["get"]
+    update:
+      x-codeSamples:
+        - lang: swift
+          label: performSearch
+          source: "import Foundation\nimport Plexswift\n\nlet client = Client(security: .accessToken(\"<YOUR_API_KEY_HERE>\"))\n\nlet response = try await client.performSearch(\n    request: Operations.PerformSearchRequest(\n        query: \"dylan\", \n        limit: 5, \n        sectionId: 1516.53\n    )\n)\n\nswitch response.data {\ncase .object(let object):\n    // Handle response\n    break\ncase .empty:\n    // Handle empty response\n    break\n}"
+  - target: $["paths"]["/:/prefs"]["get"]
+    update:
+      x-codeSamples:
+        - lang: swift
+          label: getServerPreferences
+          source: |-
+            import Foundation
+            import Plexswift
+
+            let client = Client(security: .accessToken("<YOUR_API_KEY_HERE>"))
+
+            let response = try await client.getServerPreferences()
+
+            switch response.data {
+            case .twoHundredApplicationJsonObject(let twoHundredApplicationJsonObject):
+                // Handle response
+                break
+            case .fourHundredAndOneApplicationJsonObject(let fourHundredAndOneApplicationJsonObject):
+                // Handle response
+                break
+            case .empty:
+                // Handle empty response
+                break
+            }
+  - target: $["paths"]["/clients"]["get"]
+    update:
+      x-codeSamples:
+        - lang: swift
+          label: getAvailableClients
+          source: |-
+            import Foundation
+            import Plexswift
+
+            let client = Client(security: .accessToken("<YOUR_API_KEY_HERE>"))
+
+            let response = try await client.getAvailableClients()
+
+            switch response.data {
+            case .twoHundredApplicationJsonObject(let twoHundredApplicationJsonObject):
+                // Handle response
+                break
+            case .fourHundredAndOneApplicationJsonObject(let fourHundredAndOneApplicationJsonObject):
+                // Handle response
+                break
+            case .empty:
+                // Handle empty response
+                break
+            }
+  - target: $["paths"]["/playlists/{playlistID}"]["put"]
+    update:
+      x-codeSamples:
+        - lang: swift
+          label: updatePlaylist
+          source: "import Foundation\nimport Plexswift\n\nlet client = Client(security: .accessToken(\"<YOUR_API_KEY_HERE>\"))\n\nlet response = try await client.updatePlaylist(\n    request: Operations.UpdatePlaylistRequest(\n        playlistID: 3915, \n        summary: \"<value>\", \n        title: \"<value>\"\n    )\n)\n\nswitch response.data {\ncase .object(let object):\n    // Handle response\n    break\ncase .empty:\n    // Handle empty response\n    break\n}"
+  - target: $["paths"]["/playlists/{playlistID}/items"]["get"]
+    update:
+      x-codeSamples:
+        - lang: swift
+          label: getPlaylistContents
+          source: "import Foundation\nimport Plexswift\n\nlet client = Client(security: .accessToken(\"<YOUR_API_KEY_HERE>\"))\n\nlet response = try await client.getPlaylistContents(\n    request: Operations.GetPlaylistContentsRequest(\n        playlistID: 5004.46, \n        type: 9403.59\n    )\n)\n\nswitch response.data {\ncase .twoHundredApplicationJsonObject(let twoHundredApplicationJsonObject):\n    // Handle response\n    break\ncase .fourHundredAndOneApplicationJsonObject(let fourHundredAndOneApplicationJsonObject):\n    // Handle response\n    break\ncase .empty:\n    // Handle empty response\n    break\n}"
+  - target: $["paths"]["/identity"]["get"]
+    update:
+      x-codeSamples:
+        - lang: swift
+          label: getServerIdentity
+          source: |-
+            import Foundation
+            import Plexswift
+
+            let client = Client(security: .accessToken("<YOUR_API_KEY_HERE>"))
+
+            let response = try await client.getServerIdentity()
+
+            switch response.data {
+            case .twoHundredApplicationJsonObject(let twoHundredApplicationJsonObject):
+                // Handle response
+                break
+            case .fourHundredAndOneApplicationJsonObject(let fourHundredAndOneApplicationJsonObject):
+                // Handle response
+                break
+            case .empty:
+                // Handle empty response
+                break
+            }
+  - target: $["paths"]["/library/sections/{sectionId}/refresh"]["get"]
+    update:
+      x-codeSamples:
+        - lang: swift
+          label: refreshLibrary
+          source: |-
+            import Foundation
+            import Plexswift
+
+            let client = Client(security: .accessToken("<YOUR_API_KEY_HERE>"))
+
+            let response = try await client.refreshLibrary(
+                request: Operations.RefreshLibraryRequest(
+                    sectionId: 934.16
+                )
+            )
+
+            switch response.data {
+            case .object(let object):
+                // Handle response
+                break
+            case .empty:
+                // Handle empty response
+                break
+            }
+  - target: $["paths"]["/library/sections/{sectionId}/search"]["get"]
+    update:
+      x-codeSamples:
+        - lang: swift
+          label: searchLibrary
+          source: "import Foundation\nimport Plexswift\n\nlet client = Client(security: .accessToken(\"<YOUR_API_KEY_HERE>\"))\n\nlet response = try await client.searchLibrary(\n    request: Operations.SearchLibraryRequest(\n        sectionId: 933505, \n        type: .four\n    )\n)\n\nswitch response.data {\ncase .object(let object):\n    // Handle response\n    break\ncase .empty:\n    // Handle empty response\n    break\n}"
+  - target: $["paths"]["/updater/apply"]["put"]
+    update:
+      x-codeSamples:
+        - lang: swift
+          label: applyUpdates
+          source: "import Foundation\nimport Plexswift\n\nlet client = Client(security: .accessToken(\"<YOUR_API_KEY_HERE>\"))\n\nlet response = try await client.applyUpdates(\n    request: Operations.ApplyUpdatesRequest(\n        skip: .one, \n        tonight: .zero\n    )\n)\n\nswitch response.data {\ncase .object(let object):\n    // Handle response\n    break\ncase .empty:\n    // Handle empty response\n    break\n}"
+  - target: $["paths"]["/photo/:/transcode"]["get"]
+    update:
+      x-codeSamples:
+        - lang: swift
+          label: getResizedPhoto
+          source: "import Foundation\nimport Plexswift\n\nlet client = Client(security: .accessToken(\"<YOUR_API_KEY_HERE>\"))\n\nlet response = try await client.getResizedPhoto(\n    request: Operations.GetResizedPhotoRequest(\n        blur: 20, \n        height: 165, \n        minSize: .one, \n        opacity: 96541, \n        upscale: .zero, \n        url: \"/library/metadata/49564/thumb/1654258204\", \n        width: 110\n    )\n)\n\nswitch response.data {\ncase .object(let object):\n    // Handle response\n    break\ncase .empty:\n    // Handle empty response\n    break\n}"
+  - target: $["paths"]["/:/progress"]["post"]
+    update:
+      x-codeSamples:
+        - lang: swift
+          label: updatePlayProgress
+          source: "import Foundation\nimport Plexswift\n\nlet client = Client(security: .accessToken(\"<YOUR_API_KEY_HERE>\"))\n\nlet response = try await client.updatePlayProgress(\n    request: Operations.UpdatePlayProgressRequest(\n        key: \"<key>\", \n        state: \"Ohio\", \n        time: 8015.87\n    )\n)\n\nswitch response.data {\ncase .object(let object):\n    // Handle response\n    break\ncase .empty:\n    // Handle empty response\n    break\n}"
+  - target: $["paths"]["/statistics/media"]["get"]
+    update:
+      x-codeSamples:
+        - lang: swift
+          label: getStatistics
+          source: |-
+            import Foundation
+            import Plexswift
+
+            let client = Client(security: .accessToken("<YOUR_API_KEY_HERE>"))
+
+            let response = try await client.getStatistics(
+                request: Operations.GetStatisticsRequest(
+                    timespan: 411769
+                )
+            )
+
+            switch response.data {
+            case .twoHundredApplicationJsonObject(let twoHundredApplicationJsonObject):
+                // Handle response
+                break
+            case .fourHundredAndOneApplicationJsonObject(let fourHundredAndOneApplicationJsonObject):
+                // Handle response
+                break
+            case .empty:
+                // Handle empty response
+                break
+            }
+  - target: $["paths"]["/library/recentlyAdded"]["get"]
+    update:
+      x-codeSamples:
+        - lang: swift
+          label: getRecentlyAdded
+          source: |-
+            import Foundation
+            import Plexswift
+
+            let client = Client(security: .accessToken("<YOUR_API_KEY_HERE>"))
+
+            let response = try await client.getRecentlyAdded()
+
+            switch response.data {
+            case .twoHundredApplicationJsonObject(let twoHundredApplicationJsonObject):
+                // Handle response
+                break
+            case .fourHundredAndOneApplicationJsonObject(let fourHundredAndOneApplicationJsonObject):
+                // Handle response
+                break
+            case .empty:
+                // Handle empty response
+                break
+            }
+  - target: $["paths"]["/servers"]["get"]
+    update:
+      x-codeSamples:
+        - lang: swift
+          label: getServerList
+          source: |-
+            import Foundation
+            import Plexswift
+
+            let client = Client(security: .accessToken("<YOUR_API_KEY_HERE>"))
+
+            let response = try await client.getServerList()
+
+            switch response.data {
+            case .twoHundredApplicationJsonObject(let twoHundredApplicationJsonObject):
+                // Handle response
+                break
+            case .fourHundredAndOneApplicationJsonObject(let fourHundredAndOneApplicationJsonObject):
+                // Handle response
+                break
+            case .empty:
+                // Handle empty response
+                break
+            }
+  - target: $["paths"]["/:/unscrobble"]["get"]
+    update:
+      x-codeSamples:
+        - lang: swift
+          label: markUnplayed
+          source: |-
+            import Foundation
+            import Plexswift
+
+            let client = Client(security: .accessToken("<YOUR_API_KEY_HERE>"))
+
+            let response = try await client.markUnplayed(
+                request: Operations.MarkUnplayedRequest(
+                    key: 59398
+                )
+            )
+
+            switch response.data {
+            case .object(let object):
+                // Handle response
+                break
+            case .empty:
+                // Handle empty response
+                break
+            }
+  - target: $["paths"]["/search"]["get"]
+    update:
+      x-codeSamples:
+        - lang: swift
+          label: getSearchResults
+          source: |-
+            import Foundation
+            import Plexswift
+
+            let client = Client(security: .accessToken("<YOUR_API_KEY_HERE>"))
+
+            let response = try await client.getSearchResults(
+                request: Operations.GetSearchResultsRequest(
+                    query: "110"
+                )
+            )
+
+            switch response.data {
+            case .twoHundredApplicationJsonObject(let twoHundredApplicationJsonObject):
+                // Handle response
+                break
+            case .fourHundredAndOneApplicationJsonObject(let fourHundredAndOneApplicationJsonObject):
+                // Handle response
+                break
+            case .empty:
+                // Handle empty response
+                break
+            }
+  - target: $["paths"]["/playlists/{playlistID}/items"]["delete"]
+    update:
+      x-codeSamples:
+        - lang: swift
+          label: clearPlaylistContents
+          source: |-
+            import Foundation
+            import Plexswift
+
+            let client = Client(security: .accessToken("<YOUR_API_KEY_HERE>"))
+
+            let response = try await client.clearPlaylistContents(
+                request: Operations.ClearPlaylistContentsRequest(
+                    playlistID: 1893.18
+                )
+            )
+
+            switch response.data {
+            case .object(let object):
+                // Handle response
+                break
+            case .empty:
+                // Handle empty response
+                break
+            }
+  - target: $["paths"]["/butler/{taskName}"]["post"]
+    update:
+      x-codeSamples:
+        - lang: swift
+          label: startTask
+          source: |-
+            import Foundation
+            import Plexswift
+
+            let client = Client(security: .accessToken("<YOUR_API_KEY_HERE>"))
+
+            let response = try await client.startTask(
+                request: Operations.StartTaskRequest(
+                    taskName: .cleanOldBundles
+                )
+            )
+
+            switch response.data {
+            case .object(let object):
+                // Handle response
+                break
+            case .empty:
+                // Handle empty response
+                break
+            }
+  - target: $["paths"]["/library/hashes"]["get"]
+    update:
+      x-codeSamples:
+        - lang: swift
+          label: getFileHash
+          source: "import Foundation\nimport Plexswift\n\nlet client = Client(security: .accessToken(\"<YOUR_API_KEY_HERE>\"))\n\nlet response = try await client.getFileHash(\n    request: Operations.GetFileHashRequest(\n        url: \"file://C:\\Image.png&type=13\", \n        type: 4462.17\n    )\n)\n\nswitch response.data {\ncase .object(let object):\n    // Handle response\n    break\ncase .empty:\n    // Handle empty response\n    break\n}"
+  - target: $["paths"]["/library/sections/{sectionId}"]["get"]
+    update:
+      x-codeSamples:
+        - lang: swift
+          label: getLibrary
+          source: "import Foundation\nimport Plexswift\n\nlet client = Client(security: .accessToken(\"<YOUR_API_KEY_HERE>\"))\n\nlet response = try await client.getLibrary(\n    request: Operations.GetLibraryRequest(\n        sectionId: 1000, \n        includeDetails: .zero\n    )\n)\n\nswitch response.data {\ncase .twoHundredApplicationJsonObject(let twoHundredApplicationJsonObject):\n    // Handle response\n    break\ncase .fourHundredAndOneApplicationJsonObject(let fourHundredAndOneApplicationJsonObject):\n    // Handle response\n    break\ncase .empty:\n    // Handle empty response\n    break\n}"
   - target: $["paths"]["/log/networked"]["get"]
     update:
       x-codeSamples:
@@ -1043,6 +606,443 @@ actions:
 
             switch response.data {
             case .object(let object):
+                // Handle response
+                break
+            case .empty:
+                // Handle empty response
+                break
+            }
+  - target: $["paths"]["/playlists"]["post"]
+    update:
+      x-codeSamples:
+        - lang: swift
+          label: createPlaylist
+          source: "import Foundation\nimport Plexswift\n\nlet client = Client(security: .accessToken(\"<YOUR_API_KEY_HERE>\"))\n\nlet response = try await client.createPlaylist(\n    request: Operations.CreatePlaylistRequest(\n        smart: .one, \n        title: \"<value>\", \n        type: .photo, \n        uri: \"https://inborn-brochure.biz\", \n        playQueueID: 3686.33\n    )\n)\n\nswitch response.data {\ncase .twoHundredApplicationJsonObject(let twoHundredApplicationJsonObject):\n    // Handle response\n    break\ncase .fourHundredAndOneApplicationJsonObject(let fourHundredAndOneApplicationJsonObject):\n    // Handle response\n    break\ncase .empty:\n    // Handle empty response\n    break\n}"
+  - target: $["paths"]["/playlists/{playlistID}"]["delete"]
+    update:
+      x-codeSamples:
+        - lang: swift
+          label: deletePlaylist
+          source: |-
+            import Foundation
+            import Plexswift
+
+            let client = Client(security: .accessToken("<YOUR_API_KEY_HERE>"))
+
+            let response = try await client.deletePlaylist(
+                request: Operations.DeletePlaylistRequest(
+                    playlistID: 216.22
+                )
+            )
+
+            switch response.data {
+            case .object(let object):
+                // Handle response
+                break
+            case .empty:
+                // Handle empty response
+                break
+            }
+  - target: $["paths"]["/butler"]["delete"]
+    update:
+      x-codeSamples:
+        - lang: swift
+          label: stopAllTasks
+          source: |-
+            import Foundation
+            import Plexswift
+
+            let client = Client(security: .accessToken("<YOUR_API_KEY_HERE>"))
+
+            let response = try await client.stopAllTasks()
+
+            switch response.data {
+            case .object(let object):
+                // Handle response
+                break
+            case .empty:
+                // Handle empty response
+                break
+            }
+  - target: $["paths"]["/hubs/sections/{sectionId}"]["get"]
+    update:
+      x-codeSamples:
+        - lang: swift
+          label: getLibraryHubs
+          source: "import Foundation\nimport Plexswift\n\nlet client = Client(security: .accessToken(\"<YOUR_API_KEY_HERE>\"))\n\nlet response = try await client.getLibraryHubs(\n    request: Operations.GetLibraryHubsRequest(\n        sectionId: 6728.76, \n        count: 9010.22, \n        onlyTransient: .zero\n    )\n)\n\nswitch response.data {\ncase .twoHundredApplicationJsonObject(let twoHundredApplicationJsonObject):\n    // Handle response\n    break\ncase .fourHundredAndOneApplicationJsonObject(let fourHundredAndOneApplicationJsonObject):\n    // Handle response\n    break\ncase .empty:\n    // Handle empty response\n    break\n}"
+  - target: $["paths"]["/hubs/search/voice"]["get"]
+    update:
+      x-codeSamples:
+        - lang: swift
+          label: performVoiceSearch
+          source: "import Foundation\nimport Plexswift\n\nlet client = Client(security: .accessToken(\"<YOUR_API_KEY_HERE>\"))\n\nlet response = try await client.performVoiceSearch(\n    request: Operations.PerformVoiceSearchRequest(\n        query: \"dead+poop\", \n        limit: 5, \n        sectionId: 4094.8\n    )\n)\n\nswitch response.data {\ncase .object(let object):\n    // Handle response\n    break\ncase .empty:\n    // Handle empty response\n    break\n}"
+  - target: $["paths"]["/transcode/sessions"]["get"]
+    update:
+      x-codeSamples:
+        - lang: swift
+          label: getTranscodeSessions
+          source: |-
+            import Foundation
+            import Plexswift
+
+            let client = Client(security: .accessToken("<YOUR_API_KEY_HERE>"))
+
+            let response = try await client.getTranscodeSessions()
+
+            switch response.data {
+            case .twoHundredApplicationJsonObject(let twoHundredApplicationJsonObject):
+                // Handle response
+                break
+            case .fourHundredAndOneApplicationJsonObject(let fourHundredAndOneApplicationJsonObject):
+                // Handle response
+                break
+            case .empty:
+                // Handle empty response
+                break
+            }
+  - target: $["paths"]["/devices"]["get"]
+    update:
+      x-codeSamples:
+        - lang: swift
+          label: getDevices
+          source: |-
+            import Foundation
+            import Plexswift
+
+            let client = Client(security: .accessToken("<YOUR_API_KEY_HERE>"))
+
+            let response = try await client.getDevices()
+
+            switch response.data {
+            case .twoHundredApplicationJsonObject(let twoHundredApplicationJsonObject):
+                // Handle response
+                break
+            case .fourHundredAndOneApplicationJsonObject(let fourHundredAndOneApplicationJsonObject):
+                // Handle response
+                break
+            case .empty:
+                // Handle empty response
+                break
+            }
+  - target: $["paths"]["/activities"]["get"]
+    update:
+      x-codeSamples:
+        - lang: swift
+          label: getServerActivities
+          source: |-
+            import Foundation
+            import Plexswift
+
+            let client = Client(security: .accessToken("<YOUR_API_KEY_HERE>"))
+
+            let response = try await client.getServerActivities()
+
+            switch response.data {
+            case .twoHundredApplicationJsonObject(let twoHundredApplicationJsonObject):
+                // Handle response
+                break
+            case .fourHundredAndOneApplicationJsonObject(let fourHundredAndOneApplicationJsonObject):
+                // Handle response
+                break
+            case .empty:
+                // Handle empty response
+                break
+            }
+  - target: $["paths"]["/butler"]["post"]
+    update:
+      x-codeSamples:
+        - lang: swift
+          label: startAllTasks
+          source: |-
+            import Foundation
+            import Plexswift
+
+            let client = Client(security: .accessToken("<YOUR_API_KEY_HERE>"))
+
+            let response = try await client.startAllTasks()
+
+            switch response.data {
+            case .object(let object):
+                // Handle response
+                break
+            case .empty:
+                // Handle empty response
+                break
+            }
+  - target: $["paths"]["/library/sections/{sectionId}/{tag}"]["get"]
+    update:
+      x-codeSamples:
+        - lang: swift
+          label: getLibraryItems
+          source: "import Foundation\nimport Plexswift\n\nlet client = Client(security: .accessToken(\"<YOUR_API_KEY_HERE>\"))\n\nlet response = try await client.getLibraryItems(\n    request: Operations.GetLibraryItemsRequest(\n        sectionId: 451092, \n        tag: .unwatched\n    )\n)\n\nswitch response.data {\ncase .object(let object):\n    // Handle response\n    break\ncase .empty:\n    // Handle empty response\n    break\n}"
+  - target: $["paths"]["/log"]["get"]
+    update:
+      x-codeSamples:
+        - lang: swift
+          label: logLine
+          source: "import Foundation\nimport Plexswift\n\nlet client = Client(security: .accessToken(\"<YOUR_API_KEY_HERE>\"))\n\nlet response = try await client.logLine(\n    request: Operations.LogLineRequest(\n        level: .three, \n        message: \"Test log message\", \n        source: \"Postman\"\n    )\n)\n\nswitch response.data {\ncase .object(let object):\n    // Handle response\n    break\ncase .empty:\n    // Handle empty response\n    break\n}"
+  - target: $["paths"]["/playlists/{playlistID}"]["get"]
+    update:
+      x-codeSamples:
+        - lang: swift
+          label: getPlaylist
+          source: |-
+            import Foundation
+            import Plexswift
+
+            let client = Client(security: .accessToken("<YOUR_API_KEY_HERE>"))
+
+            let response = try await client.getPlaylist(
+                request: Operations.GetPlaylistRequest(
+                    playlistID: 4109.48
+                )
+            )
+
+            switch response.data {
+            case .twoHundredApplicationJsonObject(let twoHundredApplicationJsonObject):
+                // Handle response
+                break
+            case .fourHundredAndOneApplicationJsonObject(let fourHundredAndOneApplicationJsonObject):
+                // Handle response
+                break
+            case .empty:
+                // Handle empty response
+                break
+            }
+  - target: $["paths"]["/library/onDeck"]["get"]
+    update:
+      x-codeSamples:
+        - lang: swift
+          label: getOnDeck
+          source: |-
+            import Foundation
+            import Plexswift
+
+            let client = Client(security: .accessToken("<YOUR_API_KEY_HERE>"))
+
+            let response = try await client.getOnDeck()
+
+            switch response.data {
+            case .twoHundredApplicationJsonObject(let twoHundredApplicationJsonObject):
+                // Handle response
+                break
+            case .fourHundredAndOneApplicationJsonObject(let fourHundredAndOneApplicationJsonObject):
+                // Handle response
+                break
+            case .empty:
+                // Handle empty response
+                break
+            }
+  - target: $["paths"]["/video/:/transcode/universal/start.mpd"]["get"]
+    update:
+      x-codeSamples:
+        - lang: swift
+          label: startUniversalTranscode
+          source: "import Foundation\nimport Plexswift\n\nlet client = Client(security: .accessToken(\"<YOUR_API_KEY_HERE>\"))\n\nlet response = try await client.startUniversalTranscode(\n    request: Operations.StartUniversalTranscodeRequest(\n        hasMDE: 8924.99, \n        mediaIndex: 1194.97, \n        partIndex: 9962.95, \n        path: \"/etc/mail\", \n        `protocol`: \"<value>\", \n        addDebugOverlay: 1630.75, \n        audioBoost: 4531.53, \n        autoAdjustQuality: 4877.48, \n        directPlay: 3383.01, \n        directStream: 7970.18, \n        fastSeek: 2664.33, \n        location: \"<value>\", \n        mediaBufferSize: 4930.91, \n        session: \"<value>\", \n        subtites: \"<value>\", \n        subtitleSize: 2087.17\n    )\n)\n\nswitch response.data {\ncase .object(let object):\n    // Handle response\n    break\ncase .empty:\n    // Handle empty response\n    break\n}"
+  - target: $["paths"]["/hubs"]["get"]
+    update:
+      x-codeSamples:
+        - lang: swift
+          label: getGlobalHubs
+          source: "import Foundation\nimport Plexswift\n\nlet client = Client(security: .accessToken(\"<YOUR_API_KEY_HERE>\"))\n\nlet response = try await client.getGlobalHubs(\n    request: Operations.GetGlobalHubsRequest(\n        count: 1262.49, \n        onlyTransient: .one\n    )\n)\n\nswitch response.data {\ncase .twoHundredApplicationJsonObject(let twoHundredApplicationJsonObject):\n    // Handle response\n    break\ncase .fourHundredAndOneApplicationJsonObject(let fourHundredAndOneApplicationJsonObject):\n    // Handle response\n    break\ncase .empty:\n    // Handle empty response\n    break\n}"
+  - target: $["paths"]["/library/sections"]["get"]
+    update:
+      x-codeSamples:
+        - lang: swift
+          label: getLibraries
+          source: |-
+            import Foundation
+            import Plexswift
+
+            let client = Client(security: .accessToken("<YOUR_API_KEY_HERE>"))
+
+            let response = try await client.getLibraries()
+
+            switch response.data {
+            case .twoHundredApplicationJsonObject(let twoHundredApplicationJsonObject):
+                // Handle response
+                break
+            case .fourHundredAndOneApplicationJsonObject(let fourHundredAndOneApplicationJsonObject):
+                // Handle response
+                break
+            case .empty:
+                // Handle empty response
+                break
+            }
+  - target: $["paths"]["/"]["get"]
+    update:
+      x-codeSamples:
+        - lang: swift
+          label: getServerCapabilities
+          source: |-
+            import Foundation
+            import Plexswift
+
+            let client = Client(security: .accessToken("<YOUR_API_KEY_HERE>"))
+
+            let response = try await client.getServerCapabilities()
+
+            switch response.data {
+            case .twoHundredApplicationJsonObject(let twoHundredApplicationJsonObject):
+                // Handle response
+                break
+            case .fourHundredAndOneApplicationJsonObject(let fourHundredAndOneApplicationJsonObject):
+                // Handle response
+                break
+            case .empty:
+                // Handle empty response
+                break
+            }
+  - target: $["paths"]["/library/sections/{sectionId}"]["delete"]
+    update:
+      x-codeSamples:
+        - lang: swift
+          label: deleteLibrary
+          source: |-
+            import Foundation
+            import Plexswift
+
+            let client = Client(security: .accessToken("<YOUR_API_KEY_HERE>"))
+
+            let response = try await client.deleteLibrary(
+                request: Operations.DeleteLibraryRequest(
+                    sectionId: 1000
+                )
+            )
+
+            switch response.data {
+            case .object(let object):
+                // Handle response
+                break
+            case .empty:
+                // Handle empty response
+                break
+            }
+  - target: $["paths"]["/status/sessions/history/all"]["get"]
+    update:
+      x-codeSamples:
+        - lang: swift
+          label: getSessionHistory
+          source: |-
+            import Foundation
+            import Plexswift
+
+            let client = Client(security: .accessToken("<YOUR_API_KEY_HERE>"))
+
+            let response = try await client.getSessionHistory()
+
+            switch response.data {
+            case .twoHundredApplicationJsonObject(let twoHundredApplicationJsonObject):
+                // Handle response
+                break
+            case .fourHundredAndOneApplicationJsonObject(let fourHundredAndOneApplicationJsonObject):
+                // Handle response
+                break
+            case .empty:
+                // Handle empty response
+                break
+            }
+  - target: $["paths"]["/playlists/upload"]["post"]
+    update:
+      x-codeSamples:
+        - lang: swift
+          label: uploadPlaylist
+          source: "import Foundation\nimport Plexswift\n\nlet client = Client(security: .accessToken(\"<YOUR_API_KEY_HERE>\"))\n\nlet response = try await client.uploadPlaylist(\n    request: Operations.UploadPlaylistRequest(\n        force: .zero, \n        path: \"/home/barkley/playlist.m3u\"\n    )\n)\n\nswitch response.data {\ncase .object(let object):\n    // Handle response\n    break\ncase .empty:\n    // Handle empty response\n    break\n}"
+  - target: $["paths"]["/butler/{taskName}"]["delete"]
+    update:
+      x-codeSamples:
+        - lang: swift
+          label: stopTask
+          source: |-
+            import Foundation
+            import Plexswift
+
+            let client = Client(security: .accessToken("<YOUR_API_KEY_HERE>"))
+
+            let response = try await client.stopTask(
+                request: Operations.StopTaskRequest(
+                    taskName: .backupDatabase
+                )
+            )
+
+            switch response.data {
+            case .object(let object):
+                // Handle response
+                break
+            case .empty:
+                // Handle empty response
+                break
+            }
+  - target: $["paths"]["/log"]["post"]
+    update:
+      x-codeSamples:
+        - lang: swift
+          label: logMultiLine
+          source: |-
+            import Foundation
+            import Plexswift
+
+            let client = Client(security: .accessToken("<YOUR_API_KEY_HERE>"))
+
+            let response = try await client.logMultiLine()
+
+            switch response.data {
+            case .object(let object):
+                // Handle response
+                break
+            case .empty:
+                // Handle empty response
+                break
+            }
+  - target: $["paths"]["/playlists/{playlistID}/items"]["put"]
+    update:
+      x-codeSamples:
+        - lang: swift
+          label: addPlaylistContents
+          source: "import Foundation\nimport Plexswift\n\nlet client = Client(security: .accessToken(\"<YOUR_API_KEY_HERE>\"))\n\nlet response = try await client.addPlaylistContents(\n    request: Operations.AddPlaylistContentsRequest(\n        playlistID: 8502.01, \n        uri: \"server://12345/com.plexapp.plugins.library/library/metadata/1\", \n        playQueueID: 123\n    )\n)\n\nswitch response.data {\ncase .twoHundredApplicationJsonObject(let twoHundredApplicationJsonObject):\n    // Handle response\n    break\ncase .fourHundredAndOneApplicationJsonObject(let fourHundredAndOneApplicationJsonObject):\n    // Handle response\n    break\ncase .empty:\n    // Handle empty response\n    break\n}"
+  - target: $["paths"]["/transcode/sessions/{sessionKey}"]["delete"]
+    update:
+      x-codeSamples:
+        - lang: swift
+          label: stopTranscodeSession
+          source: |-
+            import Foundation
+            import Plexswift
+
+            let client = Client(security: .accessToken("<YOUR_API_KEY_HERE>"))
+
+            let response = try await client.stopTranscodeSession(
+                request: Operations.StopTranscodeSessionRequest(
+                    sessionKey: "zz7llzqlx8w9vnrsbnwhbmep"
+                )
+            )
+
+            switch response.data {
+            case .object(let object):
+                // Handle response
+                break
+            case .empty:
+                // Handle empty response
+                break
+            }
+  - target: $["paths"]["/updater/status"]["get"]
+    update:
+      x-codeSamples:
+        - lang: swift
+          label: getUpdateStatus
+          source: |-
+            import Foundation
+            import Plexswift
+
+            let client = Client(security: .accessToken("<YOUR_API_KEY_HERE>"))
+
+            let response = try await client.getUpdateStatus()
+
+            switch response.data {
+            case .twoHundredApplicationJsonObject(let twoHundredApplicationJsonObject):
+                // Handle response
+                break
+            case .fourHundredAndOneApplicationJsonObject(let fourHundredAndOneApplicationJsonObject):
                 // Handle response
                 break
             case .empty:

@@ -193,3 +193,13 @@ Based on:
 - [swift v0.1.5] .
 ### Releases
 - [Swift Package Manager v0.1.5] https://github.com/LukeHagar/plexswift/releases/tag/v0.1.5 - .
+
+## 2024-05-07 00:56:10
+### Changes
+Based on:
+- OpenAPI Doc  
+- Speakeasy CLI 1.280.2 (2.322.5) https://github.com/speakeasy-api/speakeasy
+### Generated
+- [swift v0.1.5] .
+### Releases
+- [Swift Package Manager v0.1.5] https://github.com/LukeHagar/plexswift/releases/tag/v0.1.5 - .

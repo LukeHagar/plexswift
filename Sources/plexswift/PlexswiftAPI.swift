@@ -417,7 +417,6 @@ public protocol SearchAPI {
 /// - ``getLibraries()``
 /// - ``getLibrary(request:)``
 /// - ``deleteLibrary(request:)``
-/// - ``getLibraryItems(request:)``
 /// - ``refreshLibrary(request:)``
 /// - ``searchLibrary(request:)``
 /// - ``getMetadata(request:)``
@@ -503,33 +502,6 @@ public protocol LibraryAPI {
     /// - Returns: A ``Operations/DeleteLibraryResponse`` object describing the result of the API operation
     /// - Throws: An error of type ``PlexswiftError``
     func deleteLibrary(request: Operations.DeleteLibraryRequest) async throws -> Response<Operations.DeleteLibraryResponse>
-
-    /// Fetches details from a specific section of the library identified by a section key and a tag. The tag parameter accepts the following values:
-    /// - `all`: All items in the section.
-    /// - `unwatched`: Items that have not been played.
-    /// - `newest`: Items that are recently released.
-    /// - `recentlyAdded`: Items that are recently added to the library.
-    /// - `recentlyViewed`: Items that were recently viewed.
-    /// - `onDeck`: Items to continue watching.
-    /// - `collection`: Items categorized by collection.
-    /// - `edition`: Items categorized by edition.
-    /// - `genre`: Items categorized by genre.
-    /// - `year`: Items categorized by year of release.
-    /// - `decade`: Items categorized by decade.
-    /// - `director`: Items categorized by director.
-    /// - `actor`: Items categorized by starring actor.
-    /// - `country`: Items categorized by country of origin.
-    /// - `contentRating`: Items categorized by content rating.
-    /// - `rating`: Items categorized by rating.
-    /// - `resolution`: Items categorized by resolution.
-    /// - `firstCharacter`: Items categorized by the first letter.
-    /// - `folder`: Items categorized by folder.
-    /// 
-    /// 
-    /// - Parameter request: A ``Operations/GetLibraryItemsRequest`` object describing the input to the API operation
-    /// - Returns: A ``Operations/GetLibraryItemsResponse`` object describing the result of the API operation
-    /// - Throws: An error of type ``PlexswiftError``
-    func getLibraryItems(request: Operations.GetLibraryItemsRequest) async throws -> Response<Operations.GetLibraryItemsResponse>
 
     /// This endpoint Refreshes the library.
     /// 

@@ -4,10 +4,10 @@ import Foundation
 
 extension Operations {
     /// A response model
-    public enum SearchLibraryResponse {
+    public enum GetLibraryItemsResponse {
         case empty
-        case twoHundredApplicationJsonObject(Operations.SearchLibraryResponseBody)
-        case fourHundredAndOneApplicationJsonObject(Operations.SearchLibraryLibraryResponseBody)
+        case twoHundredApplicationJsonObject(Operations.GetLibraryItemsResponseBody)
+        case fourHundredAndOneApplicationJsonObject(Operations.GetLibraryItemsLibraryResponseBody)
 
         var isEmpty: Bool {
             if case .empty = self {
@@ -17,14 +17,14 @@ extension Operations {
             }
         }
 
-        public func twoHundredApplicationJsonObject() throws -> Operations.SearchLibraryResponseBody {
+        public func twoHundredApplicationJsonObject() throws -> Operations.GetLibraryItemsResponseBody {
             guard case .twoHundredApplicationJsonObject(let value) = self else {
                 throw PlexswiftError.missingResponseData
             }
             return value
         }
 
-        public func fourHundredAndOneApplicationJsonObject() throws -> Operations.SearchLibraryLibraryResponseBody {
+        public func fourHundredAndOneApplicationJsonObject() throws -> Operations.GetLibraryItemsLibraryResponseBody {
             guard case .fourHundredAndOneApplicationJsonObject(let value) = self else {
                 throw PlexswiftError.missingResponseData
             }

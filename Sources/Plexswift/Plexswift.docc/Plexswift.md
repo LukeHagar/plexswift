@@ -93,6 +93,7 @@ case .empty:
 - ``Operations/GetLibrariesResponse``
 - ``Operations/GetLibraryResponse``
 - ``Operations/GetLibraryHubsResponse``
+- ``Operations/GetLibraryItemsResponse``
 - ``Operations/GetMetadataResponse``
 - ``Operations/GetMetadataChildrenResponse``
 - ``Operations/GetMyPlexAccountResponse``
@@ -232,6 +233,19 @@ case .empty:
 - ``Operations/GetLibraryHubsResponseBody``
 - ``Operations/GetLibraryHubsRole``
 - ``Operations/GetLibraryHubsWriter``
+- ``Operations/GetLibraryItemsCountry``
+- ``Operations/GetLibraryItemsDirector``
+- ``Operations/GetLibraryItemsErrors``
+- ``Operations/GetLibraryItemsGenre``
+- ``Operations/GetLibraryItemsLibraryResponseBody``
+- ``Operations/GetLibraryItemsMedia``
+- ``Operations/GetLibraryItemsMediaContainer``
+- ``Operations/GetLibraryItemsMetadata``
+- ``Operations/GetLibraryItemsPart``
+- ``Operations/GetLibraryItemsRequest``
+- ``Operations/GetLibraryItemsResponseBody``
+- ``Operations/GetLibraryItemsRole``
+- ``Operations/GetLibraryItemsWriter``
 - ``Operations/GetMetadataCountry``
 - ``Operations/GetMetadataDirector``
 - ``Operations/GetMetadataErrors``
@@ -417,6 +431,8 @@ case .empty:
 - ``Operations/Release``
 - ``Operations/Role``
 - ``Operations/Scope``
+- ``Operations/SearchLibraryErrors``
+- ``Operations/SearchLibraryLibraryResponseBody``
 - ``Operations/SearchLibraryMediaContainer``
 - ``Operations/SearchLibraryMetadata``
 - ``Operations/SearchLibraryRequest``
@@ -446,6 +462,7 @@ case .empty:
 - ``Operations/StopTranscodeSessionRequest``
 - ``Operations/StopTranscodeSessionResponseBody``
 - ``Operations/Stream``
+- ``Operations/Tag``
 - ``Operations/TaskName``
 - ``Operations/Tonight``
 - ``Operations/TranscodeSession``

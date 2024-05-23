@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 5d77204e-e413-4fd0-a14a-bad3aee2247a
 management:
-  docChecksum: 543cb95355401d2e3c2ba11a50d9dd94
+  docChecksum: 911d74baa0d06121d2ce2c71d94e977a
   docVersion: 0.0.3
-  speakeasyVersion: 1.285.0
-  generationVersion: 2.326.3
-  releaseVersion: 0.2.0
-  configChecksum: 8e59cbc89b7aa4f53dedf1cd0d7d10a9
+  speakeasyVersion: 1.295.1
+  generationVersion: 2.335.5
+  releaseVersion: 0.3.0
+  configChecksum: ff83ff18de944ae2a94ad7cd0e953eeb
   repoURL: https://github.com/LukeHagar/plexswift.git
 features:
   swift:
@@ -16,7 +16,6 @@ features:
     globals: 2.81.3
     methodServerURLs: 3.0.1
     nameOverrides: 2.81.2
-    unions: 2.81.4
 generatedFiles:
   - Sources/Plexswift/internal/api/_ServerAPI.swift
   - Sources/Plexswift/internal/api/_MediaAPI.swift
@@ -176,6 +175,21 @@ generatedFiles:
   - Sources/Plexswift/models/operations/GetLibraryHubsResponseBody.swift
   - Sources/Plexswift/models/operations/GetLibraryHubsRole.swift
   - Sources/Plexswift/models/operations/GetLibraryHubsWriter.swift
+  - Sources/Plexswift/models/operations/GetLibraryItemsCountry.swift
+  - Sources/Plexswift/models/operations/GetLibraryItemsDirector.swift
+  - Sources/Plexswift/models/operations/GetLibraryItemsErrors.swift
+  - Sources/Plexswift/models/operations/GetLibraryItemsGenre.swift
+  - Sources/Plexswift/models/operations/GetLibraryItemsLibraryResponseBody.swift
+  - Sources/Plexswift/models/operations/GetLibraryItemsMedia.swift
+  - Sources/Plexswift/models/operations/GetLibraryItemsMediaContainer.swift
+  - Sources/Plexswift/models/operations/GetLibraryItemsMetadata.swift
+  - Sources/Plexswift/models/operations/GetLibraryItemsPart.swift
+  - Sources/Plexswift/models/operations/GetLibraryItemsRequest.swift
+  - Sources/Plexswift/internal/models/GetLibraryItemsRequest+Serialization.swift
+  - Sources/Plexswift/models/operations/GetLibraryItemsResponse.swift
+  - Sources/Plexswift/models/operations/GetLibraryItemsResponseBody.swift
+  - Sources/Plexswift/models/operations/GetLibraryItemsRole.swift
+  - Sources/Plexswift/models/operations/GetLibraryItemsWriter.swift
   - Sources/Plexswift/models/operations/GetLibraryLibraryResponseBody.swift
   - Sources/Plexswift/models/operations/GetLibraryMediaContainer.swift
   - Sources/Plexswift/models/operations/GetLibraryRequest.swift
@@ -430,6 +444,8 @@ generatedFiles:
   - Sources/Plexswift/models/operations/Role.swift
   - Sources/Plexswift/models/operations/Scope.swift
   - Sources/Plexswift/internal/models/Scope+Serialization.swift
+  - Sources/Plexswift/models/operations/SearchLibraryErrors.swift
+  - Sources/Plexswift/models/operations/SearchLibraryLibraryResponseBody.swift
   - Sources/Plexswift/models/operations/SearchLibraryMediaContainer.swift
   - Sources/Plexswift/models/operations/SearchLibraryMetadata.swift
   - Sources/Plexswift/models/operations/SearchLibraryRequest.swift
@@ -474,6 +490,8 @@ generatedFiles:
   - Sources/Plexswift/models/operations/StopTranscodeSessionResponse.swift
   - Sources/Plexswift/models/operations/StopTranscodeSessionResponseBody.swift
   - Sources/Plexswift/models/operations/Stream.swift
+  - Sources/Plexswift/models/operations/Tag.swift
+  - Sources/Plexswift/internal/models/Tag+Serialization.swift
   - Sources/Plexswift/models/operations/TaskName.swift
   - Sources/Plexswift/internal/models/TaskName+Serialization.swift
   - Sources/Plexswift/models/operations/Tonight.swift

@@ -55,6 +55,15 @@ class _LibraryAPI: LibraryAPI {
         )
     }
     
+    public func getLibraryItems(request: Operations.GetLibraryItemsRequest) async throws -> Response<Operations.GetLibraryItemsResponse> {
+        return try await client.makeRequest(
+            configureRequest: { configuration in
+                try configureGetLibraryItemsRequest(with: configuration, request: request)
+            },
+            handleResponse: handleGetLibraryItemsResponse
+        )
+    }
+    
     public func refreshLibrary(request: Operations.RefreshLibraryRequest) async throws -> Response<Operations.RefreshLibraryResponse> {
         return try await client.makeRequest(
             configureRequest: { configuration in
@@ -134,6 +143,13 @@ private func configureGetLibraryRequest(with configuration: URLRequestConfigurat
 private func configureDeleteLibraryRequest(with configuration: URLRequestConfiguration, request: Operations.DeleteLibraryRequest) throws {
     configuration.path = "/library/sections/{sectionId}"
     configuration.method = .delete
+    configuration.pathParameterSerializable = request
+    configuration.telemetryHeader = .userAgent
+}
+
+private func configureGetLibraryItemsRequest(with configuration: URLRequestConfiguration, request: Operations.GetLibraryItemsRequest) throws {
+    configuration.path = "/library/sections/{sectionId}/{tag}"
+    configuration.method = .get
     configuration.pathParameterSerializable = request
     configuration.telemetryHeader = .userAgent
 }
@@ -289,6 +305,32 @@ private func handleDeleteLibraryResponse(response: Client.APIResponse) throws ->
     return .empty
 }
 
+private func handleGetLibraryItemsResponse(response: Client.APIResponse) throws -> Operations.GetLibraryItemsResponse {
+    let httpResponse = response.httpResponse
+    
+    if httpResponse.statusCode == 200 { 
+        if httpResponse.contentType.matchContentType(pattern: "application/json"), let data = response.data {
+            do {
+                return .twoHundredApplicationJsonObject(try JSONDecoder().decode(Operations.GetLibraryItemsResponseBody.self, from: data))
+            } catch {
+                throw ResponseHandlerError.failedToDecodeJSON(error)
+            }
+        }
+    } else if httpResponse.statusCode == 400 { 
+        return .empty
+    } else if httpResponse.statusCode == 401 { 
+        if httpResponse.contentType.matchContentType(pattern: "application/json"), let data = response.data {
+            do {
+                return .fourHundredAndOneApplicationJsonObject(try JSONDecoder().decode(Operations.GetLibraryItemsLibraryResponseBody.self, from: data))
+            } catch {
+                throw ResponseHandlerError.failedToDecodeJSON(error)
+            }
+        }
+    }
+
+    return .empty
+}
+
 private func handleRefreshLibraryResponse(response: Client.APIResponse) throws -> Operations.RefreshLibraryResponse {
     let httpResponse = response.httpResponse
     
@@ -313,7 +355,17 @@ private func handleSearchLibraryResponse(response: Client.APIResponse) throws ->
     if httpResponse.statusCode == 200 { 
         if httpResponse.contentType.matchContentType(pattern: "application/json"), let data = response.data {
             do {
-                return .object(try JSONDecoder().decode(Operations.SearchLibraryResponseBody.self, from: data))
+                return .twoHundredApplicationJsonObject(try JSONDecoder().decode(Operations.SearchLibraryResponseBody.self, from: data))
+            } catch {
+                throw ResponseHandlerError.failedToDecodeJSON(error)
+            }
+        }
+    } else if httpResponse.statusCode == 400 { 
+        return .empty
+    } else if httpResponse.statusCode == 401 { 
+        if httpResponse.contentType.matchContentType(pattern: "application/json"), let data = response.data {
+            do {
+                return .fourHundredAndOneApplicationJsonObject(try JSONDecoder().decode(Operations.SearchLibraryLibraryResponseBody.self, from: data))
             } catch {
                 throw ResponseHandlerError.failedToDecodeJSON(error)
             }

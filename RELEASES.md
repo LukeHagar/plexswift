@@ -443,3 +443,13 @@ Based on:
 - [swift v0.3.1] .
 ### Releases
 - [Swift Package Manager v0.3.1] https://github.com/LukeHagar/plexswift/releases/tag/v0.3.1 - .
+
+## 2024-06-13 00:13:47
+### Changes
+Based on:
+- OpenAPI Doc  
+- Speakeasy CLI 1.306.0 (2.340.3) https://github.com/speakeasy-api/speakeasy
+### Generated
+- [swift v0.3.1] .
+### Releases
+- [Swift Package Manager v0.3.1] https://github.com/LukeHagar/plexswift/releases/tag/v0.3.1 - .

@@ -5,6 +5,9 @@ import Foundation
 extension Operations {
     /// A model object
     public struct GetPinRequest: APIValue {
+        /// Product name of the application shown in the list of devices
+        /// 
+        public let xPlexProduct: String
         /// Determines the kind of code returned by the API call
         /// Strong codes are used for Pin authentication flows
         /// Non-Strong codes are used for `Plex.tv/link`
@@ -18,6 +21,8 @@ extension Operations {
 
         /// Creates an object with the specified parameters
         ///
+        /// - Parameter xPlexProduct: Product name of the application shown in the list of devices
+        /// 
         /// - Parameter strong: Determines the kind of code returned by the API call
         /// Strong codes are used for Pin authentication flows
         /// Non-Strong codes are used for `Plex.tv/link`
@@ -27,7 +32,8 @@ extension Operations {
         /// (UUID, serial number, or other number unique per device)
         /// 
         ///
-        public init(strong: Bool? = nil, xPlexClientIdentifier: String? = nil) {
+        public init(xPlexProduct: String, strong: Bool? = nil, xPlexClientIdentifier: String? = nil) {
+            self.xPlexProduct = xPlexProduct
             self.strong = strong
             self.xPlexClientIdentifier = xPlexClientIdentifier
         }

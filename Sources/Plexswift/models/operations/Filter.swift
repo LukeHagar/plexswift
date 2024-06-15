@@ -3,34 +3,10 @@
 import Foundation
 
 extension Operations {
-    /// A model object
-    public struct Filter {
-        public let filter: String?
-        public let filterType: String?
-        public let key: String?
-        public let title: String?
-        public let type: String?
-
-        /// Creates an object with the specified parameters
-        ///
-        ///
-        public init(filter: String? = nil, filterType: String? = nil, key: String? = nil, title: String? = nil, type: String? = nil) {
-            self.filter = filter
-            self.filterType = filterType
-            self.key = key
-            self.title = title
-            self.type = type
-        }
+    /// Filter
+    public enum Filter: String, Codable, APIValue {
+        case all = "all"
+        case available = "available"
+        case released = "released"
     }
 }
-
-extension Operations.Filter: Codable {
-    enum CodingKeys: String, CodingKey {
-        case filter
-        case filterType
-        case key
-        case title
-        case type
-    }
-}
-

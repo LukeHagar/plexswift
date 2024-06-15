@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 5d77204e-e413-4fd0-a14a-bad3aee2247a
 management:
-  docChecksum: 911d74baa0d06121d2ce2c71d94e977a
+  docChecksum: 37654ea0982ab5e87a9a9576014c9d19
   docVersion: 0.0.3
-  speakeasyVersion: 1.299.6
-  generationVersion: 2.338.12
-  releaseVersion: 0.3.1
-  configChecksum: 118251f8f3f1b3c85b9dc10712fa7a5f
+  speakeasyVersion: 1.308.1
+  generationVersion: 2.342.6
+  releaseVersion: 0.4.0
+  configChecksum: 13dc4c5ae6371accdb7e2797a7681034
   repoURL: https://github.com/LukeHagar/plexswift.git
 features:
   swift:
@@ -16,22 +16,24 @@ features:
     globals: 2.81.3
     methodServerURLs: 3.0.1
     nameOverrides: 2.81.2
+    typeOverrides: 2.81.1
 generatedFiles:
   - Sources/Plexswift/internal/api/_ServerAPI.swift
   - Sources/Plexswift/internal/api/_MediaAPI.swift
   - Sources/Plexswift/internal/api/_VideoAPI.swift
   - Sources/Plexswift/internal/api/_ActivitiesAPI.swift
   - Sources/Plexswift/internal/api/_ButlerAPI.swift
+  - Sources/Plexswift/internal/api/_PlexAPI.swift
   - Sources/Plexswift/internal/api/_HubsAPI.swift
   - Sources/Plexswift/internal/api/_SearchAPI.swift
   - Sources/Plexswift/internal/api/_LibraryAPI.swift
   - Sources/Plexswift/internal/api/_LogAPI.swift
-  - Sources/Plexswift/internal/api/_PlexAPI.swift
   - Sources/Plexswift/internal/api/_PlaylistsAPI.swift
   - Sources/Plexswift/internal/api/_AuthenticationAPI.swift
   - Sources/Plexswift/internal/api/_StatisticsAPI.swift
   - Sources/Plexswift/internal/api/_SessionsAPI.swift
   - Sources/Plexswift/internal/api/_UpdaterAPI.swift
+  - Sources/Plexswift/internal/api/_WatchlistAPI.swift
   - Sources/Plexswift/configuration/GlobalServer.swift
   - Sources/Plexswift/configuration/GlobalParameters.swift
   - Sources/Plexswift/Client.swift
@@ -120,6 +122,7 @@ generatedFiles:
   - Sources/Plexswift/models/operations/Field.swift
   - Sources/Plexswift/models/operations/FieldType.swift
   - Sources/Plexswift/models/operations/Filter.swift
+  - Sources/Plexswift/internal/models/Filter+Serialization.swift
   - Sources/Plexswift/models/operations/Force.swift
   - Sources/Plexswift/internal/models/Force+Serialization.swift
   - Sources/Plexswift/models/operations/Genre.swift
@@ -150,6 +153,10 @@ generatedFiles:
   - Sources/Plexswift/internal/models/GetGlobalHubsRequest+Serialization.swift
   - Sources/Plexswift/models/operations/GetGlobalHubsResponse.swift
   - Sources/Plexswift/models/operations/GetGlobalHubsResponseBody.swift
+  - Sources/Plexswift/models/operations/GetHomeDataErrors.swift
+  - Sources/Plexswift/models/operations/GetHomeDataPlexResponseBody.swift
+  - Sources/Plexswift/models/operations/GetHomeDataResponse.swift
+  - Sources/Plexswift/models/operations/GetHomeDataResponseBody.swift
   - Sources/Plexswift/models/operations/GetLibrariesDirectory.swift
   - Sources/Plexswift/models/operations/GetLibrariesErrors.swift
   - Sources/Plexswift/models/operations/GetLibrariesLibraryResponseBody.swift
@@ -159,6 +166,7 @@ generatedFiles:
   - Sources/Plexswift/models/operations/GetLibrariesResponseBody.swift
   - Sources/Plexswift/models/operations/GetLibraryDirectory.swift
   - Sources/Plexswift/models/operations/GetLibraryErrors.swift
+  - Sources/Plexswift/models/operations/GetLibraryFilter.swift
   - Sources/Plexswift/models/operations/GetLibraryHubsCountry.swift
   - Sources/Plexswift/models/operations/GetLibraryHubsDirector.swift
   - Sources/Plexswift/models/operations/GetLibraryHubsErrors.swift
@@ -275,6 +283,7 @@ generatedFiles:
   - Sources/Plexswift/models/operations/GetRecentlyAddedErrors.swift
   - Sources/Plexswift/models/operations/GetRecentlyAddedLibraryResponseBody.swift
   - Sources/Plexswift/models/operations/GetRecentlyAddedMediaContainer.swift
+  - Sources/Plexswift/models/operations/GetRecentlyAddedMetadata.swift
   - Sources/Plexswift/models/operations/GetRecentlyAddedResponse.swift
   - Sources/Plexswift/models/operations/GetRecentlyAddedResponseBody.swift
   - Sources/Plexswift/models/operations/GetResizedPhotoErrors.swift
@@ -355,6 +364,8 @@ generatedFiles:
   - Sources/Plexswift/models/operations/GetTimelineResponse.swift
   - Sources/Plexswift/models/operations/GetTimelineResponseBody.swift
   - Sources/Plexswift/models/operations/GetTokenErrors.swift
+  - Sources/Plexswift/models/operations/GetTokenLocation.swift
+  - Sources/Plexswift/models/operations/GetTokenPlexResponseBody.swift
   - Sources/Plexswift/models/operations/GetTokenRequest.swift
   - Sources/Plexswift/internal/models/GetTokenRequest+Serialization.swift
   - Sources/Plexswift/models/operations/GetTokenResponse.swift
@@ -376,12 +387,25 @@ generatedFiles:
   - Sources/Plexswift/models/operations/GetUpdateStatusResponse.swift
   - Sources/Plexswift/models/operations/GetUpdateStatusResponseBody.swift
   - Sources/Plexswift/models/operations/GetUpdateStatusUpdaterResponseBody.swift
+  - Sources/Plexswift/models/operations/GetWatchlistErrors.swift
+  - Sources/Plexswift/models/operations/GetWatchlistRequest.swift
+  - Sources/Plexswift/internal/models/GetWatchlistRequest+Serialization.swift
+  - Sources/Plexswift/models/operations/GetWatchlistResponse.swift
+  - Sources/Plexswift/models/operations/GetWatchlistResponseBody.swift
+  - Sources/Plexswift/models/operations/GetWatchlistWatchlistResponseBody.swift
   - Sources/Plexswift/models/operations/Guids.swift
   - Sources/Plexswift/models/operations/Hub.swift
+  - Sources/Plexswift/models/operations/Image.swift
+  - Sources/Plexswift/models/operations/IncludeCollections.swift
+  - Sources/Plexswift/internal/models/IncludeCollections+Serialization.swift
   - Sources/Plexswift/models/operations/IncludeDetails.swift
   - Sources/Plexswift/internal/models/IncludeDetails+Serialization.swift
+  - Sources/Plexswift/models/operations/IncludeExternalMedia.swift
+  - Sources/Plexswift/internal/models/IncludeExternalMedia+Serialization.swift
   - Sources/Plexswift/models/operations/Level.swift
   - Sources/Plexswift/internal/models/Level+Serialization.swift
+  - Sources/Plexswift/models/operations/Libtype.swift
+  - Sources/Plexswift/internal/models/Libtype+Serialization.swift
   - Sources/Plexswift/models/operations/Location.swift
   - Sources/Plexswift/models/operations/LogLineErrors.swift
   - Sources/Plexswift/models/operations/LogLineRequest.swift

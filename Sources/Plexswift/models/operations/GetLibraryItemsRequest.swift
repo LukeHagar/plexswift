@@ -6,7 +6,7 @@ extension Operations {
     /// A model object
     public struct GetLibraryItemsRequest: APIValue {
         /// the Id of the library to query
-        public let sectionId: Int
+        public let sectionId: AnyValue
         /// A key representing a specific tag within the section.
         public let tag: Operations.Tag
 
@@ -15,7 +15,7 @@ extension Operations {
         /// - Parameter sectionId: the Id of the library to query
         /// - Parameter tag: A key representing a specific tag within the section.
         ///
-        public init(sectionId: Int, tag: Operations.Tag) {
+        public init(sectionId: AnyValue, tag: Operations.Tag) {
             self.sectionId = sectionId
             self.tag = tag
         }

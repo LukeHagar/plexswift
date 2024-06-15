@@ -66,16 +66,17 @@ import FoundationNetworking
 /// - ``video``
 /// - ``activities``
 /// - ``butler``
+/// - ``plex``
 /// - ``hubs``
 /// - ``search``
 /// - ``library``
 /// - ``log``
-/// - ``plex``
 /// - ``playlists``
 /// - ``authentication``
 /// - ``statistics``
 /// - ``sessions``
 /// - ``updater``
+/// - ``watchlist``
 ///
 public final class Client {
     internal struct APIResponse {

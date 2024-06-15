@@ -7,7 +7,7 @@ extension Operations {
     public struct GetLibraryType {
         public let active: Bool?
         public let field: [Operations.Field]?
-        public let filter: [Operations.Filter]?
+        public let filter: [Operations.GetLibraryFilter]?
         public let key: String?
         public let sort: [Operations.Sort]?
         public let title: String?
@@ -16,7 +16,7 @@ extension Operations {
         /// Creates an object with the specified parameters
         ///
         ///
-        public init(active: Bool? = nil, field: [Operations.Field]? = nil, filter: [Operations.Filter]? = nil, key: String? = nil, sort: [Operations.Sort]? = nil, title: String? = nil, type: String? = nil) {
+        public init(active: Bool? = nil, field: [Operations.Field]? = nil, filter: [Operations.GetLibraryFilter]? = nil, key: String? = nil, sort: [Operations.Sort]? = nil, title: String? = nil, type: String? = nil) {
             self.active = active
             self.field = field
             self.filter = filter

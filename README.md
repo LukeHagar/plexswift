@@ -22,7 +22,7 @@ You can add `plexswift` to your project directly in Xcode `(File > Add Packages.
 
 ```bash
 dependencies: [
-    .package(url: "https://github.com/LukeHagar/plexswift.git", .upToNextMajor(from: "0.3.1"))
+    .package(url: "https://github.com/LukeHagar/plexswift.git", .upToNextMajor(from: "0.4.0"))
 ]
 ```
 <!-- End SDK Installation [installation] -->
@@ -127,12 +127,13 @@ let client = Client()
 
 let response = try await client.plex.getPin(
     request: Operations.GetPinRequest(
+        xPlexProduct: "Postman", 
         strong: false, 
     )
 )
 
 switch response.data {
-case .twoHundredApplicationJsonObject(let twoHundredApplicationJsonObject):
+case .twoHundredAndOneApplicationJsonObject(let twoHundredAndOneApplicationJsonObject):
     // Handle response
     break
 case .fourHundredApplicationJsonObject(let fourHundredApplicationJsonObject):

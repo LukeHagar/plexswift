@@ -6,7 +6,7 @@ extension Operations {
     /// A response model
     public enum GetPinResponse {
         case empty
-        case twoHundredApplicationJsonObject(Operations.GetPinResponseBody)
+        case twoHundredAndOneApplicationJsonObject(Operations.GetPinResponseBody)
         case fourHundredApplicationJsonObject(Operations.GetPinPlexResponseBody)
 
         var isEmpty: Bool {
@@ -17,8 +17,8 @@ extension Operations {
             }
         }
 
-        public func twoHundredApplicationJsonObject() throws -> Operations.GetPinResponseBody {
-            guard case .twoHundredApplicationJsonObject(let value) = self else {
+        public func twoHundredAndOneApplicationJsonObject() throws -> Operations.GetPinResponseBody {
+            guard case .twoHundredAndOneApplicationJsonObject(let value) = self else {
                 throw PlexswiftError.missingResponseData
             }
             return value

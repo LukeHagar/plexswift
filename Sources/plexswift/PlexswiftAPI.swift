@@ -22,16 +22,17 @@ import Foundation
 /// - ``video``
 /// - ``activities``
 /// - ``butler``
+/// - ``plex``
 /// - ``hubs``
 /// - ``search``
 /// - ``library``
 /// - ``log``
-/// - ``plex``
 /// - ``playlists``
 /// - ``authentication``
 /// - ``statistics``
 /// - ``sessions``
 /// - ``updater``
+/// - ``watchlist``
 ///
 public protocol PlexswiftAPI {
 
@@ -57,6 +58,9 @@ public protocol PlexswiftAPI {
     /// Butler is the task manager of the Plex Media Server Ecosystem.
     /// 
     var butler: ButlerAPI { get }
+    /// API Calls that perform operations directly against https://Plex.tv
+    /// 
+    var plex: PlexAPI { get }
     /// Hubs are a structured two-dimensional container for media, generally represented by multiple horizontal rows.
     /// 
     var hubs: HubsAPI { get }
@@ -69,9 +73,6 @@ public protocol PlexswiftAPI {
     /// Submit logs to the Log Handler for Plex Media Server
     /// 
     var log: LogAPI { get }
-    /// API Calls that perform operations directly against https://Plex.tv
-    /// 
-    var plex: PlexAPI { get }
     /// Playlists are ordered collections of media. They can be dumb (just a list of media) or smart (based on a media query, such as "all albums from 2017"). 
     /// They can be organized in (optionally nesting) folders.
     /// Retrieving a playlist, or its items, will trigger a refresh of its metadata. 
@@ -91,6 +92,9 @@ public protocol PlexswiftAPI {
     /// Updates to the status can be observed via the Event API.
     /// 
     var updater: UpdaterAPI { get }
+    /// API Calls that perform operations with Plex Media Server Watchlists
+    /// 
+    var watchlist: WatchlistAPI { get }
 }
 
 // MARK: - ServerAPI
@@ -320,6 +324,115 @@ public protocol ButlerAPI {
     /// - Returns: A ``Operations/StopTaskResponse`` object describing the result of the API operation
     /// - Throws: An error of type ``PlexswiftError``
     func stopTask(request: Operations.StopTaskRequest) async throws -> Response<Operations.StopTaskResponse>
+}
+
+// MARK: - PlexAPI
+public enum PlexServers {
+
+/// Describes the available servers that can be used when making 'getPin' requests.
+///
+/// Use this type when making calls to ``PlexAPI/getPin(request:server:)`` to customize the server which is used.
+    public enum GetPin: Servers, ServerConvertible {
+        /// Supported server value.
+        ///
+        /// Corresponds to `https://plex.tv/api/v2`
+        case server1
+
+        /// Defines the raw URL strings for each server option.
+        ///
+        /// > Note: You do not need to use these values directly.
+        ///
+        /// The available URL strings are defined as:
+        /// ```swift
+        /// public static let urlStrings = [
+        ///     "https://plex.tv/api/v2"
+        /// ]
+        /// ```
+        public static let urlStrings = [
+            "https://plex.tv/api/v2"
+        ]
+
+        static func `default`() throws -> Server {
+            return try PlexServers.GetPin.server1.server()
+        }
+
+        func server() throws -> Server {
+            switch self {
+            case .server1:
+                return try type(of: self).server(at: 0, substituting: nil)
+            }
+        }
+    }
+
+/// Describes the available servers that can be used when making 'getToken' requests.
+///
+/// Use this type when making calls to ``PlexAPI/getToken(request:server:)`` to customize the server which is used.
+    public enum GetToken: Servers, ServerConvertible {
+        /// Supported server value.
+        ///
+        /// Corresponds to `https://plex.tv/api/v2`
+        case server1
+
+        /// Defines the raw URL strings for each server option.
+        ///
+        /// > Note: You do not need to use these values directly.
+        ///
+        /// The available URL strings are defined as:
+        /// ```swift
+        /// public static let urlStrings = [
+        ///     "https://plex.tv/api/v2"
+        /// ]
+        /// ```
+        public static let urlStrings = [
+            "https://plex.tv/api/v2"
+        ]
+
+        static func `default`() throws -> Server {
+            return try PlexServers.GetToken.server1.server()
+        }
+
+        func server() throws -> Server {
+            switch self {
+            case .server1:
+                return try type(of: self).server(at: 0, substituting: nil)
+            }
+        }
+    }
+}
+
+/// API Calls that perform operations directly against https://Plex.tv
+/// 
+///
+/// ## Topics
+///
+/// ### API calls
+///
+/// - ``getHomeData()``
+/// - ``getPin(request:server:)``
+/// - ``getToken(request:server:)``
+///
+public protocol PlexAPI {
+    /// Retrieves the home data for the authenticated user, including details like home ID, name, guest access information, and subscription status.
+    /// 
+    /// - Returns: A ``Operations/GetHomeDataResponse`` object describing the result of the API operation
+    /// - Throws: An error of type ``PlexswiftError``
+    func getHomeData() async throws -> Response<Operations.GetHomeDataResponse>
+
+    /// Retrieve a Pin from Plex.tv for authentication flows
+    /// 
+    /// - Parameter request: A ``Operations/GetPinRequest`` object describing the input to the API operation
+    /// - Parameter server: An optional server override to use for this operation
+    /// - Returns: A ``Operations/GetPinResponse`` object describing the result of the API operation
+    /// - Throws: An error of type ``PlexswiftError``
+    func getPin(request: Operations.GetPinRequest, server: PlexServers.GetPin?) async throws -> Response<Operations.GetPinResponse>
+
+    /// Retrieve an Access Token from Plex.tv after the Pin has already been authenticated
+    /// 
+    /// - Parameter request: A ``Operations/GetTokenRequest`` object describing the input to the API operation
+    /// - Parameter server: An optional server override to use for this operation
+    /// - Returns: A ``Operations/GetTokenResponse`` object describing the result of the API operation
+    /// - Throws: An error of type ``PlexswiftError``
+    func getToken(request: Operations.GetTokenRequest, server: PlexServers.GetToken?) async throws -> Response<Operations.GetTokenResponse>
 }
 
 // MARK: - HubsAPI
@@ -646,108 +759,6 @@ public protocol LogAPI {
     func enablePaperTrail() async throws -> Response<Operations.EnablePaperTrailResponse>
 }
 
-// MARK: - PlexAPI
-public enum PlexServers {
-
-/// Describes the available servers that can be used when making 'getPin' requests.
-///
-/// Use this type when making calls to ``PlexAPI/getPin(request:server:)`` to customize the server which is used.
-    public enum GetPin: Servers, ServerConvertible {
-        /// Supported server value.
-        ///
-        /// Corresponds to `https://plex.tv/api/v2`
-        case server1
-
-        /// Defines the raw URL strings for each server option.
-        ///
-        /// > Note: You do not need to use these values directly.
-        ///
-        /// The available URL strings are defined as:
-        /// ```swift
-        /// public static let urlStrings = [
-        ///     "https://plex.tv/api/v2"
-        /// ]
-        /// ```
-        public static let urlStrings = [
-            "https://plex.tv/api/v2"
-        ]
-
-        static func `default`() throws -> Server {
-            return try PlexServers.GetPin.server1.server()
-        }
-
-        func server() throws -> Server {
-            switch self {
-            case .server1:
-                return try type(of: self).server(at: 0, substituting: nil)
-            }
-        }
-    }
-
-/// Describes the available servers that can be used when making 'getToken' requests.
-///
-/// Use this type when making calls to ``PlexAPI/getToken(request:server:)`` to customize the server which is used.
-    public enum GetToken: Servers, ServerConvertible {
-        /// Supported server value.
-        ///
-        /// Corresponds to `https://plex.tv/api/v2`
-        case server1
-
-        /// Defines the raw URL strings for each server option.
-        ///
-        /// > Note: You do not need to use these values directly.
-        ///
-        /// The available URL strings are defined as:
-        /// ```swift
-        /// public static let urlStrings = [
-        ///     "https://plex.tv/api/v2"
-        /// ]
-        /// ```
-        public static let urlStrings = [
-            "https://plex.tv/api/v2"
-        ]
-
-        static func `default`() throws -> Server {
-            return try PlexServers.GetToken.server1.server()
-        }
-
-        func server() throws -> Server {
-            switch self {
-            case .server1:
-                return try type(of: self).server(at: 0, substituting: nil)
-            }
-        }
-    }
-}
-
-/// API Calls that perform operations directly against https://Plex.tv
-/// 
-///
-/// ## Topics
-///
-/// ### API calls
-///
-/// - ``getPin(request:server:)``
-/// - ``getToken(request:server:)``
-///
-public protocol PlexAPI {
-    /// Retrieve a Pin from Plex.tv for authentication flows
-    /// 
-    /// - Parameter request: A ``Operations/GetPinRequest`` object describing the input to the API operation
-    /// - Parameter server: An optional server override to use for this operation
-    /// - Returns: A ``Operations/GetPinResponse`` object describing the result of the API operation
-    /// - Throws: An error of type ``PlexswiftError``
-    func getPin(request: Operations.GetPinRequest, server: PlexServers.GetPin?) async throws -> Response<Operations.GetPinResponse>
-
-    /// Retrieve an Access Token from Plex.tv after the Pin has already been authenticated
-    /// 
-    /// - Parameter request: A ``Operations/GetTokenRequest`` object describing the input to the API operation
-    /// - Parameter server: An optional server override to use for this operation
-    /// - Returns: A ``Operations/GetTokenResponse`` object describing the result of the API operation
-    /// - Throws: An error of type ``PlexswiftError``
-    func getToken(request: Operations.GetTokenRequest, server: PlexServers.GetToken?) async throws -> Response<Operations.GetTokenResponse>
-}
-
 // MARK: - PlaylistsAPI
 
 /// Playlists are ordered collections of media. They can be dumb (just a list of media) or smart (based on a media query, such as "all albums from 2017"). 
@@ -977,4 +988,62 @@ public protocol UpdaterAPI {
     /// - Returns: A ``Operations/ApplyUpdatesResponse`` object describing the result of the API operation
     /// - Throws: An error of type ``PlexswiftError``
     func applyUpdates(request: Operations.ApplyUpdatesRequest) async throws -> Response<Operations.ApplyUpdatesResponse>
+}
+
+// MARK: - WatchlistAPI
+public enum WatchlistServers {
+
+/// Describes the available servers that can be used when making 'getWatchlist' requests.
+///
+/// Use this type when making calls to ``WatchlistAPI/getWatchlist(request:server:)`` to customize the server which is used.
+    public enum GetWatchlist: Servers, ServerConvertible {
+        /// Supported server value.
+        ///
+        /// Corresponds to `https://metadata.provider.plex.tv`
+        case server1
+
+        /// Defines the raw URL strings for each server option.
+        ///
+        /// > Note: You do not need to use these values directly.
+        ///
+        /// The available URL strings are defined as:
+        /// ```swift
+        /// public static let urlStrings = [
+        ///     "https://metadata.provider.plex.tv"
+        /// ]
+        /// ```
+        public static let urlStrings = [
+            "https://metadata.provider.plex.tv"
+        ]
+
+        static func `default`() throws -> Server {
+            return try WatchlistServers.GetWatchlist.server1.server()
+        }
+
+        func server() throws -> Server {
+            switch self {
+            case .server1:
+                return try type(of: self).server(at: 0, substituting: nil)
+            }
+        }
+    }
+}
+
+/// API Calls that perform operations with Plex Media Server Watchlists
+/// 
+///
+/// ## Topics
+///
+/// ### API calls
+///
+/// - ``getWatchlist(request:server:)``
+///
+public protocol WatchlistAPI {
+    /// Get User Watchlist
+    /// 
+    /// - Parameter request: A ``Operations/GetWatchlistRequest`` object describing the input to the API operation
+    /// - Parameter server: An optional server override to use for this operation
+    /// - Returns: A ``Operations/GetWatchlistResponse`` object describing the result of the API operation
+    /// - Throws: An error of type ``PlexswiftError``
+    func getWatchlist(request: Operations.GetWatchlistRequest, server: WatchlistServers.GetWatchlist?) async throws -> Response<Operations.GetWatchlistResponse>
 }

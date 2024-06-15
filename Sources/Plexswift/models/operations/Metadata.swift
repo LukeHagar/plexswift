@@ -5,84 +5,84 @@ import Foundation
 extension Operations {
     /// A model object
     public struct Metadata {
-        @DecimalSerialized
-        public private(set) var addedAt: Double?
-        public let allowSync: Bool?
+        public let addedAt: Int?
         public let art: String?
         @DecimalSerialized
         public private(set) var audienceRating: Double?
         public let audienceRatingImage: String?
-        public let chapterSource: String?
+        public let availabilityId: String?
+        public let banner: String?
+        public let childCount: Int?
         public let contentRating: String?
-        public let country: [Operations.Country]?
-        public let director: [Operations.Director]?
-        @DecimalSerialized
-        public private(set) var duration: Double?
-        public let genre: [Operations.Genre]?
+        public let duration: Int?
+        public let expiresAt: Int?
         public let guid: String?
+        public let image: [Operations.Image]?
+        public let imdbRatingCount: Int?
+        public let isContinuingSeries: Bool?
         public let key: String?
-        @DecimalSerialized
-        public private(set) var librarySectionID: Double?
-        public let librarySectionTitle: String?
-        public let librarySectionUUID: String?
-        public let media: [Operations.Media]?
-        @DateTime
+        public let leafCount: Int?
+        @DateOnly
         public private(set) var originallyAvailableAt: Date?
-        public let primaryExtraKey: String?
+        public let originalTitle: String?
+        public let playableKey: String?
+        public let publicPagesURL: String?
         @DecimalSerialized
         public private(set) var rating: Double?
         public let ratingImage: String?
-        @DecimalSerialized
-        public private(set) var ratingKey: Double?
-        public let role: [Operations.Role]?
+        public let ratingKey: String?
+        public let skipChildren: Bool?
+        public let slug: String?
+        public let streamingMediaId: String?
         public let studio: String?
-        public let summary: String?
+        public let subtype: String?
         public let tagline: String?
+        public let theme: String?
         public let thumb: String?
         public let title: String?
         public let type: String?
-        @DecimalSerialized
-        public private(set) var updatedAt: Double?
-        public let writer: [Operations.Writer]?
-        @DecimalSerialized
-        public private(set) var year: Double?
+        public let userState: Bool?
+        public let year: Int?
 
         /// Creates an object with the specified parameters
         ///
         ///
-        public init(addedAt: Double? = nil, allowSync: Bool? = nil, art: String? = nil, audienceRating: Double? = nil, audienceRatingImage: String? = nil, chapterSource: String? = nil, contentRating: String? = nil, country: [Operations.Country]? = nil, director: [Operations.Director]? = nil, duration: Double? = nil, genre: [Operations.Genre]? = nil, guid: String? = nil, key: String? = nil, librarySectionID: Double? = nil, librarySectionTitle: String? = nil, librarySectionUUID: String? = nil, media: [Operations.Media]? = nil, originallyAvailableAt: Date? = nil, primaryExtraKey: String? = nil, rating: Double? = nil, ratingImage: String? = nil, ratingKey: Double? = nil, role: [Operations.Role]? = nil, studio: String? = nil, summary: String? = nil, tagline: String? = nil, thumb: String? = nil, title: String? = nil, type: String? = nil, updatedAt: Double? = nil, writer: [Operations.Writer]? = nil, year: Double? = nil) {
-            self._addedAt = DecimalSerialized<Double?>(wrappedValue: addedAt)
-            self.allowSync = allowSync
+        public init(addedAt: Int? = nil, art: String? = nil, audienceRating: Double? = nil, audienceRatingImage: String? = nil, availabilityId: String? = nil, banner: String? = nil, childCount: Int? = nil, contentRating: String? = nil, duration: Int? = nil, expiresAt: Int? = nil, guid: String? = nil, image: [Operations.Image]? = nil, imdbRatingCount: Int? = nil, isContinuingSeries: Bool? = nil, key: String? = nil, leafCount: Int? = nil, originallyAvailableAt: Date? = nil, originalTitle: String? = nil, playableKey: String? = nil, publicPagesURL: String? = nil, rating: Double? = nil, ratingImage: String? = nil, ratingKey: String? = nil, skipChildren: Bool? = nil, slug: String? = nil, streamingMediaId: String? = nil, studio: String? = nil, subtype: String? = nil, tagline: String? = nil, theme: String? = nil, thumb: String? = nil, title: String? = nil, type: String? = nil, userState: Bool? = nil, year: Int? = nil) {
+            self.addedAt = addedAt
             self.art = art
             self._audienceRating = DecimalSerialized<Double?>(wrappedValue: audienceRating)
             self.audienceRatingImage = audienceRatingImage
-            self.chapterSource = chapterSource
+            self.availabilityId = availabilityId
+            self.banner = banner
+            self.childCount = childCount
             self.contentRating = contentRating
-            self.country = country
-            self.director = director
-            self._duration = DecimalSerialized<Double?>(wrappedValue: duration)
-            self.genre = genre
+            self.duration = duration
+            self.expiresAt = expiresAt
             self.guid = guid
+            self.image = image
+            self.imdbRatingCount = imdbRatingCount
+            self.isContinuingSeries = isContinuingSeries
             self.key = key
-            self._librarySectionID = DecimalSerialized<Double?>(wrappedValue: librarySectionID)
-            self.librarySectionTitle = librarySectionTitle
-            self.librarySectionUUID = librarySectionUUID
-            self.media = media
-            self._originallyAvailableAt = DateTime<Date?>(wrappedValue: originallyAvailableAt)
-            self.primaryExtraKey = primaryExtraKey
+            self.leafCount = leafCount
+            self._originallyAvailableAt = DateOnly<Date?>(wrappedValue: originallyAvailableAt)
+            self.originalTitle = originalTitle
+            self.playableKey = playableKey
+            self.publicPagesURL = publicPagesURL
             self._rating = DecimalSerialized<Double?>(wrappedValue: rating)
             self.ratingImage = ratingImage
-            self._ratingKey = DecimalSerialized<Double?>(wrappedValue: ratingKey)
-            self.role = role
+            self.ratingKey = ratingKey
+            self.skipChildren = skipChildren
+            self.slug = slug
+            self.streamingMediaId = streamingMediaId
             self.studio = studio
-            self.summary = summary
+            self.subtype = subtype
             self.tagline = tagline
+            self.theme = theme
             self.thumb = thumb
             self.title = title
             self.type = type
-            self._updatedAt = DecimalSerialized<Double?>(wrappedValue: updatedAt)
-            self.writer = writer
-            self._year = DecimalSerialized<Double?>(wrappedValue: year)
+            self.userState = userState
+            self.year = year
         }
     }
 }
@@ -90,156 +90,135 @@ extension Operations {
 extension Operations.Metadata: Codable {
     enum CodingKeys: String, CodingKey {
         case addedAt
-        case allowSync
         case art
         case audienceRating
         case audienceRatingImage
-        case chapterSource
+        case availabilityId
+        case banner
+        case childCount
         case contentRating
-        case country = "Country"
-        case director = "Director"
         case duration
-        case genre = "Genre"
+        case expiresAt
         case guid
+        case image = "Image"
+        case imdbRatingCount
+        case isContinuingSeries
         case key
-        case librarySectionID
-        case librarySectionTitle
-        case librarySectionUUID
-        case media = "Media"
+        case leafCount
         case originallyAvailableAt
-        case primaryExtraKey
+        case originalTitle
+        case playableKey
+        case publicPagesURL
         case rating
         case ratingImage
         case ratingKey
-        case role = "Role"
+        case skipChildren
+        case slug
+        case streamingMediaId
         case studio
-        case summary
+        case subtype
         case tagline
+        case theme
         case thumb
         case title
         case type
-        case updatedAt
-        case writer = "Writer"
+        case userState
         case year
     }
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        self._addedAt = try container.decodeIfPresent(DecimalSerialized<Double?>.self, forKey: .addedAt) ?? DecimalSerialized<Double?>(wrappedValue: nil)
-        self.allowSync = try container.decodeIfPresent(Bool.self, forKey: .allowSync)
+        self.addedAt = try container.decodeIfPresent(Int.self, forKey: .addedAt)
         self.art = try container.decodeIfPresent(String.self, forKey: .art)
         self._audienceRating = try container.decodeIfPresent(DecimalSerialized<Double?>.self, forKey: .audienceRating) ?? DecimalSerialized<Double?>(wrappedValue: nil)
         self.audienceRatingImage = try container.decodeIfPresent(String.self, forKey: .audienceRatingImage)
-        self.chapterSource = try container.decodeIfPresent(String.self, forKey: .chapterSource)
+        self.availabilityId = try container.decodeIfPresent(String.self, forKey: .availabilityId)
+        self.banner = try container.decodeIfPresent(String.self, forKey: .banner)
+        self.childCount = try container.decodeIfPresent(Int.self, forKey: .childCount)
         self.contentRating = try container.decodeIfPresent(String.self, forKey: .contentRating)
-        self.country = try container.decodeIfPresent([Operations.Country].self, forKey: .country)
-        self.director = try container.decodeIfPresent([Operations.Director].self, forKey: .director)
-        self._duration = try container.decodeIfPresent(DecimalSerialized<Double?>.self, forKey: .duration) ?? DecimalSerialized<Double?>(wrappedValue: nil)
-        self.genre = try container.decodeIfPresent([Operations.Genre].self, forKey: .genre)
+        self.duration = try container.decodeIfPresent(Int.self, forKey: .duration)
+        self.expiresAt = try container.decodeIfPresent(Int.self, forKey: .expiresAt)
         self.guid = try container.decodeIfPresent(String.self, forKey: .guid)
+        self.image = try container.decodeIfPresent([Operations.Image].self, forKey: .image)
+        self.imdbRatingCount = try container.decodeIfPresent(Int.self, forKey: .imdbRatingCount)
+        self.isContinuingSeries = try container.decodeIfPresent(Bool.self, forKey: .isContinuingSeries)
         self.key = try container.decodeIfPresent(String.self, forKey: .key)
-        self._librarySectionID = try container.decodeIfPresent(DecimalSerialized<Double?>.self, forKey: .librarySectionID) ?? DecimalSerialized<Double?>(wrappedValue: nil)
-        self.librarySectionTitle = try container.decodeIfPresent(String.self, forKey: .librarySectionTitle)
-        self.librarySectionUUID = try container.decodeIfPresent(String.self, forKey: .librarySectionUUID)
-        self.media = try container.decodeIfPresent([Operations.Media].self, forKey: .media)
-        self._originallyAvailableAt = try container.decodeIfPresent(DateTime<Date?>.self, forKey: .originallyAvailableAt) ?? DateTime<Date?>(wrappedValue: nil)
-        self.primaryExtraKey = try container.decodeIfPresent(String.self, forKey: .primaryExtraKey)
+        self.leafCount = try container.decodeIfPresent(Int.self, forKey: .leafCount)
+        self._originallyAvailableAt = try container.decodeIfPresent(DateOnly<Date?>.self, forKey: .originallyAvailableAt) ?? DateOnly<Date?>(wrappedValue: nil)
+        self.originalTitle = try container.decodeIfPresent(String.self, forKey: .originalTitle)
+        self.playableKey = try container.decodeIfPresent(String.self, forKey: .playableKey)
+        self.publicPagesURL = try container.decodeIfPresent(String.self, forKey: .publicPagesURL)
         self._rating = try container.decodeIfPresent(DecimalSerialized<Double?>.self, forKey: .rating) ?? DecimalSerialized<Double?>(wrappedValue: nil)
         self.ratingImage = try container.decodeIfPresent(String.self, forKey: .ratingImage)
-        self._ratingKey = try container.decodeIfPresent(DecimalSerialized<Double?>.self, forKey: .ratingKey) ?? DecimalSerialized<Double?>(wrappedValue: nil)
-        self.role = try container.decodeIfPresent([Operations.Role].self, forKey: .role)
+        self.ratingKey = try container.decodeIfPresent(String.self, forKey: .ratingKey)
+        self.skipChildren = try container.decodeIfPresent(Bool.self, forKey: .skipChildren)
+        self.slug = try container.decodeIfPresent(String.self, forKey: .slug)
+        self.streamingMediaId = try container.decodeIfPresent(String.self, forKey: .streamingMediaId)
         self.studio = try container.decodeIfPresent(String.self, forKey: .studio)
-        self.summary = try container.decodeIfPresent(String.self, forKey: .summary)
+        self.subtype = try container.decodeIfPresent(String.self, forKey: .subtype)
         self.tagline = try container.decodeIfPresent(String.self, forKey: .tagline)
+        self.theme = try container.decodeIfPresent(String.self, forKey: .theme)
         self.thumb = try container.decodeIfPresent(String.self, forKey: .thumb)
         self.title = try container.decodeIfPresent(String.self, forKey: .title)
         self.type = try container.decodeIfPresent(String.self, forKey: .type)
-        self._updatedAt = try container.decodeIfPresent(DecimalSerialized<Double?>.self, forKey: .updatedAt) ?? DecimalSerialized<Double?>(wrappedValue: nil)
-        self.writer = try container.decodeIfPresent([Operations.Writer].self, forKey: .writer)
-        self._year = try container.decodeIfPresent(DecimalSerialized<Double?>.self, forKey: .year) ?? DecimalSerialized<Double?>(wrappedValue: nil)
+        self.userState = try container.decodeIfPresent(Bool.self, forKey: .userState)
+        self.year = try container.decodeIfPresent(Int.self, forKey: .year)
     }
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        if self.addedAt != nil {
-            try container.encode(self._addedAt, forKey: .addedAt)
-        }
-        try container.encodeIfPresent(self.allowSync, forKey: .allowSync)
+        try container.encodeIfPresent(self.addedAt, forKey: .addedAt)
         try container.encodeIfPresent(self.art, forKey: .art)
         if self.audienceRating != nil {
             try container.encode(self._audienceRating, forKey: .audienceRating)
         }
         try container.encodeIfPresent(self.audienceRatingImage, forKey: .audienceRatingImage)
-        try container.encodeIfPresent(self.chapterSource, forKey: .chapterSource)
+        try container.encodeIfPresent(self.availabilityId, forKey: .availabilityId)
+        try container.encodeIfPresent(self.banner, forKey: .banner)
+        try container.encodeIfPresent(self.childCount, forKey: .childCount)
         try container.encodeIfPresent(self.contentRating, forKey: .contentRating)
-        try container.encodeIfPresent(self.country, forKey: .country)
-        try container.encodeIfPresent(self.director, forKey: .director)
-        if self.duration != nil {
-            try container.encode(self._duration, forKey: .duration)
-        }
-        try container.encodeIfPresent(self.genre, forKey: .genre)
+        try container.encodeIfPresent(self.duration, forKey: .duration)
+        try container.encodeIfPresent(self.expiresAt, forKey: .expiresAt)
         try container.encodeIfPresent(self.guid, forKey: .guid)
+        try container.encodeIfPresent(self.image, forKey: .image)
+        try container.encodeIfPresent(self.imdbRatingCount, forKey: .imdbRatingCount)
+        try container.encodeIfPresent(self.isContinuingSeries, forKey: .isContinuingSeries)
         try container.encodeIfPresent(self.key, forKey: .key)
-        if self.librarySectionID != nil {
-            try container.encode(self._librarySectionID, forKey: .librarySectionID)
-        }
-        try container.encodeIfPresent(self.librarySectionTitle, forKey: .librarySectionTitle)
-        try container.encodeIfPresent(self.librarySectionUUID, forKey: .librarySectionUUID)
-        try container.encodeIfPresent(self.media, forKey: .media)
+        try container.encodeIfPresent(self.leafCount, forKey: .leafCount)
         if self.originallyAvailableAt != nil {
             try container.encode(self._originallyAvailableAt, forKey: .originallyAvailableAt)
         }
-        try container.encodeIfPresent(self.primaryExtraKey, forKey: .primaryExtraKey)
+        try container.encodeIfPresent(self.originalTitle, forKey: .originalTitle)
+        try container.encodeIfPresent(self.playableKey, forKey: .playableKey)
+        try container.encodeIfPresent(self.publicPagesURL, forKey: .publicPagesURL)
         if self.rating != nil {
             try container.encode(self._rating, forKey: .rating)
         }
         try container.encodeIfPresent(self.ratingImage, forKey: .ratingImage)
-        if self.ratingKey != nil {
-            try container.encode(self._ratingKey, forKey: .ratingKey)
-        }
-        try container.encodeIfPresent(self.role, forKey: .role)
+        try container.encodeIfPresent(self.ratingKey, forKey: .ratingKey)
+        try container.encodeIfPresent(self.skipChildren, forKey: .skipChildren)
+        try container.encodeIfPresent(self.slug, forKey: .slug)
+        try container.encodeIfPresent(self.streamingMediaId, forKey: .streamingMediaId)
         try container.encodeIfPresent(self.studio, forKey: .studio)
-        try container.encodeIfPresent(self.summary, forKey: .summary)
+        try container.encodeIfPresent(self.subtype, forKey: .subtype)
         try container.encodeIfPresent(self.tagline, forKey: .tagline)
+        try container.encodeIfPresent(self.theme, forKey: .theme)
         try container.encodeIfPresent(self.thumb, forKey: .thumb)
         try container.encodeIfPresent(self.title, forKey: .title)
         try container.encodeIfPresent(self.type, forKey: .type)
-        if self.updatedAt != nil {
-            try container.encode(self._updatedAt, forKey: .updatedAt)
-        }
-        try container.encodeIfPresent(self.writer, forKey: .writer)
-        if self.year != nil {
-            try container.encode(self._year, forKey: .year)
-        }
+        try container.encodeIfPresent(self.userState, forKey: .userState)
+        try container.encodeIfPresent(self.year, forKey: .year)
     }
 }
 
 extension Operations.Metadata {
-    var librarySectionIDWrapper: DecimalSerialized<Double?> {
-        return _librarySectionID
-    }
-    var ratingKeyWrapper: DecimalSerialized<Double?> {
-        return _ratingKey
+    var originallyAvailableAtWrapper: DateOnly<Date?> {
+        return _originallyAvailableAt
     }
     var ratingWrapper: DecimalSerialized<Double?> {
         return _rating
     }
     var audienceRatingWrapper: DecimalSerialized<Double?> {
         return _audienceRating
-    }
-    var yearWrapper: DecimalSerialized<Double?> {
-        return _year
-    }
-    var durationWrapper: DecimalSerialized<Double?> {
-        return _duration
-    }
-    var originallyAvailableAtWrapper: DateTime<Date?> {
-        return _originallyAvailableAt
-    }
-    var addedAtWrapper: DecimalSerialized<Double?> {
-        return _addedAt
-    }
-    var updatedAtWrapper: DecimalSerialized<Double?> {
-        return _updatedAt
     }
 }

@@ -27,6 +27,10 @@ extension Client: PlexswiftAPI {
         return _ButlerAPI(client: self)
     }
 
+    public var plex: PlexAPI {
+        return _PlexAPI(client: self)
+    }
+
     public var hubs: HubsAPI {
         return _HubsAPI(client: self)
     }
@@ -41,10 +45,6 @@ extension Client: PlexswiftAPI {
 
     public var log: LogAPI {
         return _LogAPI(client: self)
-    }
-
-    public var plex: PlexAPI {
-        return _PlexAPI(client: self)
     }
 
     public var playlists: PlaylistsAPI {
@@ -65,6 +65,10 @@ extension Client: PlexswiftAPI {
 
     public var updater: UpdaterAPI {
         return _UpdaterAPI(client: self)
+    }
+
+    public var watchlist: WatchlistAPI {
+        return _WatchlistAPI(client: self)
     }
 }
 

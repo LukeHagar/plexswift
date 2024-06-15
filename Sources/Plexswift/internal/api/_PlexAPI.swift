@@ -10,6 +10,15 @@ class _PlexAPI: PlexAPI {
         self.client = client
     }
     
+    public func getHomeData() async throws -> Response<Operations.GetHomeDataResponse> {
+        return try await client.makeRequest(
+            configureRequest: { configuration in
+                try configureGetHomeDataRequest(with: configuration)
+            },
+            handleResponse: handleGetHomeDataResponse
+        )
+    }
+    
     public func getPin(request: Operations.GetPinRequest, server: PlexServers.GetPin?) async throws -> Response<Operations.GetPinResponse> {
         return try await client.makeRequest(
             with: try server?.server() ?? PlexServers.GetPin.default(),
@@ -34,6 +43,12 @@ class _PlexAPI: PlexAPI {
 
 // MARK: - Request Configuration
 
+private func configureGetHomeDataRequest(with configuration: URLRequestConfiguration) throws {
+    configuration.path = "/home"
+    configuration.method = .get
+    configuration.telemetryHeader = .userAgent
+}
+
 private func configureGetPinRequest(with configuration: URLRequestConfiguration, request: Operations.GetPinRequest) throws {
     configuration.path = "/pins"
     configuration.method = .post
@@ -52,13 +67,39 @@ private func configureGetTokenRequest(with configuration: URLRequestConfiguratio
 
 // MARK: - Response Handlers
 
-private func handleGetPinResponse(response: Client.APIResponse) throws -> Operations.GetPinResponse {
+private func handleGetHomeDataResponse(response: Client.APIResponse) throws -> Operations.GetHomeDataResponse {
     let httpResponse = response.httpResponse
     
     if httpResponse.statusCode == 200 { 
         if httpResponse.contentType.matchContentType(pattern: "application/json"), let data = response.data {
             do {
-                return .twoHundredApplicationJsonObject(try JSONDecoder().decode(Operations.GetPinResponseBody.self, from: data))
+                return .twoHundredApplicationJsonObject(try JSONDecoder().decode(Operations.GetHomeDataResponseBody.self, from: data))
+            } catch {
+                throw ResponseHandlerError.failedToDecodeJSON(error)
+            }
+        }
+    } else if httpResponse.statusCode == 400 { 
+        return .empty
+    } else if httpResponse.statusCode == 401 { 
+        if httpResponse.contentType.matchContentType(pattern: "application/json"), let data = response.data {
+            do {
+                return .fourHundredAndOneApplicationJsonObject(try JSONDecoder().decode(Operations.GetHomeDataPlexResponseBody.self, from: data))
+            } catch {
+                throw ResponseHandlerError.failedToDecodeJSON(error)
+            }
+        }
+    }
+
+    return .empty
+}
+
+private func handleGetPinResponse(response: Client.APIResponse) throws -> Operations.GetPinResponse {
+    let httpResponse = response.httpResponse
+    
+    if httpResponse.statusCode == 201 { 
+        if httpResponse.contentType.matchContentType(pattern: "application/json"), let data = response.data {
+            do {
+                return .twoHundredAndOneApplicationJsonObject(try JSONDecoder().decode(Operations.GetPinResponseBody.self, from: data))
             } catch {
                 throw ResponseHandlerError.failedToDecodeJSON(error)
             }
@@ -80,11 +121,17 @@ private func handleGetTokenResponse(response: Client.APIResponse) throws -> Oper
     let httpResponse = response.httpResponse
     
     if httpResponse.statusCode == 200 { 
-        return .empty
+        if httpResponse.contentType.matchContentType(pattern: "application/json"), let data = response.data {
+            do {
+                return .twoHundredApplicationJsonObject(try JSONDecoder().decode(Operations.GetTokenResponseBody.self, from: data))
+            } catch {
+                throw ResponseHandlerError.failedToDecodeJSON(error)
+            }
+        }
     } else if httpResponse.statusCode == 400 { 
         if httpResponse.contentType.matchContentType(pattern: "application/json"), let data = response.data {
             do {
-                return .object(try JSONDecoder().decode(Operations.GetTokenResponseBody.self, from: data))
+                return .fourHundredApplicationJsonObject(try JSONDecoder().decode(Operations.GetTokenPlexResponseBody.self, from: data))
             } catch {
                 throw ResponseHandlerError.failedToDecodeJSON(error)
             }

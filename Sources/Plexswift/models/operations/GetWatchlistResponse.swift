@@ -4,10 +4,10 @@ import Foundation
 
 extension Operations {
     /// A response model
-    public enum GetTokenResponse {
+    public enum GetWatchlistResponse {
         case empty
-        case twoHundredApplicationJsonObject(Operations.GetTokenResponseBody)
-        case fourHundredApplicationJsonObject(Operations.GetTokenPlexResponseBody)
+        case twoHundredApplicationJsonObject(Operations.GetWatchlistResponseBody)
+        case fourHundredAndOneApplicationJsonObject(Operations.GetWatchlistWatchlistResponseBody)
 
         var isEmpty: Bool {
             if case .empty = self {
@@ -17,15 +17,15 @@ extension Operations {
             }
         }
 
-        public func twoHundredApplicationJsonObject() throws -> Operations.GetTokenResponseBody {
+        public func twoHundredApplicationJsonObject() throws -> Operations.GetWatchlistResponseBody {
             guard case .twoHundredApplicationJsonObject(let value) = self else {
                 throw PlexswiftError.missingResponseData
             }
             return value
         }
 
-        public func fourHundredApplicationJsonObject() throws -> Operations.GetTokenPlexResponseBody {
-            guard case .fourHundredApplicationJsonObject(let value) = self else {
+        public func fourHundredAndOneApplicationJsonObject() throws -> Operations.GetWatchlistWatchlistResponseBody {
+            guard case .fourHundredAndOneApplicationJsonObject(let value) = self else {
                 throw PlexswiftError.missingResponseData
             }
             return value

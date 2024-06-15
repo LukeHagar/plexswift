@@ -4,7 +4,7 @@ import Foundation
 
 extension Operations {
     /// A model object
-    public struct Location {
+    public struct GetTokenLocation {
         public let city: String?
         public let code: String?
         public let continentCode: String?
@@ -34,7 +34,7 @@ extension Operations {
     }
 }
 
-extension Operations.Location: Codable {
+extension Operations.GetTokenLocation: Codable {
     enum CodingKeys: String, CodingKey {
         case city
         case code

@@ -10,7 +10,7 @@ extension Operations {
         public let mediaTagPrefix: String?
         @DecimalSerialized
         public private(set) var mediaTagVersion: Double?
-        public let metadata: [Operations.Metadata]?
+        public let metadata: [Operations.GetRecentlyAddedMetadata]?
         public let mixedParents: Bool?
         @DecimalSerialized
         public private(set) var size: Double?
@@ -18,7 +18,7 @@ extension Operations {
         /// Creates an object with the specified parameters
         ///
         ///
-        public init(allowSync: Bool? = nil, identifier: String? = nil, mediaTagPrefix: String? = nil, mediaTagVersion: Double? = nil, metadata: [Operations.Metadata]? = nil, mixedParents: Bool? = nil, size: Double? = nil) {
+        public init(allowSync: Bool? = nil, identifier: String? = nil, mediaTagPrefix: String? = nil, mediaTagVersion: Double? = nil, metadata: [Operations.GetRecentlyAddedMetadata]? = nil, mixedParents: Bool? = nil, size: Double? = nil) {
             self.allowSync = allowSync
             self.identifier = identifier
             self.mediaTagPrefix = mediaTagPrefix
@@ -47,7 +47,7 @@ extension Operations.GetRecentlyAddedMediaContainer: Codable {
         self.identifier = try container.decodeIfPresent(String.self, forKey: .identifier)
         self.mediaTagPrefix = try container.decodeIfPresent(String.self, forKey: .mediaTagPrefix)
         self._mediaTagVersion = try container.decodeIfPresent(DecimalSerialized<Double?>.self, forKey: .mediaTagVersion) ?? DecimalSerialized<Double?>(wrappedValue: nil)
-        self.metadata = try container.decodeIfPresent([Operations.Metadata].self, forKey: .metadata)
+        self.metadata = try container.decodeIfPresent([Operations.GetRecentlyAddedMetadata].self, forKey: .metadata)
         self.mixedParents = try container.decodeIfPresent(Bool.self, forKey: .mixedParents)
         self._size = try container.decodeIfPresent(DecimalSerialized<Double?>.self, forKey: .size) ?? DecimalSerialized<Double?>(wrappedValue: nil)
     }

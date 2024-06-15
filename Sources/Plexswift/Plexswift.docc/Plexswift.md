@@ -56,20 +56,22 @@ case .empty:
 - ``VideoAPI``
 - ``ActivitiesAPI``
 - ``ButlerAPI``
+- ``PlexAPI``
 - ``HubsAPI``
 - ``SearchAPI``
 - ``LibraryAPI``
 - ``LogAPI``
-- ``PlexAPI``
 - ``PlaylistsAPI``
 - ``AuthenticationAPI``
 - ``StatisticsAPI``
 - ``SessionsAPI``
 - ``UpdaterAPI``
+- ``WatchlistAPI``
 
 ### Server configuration
 - ``PlexServers/GetPin``
 - ``PlexServers/GetToken``
+- ``WatchlistServers/GetWatchlist``
 
 ### Shared models
 
@@ -90,6 +92,7 @@ case .empty:
 - ``Operations/GetDevicesResponse``
 - ``Operations/GetFileHashResponse``
 - ``Operations/GetGlobalHubsResponse``
+- ``Operations/GetHomeDataResponse``
 - ``Operations/GetLibrariesResponse``
 - ``Operations/GetLibraryResponse``
 - ``Operations/GetLibraryHubsResponse``
@@ -119,6 +122,7 @@ case .empty:
 - ``Operations/GetTranscodeSessionsResponse``
 - ``Operations/GetTransientTokenResponse``
 - ``Operations/GetUpdateStatusResponse``
+- ``Operations/GetWatchlistResponse``
 - ``Operations/LogLineResponse``
 - ``Operations/LogMultiLineResponse``
 - ``Operations/MarkPlayedResponse``
@@ -206,6 +210,9 @@ case .empty:
 - ``Operations/GetGlobalHubsMetadata``
 - ``Operations/GetGlobalHubsRequest``
 - ``Operations/GetGlobalHubsResponseBody``
+- ``Operations/GetHomeDataErrors``
+- ``Operations/GetHomeDataPlexResponseBody``
+- ``Operations/GetHomeDataResponseBody``
 - ``Operations/GetLibrariesDirectory``
 - ``Operations/GetLibrariesErrors``
 - ``Operations/GetLibrariesLibraryResponseBody``
@@ -214,6 +221,7 @@ case .empty:
 - ``Operations/GetLibrariesResponseBody``
 - ``Operations/GetLibraryDirectory``
 - ``Operations/GetLibraryErrors``
+- ``Operations/GetLibraryFilter``
 - ``Operations/GetLibraryLibraryResponseBody``
 - ``Operations/GetLibraryMediaContainer``
 - ``Operations/GetLibraryRequest``
@@ -310,6 +318,7 @@ case .empty:
 - ``Operations/GetRecentlyAddedErrors``
 - ``Operations/GetRecentlyAddedLibraryResponseBody``
 - ``Operations/GetRecentlyAddedMediaContainer``
+- ``Operations/GetRecentlyAddedMetadata``
 - ``Operations/GetRecentlyAddedResponseBody``
 - ``Operations/GetResizedPhotoErrors``
 - ``Operations/GetResizedPhotoRequest``
@@ -372,6 +381,8 @@ case .empty:
 - ``Operations/GetTimelineRequest``
 - ``Operations/GetTimelineResponseBody``
 - ``Operations/GetTokenErrors``
+- ``Operations/GetTokenLocation``
+- ``Operations/GetTokenPlexResponseBody``
 - ``Operations/GetTokenRequest``
 - ``Operations/GetTokenResponseBody``
 - ``Operations/GetTranscodeSessionsErrors``
@@ -386,10 +397,18 @@ case .empty:
 - ``Operations/GetUpdateStatusMediaContainer``
 - ``Operations/GetUpdateStatusResponseBody``
 - ``Operations/GetUpdateStatusUpdaterResponseBody``
+- ``Operations/GetWatchlistErrors``
+- ``Operations/GetWatchlistRequest``
+- ``Operations/GetWatchlistResponseBody``
+- ``Operations/GetWatchlistWatchlistResponseBody``
 - ``Operations/Guids``
 - ``Operations/Hub``
+- ``Operations/Image``
+- ``Operations/IncludeCollections``
 - ``Operations/IncludeDetails``
+- ``Operations/IncludeExternalMedia``
 - ``Operations/Level``
+- ``Operations/Libtype``
 - ``Operations/Location``
 - ``Operations/LogLineErrors``
 - ``Operations/LogLineRequest``

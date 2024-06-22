@@ -3,10 +3,19 @@
 import Foundation
 
 extension Operations {
-    /// Filter
-    public enum Filter: String, Codable, APIValue {
-        case all = "all"
-        case available = "available"
-        case released = "released"
+    /// Filters content by field and direction/equality
+    /// (Unknown if viewedAt is the only supported column)
+    /// 
+    public struct Filter {
+
+        /// Creates an object
+        ///
+        ///
+        public init() {
+        }
     }
 }
+
+extension Operations.Filter: Codable {
+}
+

@@ -100,6 +100,15 @@ class _LibraryAPI: LibraryAPI {
         )
     }
     
+    public func getTopWatchedContent(request: Operations.GetTopWatchedContentRequest) async throws -> Response<Operations.GetTopWatchedContentResponse> {
+        return try await client.makeRequest(
+            configureRequest: { configuration in
+                try configureGetTopWatchedContentRequest(with: configuration, request: request)
+            },
+            handleResponse: handleGetTopWatchedContentResponse
+        )
+    }
+    
     public func getOnDeck() async throws -> Response<Operations.GetOnDeckResponse> {
         return try await client.makeRequest(
             configureRequest: { configuration in
@@ -151,6 +160,7 @@ private func configureGetLibraryItemsRequest(with configuration: URLRequestConfi
     configuration.path = "/library/sections/{sectionId}/{tag}"
     configuration.method = .get
     configuration.pathParameterSerializable = request
+    configuration.queryParameterSerializable = request
     configuration.telemetryHeader = .userAgent
 }
 
@@ -180,6 +190,14 @@ private func configureGetMetadataChildrenRequest(with configuration: URLRequestC
     configuration.path = "/library/metadata/{ratingKey}/children"
     configuration.method = .get
     configuration.pathParameterSerializable = request
+    configuration.queryParameterSerializable = request
+    configuration.telemetryHeader = .userAgent
+}
+
+private func configureGetTopWatchedContentRequest(with configuration: URLRequestConfiguration, request: Operations.GetTopWatchedContentRequest) throws {
+    configuration.path = "/library/all/top"
+    configuration.method = .get
+    configuration.queryParameterSerializable = request
     configuration.telemetryHeader = .userAgent
 }
 
@@ -418,6 +436,22 @@ private func handleGetMetadataChildrenResponse(response: Client.APIResponse) thr
         if httpResponse.contentType.matchContentType(pattern: "application/json"), let data = response.data {
             do {
                 return .fourHundredAndOneApplicationJsonObject(try JSONDecoder().decode(Operations.GetMetadataChildrenLibraryResponseBody.self, from: data))
+            } catch {
+                throw ResponseHandlerError.failedToDecodeJSON(error)
+            }
+        }
+    }
+
+    return .empty
+}
+
+private func handleGetTopWatchedContentResponse(response: Client.APIResponse) throws -> Operations.GetTopWatchedContentResponse {
+    let httpResponse = response.httpResponse
+    
+    if httpResponse.statusCode == 200 { 
+        if httpResponse.contentType.matchContentType(pattern: "application/json"), let data = response.data {
+            do {
+                return .object(try JSONDecoder().decode(Operations.GetTopWatchedContentResponseBody.self, from: data))
             } catch {
                 throw ResponseHandlerError.failedToDecodeJSON(error)
             }

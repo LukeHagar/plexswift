@@ -9,15 +9,21 @@ extension Operations {
         public let sectionId: AnyValue
         /// A key representing a specific tag within the section.
         public let tag: Operations.Tag
+        /// Adds the Guids object to the response
+        /// 
+        public let includeGuids: Int?
 
         /// Creates an object with the specified parameters
         ///
         /// - Parameter sectionId: the Id of the library to query
         /// - Parameter tag: A key representing a specific tag within the section.
+        /// - Parameter includeGuids: Adds the Guids object to the response
+        /// 
         ///
-        public init(sectionId: AnyValue, tag: Operations.Tag) {
+        public init(sectionId: AnyValue, tag: Operations.Tag, includeGuids: Int? = nil) {
             self.sectionId = sectionId
             self.tag = tag
+            self.includeGuids = includeGuids
         }
     }
 }

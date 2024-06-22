@@ -18,6 +18,24 @@ class _StatisticsAPI: StatisticsAPI {
             handleResponse: handleGetStatisticsResponse
         )
     }
+    
+    public func getResourcesStatistics(request: Operations.GetResourcesStatisticsRequest) async throws -> Response<Operations.GetResourcesStatisticsResponse> {
+        return try await client.makeRequest(
+            configureRequest: { configuration in
+                try configureGetResourcesStatisticsRequest(with: configuration, request: request)
+            },
+            handleResponse: handleGetResourcesStatisticsResponse
+        )
+    }
+    
+    public func getBandwidthStatistics(request: Operations.GetBandwidthStatisticsRequest) async throws -> Response<Operations.GetBandwidthStatisticsResponse> {
+        return try await client.makeRequest(
+            configureRequest: { configuration in
+                try configureGetBandwidthStatisticsRequest(with: configuration, request: request)
+            },
+            handleResponse: handleGetBandwidthStatisticsResponse
+        )
+    }
 
 }
 
@@ -25,6 +43,20 @@ class _StatisticsAPI: StatisticsAPI {
 
 private func configureGetStatisticsRequest(with configuration: URLRequestConfiguration, request: Operations.GetStatisticsRequest) throws {
     configuration.path = "/statistics/media"
+    configuration.method = .get
+    configuration.queryParameterSerializable = request
+    configuration.telemetryHeader = .userAgent
+}
+
+private func configureGetResourcesStatisticsRequest(with configuration: URLRequestConfiguration, request: Operations.GetResourcesStatisticsRequest) throws {
+    configuration.path = "/statistics/resources"
+    configuration.method = .get
+    configuration.queryParameterSerializable = request
+    configuration.telemetryHeader = .userAgent
+}
+
+private func configureGetBandwidthStatisticsRequest(with configuration: URLRequestConfiguration, request: Operations.GetBandwidthStatisticsRequest) throws {
+    configuration.path = "/statistics/bandwidth"
     configuration.method = .get
     configuration.queryParameterSerializable = request
     configuration.telemetryHeader = .userAgent
@@ -49,6 +81,58 @@ private func handleGetStatisticsResponse(response: Client.APIResponse) throws ->
         if httpResponse.contentType.matchContentType(pattern: "application/json"), let data = response.data {
             do {
                 return .fourHundredAndOneApplicationJsonObject(try JSONDecoder().decode(Operations.GetStatisticsStatisticsResponseBody.self, from: data))
+            } catch {
+                throw ResponseHandlerError.failedToDecodeJSON(error)
+            }
+        }
+    }
+
+    return .empty
+}
+
+private func handleGetResourcesStatisticsResponse(response: Client.APIResponse) throws -> Operations.GetResourcesStatisticsResponse {
+    let httpResponse = response.httpResponse
+    
+    if httpResponse.statusCode == 200 { 
+        if httpResponse.contentType.matchContentType(pattern: "application/json"), let data = response.data {
+            do {
+                return .twoHundredApplicationJsonObject(try JSONDecoder().decode(Operations.GetResourcesStatisticsResponseBody.self, from: data))
+            } catch {
+                throw ResponseHandlerError.failedToDecodeJSON(error)
+            }
+        }
+    } else if httpResponse.statusCode == 400 { 
+        return .empty
+    } else if httpResponse.statusCode == 401 { 
+        if httpResponse.contentType.matchContentType(pattern: "application/json"), let data = response.data {
+            do {
+                return .fourHundredAndOneApplicationJsonObject(try JSONDecoder().decode(Operations.GetResourcesStatisticsStatisticsResponseBody.self, from: data))
+            } catch {
+                throw ResponseHandlerError.failedToDecodeJSON(error)
+            }
+        }
+    }
+
+    return .empty
+}
+
+private func handleGetBandwidthStatisticsResponse(response: Client.APIResponse) throws -> Operations.GetBandwidthStatisticsResponse {
+    let httpResponse = response.httpResponse
+    
+    if httpResponse.statusCode == 200 { 
+        if httpResponse.contentType.matchContentType(pattern: "application/json"), let data = response.data {
+            do {
+                return .twoHundredApplicationJsonObject(try JSONDecoder().decode(Operations.GetBandwidthStatisticsResponseBody.self, from: data))
+            } catch {
+                throw ResponseHandlerError.failedToDecodeJSON(error)
+            }
+        }
+    } else if httpResponse.statusCode == 400 { 
+        return .empty
+    } else if httpResponse.statusCode == 401 { 
+        if httpResponse.contentType.matchContentType(pattern: "application/json"), let data = response.data {
+            do {
+                return .fourHundredAndOneApplicationJsonObject(try JSONDecoder().decode(Operations.GetBandwidthStatisticsStatisticsResponseBody.self, from: data))
             } catch {
                 throw ResponseHandlerError.failedToDecodeJSON(error)
             }

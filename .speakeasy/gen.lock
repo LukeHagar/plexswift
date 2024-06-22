@@ -1,22 +1,23 @@
 lockVersion: 2.0.0
 id: 5d77204e-e413-4fd0-a14a-bad3aee2247a
 management:
-  docChecksum: 37654ea0982ab5e87a9a9576014c9d19
+  docChecksum: e73920abd3a55e8d249592f2e3090574
   docVersion: 0.0.3
-  speakeasyVersion: 1.308.1
-  generationVersion: 2.342.6
-  releaseVersion: 0.4.0
-  configChecksum: 13dc4c5ae6371accdb7e2797a7681034
+  speakeasyVersion: 1.314.2
+  generationVersion: 2.349.6
+  releaseVersion: 0.5.0
+  configChecksum: 98f5e531db8f621f48c4c6e7ad476aa1
   repoURL: https://github.com/LukeHagar/plexswift.git
 features:
   swift:
-    core: 3.2.4
+    core: 3.2.5
     globalSecurity: 2.81.5
     globalServerURLs: 2.82.1
     globals: 2.81.3
     methodServerURLs: 3.0.1
     nameOverrides: 2.81.2
     typeOverrides: 2.81.1
+    unions: 2.81.5
 generatedFiles:
   - Sources/Plexswift/internal/api/_ServerAPI.swift
   - Sources/Plexswift/internal/api/_MediaAPI.swift
@@ -131,6 +132,15 @@ generatedFiles:
   - Sources/Plexswift/models/operations/GetAvailableClientsResponse.swift
   - Sources/Plexswift/models/operations/GetAvailableClientsResponseBody.swift
   - Sources/Plexswift/models/operations/GetAvailableClientsServerResponseBody.swift
+  - Sources/Plexswift/models/operations/GetBandwidthStatisticsAccount.swift
+  - Sources/Plexswift/models/operations/GetBandwidthStatisticsDevice.swift
+  - Sources/Plexswift/models/operations/GetBandwidthStatisticsErrors.swift
+  - Sources/Plexswift/models/operations/GetBandwidthStatisticsMediaContainer.swift
+  - Sources/Plexswift/models/operations/GetBandwidthStatisticsRequest.swift
+  - Sources/Plexswift/internal/models/GetBandwidthStatisticsRequest+Serialization.swift
+  - Sources/Plexswift/models/operations/GetBandwidthStatisticsResponse.swift
+  - Sources/Plexswift/models/operations/GetBandwidthStatisticsResponseBody.swift
+  - Sources/Plexswift/models/operations/GetBandwidthStatisticsStatisticsResponseBody.swift
   - Sources/Plexswift/models/operations/GetButlerTasksButlerResponseBody.swift
   - Sources/Plexswift/models/operations/GetButlerTasksErrors.swift
   - Sources/Plexswift/models/operations/GetButlerTasksResponse.swift
@@ -291,6 +301,13 @@ generatedFiles:
   - Sources/Plexswift/internal/models/GetResizedPhotoRequest+Serialization.swift
   - Sources/Plexswift/models/operations/GetResizedPhotoResponse.swift
   - Sources/Plexswift/models/operations/GetResizedPhotoResponseBody.swift
+  - Sources/Plexswift/models/operations/GetResourcesStatisticsErrors.swift
+  - Sources/Plexswift/models/operations/GetResourcesStatisticsMediaContainer.swift
+  - Sources/Plexswift/models/operations/GetResourcesStatisticsRequest.swift
+  - Sources/Plexswift/internal/models/GetResourcesStatisticsRequest+Serialization.swift
+  - Sources/Plexswift/models/operations/GetResourcesStatisticsResponse.swift
+  - Sources/Plexswift/models/operations/GetResourcesStatisticsResponseBody.swift
+  - Sources/Plexswift/models/operations/GetResourcesStatisticsStatisticsResponseBody.swift
   - Sources/Plexswift/models/operations/GetSearchResultsCountry.swift
   - Sources/Plexswift/models/operations/GetSearchResultsDirector.swift
   - Sources/Plexswift/models/operations/GetSearchResultsErrors.swift
@@ -333,6 +350,8 @@ generatedFiles:
   - Sources/Plexswift/models/operations/GetSessionHistoryErrors.swift
   - Sources/Plexswift/models/operations/GetSessionHistoryMediaContainer.swift
   - Sources/Plexswift/models/operations/GetSessionHistoryMetadata.swift
+  - Sources/Plexswift/models/operations/GetSessionHistoryRequest.swift
+  - Sources/Plexswift/internal/models/GetSessionHistoryRequest+Serialization.swift
   - Sources/Plexswift/models/operations/GetSessionHistoryResponse.swift
   - Sources/Plexswift/models/operations/GetSessionHistoryResponseBody.swift
   - Sources/Plexswift/models/operations/GetSessionHistorySessionsResponseBody.swift
@@ -345,6 +364,7 @@ generatedFiles:
   - Sources/Plexswift/models/operations/GetSessionsResponseBody.swift
   - Sources/Plexswift/models/operations/GetSessionsSessionsResponseBody.swift
   - Sources/Plexswift/models/operations/GetSessionsStream.swift
+  - Sources/Plexswift/models/operations/GetSessionsUser.swift
   - Sources/Plexswift/models/operations/GetSourceConnectionInformationErrors.swift
   - Sources/Plexswift/models/operations/GetSourceConnectionInformationRequest.swift
   - Sources/Plexswift/internal/models/GetSourceConnectionInformationRequest+Serialization.swift
@@ -370,6 +390,16 @@ generatedFiles:
   - Sources/Plexswift/internal/models/GetTokenRequest+Serialization.swift
   - Sources/Plexswift/models/operations/GetTokenResponse.swift
   - Sources/Plexswift/models/operations/GetTokenResponseBody.swift
+  - Sources/Plexswift/models/operations/GetTopWatchedContentCountry.swift
+  - Sources/Plexswift/models/operations/GetTopWatchedContentGenre.swift
+  - Sources/Plexswift/models/operations/GetTopWatchedContentGuids.swift
+  - Sources/Plexswift/models/operations/GetTopWatchedContentMediaContainer.swift
+  - Sources/Plexswift/models/operations/GetTopWatchedContentMetadata.swift
+  - Sources/Plexswift/models/operations/GetTopWatchedContentRequest.swift
+  - Sources/Plexswift/internal/models/GetTopWatchedContentRequest+Serialization.swift
+  - Sources/Plexswift/models/operations/GetTopWatchedContentResponse.swift
+  - Sources/Plexswift/models/operations/GetTopWatchedContentResponseBody.swift
+  - Sources/Plexswift/models/operations/GetTopWatchedContentRole.swift
   - Sources/Plexswift/models/operations/GetTranscodeSessionsErrors.swift
   - Sources/Plexswift/models/operations/GetTranscodeSessionsMediaContainer.swift
   - Sources/Plexswift/models/operations/GetTranscodeSessionsResponse.swift
@@ -404,6 +434,8 @@ generatedFiles:
   - Sources/Plexswift/internal/models/IncludeExternalMedia+Serialization.swift
   - Sources/Plexswift/models/operations/Level.swift
   - Sources/Plexswift/internal/models/Level+Serialization.swift
+  - Sources/Plexswift/models/operations/LibrarySectionID.swift
+  - Sources/Plexswift/internal/models/LibrarySectionID+Serialization.swift
   - Sources/Plexswift/models/operations/Libtype.swift
   - Sources/Plexswift/internal/models/Libtype+Serialization.swift
   - Sources/Plexswift/models/operations/Location.swift
@@ -435,6 +467,8 @@ generatedFiles:
   - Sources/Plexswift/internal/models/OnlyTransient+Serialization.swift
   - Sources/Plexswift/models/operations/Operator.swift
   - Sources/Plexswift/models/operations/Part.swift
+  - Sources/Plexswift/models/operations/PathParamFilter.swift
+  - Sources/Plexswift/internal/models/PathParamFilter+Serialization.swift
   - Sources/Plexswift/models/operations/PathParamTaskName.swift
   - Sources/Plexswift/internal/models/PathParamTaskName+Serialization.swift
   - Sources/Plexswift/models/operations/PerformSearchErrors.swift
@@ -499,7 +533,9 @@ generatedFiles:
   - Sources/Plexswift/models/operations/StartUniversalTranscodeResponseBody.swift
   - Sources/Plexswift/models/operations/State.swift
   - Sources/Plexswift/internal/models/State+Serialization.swift
+  - Sources/Plexswift/models/operations/StatisticsBandwidth.swift
   - Sources/Plexswift/models/operations/StatisticsMedia.swift
+  - Sources/Plexswift/models/operations/StatisticsResources.swift
   - Sources/Plexswift/models/operations/StopAllTasksErrors.swift
   - Sources/Plexswift/models/operations/StopAllTasksResponse.swift
   - Sources/Plexswift/models/operations/StopAllTasksResponseBody.swift

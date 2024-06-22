@@ -19,10 +19,10 @@ class _SessionsAPI: SessionsAPI {
         )
     }
     
-    public func getSessionHistory() async throws -> Response<Operations.GetSessionHistoryResponse> {
+    public func getSessionHistory(request: Operations.GetSessionHistoryRequest) async throws -> Response<Operations.GetSessionHistoryResponse> {
         return try await client.makeRequest(
             configureRequest: { configuration in
-                try configureGetSessionHistoryRequest(with: configuration)
+                try configureGetSessionHistoryRequest(with: configuration, request: request)
             },
             handleResponse: handleGetSessionHistoryResponse
         )
@@ -56,9 +56,10 @@ private func configureGetSessionsRequest(with configuration: URLRequestConfigura
     configuration.telemetryHeader = .userAgent
 }
 
-private func configureGetSessionHistoryRequest(with configuration: URLRequestConfiguration) throws {
+private func configureGetSessionHistoryRequest(with configuration: URLRequestConfiguration, request: Operations.GetSessionHistoryRequest) throws {
     configuration.path = "/status/sessions/history/all"
     configuration.method = .get
+    configuration.queryParameterSerializable = request
     configuration.telemetryHeader = .userAgent
 }
 

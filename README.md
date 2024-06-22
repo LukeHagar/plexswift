@@ -22,7 +22,7 @@ You can add `plexswift` to your project directly in Xcode `(File > Add Packages.
 
 ```bash
 dependencies: [
-    .package(url: "https://github.com/LukeHagar/plexswift.git", .upToNextMajor(from: "0.4.0"))
+    .package(url: "https://github.com/LukeHagar/plexswift.git", .upToNextMajor(from: "0.5.0"))
 ]
 ```
 <!-- End SDK Installation [installation] -->
@@ -100,18 +100,18 @@ case .empty:
 <!-- Start Global Parameters [global-parameters] -->
 ## Global Parameters
 
-A parameter is configured globally. This parameter must be set on the SDK client instance itself during initialization. When configured as an option during SDK initialization, This global value will be used as the default on the operations that use it. When such operations are called, there is a place in each to override the global value, if needed.
+A parameter is configured globally. This parameter may be set on the SDK client instance itself during initialization. When configured as an option during SDK initialization, This global value will be used as the default on the operations that use it. When such operations are called, there is a place in each to override the global value, if needed.
 
 For example, you can set `X-Plex-Client-Identifier` to `"Postman"` at SDK initialization and then you do not have to pass the same value on calls to operations like `getPin`. But if you want to do so you may, which will locally override the global setting. See the example code below for a demonstration.
 
 
 ### Available Globals
 
-The following global parameter is available. The required parameter must be set when you initialize the SDK client.
+The following global parameter is available.
 
 | Name | Type | Required | Description |
 | ---- | ---- |:--------:| ----------- |
-| xPlexClientIdentifier | String | ✔️ | The unique identifier for the client application
+| xPlexClientIdentifier | String |  | The unique identifier for the client application
 This is used to track the client application and its usage
 (UUID, serial number, or other number unique per device)
  |

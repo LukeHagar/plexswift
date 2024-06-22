@@ -116,7 +116,7 @@ public protocol PlexswiftAPI {
 /// - ``getServerList()``
 ///
 public protocol ServerAPI {
-    /// Server Capabilities
+    /// Get Server Capabilities
     /// 
     /// - Returns: A ``Operations/GetServerCapabilitiesResponse`` object describing the result of the API operation
     /// - Throws: An error of type ``PlexswiftError``
@@ -535,6 +535,7 @@ public protocol SearchAPI {
 /// - ``searchLibrary(request:)``
 /// - ``getMetadata(request:)``
 /// - ``getMetadataChildren(request:)``
+/// - ``getTopWatchedContent(request:)``
 /// - ``getOnDeck()``
 ///
 public protocol LibraryAPI {
@@ -692,6 +693,14 @@ public protocol LibraryAPI {
     /// - Returns: A ``Operations/GetMetadataChildrenResponse`` object describing the result of the API operation
     /// - Throws: An error of type ``PlexswiftError``
     func getMetadataChildren(request: Operations.GetMetadataChildrenRequest) async throws -> Response<Operations.GetMetadataChildrenResponse>
+
+    /// This endpoint will return the top watched content from libraries of a certain type
+    /// 
+    /// 
+    /// - Parameter request: A ``Operations/GetTopWatchedContentRequest`` object describing the input to the API operation
+    /// - Returns: A ``Operations/GetTopWatchedContentResponse`` object describing the result of the API operation
+    /// - Throws: An error of type ``PlexswiftError``
+    func getTopWatchedContent(request: Operations.GetTopWatchedContentRequest) async throws -> Response<Operations.GetTopWatchedContentResponse>
 
     /// This endpoint will return the on deck content.
     /// 
@@ -902,6 +911,8 @@ public protocol AuthenticationAPI {
 /// ### API calls
 ///
 /// - ``getStatistics(request:)``
+/// - ``getResourcesStatistics(request:)``
+/// - ``getBandwidthStatistics(request:)``
 ///
 public protocol StatisticsAPI {
     /// This will return the media statistics for the server
@@ -910,6 +921,20 @@ public protocol StatisticsAPI {
     /// - Returns: A ``Operations/GetStatisticsResponse`` object describing the result of the API operation
     /// - Throws: An error of type ``PlexswiftError``
     func getStatistics(request: Operations.GetStatisticsRequest) async throws -> Response<Operations.GetStatisticsResponse>
+
+    /// This will return the resources for the server
+    /// 
+    /// - Parameter request: A ``Operations/GetResourcesStatisticsRequest`` object describing the input to the API operation
+    /// - Returns: A ``Operations/GetResourcesStatisticsResponse`` object describing the result of the API operation
+    /// - Throws: An error of type ``PlexswiftError``
+    func getResourcesStatistics(request: Operations.GetResourcesStatisticsRequest) async throws -> Response<Operations.GetResourcesStatisticsResponse>
+
+    /// This will return the bandwidth statistics for the server
+    /// 
+    /// - Parameter request: A ``Operations/GetBandwidthStatisticsRequest`` object describing the input to the API operation
+    /// - Returns: A ``Operations/GetBandwidthStatisticsResponse`` object describing the result of the API operation
+    /// - Throws: An error of type ``PlexswiftError``
+    func getBandwidthStatistics(request: Operations.GetBandwidthStatisticsRequest) async throws -> Response<Operations.GetBandwidthStatisticsResponse>
 }
 
 // MARK: - SessionsAPI
@@ -922,7 +947,7 @@ public protocol StatisticsAPI {
 /// ### API calls
 ///
 /// - ``getSessions()``
-/// - ``getSessionHistory()``
+/// - ``getSessionHistory(request:)``
 /// - ``getTranscodeSessions()``
 /// - ``stopTranscodeSession(request:)``
 ///
@@ -935,9 +960,10 @@ public protocol SessionsAPI {
 
     /// This will Retrieve a listing of all history views.
     /// 
+    /// - Parameter request: A ``Operations/GetSessionHistoryRequest`` object describing the input to the API operation
     /// - Returns: A ``Operations/GetSessionHistoryResponse`` object describing the result of the API operation
     /// - Throws: An error of type ``PlexswiftError``
-    func getSessionHistory() async throws -> Response<Operations.GetSessionHistoryResponse>
+    func getSessionHistory(request: Operations.GetSessionHistoryRequest) async throws -> Response<Operations.GetSessionHistoryResponse>
 
     /// Get Transcode Sessions
     /// 

@@ -88,6 +88,7 @@ case .empty:
 - ``Operations/DeletePlaylistResponse``
 - ``Operations/EnablePaperTrailResponse``
 - ``Operations/GetAvailableClientsResponse``
+- ``Operations/GetBandwidthStatisticsResponse``
 - ``Operations/GetButlerTasksResponse``
 - ``Operations/GetDevicesResponse``
 - ``Operations/GetFileHashResponse``
@@ -107,6 +108,7 @@ case .empty:
 - ``Operations/GetPlaylistsResponse``
 - ``Operations/GetRecentlyAddedResponse``
 - ``Operations/GetResizedPhotoResponse``
+- ``Operations/GetResourcesStatisticsResponse``
 - ``Operations/GetSearchResultsResponse``
 - ``Operations/GetServerActivitiesResponse``
 - ``Operations/GetServerCapabilitiesResponse``
@@ -119,6 +121,7 @@ case .empty:
 - ``Operations/GetStatisticsResponse``
 - ``Operations/GetTimelineResponse``
 - ``Operations/GetTokenResponse``
+- ``Operations/GetTopWatchedContentResponse``
 - ``Operations/GetTranscodeSessionsResponse``
 - ``Operations/GetTransientTokenResponse``
 - ``Operations/GetUpdateStatusResponse``
@@ -194,6 +197,13 @@ case .empty:
 - ``Operations/GetAvailableClientsMediaContainer``
 - ``Operations/GetAvailableClientsResponseBody``
 - ``Operations/GetAvailableClientsServerResponseBody``
+- ``Operations/GetBandwidthStatisticsAccount``
+- ``Operations/GetBandwidthStatisticsDevice``
+- ``Operations/GetBandwidthStatisticsErrors``
+- ``Operations/GetBandwidthStatisticsMediaContainer``
+- ``Operations/GetBandwidthStatisticsRequest``
+- ``Operations/GetBandwidthStatisticsResponseBody``
+- ``Operations/GetBandwidthStatisticsStatisticsResponseBody``
 - ``Operations/GetButlerTasksButlerResponseBody``
 - ``Operations/GetButlerTasksErrors``
 - ``Operations/GetButlerTasksResponseBody``
@@ -323,6 +333,11 @@ case .empty:
 - ``Operations/GetResizedPhotoErrors``
 - ``Operations/GetResizedPhotoRequest``
 - ``Operations/GetResizedPhotoResponseBody``
+- ``Operations/GetResourcesStatisticsErrors``
+- ``Operations/GetResourcesStatisticsMediaContainer``
+- ``Operations/GetResourcesStatisticsRequest``
+- ``Operations/GetResourcesStatisticsResponseBody``
+- ``Operations/GetResourcesStatisticsStatisticsResponseBody``
 - ``Operations/GetSearchResultsCountry``
 - ``Operations/GetSearchResultsDirector``
 - ``Operations/GetSearchResultsErrors``
@@ -358,6 +373,7 @@ case .empty:
 - ``Operations/GetSessionHistoryErrors``
 - ``Operations/GetSessionHistoryMediaContainer``
 - ``Operations/GetSessionHistoryMetadata``
+- ``Operations/GetSessionHistoryRequest``
 - ``Operations/GetSessionHistoryResponseBody``
 - ``Operations/GetSessionHistorySessionsResponseBody``
 - ``Operations/GetSessionsErrors``
@@ -368,6 +384,7 @@ case .empty:
 - ``Operations/GetSessionsResponseBody``
 - ``Operations/GetSessionsSessionsResponseBody``
 - ``Operations/GetSessionsStream``
+- ``Operations/GetSessionsUser``
 - ``Operations/GetSourceConnectionInformationErrors``
 - ``Operations/GetSourceConnectionInformationRequest``
 - ``Operations/GetSourceConnectionInformationResponseBody``
@@ -385,6 +402,14 @@ case .empty:
 - ``Operations/GetTokenPlexResponseBody``
 - ``Operations/GetTokenRequest``
 - ``Operations/GetTokenResponseBody``
+- ``Operations/GetTopWatchedContentCountry``
+- ``Operations/GetTopWatchedContentGenre``
+- ``Operations/GetTopWatchedContentGuids``
+- ``Operations/GetTopWatchedContentMediaContainer``
+- ``Operations/GetTopWatchedContentMetadata``
+- ``Operations/GetTopWatchedContentRequest``
+- ``Operations/GetTopWatchedContentResponseBody``
+- ``Operations/GetTopWatchedContentRole``
 - ``Operations/GetTranscodeSessionsErrors``
 - ``Operations/GetTranscodeSessionsMediaContainer``
 - ``Operations/GetTranscodeSessionsResponseBody``
@@ -408,6 +433,7 @@ case .empty:
 - ``Operations/IncludeDetails``
 - ``Operations/IncludeExternalMedia``
 - ``Operations/Level``
+- ``Operations/LibrarySectionID``
 - ``Operations/Libtype``
 - ``Operations/Location``
 - ``Operations/LogLineErrors``
@@ -429,6 +455,7 @@ case .empty:
 - ``Operations/OnlyTransient``
 - ``Operations/Operator``
 - ``Operations/Part``
+- ``Operations/PathParamFilter``
 - ``Operations/PathParamTaskName``
 - ``Operations/PerformSearchErrors``
 - ``Operations/PerformSearchRequest``
@@ -471,7 +498,9 @@ case .empty:
 - ``Operations/StartUniversalTranscodeRequest``
 - ``Operations/StartUniversalTranscodeResponseBody``
 - ``Operations/State``
+- ``Operations/StatisticsBandwidth``
 - ``Operations/StatisticsMedia``
+- ``Operations/StatisticsResources``
 - ``Operations/StopAllTasksErrors``
 - ``Operations/StopAllTasksResponseBody``
 - ``Operations/StopTaskErrors``

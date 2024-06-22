@@ -18,7 +18,7 @@ extension Operations {
         @DecimalSerialized
         public private(set) var id: Double?
         public let location: Operations.Location?
-        public let newRegistration: String?
+        public let newRegistration: Bool?
         public let product: String?
         /// a link to a QR code hosted on plex.tv 
         /// The QR code redirects to the relevant `plex.tv/link` authentication page
@@ -35,7 +35,7 @@ extension Operations {
         /// Which then prompts the user for the 4 Digit Link Pin
         /// 
         ///
-        public init(authToken: String? = nil, clientIdentifier: String? = nil, code: String? = nil, createdAt: Date? = nil, expiresAt: Date? = nil, expiresIn: Double? = nil, id: Double? = nil, location: Operations.Location? = nil, newRegistration: String? = nil, product: String? = nil, qr: String? = nil, trusted: Bool? = nil) {
+        public init(authToken: String? = nil, clientIdentifier: String? = nil, code: String? = nil, createdAt: Date? = nil, expiresAt: Date? = nil, expiresIn: Double? = nil, id: Double? = nil, location: Operations.Location? = nil, newRegistration: Bool? = nil, product: String? = nil, qr: String? = nil, trusted: Bool? = nil) {
             self.authToken = authToken
             self.clientIdentifier = clientIdentifier
             self.code = code
@@ -78,7 +78,7 @@ extension Operations.GetPinResponseBody: Codable {
         self._expiresIn = try container.decodeIfPresent(DecimalSerialized<Double?>.self, forKey: .expiresIn) ?? DecimalSerialized<Double?>(wrappedValue: nil)
         self._id = try container.decodeIfPresent(DecimalSerialized<Double?>.self, forKey: .id) ?? DecimalSerialized<Double?>(wrappedValue: nil)
         self.location = try container.decodeIfPresent(Operations.Location.self, forKey: .location)
-        self.newRegistration = try container.decodeIfPresent(String.self, forKey: .newRegistration)
+        self.newRegistration = try container.decodeIfPresent(Bool.self, forKey: .newRegistration)
         self.product = try container.decodeIfPresent(String.self, forKey: .product)
         self.qr = try container.decodeIfPresent(String.self, forKey: .qr)
         self.trusted = try container.decodeIfPresent(Bool.self, forKey: .trusted)

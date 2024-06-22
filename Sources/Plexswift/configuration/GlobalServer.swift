@@ -3,7 +3,6 @@
 
 import Foundation
 
-/// The protocol to use when connecting to your plex server.
 public enum ServerProtocol: String, Codable, APIValue {
     case http = "http"
     case https = "https"

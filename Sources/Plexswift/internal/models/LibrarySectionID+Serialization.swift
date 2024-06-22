@@ -3,7 +3,7 @@
 
 import Foundation
 
-extension Operations.Filter: Serializable {
+extension Operations.LibrarySectionID: Serializable {
     func serialize(with format: SerializableFormat) throws -> String {
         return ""
     }

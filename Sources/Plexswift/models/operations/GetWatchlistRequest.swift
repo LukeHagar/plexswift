@@ -6,7 +6,7 @@ extension Operations {
     /// A model object
     public struct GetWatchlistRequest: APIValue {
         /// Filter
-        public let filter: Operations.Filter
+        public let filter: Operations.PathParamFilter
         /// User Token
         public let xPlexToken: String
         /// include collections in the results
@@ -60,7 +60,7 @@ extension Operations {
         /// If the number of items exceeds the limit, the response will be paginated.
         /// 
         ///
-        public init(filter: Operations.Filter, xPlexToken: String, includeCollections: Operations.IncludeCollections? = nil, includeExternalMedia: Operations.IncludeExternalMedia? = nil, libtype: Operations.Libtype? = nil, maxresults: Int? = nil, sort: String? = nil, xPlexContainerSize: Int? = nil, xPlexContainerStart: Int? = nil) {
+        public init(filter: Operations.PathParamFilter, xPlexToken: String, includeCollections: Operations.IncludeCollections? = nil, includeExternalMedia: Operations.IncludeExternalMedia? = nil, libtype: Operations.Libtype? = nil, maxresults: Int? = nil, sort: String? = nil, xPlexContainerSize: Int? = nil, xPlexContainerStart: Int? = nil) {
             self.filter = filter
             self.xPlexToken = xPlexToken
             self.includeCollections = includeCollections

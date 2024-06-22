@@ -4,19 +4,19 @@ import Foundation
 
 extension Operations {
     /// A model object
-    public struct User {
-        public let id: Int?
+    public struct GetTopWatchedContentGuids {
+        public let id: String?
 
         /// Creates an object with the specified parameters
         ///
         ///
-        public init(id: Int? = nil) {
+        public init(id: String? = nil) {
             self.id = id
         }
     }
 }
 
-extension Operations.User: Codable {
+extension Operations.GetTopWatchedContentGuids: Codable {
     enum CodingKeys: String, CodingKey {
         case id
     }

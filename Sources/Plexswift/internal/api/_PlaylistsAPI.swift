@@ -244,7 +244,7 @@ private func handleGetPlaylistResponse(response: Client.APIResponse) throws -> O
 private func handleDeletePlaylistResponse(response: Client.APIResponse) throws -> Operations.DeletePlaylistResponse {
     let httpResponse = response.httpResponse
     
-    if [200, 400].contains(httpResponse.statusCode) { 
+    if [204, 400].contains(httpResponse.statusCode) { 
         return .empty
     } else if httpResponse.statusCode == 401 { 
         if httpResponse.contentType.matchContentType(pattern: "application/json"), let data = response.data {

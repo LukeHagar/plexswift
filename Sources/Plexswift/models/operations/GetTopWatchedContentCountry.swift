@@ -4,21 +4,27 @@ import Foundation
 
 extension Operations {
     /// A model object
-    public struct User {
+    public struct GetTopWatchedContentCountry {
+        public let filter: String?
         public let id: Int?
+        public let tag: String?
 
         /// Creates an object with the specified parameters
         ///
         ///
-        public init(id: Int? = nil) {
+        public init(filter: String? = nil, id: Int? = nil, tag: String? = nil) {
+            self.filter = filter
             self.id = id
+            self.tag = tag
         }
     }
 }
 
-extension Operations.User: Codable {
+extension Operations.GetTopWatchedContentCountry: Codable {
     enum CodingKeys: String, CodingKey {
+        case filter
         case id
+        case tag
     }
 }
 

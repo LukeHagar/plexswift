@@ -40,13 +40,13 @@ extension Operations {
         public let titleSort: String?
         public let type: String?
         public let updatedAt: Int?
-        public let user: Operations.User?
+        public let user: Operations.GetSessionsUser?
         public let viewOffset: Int?
 
         /// Creates an object with the specified parameters
         ///
         ///
-        public init(addedAt: Int? = nil, art: String? = nil, duration: Int? = nil, grandparentArt: String? = nil, grandparentGuid: String? = nil, grandparentKey: String? = nil, grandparentRatingKey: String? = nil, grandparentThumb: String? = nil, grandparentTitle: String? = nil, guid: String? = nil, index: Int? = nil, key: String? = nil, librarySectionID: String? = nil, librarySectionKey: String? = nil, librarySectionTitle: String? = nil, media: [Operations.GetSessionsMedia]? = nil, musicAnalysisVersion: String? = nil, parentGuid: String? = nil, parentIndex: Int? = nil, parentKey: String? = nil, parentRatingKey: String? = nil, parentStudio: String? = nil, parentThumb: String? = nil, parentTitle: String? = nil, parentYear: Int? = nil, player: Operations.Player? = nil, ratingCount: Int? = nil, ratingKey: String? = nil, session: Operations.Session? = nil, sessionKey: String? = nil, thumb: String? = nil, title: String? = nil, titleSort: String? = nil, type: String? = nil, updatedAt: Int? = nil, user: Operations.User? = nil, viewOffset: Int? = nil) {
+        public init(addedAt: Int? = nil, art: String? = nil, duration: Int? = nil, grandparentArt: String? = nil, grandparentGuid: String? = nil, grandparentKey: String? = nil, grandparentRatingKey: String? = nil, grandparentThumb: String? = nil, grandparentTitle: String? = nil, guid: String? = nil, index: Int? = nil, key: String? = nil, librarySectionID: String? = nil, librarySectionKey: String? = nil, librarySectionTitle: String? = nil, media: [Operations.GetSessionsMedia]? = nil, musicAnalysisVersion: String? = nil, parentGuid: String? = nil, parentIndex: Int? = nil, parentKey: String? = nil, parentRatingKey: String? = nil, parentStudio: String? = nil, parentThumb: String? = nil, parentTitle: String? = nil, parentYear: Int? = nil, player: Operations.Player? = nil, ratingCount: Int? = nil, ratingKey: String? = nil, session: Operations.Session? = nil, sessionKey: String? = nil, thumb: String? = nil, title: String? = nil, titleSort: String? = nil, type: String? = nil, updatedAt: Int? = nil, user: Operations.GetSessionsUser? = nil, viewOffset: Int? = nil) {
             self.addedAt = addedAt
             self.art = art
             self.duration = duration

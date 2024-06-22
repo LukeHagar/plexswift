@@ -3,15 +3,13 @@
 
 import Foundation
 
-extension Operations.GetLibraryItemsRequest: Serializable {
+extension Operations.GetTopWatchedContentRequest: Serializable {
     func serialize(with format: SerializableFormat) throws -> String {
         switch format {
-        case .path:
-            return try serializePathParameterSerializable(self, with: format)
         case .query:
             return try serializeQueryParameterSerializable(self, with: format)
-        case .header, .multipart, .form:
-            throw SerializationError.invalidSerializationParameter(type: "Operations.GetLibraryItemsRequest", format: format.formatDescription)
+        case .path, .header, .multipart, .form:
+            throw SerializationError.invalidSerializationParameter(type: "Operations.GetTopWatchedContentRequest", format: format.formatDescription)
         }
     }
 
@@ -20,18 +18,10 @@ extension Operations.GetLibraryItemsRequest: Serializable {
     }
 }
 
-extension Operations.GetLibraryItemsRequest: PathParameterSerializable {
-    func serializedPathParameters(formatOverride: SerializableFormat?) throws -> [String: String] {
-        return [
-            "sectionId": try sectionId.serialize(with: formatOverride ?? .path(explode: false)),
-            "tag": try tag.serialize(with: formatOverride ?? .path(explode: false)),
-        ].compactMapValues { $0 }
-    }
-}
-
-extension Operations.GetLibraryItemsRequest: QueryParameterSerializable {
+extension Operations.GetTopWatchedContentRequest: QueryParameterSerializable {
     func serializedQueryParameters(with parameterDefaults: ParameterDefaults?, formatOverride: SerializableFormat?) throws -> [QueryParameter] {
         let builder = QueryParameterBuilder()
+        try builder.addQueryParameters(from: type, named: "type", format: formatOverride ?? .query(style: .form, explode: true), parameterDefaults: parameterDefaults)
         try builder.addQueryParameters(from: includeGuids, named: "includeGuids", format: formatOverride ?? .query(style: .form, explode: true), parameterDefaults: parameterDefaults)
         return builder.build()
     }

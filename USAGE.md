@@ -8,10 +8,13 @@ let client = Client(security: .accessToken("<YOUR_API_KEY_HERE>"))
 let response = try await client.server.getServerCapabilities()
 
 switch response.data {
-case .twoHundredApplicationJsonObject(let twoHundredApplicationJsonObject):
+case .object(let object):
     // Handle response
     break
-case .fourHundredAndOneApplicationJsonObject(let fourHundredAndOneApplicationJsonObject):
+case .badRequest(let badRequest):
+    // Handle response
+    break
+case .unauthorized(let unauthorized):
     // Handle response
     break
 case .empty:

@@ -1,16 +1,14 @@
 workflowVersion: 1.0.0
 speakeasyVersion: latest
 sources:
-    my-source:
+    plexapi:
         inputs:
-            - location: https://raw.githubusercontent.com/LukeHagar/plex-api-spec/main/plex-media-server-spec-dereferenced.yaml
-        registry:
-            location: registry.speakeasyapi.dev/lukehagar/lukehagar/my-source
+            - location: registry.speakeasyapi.dev/plexapi/plexapi/plexapi:main
 targets:
     plexswift:
         target: swift
-        source: my-source
+        source: plexapi
         codeSamples:
             output: codeSamples.yaml
             registry:
-                location: registry.speakeasyapi.dev/lukehagar/lukehagar/code-samples-swift-plexswift
+                location: registry.speakeasyapi.dev/plexapi/plexapi/code-samples-swift-plexswift

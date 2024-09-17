@@ -9,23 +9,22 @@ sources:
             - main
 targets:
     plexswift:
-        source: my-source
-        sourceNamespace: my-source
-        sourceRevisionDigest: sha256:f2bd12dea99ec58806baf867d9dead020363ec38594340220421ffc7a26194db
-        sourceBlobDigest: sha256:53b60a8a4f52b48ff61e2dd7c1eb787a37c44db8c125efd5dca714698027d09e
+        source: plexapi
+        codeSamplesNamespace: code-samples-swift-plexswift
+        codeSamplesRevisionDigest: sha256:2395d35877d475866cfb3529bd79dc57ae2560164e3882170be16d4917ea2222
         outLocation: /github/workspace/repo
 workflow:
     workflowVersion: 1.0.0
     speakeasyVersion: latest
     sources:
-        my-source:
+        plexapi:
             inputs:
-                - location: https://raw.githubusercontent.com/LukeHagar/plex-api-spec/main/plex-media-server-spec-dereferenced.yaml
-            registry:
-                location: registry.speakeasyapi.dev/lukehagar/lukehagar/my-source
+                - location: registry.speakeasyapi.dev/plexapi/plexapi/plexapi:main
     targets:
         plexswift:
             target: swift
-            source: my-source
+            source: plexapi
             codeSamples:
                 output: codeSamples.yaml
+                registry:
+                    location: registry.speakeasyapi.dev/plexapi/plexapi/code-samples-swift-plexswift

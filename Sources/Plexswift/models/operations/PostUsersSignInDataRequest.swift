@@ -5,24 +5,24 @@ import Foundation
 extension Operations {
     /// A model object
     public struct PostUsersSignInDataRequest: APIValue {
-        /// Login credentials
-        public let requestBody: Operations.PostUsersSignInDataRequestBody?
         /// The unique identifier for the client application
         /// This is used to track the client application and its usage
         /// (UUID, serial number, or other number unique per device)
         /// 
-        public let xPlexClientIdentifier: String?
+        public let clientID: String?
+        /// Login credentials
+        public let requestBody: Operations.PostUsersSignInDataRequestBody?
 
         /// Creates an object with the specified parameters
         ///
-        /// - Parameter requestBody: Login credentials
-        /// - Parameter xPlexClientIdentifier: The unique identifier for the client application
+        /// - Parameter clientID: The unique identifier for the client application
         /// This is used to track the client application and its usage
         /// (UUID, serial number, or other number unique per device)
         /// 
+        /// - Parameter requestBody: Login credentials
         ///
-        public init(requestBody: Operations.PostUsersSignInDataRequestBody? = nil, xPlexClientIdentifier: String? = nil) {
+        public init(clientID: String? = nil, requestBody: Operations.PostUsersSignInDataRequestBody? = nil) {
+            self.clientID = clientID
             self.requestBody = requestBody
-            self.xPlexClientIdentifier = xPlexClientIdentifier
         }
     }}

@@ -615,7 +615,7 @@ public protocol PlexAPI {
     /// - Throws: An error of type ``PlexswiftError``
     func getServerResources(request: Operations.GetServerResourcesRequest, server: PlexServers.GetServerResources?) async throws -> Response<Operations.GetServerResourcesResponse>
 
-    /// Retrieve a Pin from Plex.tv for authentication flows
+    /// Retrieve a Pin ID from Plex.tv to use for authentication flows
     /// 
     /// - Parameter request: A ``Operations/GetPinRequest`` object describing the input to the API operation
     /// - Parameter server: An optional server override to use for this operation

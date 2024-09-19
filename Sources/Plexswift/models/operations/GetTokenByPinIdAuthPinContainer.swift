@@ -20,7 +20,7 @@ extension Operations {
         public let product: String
         public let qr: String
         public let trusted: Bool
-        public let authToken: AnyValue?
+        public let authToken: String?
         public let newRegistration: AnyValue?
 
         /// Creates an object with the specified parameters
@@ -29,7 +29,7 @@ extension Operations {
         /// - Parameter expiresIn: The number of seconds this pin expires, by default 900 seconds
         /// - Parameter location: Geo location data
         ///
-        public init(clientIdentifier: String, code: String, createdAt: Date, expiresAt: Date, expiresIn: Int, id: Int, location: Operations.GetTokenByPinIdGeoData, product: String, qr: String, trusted: Bool, authToken: AnyValue? = nil, newRegistration: AnyValue? = nil) {
+        public init(clientIdentifier: String, code: String, createdAt: Date, expiresAt: Date, expiresIn: Int, id: Int, location: Operations.GetTokenByPinIdGeoData, product: String, qr: String, trusted: Bool, authToken: String? = nil, newRegistration: AnyValue? = nil) {
             self.clientIdentifier = clientIdentifier
             self.code = code
             self._createdAt = DateTime<Date>(wrappedValue: createdAt)
@@ -73,7 +73,7 @@ extension Operations.GetTokenByPinIdAuthPinContainer: Codable {
         self.product = try container.decode(String.self, forKey: .product)
         self.qr = try container.decode(String.self, forKey: .qr)
         self.trusted = try container.decode(Bool.self, forKey: .trusted)
-        self.authToken = try container.decodeIfPresent(AnyValue.self, forKey: .authToken)
+        self.authToken = try container.decodeIfPresent(String.self, forKey: .authToken)
         self.newRegistration = try container.decodeIfPresent(AnyValue.self, forKey: .newRegistration)
     }
 

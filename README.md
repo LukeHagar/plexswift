@@ -38,7 +38,7 @@ You can add `plexswift` to your project directly in Xcode `(File > Add Packages.
 
 ```bash
 dependencies: [
-    .package(url: "https://github.com/LukeHagar/plexswift.git", .upToNextMajor(from: "0.6.2"))
+    .package(url: "https://github.com/LukeHagar/plexswift.git", .upToNextMajor(from: "0.6.3"))
 ]
 ```
 <!-- End SDK Installation [installation] -->
@@ -248,21 +248,25 @@ case .empty:
 <!-- Start Global Parameters [global-parameters] -->
 ## Global Parameters
 
-A parameter is configured globally. This parameter may be set on the SDK client instance itself during initialization. When configured as an option during SDK initialization, This global value will be used as the default on the operations that use it. When such operations are called, there is a place in each to override the global value, if needed.
+Certain parameters are configured globally. These parameters may be set on the SDK client instance itself during initialization. When configured as an option during SDK initialization, These global values will be used as defaults on the operations that use them. When such operations are called, there is a place in each to override the global value, if needed.
 
-For example, you can set `X-Plex-Client-Identifier` to `"gcgzw5rz2xovp84b4vha3a40"` at SDK initialization and then you do not have to pass the same value on calls to operations like `getServerResources`. But if you want to do so you may, which will locally override the global setting. See the example code below for a demonstration.
+For example, you can set `ClientID` to `"gcgzw5rz2xovp84b4vha3a40"` at SDK initialization and then you do not have to pass the same value on calls to operations like `getServerResources`. But if you want to do so you may, which will locally override the global setting. See the example code below for a demonstration.
 
 
 ### Available Globals
 
-The following global parameter is available.
+The following global parameters are available.
 
 | Name | Type | Required | Description |
 | ---- | ---- |:--------:| ----------- |
-| xPlexClientIdentifier | String |  | The unique identifier for the client application
+| clientID | String |  | The unique identifier for the client application
 This is used to track the client application and its usage
 (UUID, serial number, or other number unique per device)
  |
+| clientName | String |  | The clientName parameter. |
+| clientVersion | String |  | The clientVersion parameter. |
+| clientPlatform | String |  | The clientPlatform parameter. |
+| deviceName | String |  | The deviceName parameter. |
 
 
 ### Example
@@ -277,7 +281,7 @@ let response = try await client.plex.getServerResources(
     request: Operations.GetServerResourcesRequest(
         includeHttps: .one, 
         includeIPv6: .one, 
-        includeRelay: .one, 
+        includeRelay: .one
     )
 )
 

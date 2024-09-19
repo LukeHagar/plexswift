@@ -11,18 +11,18 @@ extension Operations {
         /// This is used to track the client application and its usage
         /// (UUID, serial number, or other number unique per device)
         /// 
-        public let xPlexClientIdentifier: String?
+        public let clientID: String?
 
         /// Creates an object with the specified parameters
         ///
         /// - Parameter pinID: The PinID to retrieve an access token for
-        /// - Parameter xPlexClientIdentifier: The unique identifier for the client application
+        /// - Parameter clientID: The unique identifier for the client application
         /// This is used to track the client application and its usage
         /// (UUID, serial number, or other number unique per device)
         /// 
         ///
-        public init(pinID: Int, xPlexClientIdentifier: String? = nil) {
+        public init(pinID: Int, clientID: String? = nil) {
             self.pinID = pinID
-            self.xPlexClientIdentifier = xPlexClientIdentifier
+            self.clientID = clientID
         }
     }}

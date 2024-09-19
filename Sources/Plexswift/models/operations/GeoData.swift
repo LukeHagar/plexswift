@@ -22,7 +22,7 @@ extension Operations {
         /// Indicates if the region has privacy restrictions.
         public let inPrivacyRestrictedRegion: Bool
         /// The postal code of the location.
-        public let postalCode: Int
+        public let postalCode: String
         /// The name of the primary administrative subdivision.
         public let subdivisions: String
         /// The time zone of the country.
@@ -42,7 +42,7 @@ extension Operations {
         /// - Parameter subdivisions: The name of the primary administrative subdivision.
         /// - Parameter timeZone: The time zone of the country.
         ///
-        public init(city: String, code: String, continentCode: String, coordinates: String, country: String, europeanUnionMember: Bool, inPrivacyRestrictedCountry: Bool, inPrivacyRestrictedRegion: Bool, postalCode: Int, subdivisions: String, timeZone: String) {
+        public init(city: String, code: String, continentCode: String, coordinates: String, country: String, europeanUnionMember: Bool, inPrivacyRestrictedCountry: Bool, inPrivacyRestrictedRegion: Bool, postalCode: String, subdivisions: String, timeZone: String) {
             self.city = city
             self.code = code
             self.continentCode = continentCode

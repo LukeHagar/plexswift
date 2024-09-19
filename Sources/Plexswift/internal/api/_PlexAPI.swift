@@ -294,7 +294,7 @@ private func handleGetServerResourcesResponse(response: Client.APIResponse) thro
 private func handleGetPinResponse(response: Client.APIResponse) throws -> Operations.GetPinResponse {
     let httpResponse = response.httpResponse
     
-    if httpResponse.statusCode == 200 { 
+    if httpResponse.statusCode == 201 { 
         if httpResponse.contentType.matchContentType(pattern: "application/json"), let data = response.data {
             do {
                 return .authPinContainer(try JSONDecoder().decode(Operations.GetPinAuthPinContainer.self, from: data))

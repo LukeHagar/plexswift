@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 5d77204e-e413-4fd0-a14a-bad3aee2247a
 management:
-  docChecksum: a6fee1797b2da7ccbaf7743772a40b56
+  docChecksum: 5bf578a672589649d8ed83c3927c50a6
   docVersion: 0.0.3
-  speakeasyVersion: 1.399.0
-  generationVersion: 2.415.8
-  releaseVersion: 0.6.2
-  configChecksum: a567cf3757451b3f535919ede5d4d2f5
+  speakeasyVersion: 1.399.2
+  generationVersion: 2.416.6
+  releaseVersion: 0.6.3
+  configChecksum: 2c841260186552c7e56b0c2f58acf626
   repoURL: https://github.com/LukeHagar/plexswift.git
 features:
   swift:
@@ -1340,7 +1340,7 @@ examples:
             european_union_member: true
             in_privacy_restricted_country: true
             in_privacy_restricted_region: true
-            postal_code: 802
+            postal_code: "802"
             subdivisions: Saint Thomas
             time_zone: America/St_Thomas
         "400":
@@ -1579,7 +1579,10 @@ examples:
     "":
       parameters:
         query:
+          X-Plex-Device: Linux
+          X-Plex-Platform: Chrome
           X-Plex-Product: Plex Web
+          X-Plex-Version: 4.133.0
       responses:
         "200":
           application/json:
@@ -1600,6 +1603,31 @@ examples:
               in_privacy_restricted_country: true
               in_privacy_restricted_region: true
               postal_code: 802
+              subdivisions: Saint Thomas
+              time_zone: America/St_Thomas
+            newRegistration: null
+            product: "0"
+            qr: https://plex.tv/api/v2/pins/qr/7RQZ
+            trusted: false
+        "201":
+          application/json:
+            authToken: null
+            clientIdentifier: string
+            code: 7RQZ
+            createdAt: "2024-07-16T17:03:05Z"
+            expiresAt: "2024-07-16T17:18:05Z"
+            expiresIn: 876
+            id: 308667304
+            location:
+              city: Amsterdam
+              code: VI
+              continent_code: NA
+              coordinates: 18.3381, -64.8941
+              country: United States Virgin Islands
+              european_union_member: true
+              in_privacy_restricted_country: true
+              in_privacy_restricted_region: true
+              postal_code: "802"
               subdivisions: Saint Thomas
               time_zone: America/St_Thomas
             newRegistration: null
@@ -1691,7 +1719,7 @@ examples:
     speakeasy-default-get-resized-photo:
       parameters:
         query:
-          blur: 4000
+          blur: 20
           height: 165
           minSize: 0
           opacity: 643869

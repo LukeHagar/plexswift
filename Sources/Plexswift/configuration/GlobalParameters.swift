@@ -6,19 +6,31 @@ import Foundation
 ///
 /// > Note: These parameters may be overridden by individual API operations
 public struct GlobalParameters {
-    public let xPlexClientIdentifier: String?
+    public let clientID: String?
+    public let clientName: String?
+    public let clientVersion: String?
+    public let clientPlatform: String?
+    public let deviceName: String?
 
     /// Creates an object with the given parameters
     ///
-    /// - Parameter xPlexClientIdentifier: The unique identifier for the client application
+    /// - Parameter clientID: The unique identifier for the client application
     /// This is used to track the client application and its usage
     /// (UUID, serial number, or other number unique per device)
     /// 
     ///
     public init(
-        xPlexClientIdentifier: String? = nil
+        clientID: String? = nil,
+        clientName: String? = nil,
+        clientVersion: String? = nil,
+        clientPlatform: String? = nil,
+        deviceName: String? = nil
     ) {
-        self.xPlexClientIdentifier = xPlexClientIdentifier
+        self.clientID = clientID
+        self.clientName = clientName
+        self.clientVersion = clientVersion
+        self.clientPlatform = clientPlatform
+        self.deviceName = deviceName
     }
 }
 
@@ -31,7 +43,11 @@ extension GlobalParameters: ParameterDefaults {
 
     public func defaultQueryParameter(for key: String) -> AnyValue? {
         switch key {
-        case "X-Plex-Client-Identifier": return xPlexClientIdentifier.map { AnyValue($0) }
+        case "ClientID": return clientID.map { AnyValue($0) }
+        case "ClientName": return clientName.map { AnyValue($0) }
+        case "ClientVersion": return clientVersion.map { AnyValue($0) }
+        case "ClientPlatform": return clientPlatform.map { AnyValue($0) }
+        case "DeviceName": return deviceName.map { AnyValue($0) }
         default: return nil
         }
     }

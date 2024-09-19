@@ -5,6 +5,11 @@ import Foundation
 extension Operations {
     /// A model object
     public struct GetServerResourcesRequest: APIValue {
+        /// The unique identifier for the client application
+        /// This is used to track the client application and its usage
+        /// (UUID, serial number, or other number unique per device)
+        /// 
+        public let clientID: String?
         /// Include Https entries in the results
         public let includeHttps: Operations.IncludeHttps?
         /// Include IPv6 entries in the results
@@ -13,28 +18,23 @@ extension Operations {
         /// E.g: https://10-0-0-25.bbf8e10c7fa20447cacee74cd9914cde.plex.direct:32400
         /// 
         public let includeRelay: Operations.IncludeRelay?
-        /// The unique identifier for the client application
-        /// This is used to track the client application and its usage
-        /// (UUID, serial number, or other number unique per device)
-        /// 
-        public let xPlexClientIdentifier: String?
 
         /// Creates an object with the specified parameters
         ///
+        /// - Parameter clientID: The unique identifier for the client application
+        /// This is used to track the client application and its usage
+        /// (UUID, serial number, or other number unique per device)
+        /// 
         /// - Parameter includeHttps: Include Https entries in the results
         /// - Parameter includeIPv6: Include IPv6 entries in the results
         /// - Parameter includeRelay: Include Relay addresses in the results 
         /// E.g: https://10-0-0-25.bbf8e10c7fa20447cacee74cd9914cde.plex.direct:32400
         /// 
-        /// - Parameter xPlexClientIdentifier: The unique identifier for the client application
-        /// This is used to track the client application and its usage
-        /// (UUID, serial number, or other number unique per device)
-        /// 
         ///
-        public init(includeHttps: Operations.IncludeHttps? = nil, includeIPv6: Operations.IncludeIPv6? = nil, includeRelay: Operations.IncludeRelay? = nil, xPlexClientIdentifier: String? = nil) {
+        public init(clientID: String? = nil, includeHttps: Operations.IncludeHttps? = nil, includeIPv6: Operations.IncludeIPv6? = nil, includeRelay: Operations.IncludeRelay? = nil) {
+            self.clientID = clientID
             self.includeHttps = includeHttps
             self.includeIPv6 = includeIPv6
             self.includeRelay = includeRelay
-            self.xPlexClientIdentifier = xPlexClientIdentifier
         }
     }}

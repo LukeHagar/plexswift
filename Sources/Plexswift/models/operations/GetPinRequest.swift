@@ -5,32 +5,38 @@ import Foundation
 extension Operations {
     /// A model object
     public struct GetPinRequest: APIValue {
+        /// The unique identifier for the client application
+        /// This is used to track the client application and its usage
+        /// (UUID, serial number, or other number unique per device)
+        /// 
+        public let clientID: String?
+        public let clientName: String?
+        public let clientPlatform: String?
+        public let clientVersion: String?
+        public let deviceName: String?
         /// Determines the kind of code returned by the API call
         /// Strong codes are used for Pin authentication flows
         /// Non-Strong codes are used for `Plex.tv/link`
         /// 
         public let strong: Bool?
-        /// The unique identifier for the client application
-        /// This is used to track the client application and its usage
-        /// (UUID, serial number, or other number unique per device)
-        /// 
-        public let xPlexClientIdentifier: String?
-        public let xPlexProduct: String?
 
         /// Creates an object with the specified parameters
         ///
+        /// - Parameter clientID: The unique identifier for the client application
+        /// This is used to track the client application and its usage
+        /// (UUID, serial number, or other number unique per device)
+        /// 
         /// - Parameter strong: Determines the kind of code returned by the API call
         /// Strong codes are used for Pin authentication flows
         /// Non-Strong codes are used for `Plex.tv/link`
         /// 
-        /// - Parameter xPlexClientIdentifier: The unique identifier for the client application
-        /// This is used to track the client application and its usage
-        /// (UUID, serial number, or other number unique per device)
-        /// 
         ///
-        public init(strong: Bool? = nil, xPlexClientIdentifier: String? = nil, xPlexProduct: String? = nil) {
+        public init(clientID: String? = nil, clientName: String? = nil, clientPlatform: String? = nil, clientVersion: String? = nil, deviceName: String? = nil, strong: Bool? = nil) {
+            self.clientID = clientID
+            self.clientName = clientName
+            self.clientPlatform = clientPlatform
+            self.clientVersion = clientVersion
+            self.deviceName = deviceName
             self.strong = strong
-            self.xPlexClientIdentifier = xPlexClientIdentifier
-            self.xPlexProduct = xPlexProduct
         }
     }}

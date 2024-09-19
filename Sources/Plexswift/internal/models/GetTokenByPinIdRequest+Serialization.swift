@@ -31,7 +31,7 @@ extension Operations.GetTokenByPinIdRequest: PathParameterSerializable {
 extension Operations.GetTokenByPinIdRequest: QueryParameterSerializable {
     func serializedQueryParameters(with parameterDefaults: ParameterDefaults?, formatOverride: SerializableFormat?) throws -> [QueryParameter] {
         let builder = QueryParameterBuilder()
-        try builder.addQueryParameters(from: xPlexClientIdentifier, named: "X-Plex-Client-Identifier", format: formatOverride ?? .query(style: .form, explode: true), parameterDefaults: parameterDefaults)
+        try builder.addQueryParameters(from: clientID, named: "X-Plex-Client-Identifier", format: formatOverride ?? .query(style: .form, explode: true), parameterDefaults: parameterDefaults)
         return builder.build()
     }
 }

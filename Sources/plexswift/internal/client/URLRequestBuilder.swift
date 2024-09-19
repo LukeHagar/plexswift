@@ -62,7 +62,7 @@ final class URLRequestBuilder: URLRequestConfiguration {
             urlRequest.setValue(contentType, forHTTPHeaderField: "Content-Type")
         }
 
-        urlRequest.setValue("speakeasy-sdk/swift 0.6.2 2.415.8 0.0.3 plexswift", forHTTPHeaderField: telemetryHeader.headerName)
+        urlRequest.setValue("speakeasy-sdk/swift 0.6.3 2.416.6 0.0.3 plexswift", forHTTPHeaderField: telemetryHeader.headerName)
 
         addSecurityParameters(to: &urlRequest)
 

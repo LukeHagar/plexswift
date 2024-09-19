@@ -21,9 +21,12 @@ extension Operations.GetPinRequest: Serializable {
 extension Operations.GetPinRequest: QueryParameterSerializable {
     func serializedQueryParameters(with parameterDefaults: ParameterDefaults?, formatOverride: SerializableFormat?) throws -> [QueryParameter] {
         let builder = QueryParameterBuilder()
+        try builder.addQueryParameters(from: clientID, named: "X-Plex-Client-Identifier", format: formatOverride ?? .query(style: .form, explode: true), parameterDefaults: parameterDefaults)
+        try builder.addQueryParameters(from: clientName, named: "X-Plex-Product", format: formatOverride ?? .query(style: .form, explode: true), parameterDefaults: parameterDefaults)
+        try builder.addQueryParameters(from: clientPlatform, named: "X-Plex-Platform", format: formatOverride ?? .query(style: .form, explode: true), parameterDefaults: parameterDefaults)
+        try builder.addQueryParameters(from: clientVersion, named: "X-Plex-Version", format: formatOverride ?? .query(style: .form, explode: true), parameterDefaults: parameterDefaults)
+        try builder.addQueryParameters(from: deviceName, named: "X-Plex-Device", format: formatOverride ?? .query(style: .form, explode: true), parameterDefaults: parameterDefaults)
         try builder.addQueryParameters(from: strong, named: "strong", format: formatOverride ?? .query(style: .form, explode: true), parameterDefaults: parameterDefaults)
-        try builder.addQueryParameters(from: xPlexClientIdentifier, named: "X-Plex-Client-Identifier", format: formatOverride ?? .query(style: .form, explode: true), parameterDefaults: parameterDefaults)
-        try builder.addQueryParameters(from: xPlexProduct, named: "X-Plex-Product", format: formatOverride ?? .query(style: .form, explode: true), parameterDefaults: parameterDefaults)
         return builder.build()
     }
 }

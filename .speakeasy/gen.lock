@@ -3,14 +3,14 @@ id: 5d77204e-e413-4fd0-a14a-bad3aee2247a
 management:
   docChecksum: 5bf578a672589649d8ed83c3927c50a6
   docVersion: 0.0.3
-  speakeasyVersion: 1.399.2
-  generationVersion: 2.416.6
-  releaseVersion: 0.6.3
-  configChecksum: 2c841260186552c7e56b0c2f58acf626
+  speakeasyVersion: 1.400.0
+  generationVersion: 2.420.2
+  releaseVersion: 0.6.4
+  configChecksum: a07a3c05b4eb6b8dc97de199085bb93d
   repoURL: https://github.com/LukeHagar/plexswift.git
 features:
   swift:
-    core: 3.2.13
+    core: 3.2.14
     deprecations: 2.81.2
     globalSecurity: 2.81.6
     globalServerURLs: 2.82.1
@@ -1194,6 +1194,7 @@ examples:
     speakeasy-default-get-server-resources:
       parameters:
         query:
+          X-Plex-Client-Identifier: gcgzw5rz2xovp84b4vha3a40
           includeHttps: 1
           includeIPv6: 1
           includeRelay: 1
@@ -1579,6 +1580,7 @@ examples:
     "":
       parameters:
         query:
+          X-Plex-Client-Identifier: gcgzw5rz2xovp84b4vha3a40
           X-Plex-Device: Linux
           X-Plex-Platform: Chrome
           X-Plex-Product: Plex Web
@@ -1719,7 +1721,7 @@ examples:
     speakeasy-default-get-resized-photo:
       parameters:
         query:
-          blur: 20
+          blur: 4000
           height: 165
           minSize: 0
           opacity: 643869
@@ -1998,7 +2000,8 @@ examples:
       parameters:
         path:
           pinID: 408895
-        query: {}
+        query:
+          X-Plex-Client-Identifier: gcgzw5rz2xovp84b4vha3a40
       responses:
         "404":
           application/json:
@@ -2020,7 +2023,8 @@ examples:
             country: US
             email: username@email.com
             emailOnlyAuth: false
-            entitlements: []
+            entitlements:
+              - '[]'
             experimentalFeatures: false
             friendlyName: friendlyUsername
             guest: false
@@ -2029,7 +2033,7 @@ examples:
             homeAdmin: false
             homeSize: 1
             id: 13692262
-            joinedAt: 1721154902
+            joinedAt: 1556281940
             locale: null
             mailingListActive: false
             mailingListStatus: unsubscribed
@@ -2045,7 +2049,7 @@ examples:
               mediaReviewsVisibility: 0
               watchedIndicator: "1"
             protected: false
-            rememberExpiresAt: 1722364046
+            rememberExpiresAt: 1556281940
             restricted: false
             roles:
               - string
@@ -2278,7 +2282,7 @@ examples:
       parameters:
         query:
           limit: 5
-          query: dylan
+          query: arnold
       responses:
         "400":
           application/json:
@@ -2301,6 +2305,9 @@ examples:
             errors: []
   post-users-sign-in-data:
     speakeasy-default-post-users-sign-in-data:
+      parameters:
+        query:
+          X-Plex-Client-Identifier: gcgzw5rz2xovp84b4vha3a40
       requestBody:
         application/x-www-form-urlencoded:
           login: username@email.com
@@ -2319,7 +2326,8 @@ examples:
             country: US
             email: username@email.com
             emailOnlyAuth: false
-            entitlements: []
+            entitlements:
+              - '[]'
             experimentalFeatures: false
             friendlyName: friendlyUsername
             guest: false
@@ -2328,7 +2336,7 @@ examples:
             homeAdmin: false
             homeSize: 1
             id: 13692262
-            joinedAt: 1721154902
+            joinedAt: 1556281940
             locale: null
             mailingListActive: false
             mailingListStatus: unsubscribed
@@ -2336,17 +2344,17 @@ examples:
             pastSubscriptions:
               - billing:
                   paymentMethodId: 569045
-                canConvert: "0"
-                canDowngrade: "0"
-                canReactivate: "0"
-                canUpgrade: "0"
-                canceled: "0"
-                endsAt: "1556281940"
-                gracePeriod: "0"
+                canConvert: false
+                canDowngrade: false
+                canReactivate: false
+                canUpgrade: false
+                canceled: false
+                endsAt: 1556281940
+                gracePeriod: false
                 id: string
                 mode: string
-                onHold: "0"
-                renewsAt: string
+                onHold: false
+                renewsAt: 1556281940
                 state: ended
                 transfer: string
                 type: plexpass
@@ -2361,7 +2369,7 @@ examples:
               mediaReviewsVisibility: 0
               watchedIndicator: "1"
             protected: false
-            rememberExpiresAt: 1722364046
+            rememberExpiresAt: 1556281940
             restricted: false
             roles:
               - string

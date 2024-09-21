@@ -45,7 +45,7 @@ extension Operations {
         public let homeSize: Int
         /// The Plex account ID
         public let id: Int
-        /// Unix epoch datetime
+        /// Unix epoch datetime in seconds
         public let joinedAt: Int
         /// The account locale
         public let locale: String
@@ -59,7 +59,7 @@ extension Operations {
         public let profile: Operations.PostUsersSignInDataUserProfile
         /// If the account has a Plex Home PIN enabled
         public let protected: Bool
-        /// Unix epoch datetime
+        /// Unix epoch datetime in seconds
         public let rememberExpiresAt: Int
         /// If the account is a Plex Home managed user
         public let restricted: Bool
@@ -109,13 +109,13 @@ extension Operations {
         /// - Parameter homeAdmin: If the account is the Plex Home admin
         /// - Parameter homeSize: The number of accounts in the Plex Home
         /// - Parameter id: The Plex account ID
-        /// - Parameter joinedAt: Unix epoch datetime
+        /// - Parameter joinedAt: Unix epoch datetime in seconds
         /// - Parameter locale: The account locale
         /// - Parameter mailingListActive: If you are subscribed to the Plex newsletter
         /// - Parameter mailingListStatus: Your current mailing list status
         /// - Parameter maxHomeSize: The maximum number of accounts allowed in the Plex Home
         /// - Parameter protected: If the account has a Plex Home PIN enabled
-        /// - Parameter rememberExpiresAt: Unix epoch datetime
+        /// - Parameter rememberExpiresAt: Unix epoch datetime in seconds
         /// - Parameter restricted: If the account is a Plex Home managed user
         /// - Parameter scrobbleTypes: Unknown
         /// - Parameter subscription: If the account’s Plex Pass subscription is active

@@ -5,6 +5,14 @@ import Foundation
 extension Operations {
     /// A model object
     public struct GetLibraryItemsMetadata {
+        public let duration: Int
+        public let guid: String
+        public let key: String
+        public let media: [Operations.GetLibraryItemsMedia]
+        public let ratingKey: String
+        public let title: String
+        public let type: String
+        public let year: Int
         public let addedAt: Int?
         public let art: String?
         @DecimalSerialized
@@ -15,7 +23,6 @@ extension Operations {
         public let contentRating: String?
         public let country: [Operations.GetLibraryItemsCountry]?
         public let director: [Operations.GetLibraryItemsDirector]?
-        public let duration: Int?
         public let genre: [Operations.GetLibraryItemsGenre]?
         public let grandparentArt: String?
         public let grandparentGuid: String?
@@ -24,14 +31,14 @@ extension Operations {
         public let grandparentTheme: String?
         public let grandparentThumb: String?
         public let grandparentTitle: String?
-        public let guid: String?
         public let hasPremiumExtras: String?
         public let hasPremiumPrimaryExtra: String?
         public let index: Int?
-        public let key: String?
         public let lastViewedAt: Int?
         public let leafCount: Int?
-        public let media: [Operations.GetLibraryItemsMedia]?
+        /// The Guid object is only included in the response if the `includeGuids` parameter is set to `1`.
+        /// 
+        public let mediaGuid: [Operations.MediaGuid]?
         @DateOnly
         public private(set) var originallyAvailableAt: Date?
         public let originalTitle: String?
@@ -48,7 +55,6 @@ extension Operations {
         @DecimalSerialized
         public private(set) var rating: Double?
         public let ratingImage: String?
-        public let ratingKey: String?
         public let role: [Operations.GetLibraryItemsRole]?
         public let skipCount: Int?
         public let studio: String?
@@ -56,20 +62,27 @@ extension Operations {
         public let tagline: String?
         public let theme: String?
         public let thumb: String?
-        public let title: String?
         public let titleSort: String?
-        public let type: String?
         public let updatedAt: Int?
         public let viewCount: Int?
         public let viewedLeafCount: Int?
         public let viewOffset: Int?
         public let writer: [Operations.GetLibraryItemsWriter]?
-        public let year: Int?
 
         /// Creates an object with the specified parameters
         ///
+        /// - Parameter mediaGuid: The Guid object is only included in the response if the `includeGuids` parameter is set to `1`.
+        /// 
         ///
-        public init(addedAt: Int? = nil, art: String? = nil, audienceRating: Double? = nil, audienceRatingImage: String? = nil, chapterSource: String? = nil, childCount: Int? = nil, contentRating: String? = nil, country: [Operations.GetLibraryItemsCountry]? = nil, director: [Operations.GetLibraryItemsDirector]? = nil, duration: Int? = nil, genre: [Operations.GetLibraryItemsGenre]? = nil, grandparentArt: String? = nil, grandparentGuid: String? = nil, grandparentKey: String? = nil, grandparentRatingKey: String? = nil, grandparentTheme: String? = nil, grandparentThumb: String? = nil, grandparentTitle: String? = nil, guid: String? = nil, hasPremiumExtras: String? = nil, hasPremiumPrimaryExtra: String? = nil, index: Int? = nil, key: String? = nil, lastViewedAt: Int? = nil, leafCount: Int? = nil, media: [Operations.GetLibraryItemsMedia]? = nil, originallyAvailableAt: Date? = nil, originalTitle: String? = nil, parentGuid: String? = nil, parentIndex: Int? = nil, parentKey: String? = nil, parentRatingKey: String? = nil, parentStudio: String? = nil, parentTheme: String? = nil, parentThumb: String? = nil, parentTitle: String? = nil, parentYear: Int? = nil, primaryExtraKey: String? = nil, rating: Double? = nil, ratingImage: String? = nil, ratingKey: String? = nil, role: [Operations.GetLibraryItemsRole]? = nil, skipCount: Int? = nil, studio: String? = nil, summary: String? = nil, tagline: String? = nil, theme: String? = nil, thumb: String? = nil, title: String? = nil, titleSort: String? = nil, type: String? = nil, updatedAt: Int? = nil, viewCount: Int? = nil, viewedLeafCount: Int? = nil, viewOffset: Int? = nil, writer: [Operations.GetLibraryItemsWriter]? = nil, year: Int? = nil) {
+        public init(duration: Int, guid: String, key: String, media: [Operations.GetLibraryItemsMedia], ratingKey: String, title: String, type: String, year: Int, addedAt: Int? = nil, art: String? = nil, audienceRating: Double? = nil, audienceRatingImage: String? = nil, chapterSource: String? = nil, childCount: Int? = nil, contentRating: String? = nil, country: [Operations.GetLibraryItemsCountry]? = nil, director: [Operations.GetLibraryItemsDirector]? = nil, genre: [Operations.GetLibraryItemsGenre]? = nil, grandparentArt: String? = nil, grandparentGuid: String? = nil, grandparentKey: String? = nil, grandparentRatingKey: String? = nil, grandparentTheme: String? = nil, grandparentThumb: String? = nil, grandparentTitle: String? = nil, hasPremiumExtras: String? = nil, hasPremiumPrimaryExtra: String? = nil, index: Int? = nil, lastViewedAt: Int? = nil, leafCount: Int? = nil, mediaGuid: [Operations.MediaGuid]? = nil, originallyAvailableAt: Date? = nil, originalTitle: String? = nil, parentGuid: String? = nil, parentIndex: Int? = nil, parentKey: String? = nil, parentRatingKey: String? = nil, parentStudio: String? = nil, parentTheme: String? = nil, parentThumb: String? = nil, parentTitle: String? = nil, parentYear: Int? = nil, primaryExtraKey: String? = nil, rating: Double? = nil, ratingImage: String? = nil, role: [Operations.GetLibraryItemsRole]? = nil, skipCount: Int? = nil, studio: String? = nil, summary: String? = nil, tagline: String? = nil, theme: String? = nil, thumb: String? = nil, titleSort: String? = nil, updatedAt: Int? = nil, viewCount: Int? = nil, viewedLeafCount: Int? = nil, viewOffset: Int? = nil, writer: [Operations.GetLibraryItemsWriter]? = nil) {
+            self.duration = duration
+            self.guid = guid
+            self.key = key
+            self.media = media
+            self.ratingKey = ratingKey
+            self.title = title
+            self.type = type
+            self.year = year
             self.addedAt = addedAt
             self.art = art
             self._audienceRating = DecimalSerialized<Double?>(wrappedValue: audienceRating)
@@ -79,7 +92,6 @@ extension Operations {
             self.contentRating = contentRating
             self.country = country
             self.director = director
-            self.duration = duration
             self.genre = genre
             self.grandparentArt = grandparentArt
             self.grandparentGuid = grandparentGuid
@@ -88,14 +100,12 @@ extension Operations {
             self.grandparentTheme = grandparentTheme
             self.grandparentThumb = grandparentThumb
             self.grandparentTitle = grandparentTitle
-            self.guid = guid
             self.hasPremiumExtras = hasPremiumExtras
             self.hasPremiumPrimaryExtra = hasPremiumPrimaryExtra
             self.index = index
-            self.key = key
             self.lastViewedAt = lastViewedAt
             self.leafCount = leafCount
-            self.media = media
+            self.mediaGuid = mediaGuid
             self._originallyAvailableAt = DateOnly<Date?>(wrappedValue: originallyAvailableAt)
             self.originalTitle = originalTitle
             self.parentGuid = parentGuid
@@ -110,7 +120,6 @@ extension Operations {
             self.primaryExtraKey = primaryExtraKey
             self._rating = DecimalSerialized<Double?>(wrappedValue: rating)
             self.ratingImage = ratingImage
-            self.ratingKey = ratingKey
             self.role = role
             self.skipCount = skipCount
             self.studio = studio
@@ -118,20 +127,25 @@ extension Operations {
             self.tagline = tagline
             self.theme = theme
             self.thumb = thumb
-            self.title = title
             self.titleSort = titleSort
-            self.type = type
             self.updatedAt = updatedAt
             self.viewCount = viewCount
             self.viewedLeafCount = viewedLeafCount
             self.viewOffset = viewOffset
             self.writer = writer
-            self.year = year
         }
     }}
 
 extension Operations.GetLibraryItemsMetadata: Codable {
     enum CodingKeys: String, CodingKey {
+        case duration
+        case guid
+        case key
+        case media = "Media"
+        case ratingKey
+        case title
+        case type
+        case year
         case addedAt
         case art
         case audienceRating
@@ -141,7 +155,6 @@ extension Operations.GetLibraryItemsMetadata: Codable {
         case contentRating
         case country = "Country"
         case director = "Director"
-        case duration
         case genre = "Genre"
         case grandparentArt
         case grandparentGuid
@@ -150,14 +163,12 @@ extension Operations.GetLibraryItemsMetadata: Codable {
         case grandparentTheme
         case grandparentThumb
         case grandparentTitle
-        case guid
         case hasPremiumExtras
         case hasPremiumPrimaryExtra
         case index
-        case key
         case lastViewedAt
         case leafCount
-        case media = "Media"
+        case mediaGuid = "Guid"
         case originallyAvailableAt
         case originalTitle
         case parentGuid
@@ -172,7 +183,6 @@ extension Operations.GetLibraryItemsMetadata: Codable {
         case primaryExtraKey
         case rating
         case ratingImage
-        case ratingKey
         case role = "Role"
         case skipCount
         case studio
@@ -180,19 +190,24 @@ extension Operations.GetLibraryItemsMetadata: Codable {
         case tagline
         case theme
         case thumb
-        case title
         case titleSort
-        case type
         case updatedAt
         case viewCount
         case viewedLeafCount
         case viewOffset
         case writer = "Writer"
-        case year
     }
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
+        self.duration = try container.decode(Int.self, forKey: .duration)
+        self.guid = try container.decode(String.self, forKey: .guid)
+        self.key = try container.decode(String.self, forKey: .key)
+        self.media = try container.decode([Operations.GetLibraryItemsMedia].self, forKey: .media)
+        self.ratingKey = try container.decode(String.self, forKey: .ratingKey)
+        self.title = try container.decode(String.self, forKey: .title)
+        self.type = try container.decode(String.self, forKey: .type)
+        self.year = try container.decode(Int.self, forKey: .year)
         self.addedAt = try container.decodeIfPresent(Int.self, forKey: .addedAt)
         self.art = try container.decodeIfPresent(String.self, forKey: .art)
         self._audienceRating = try container.decodeIfPresent(DecimalSerialized<Double?>.self, forKey: .audienceRating) ?? DecimalSerialized<Double?>(wrappedValue: nil)
@@ -202,7 +217,6 @@ extension Operations.GetLibraryItemsMetadata: Codable {
         self.contentRating = try container.decodeIfPresent(String.self, forKey: .contentRating)
         self.country = try container.decodeIfPresent([Operations.GetLibraryItemsCountry].self, forKey: .country)
         self.director = try container.decodeIfPresent([Operations.GetLibraryItemsDirector].self, forKey: .director)
-        self.duration = try container.decodeIfPresent(Int.self, forKey: .duration)
         self.genre = try container.decodeIfPresent([Operations.GetLibraryItemsGenre].self, forKey: .genre)
         self.grandparentArt = try container.decodeIfPresent(String.self, forKey: .grandparentArt)
         self.grandparentGuid = try container.decodeIfPresent(String.self, forKey: .grandparentGuid)
@@ -211,14 +225,12 @@ extension Operations.GetLibraryItemsMetadata: Codable {
         self.grandparentTheme = try container.decodeIfPresent(String.self, forKey: .grandparentTheme)
         self.grandparentThumb = try container.decodeIfPresent(String.self, forKey: .grandparentThumb)
         self.grandparentTitle = try container.decodeIfPresent(String.self, forKey: .grandparentTitle)
-        self.guid = try container.decodeIfPresent(String.self, forKey: .guid)
         self.hasPremiumExtras = try container.decodeIfPresent(String.self, forKey: .hasPremiumExtras)
         self.hasPremiumPrimaryExtra = try container.decodeIfPresent(String.self, forKey: .hasPremiumPrimaryExtra)
         self.index = try container.decodeIfPresent(Int.self, forKey: .index)
-        self.key = try container.decodeIfPresent(String.self, forKey: .key)
         self.lastViewedAt = try container.decodeIfPresent(Int.self, forKey: .lastViewedAt)
         self.leafCount = try container.decodeIfPresent(Int.self, forKey: .leafCount)
-        self.media = try container.decodeIfPresent([Operations.GetLibraryItemsMedia].self, forKey: .media)
+        self.mediaGuid = try container.decodeIfPresent([Operations.MediaGuid].self, forKey: .mediaGuid)
         self._originallyAvailableAt = try container.decodeIfPresent(DateOnly<Date?>.self, forKey: .originallyAvailableAt) ?? DateOnly<Date?>(wrappedValue: nil)
         self.originalTitle = try container.decodeIfPresent(String.self, forKey: .originalTitle)
         self.parentGuid = try container.decodeIfPresent(String.self, forKey: .parentGuid)
@@ -233,7 +245,6 @@ extension Operations.GetLibraryItemsMetadata: Codable {
         self.primaryExtraKey = try container.decodeIfPresent(String.self, forKey: .primaryExtraKey)
         self._rating = try container.decodeIfPresent(DecimalSerialized<Double?>.self, forKey: .rating) ?? DecimalSerialized<Double?>(wrappedValue: nil)
         self.ratingImage = try container.decodeIfPresent(String.self, forKey: .ratingImage)
-        self.ratingKey = try container.decodeIfPresent(String.self, forKey: .ratingKey)
         self.role = try container.decodeIfPresent([Operations.GetLibraryItemsRole].self, forKey: .role)
         self.skipCount = try container.decodeIfPresent(Int.self, forKey: .skipCount)
         self.studio = try container.decodeIfPresent(String.self, forKey: .studio)
@@ -241,19 +252,24 @@ extension Operations.GetLibraryItemsMetadata: Codable {
         self.tagline = try container.decodeIfPresent(String.self, forKey: .tagline)
         self.theme = try container.decodeIfPresent(String.self, forKey: .theme)
         self.thumb = try container.decodeIfPresent(String.self, forKey: .thumb)
-        self.title = try container.decodeIfPresent(String.self, forKey: .title)
         self.titleSort = try container.decodeIfPresent(String.self, forKey: .titleSort)
-        self.type = try container.decodeIfPresent(String.self, forKey: .type)
         self.updatedAt = try container.decodeIfPresent(Int.self, forKey: .updatedAt)
         self.viewCount = try container.decodeIfPresent(Int.self, forKey: .viewCount)
         self.viewedLeafCount = try container.decodeIfPresent(Int.self, forKey: .viewedLeafCount)
         self.viewOffset = try container.decodeIfPresent(Int.self, forKey: .viewOffset)
         self.writer = try container.decodeIfPresent([Operations.GetLibraryItemsWriter].self, forKey: .writer)
-        self.year = try container.decodeIfPresent(Int.self, forKey: .year)
     }
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(self.duration, forKey: .duration)
+        try container.encode(self.guid, forKey: .guid)
+        try container.encode(self.key, forKey: .key)
+        try container.encode(self.media, forKey: .media)
+        try container.encode(self.ratingKey, forKey: .ratingKey)
+        try container.encode(self.title, forKey: .title)
+        try container.encode(self.type, forKey: .type)
+        try container.encode(self.year, forKey: .year)
         try container.encodeIfPresent(self.addedAt, forKey: .addedAt)
         try container.encodeIfPresent(self.art, forKey: .art)
         if self.audienceRating != nil {
@@ -265,7 +281,6 @@ extension Operations.GetLibraryItemsMetadata: Codable {
         try container.encodeIfPresent(self.contentRating, forKey: .contentRating)
         try container.encodeIfPresent(self.country, forKey: .country)
         try container.encodeIfPresent(self.director, forKey: .director)
-        try container.encodeIfPresent(self.duration, forKey: .duration)
         try container.encodeIfPresent(self.genre, forKey: .genre)
         try container.encodeIfPresent(self.grandparentArt, forKey: .grandparentArt)
         try container.encodeIfPresent(self.grandparentGuid, forKey: .grandparentGuid)
@@ -274,14 +289,12 @@ extension Operations.GetLibraryItemsMetadata: Codable {
         try container.encodeIfPresent(self.grandparentTheme, forKey: .grandparentTheme)
         try container.encodeIfPresent(self.grandparentThumb, forKey: .grandparentThumb)
         try container.encodeIfPresent(self.grandparentTitle, forKey: .grandparentTitle)
-        try container.encodeIfPresent(self.guid, forKey: .guid)
         try container.encodeIfPresent(self.hasPremiumExtras, forKey: .hasPremiumExtras)
         try container.encodeIfPresent(self.hasPremiumPrimaryExtra, forKey: .hasPremiumPrimaryExtra)
         try container.encodeIfPresent(self.index, forKey: .index)
-        try container.encodeIfPresent(self.key, forKey: .key)
         try container.encodeIfPresent(self.lastViewedAt, forKey: .lastViewedAt)
         try container.encodeIfPresent(self.leafCount, forKey: .leafCount)
-        try container.encodeIfPresent(self.media, forKey: .media)
+        try container.encodeIfPresent(self.mediaGuid, forKey: .mediaGuid)
         if self.originallyAvailableAt != nil {
             try container.encode(self._originallyAvailableAt, forKey: .originallyAvailableAt)
         }
@@ -300,7 +313,6 @@ extension Operations.GetLibraryItemsMetadata: Codable {
             try container.encode(self._rating, forKey: .rating)
         }
         try container.encodeIfPresent(self.ratingImage, forKey: .ratingImage)
-        try container.encodeIfPresent(self.ratingKey, forKey: .ratingKey)
         try container.encodeIfPresent(self.role, forKey: .role)
         try container.encodeIfPresent(self.skipCount, forKey: .skipCount)
         try container.encodeIfPresent(self.studio, forKey: .studio)
@@ -308,15 +320,12 @@ extension Operations.GetLibraryItemsMetadata: Codable {
         try container.encodeIfPresent(self.tagline, forKey: .tagline)
         try container.encodeIfPresent(self.theme, forKey: .theme)
         try container.encodeIfPresent(self.thumb, forKey: .thumb)
-        try container.encodeIfPresent(self.title, forKey: .title)
         try container.encodeIfPresent(self.titleSort, forKey: .titleSort)
-        try container.encodeIfPresent(self.type, forKey: .type)
         try container.encodeIfPresent(self.updatedAt, forKey: .updatedAt)
         try container.encodeIfPresent(self.viewCount, forKey: .viewCount)
         try container.encodeIfPresent(self.viewedLeafCount, forKey: .viewedLeafCount)
         try container.encodeIfPresent(self.viewOffset, forKey: .viewOffset)
         try container.encodeIfPresent(self.writer, forKey: .writer)
-        try container.encodeIfPresent(self.year, forKey: .year)
     }
 }
 

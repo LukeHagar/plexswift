@@ -5,6 +5,6 @@ import Foundation
 extension Operations {
     /// Include Https entries in the results
     public enum IncludeHttps: Int, Codable, APIValue {
-        case zero = 0
-        case one = 1
+        case disable = 0
+        case enable = 1
     }}

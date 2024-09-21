@@ -5,38 +5,38 @@ import Foundation
 extension Operations {
     /// A model object
     public struct GetAllLibrariesDirectory {
-        public let agent: String?
-        public let allowSync: Bool?
-        public let art: String?
-        public let composite: String?
-        public let content: Bool?
-        public let contentChangedAt: Int?
-        /// Unix epoch datetime
-        public let createdAt: Int?
-        public let directory: Bool?
-        public let filters: Bool?
-        public let hidden: Int?
-        public let key: String?
-        public let language: String?
-        public let location: [Operations.Location]?
-        public let refreshing: Bool?
-        /// Unix epoch datetime
-        public let scannedAt: Int?
-        public let scanner: String?
-        public let thumb: String?
-        public let title: String?
-        public let type: String?
-        /// Unix epoch datetime
-        public let updatedAt: Int?
-        public let uuid: String?
+        public let agent: String
+        public let allowSync: Bool
+        public let art: String
+        public let composite: String
+        public let content: Bool
+        public let contentChangedAt: Int
+        /// Unix epoch datetime in seconds
+        public let createdAt: Int
+        public let directory: Bool
+        public let filters: Bool
+        public let hidden: Int
+        public let key: String
+        public let language: String
+        public let location: [Operations.Location]
+        public let refreshing: Bool
+        /// Unix epoch datetime in seconds
+        public let scannedAt: Int
+        public let scanner: String
+        public let thumb: String
+        public let title: String
+        public let type: String
+        /// Unix epoch datetime in seconds
+        public let updatedAt: Int
+        public let uuid: String
 
         /// Creates an object with the specified parameters
         ///
-        /// - Parameter createdAt: Unix epoch datetime
-        /// - Parameter scannedAt: Unix epoch datetime
-        /// - Parameter updatedAt: Unix epoch datetime
+        /// - Parameter createdAt: Unix epoch datetime in seconds
+        /// - Parameter scannedAt: Unix epoch datetime in seconds
+        /// - Parameter updatedAt: Unix epoch datetime in seconds
         ///
-        public init(agent: String? = nil, allowSync: Bool? = nil, art: String? = nil, composite: String? = nil, content: Bool? = nil, contentChangedAt: Int? = nil, createdAt: Int? = nil, directory: Bool? = nil, filters: Bool? = nil, hidden: Int? = nil, key: String? = nil, language: String? = nil, location: [Operations.Location]? = nil, refreshing: Bool? = nil, scannedAt: Int? = nil, scanner: String? = nil, thumb: String? = nil, title: String? = nil, type: String? = nil, updatedAt: Int? = nil, uuid: String? = nil) {
+        public init(agent: String, allowSync: Bool, art: String, composite: String, content: Bool, contentChangedAt: Int, createdAt: Int, directory: Bool, filters: Bool, hidden: Int, key: String, language: String, location: [Operations.Location], refreshing: Bool, scannedAt: Int, scanner: String, thumb: String, title: String, type: String, updatedAt: Int, uuid: String) {
             self.agent = agent
             self.allowSync = allowSync
             self.art = art

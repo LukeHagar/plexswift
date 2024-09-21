@@ -5,6 +5,6 @@ import Foundation
 extension Operations {
     /// Include IPv6 entries in the results
     public enum IncludeIPv6: Int, Codable, APIValue {
-        case zero = 0
-        case one = 1
+        case disable = 0
+        case enable = 1
     }}

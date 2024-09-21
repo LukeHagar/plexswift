@@ -3,7 +3,8 @@
 import Foundation
 
 extension Operations {
-    public enum PostUsersSignInDataWatchedIndicator: String, Codable, APIValue {
-        case zero = "0"
-        case one = "1"
+    /// Whether or not media watched indicators are enabled (little orange dot on media)
+    public enum PostUsersSignInDataWatchedIndicator: Int, Codable, APIValue {
+        case disable = 0
+        case enable = 1
     }}

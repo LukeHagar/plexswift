@@ -11,8 +11,8 @@ extension Operations {
     /// E.g. A movie library will not return anything with type 3 as there are no seasons for movie libraries
     /// 
     public enum QueryParamType: Int, Codable, APIValue {
-        case one = 1
-        case two = 2
-        case three = 3
-        case four = 4
+        case movie = 1
+        case show = 2
+        case season = 3
+        case episode = 4
     }}

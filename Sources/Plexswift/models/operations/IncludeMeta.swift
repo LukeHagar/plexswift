@@ -6,6 +6,6 @@ extension Operations {
     /// Adds the Meta object to the response
     /// 
     public enum IncludeMeta: Int, Codable, APIValue {
-        case zero = 0
-        case one = 1
+        case disable = 0
+        case enable = 1
     }}

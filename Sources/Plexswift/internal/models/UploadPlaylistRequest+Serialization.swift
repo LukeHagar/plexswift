@@ -23,6 +23,7 @@ extension Operations.UploadPlaylistRequest: QueryParameterSerializable {
         let builder = QueryParameterBuilder()
         try builder.addQueryParameters(from: force, named: "force", format: formatOverride ?? .query(style: .form, explode: true), parameterDefaults: parameterDefaults)
         try builder.addQueryParameters(from: path, named: "path", format: formatOverride ?? .query(style: .form, explode: true), parameterDefaults: parameterDefaults)
+        try builder.addQueryParameters(from: sectionID, named: "sectionID", format: formatOverride ?? .query(style: .form, explode: true), parameterDefaults: parameterDefaults)
         return builder.build()
     }
 }

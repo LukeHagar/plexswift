@@ -3,7 +3,8 @@
 import Foundation
 
 extension Operations {
+    /// Whether or not the account has media reviews visibility enabled
     public enum PostUsersSignInDataMediaReviewsVisibility: Int, Codable, APIValue {
-        case zero = 0
-        case one = 1
+        case disable = 0
+        case enable = 1
     }}

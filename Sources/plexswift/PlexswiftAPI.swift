@@ -1239,11 +1239,11 @@ public protocol AuthenticationAPI {
 
     /// Sign in user with username and password and return user data with Plex authentication token
     /// 
-    /// - Parameter request: A ``Operations/PostUsersSignInDataRequest`` object describing the input to the API operation
+    /// - Parameter request: A ``Operations/PostUsersSignInDataRequestBody`` object describing the input to the API operation
     /// - Parameter server: An optional server override to use for this operation
     /// - Returns: A ``Operations/PostUsersSignInDataResponse`` object describing the result of the API operation
     /// - Throws: An error of type ``PlexswiftError``
-    func postUsersSignInData(request: Operations.PostUsersSignInDataRequest, server: AuthenticationServers.PostUsersSignInData?) async throws -> Response<Operations.PostUsersSignInDataResponse>
+    func postUsersSignInData(request: Operations.PostUsersSignInDataRequestBody, server: AuthenticationServers.PostUsersSignInData?) async throws -> Response<Operations.PostUsersSignInDataResponse>
 }
 
 // MARK: - StatisticsAPI

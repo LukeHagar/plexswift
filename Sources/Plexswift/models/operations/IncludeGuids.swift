@@ -6,6 +6,6 @@ extension Operations {
     /// Adds the Guids object to the response
     /// 
     public enum IncludeGuids: Int, Codable, APIValue {
-        case zero = 0
-        case one = 1
+        case disable = 0
+        case enable = 1
     }}

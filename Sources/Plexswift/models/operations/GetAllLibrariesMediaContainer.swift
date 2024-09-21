@@ -6,27 +6,27 @@ extension Operations {
     /// A model object
     public struct GetAllLibrariesMediaContainer {
         public let allowSync: Bool
+        public let directory: [Operations.GetAllLibrariesDirectory]
         public let size: Int
         public let title1: String
-        public let directory: [Operations.GetAllLibrariesDirectory]?
 
         /// Creates an object with the specified parameters
         ///
         ///
-        public init(allowSync: Bool, size: Int, title1: String, directory: [Operations.GetAllLibrariesDirectory]? = nil) {
+        public init(allowSync: Bool, directory: [Operations.GetAllLibrariesDirectory], size: Int, title1: String) {
             self.allowSync = allowSync
+            self.directory = directory
             self.size = size
             self.title1 = title1
-            self.directory = directory
         }
     }}
 
 extension Operations.GetAllLibrariesMediaContainer: Codable {
     enum CodingKeys: String, CodingKey {
         case allowSync
+        case directory = "Directory"
         case size
         case title1
-        case directory = "Directory"
     }
 }
 

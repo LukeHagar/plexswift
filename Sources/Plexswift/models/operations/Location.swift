@@ -5,13 +5,13 @@ import Foundation
 extension Operations {
     /// A model object
     public struct Location {
-        public let id: Int?
-        public let path: String?
+        public let id: Int
+        public let path: String
 
         /// Creates an object with the specified parameters
         ///
         ///
-        public init(id: Int? = nil, path: String? = nil) {
+        public init(id: Int, path: String) {
             self.id = id
             self.path = path
         }

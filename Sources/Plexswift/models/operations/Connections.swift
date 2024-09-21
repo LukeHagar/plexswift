@@ -5,23 +5,36 @@ import Foundation
 extension Operations {
     /// A model object
     public struct Connections {
+        /// The (ip) address or domain name used for the connection
         public let address: String
+        /// If the connection is using IPv6
         public let iPv6: Bool
+        /// If the connection is local address
         public let local: Bool
-        @DecimalSerialized
-        public private(set) var port: Double
-        public let `protocol`: String
+        /// The port used for the connection
+        public let port: Int
+        /// The protocol used for the connection (http, https, etc)
+        public let `protocol`: Operations.`Protocol`
+        /// If the connection is relayed through plex.direct
         public let relay: Bool
+        /// The full URI of the connection
         public let uri: String
 
         /// Creates an object with the specified parameters
         ///
+        /// - Parameter address: The (ip) address or domain name used for the connection
+        /// - Parameter iPv6: If the connection is using IPv6
+        /// - Parameter local: If the connection is local address
+        /// - Parameter port: The port used for the connection
+        /// - Parameter `protocol`: The protocol used for the connection (http, https, etc)
+        /// - Parameter relay: If the connection is relayed through plex.direct
+        /// - Parameter uri: The full URI of the connection
         ///
-        public init(address: String, iPv6: Bool, local: Bool, port: Double, `protocol`: String, relay: Bool, uri: String) {
+        public init(address: String, iPv6: Bool, local: Bool, port: Int, `protocol`: Operations.`Protocol`, relay: Bool, uri: String) {
             self.address = address
             self.iPv6 = iPv6
             self.local = local
-            self._port = DecimalSerialized<Double>(wrappedValue: port)
+            self.port = port
             self.`protocol` = `protocol`
             self.relay = relay
             self.uri = uri
@@ -38,32 +51,5 @@ extension Operations.Connections: Codable {
         case relay
         case uri
     }
-
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        self.address = try container.decode(String.self, forKey: .address)
-        self.iPv6 = try container.decode(Bool.self, forKey: .iPv6)
-        self.local = try container.decode(Bool.self, forKey: .local)
-        self._port = try container.decode(DecimalSerialized<Double>.self, forKey: .port)
-        self.`protocol` = try container.decode(String.self, forKey: .`protocol`)
-        self.relay = try container.decode(Bool.self, forKey: .relay)
-        self.uri = try container.decode(String.self, forKey: .uri)
-    }
-
-    public func encode(to encoder: Encoder) throws {
-        var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encode(self.address, forKey: .address)
-        try container.encode(self.iPv6, forKey: .iPv6)
-        try container.encode(self.local, forKey: .local)
-        try container.encode(self._port, forKey: .port)
-        try container.encode(self.`protocol`, forKey: .`protocol`)
-        try container.encode(self.relay, forKey: .relay)
-        try container.encode(self.uri, forKey: .uri)
-    }
 }
 
-extension Operations.Connections {
-    var portWrapper: DecimalSerialized<Double> {
-        return _port
-    }
-}

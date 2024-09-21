@@ -1,17 +1,18 @@
 lockVersion: 2.0.0
 id: 5d77204e-e413-4fd0-a14a-bad3aee2247a
 management:
-  docChecksum: 5bf578a672589649d8ed83c3927c50a6
+  docChecksum: 1b63d7c28734a44b0339f405b186b290
   docVersion: 0.0.3
-  speakeasyVersion: 1.400.0
-  generationVersion: 2.420.2
-  releaseVersion: 0.6.4
-  configChecksum: a07a3c05b4eb6b8dc97de199085bb93d
+  speakeasyVersion: 1.401.2
+  generationVersion: 2.421.3
+  releaseVersion: 0.7.0
+  configChecksum: 328d2e540df29d38d8fd33e39ea9a7bc
   repoURL: https://github.com/LukeHagar/plexswift.git
 features:
   swift:
     core: 3.2.14
     deprecations: 2.81.2
+    enums: 2.81.1
     globalSecurity: 2.81.6
     globalServerURLs: 2.82.1
     globals: 2.81.3
@@ -127,11 +128,11 @@ generatedFiles:
   - Sources/Plexswift/internal/models/PostUsersSignInDataFeatures+Serialization.swift
   - Sources/Plexswift/internal/models/PostUsersSignInDataMailingListStatus+Serialization.swift
   - Sources/Plexswift/internal/models/PostUsersSignInDataMediaReviewsVisibility+Serialization.swift
-  - Sources/Plexswift/internal/models/PostUsersSignInDataRequest+Serialization.swift
   - Sources/Plexswift/internal/models/PostUsersSignInDataRequestBody+Serialization.swift
   - Sources/Plexswift/internal/models/PostUsersSignInDataState+Serialization.swift
   - Sources/Plexswift/internal/models/PostUsersSignInDataStatus+Serialization.swift
   - Sources/Plexswift/internal/models/PostUsersSignInDataWatchedIndicator+Serialization.swift
+  - Sources/Plexswift/internal/models/Protocol+Serialization.swift
   - Sources/Plexswift/internal/models/QueryParamFilter+Serialization.swift
   - Sources/Plexswift/internal/models/QueryParamForce+Serialization.swift
   - Sources/Plexswift/internal/models/QueryParamOnlyTransient+Serialization.swift
@@ -353,16 +354,22 @@ generatedFiles:
   - Sources/Plexswift/models/operations/GetLibraryItemsCountry.swift
   - Sources/Plexswift/models/operations/GetLibraryItemsDirector.swift
   - Sources/Plexswift/models/operations/GetLibraryItemsErrors.swift
+  - Sources/Plexswift/models/operations/GetLibraryItemsField.swift
+  - Sources/Plexswift/models/operations/GetLibraryItemsFieldType.swift
+  - Sources/Plexswift/models/operations/GetLibraryItemsFilter.swift
   - Sources/Plexswift/models/operations/GetLibraryItemsGenre.swift
   - Sources/Plexswift/models/operations/GetLibraryItemsLibraryErrors.swift
   - Sources/Plexswift/models/operations/GetLibraryItemsMedia.swift
   - Sources/Plexswift/models/operations/GetLibraryItemsMediaContainer.swift
   - Sources/Plexswift/models/operations/GetLibraryItemsMetadata.swift
+  - Sources/Plexswift/models/operations/GetLibraryItemsOperator.swift
   - Sources/Plexswift/models/operations/GetLibraryItemsPart.swift
   - Sources/Plexswift/models/operations/GetLibraryItemsRequest.swift
   - Sources/Plexswift/models/operations/GetLibraryItemsResponse.swift
   - Sources/Plexswift/models/operations/GetLibraryItemsResponseBody.swift
   - Sources/Plexswift/models/operations/GetLibraryItemsRole.swift
+  - Sources/Plexswift/models/operations/GetLibraryItemsSort.swift
+  - Sources/Plexswift/models/operations/GetLibraryItemsType.swift
   - Sources/Plexswift/models/operations/GetLibraryItemsUnauthorized.swift
   - Sources/Plexswift/models/operations/GetLibraryItemsWriter.swift
   - Sources/Plexswift/models/operations/GetMediaProvidersBadRequest.swift
@@ -705,8 +712,10 @@ generatedFiles:
   - Sources/Plexswift/models/operations/MarkUnplayedUnauthorized.swift
   - Sources/Plexswift/models/operations/Media.swift
   - Sources/Plexswift/models/operations/MediaContainer.swift
+  - Sources/Plexswift/models/operations/MediaGuid.swift
   - Sources/Plexswift/models/operations/MediaProvider.swift
   - Sources/Plexswift/models/operations/MediaReviewsVisibility.swift
+  - Sources/Plexswift/models/operations/Meta.swift
   - Sources/Plexswift/models/operations/Metadata.swift
   - Sources/Plexswift/models/operations/MinSize.swift
   - Sources/Plexswift/models/operations/MyPlex.swift
@@ -744,7 +753,6 @@ generatedFiles:
   - Sources/Plexswift/models/operations/PostUsersSignInDataFeatures.swift
   - Sources/Plexswift/models/operations/PostUsersSignInDataMailingListStatus.swift
   - Sources/Plexswift/models/operations/PostUsersSignInDataMediaReviewsVisibility.swift
-  - Sources/Plexswift/models/operations/PostUsersSignInDataRequest.swift
   - Sources/Plexswift/models/operations/PostUsersSignInDataRequestBody.swift
   - Sources/Plexswift/models/operations/PostUsersSignInDataResponse.swift
   - Sources/Plexswift/models/operations/PostUsersSignInDataServices.swift
@@ -756,6 +764,7 @@ generatedFiles:
   - Sources/Plexswift/models/operations/PostUsersSignInDataUserProfile.swift
   - Sources/Plexswift/models/operations/PostUsersSignInDataWatchedIndicator.swift
   - Sources/Plexswift/models/operations/Producer.swift
+  - Sources/Plexswift/models/operations/Protocol.swift
   - Sources/Plexswift/models/operations/Provider.swift
   - Sources/Plexswift/models/operations/QueryParamFilter.swift
   - Sources/Plexswift/models/operations/QueryParamForce.swift
@@ -1096,6 +1105,310 @@ examples:
         "401":
           application/json:
             errors: []
+    speakeasy-default-get-library-items:
+      parameters:
+        path:
+          sectionKey: 9518
+          tag: edition
+        query:
+          X-Plex-Container-Size: 50
+          X-Plex-Container-Start: 0
+          includeGuids: 1
+          includeMeta: 1
+          type: 2
+      responses:
+        "200":
+          application/json:
+            MediaContainer:
+              Meta:
+                FieldType:
+                  - Operator:
+                      - key: =
+                        title: is
+                    type: tag
+                  - Operator:
+                      - key: =
+                        title: is
+                      - key: =
+                        title: is
+                    type: tag
+                  - Operator:
+                      - key: =
+                        title: is
+                      - key: =
+                        title: is
+                    type: tag
+                Type:
+                  - Field:
+                      - key: show.title
+                        subType: rating
+                        title: Show Title
+                        type: string
+                      - key: show.title
+                        subType: rating
+                        title: Show Title
+                        type: string
+                    Filter: []
+                    Sort: []
+                    active: false
+                    key: /library/sections/2/all?type=2
+                    title: TV Shows
+                    type: show
+                  - Field:
+                      - key: show.title
+                        subType: rating
+                        title: Show Title
+                        type: string
+                      - key: show.title
+                        subType: rating
+                        title: Show Title
+                        type: string
+                      - key: show.title
+                        subType: rating
+                        title: Show Title
+                        type: string
+                    Filter:
+                      - filter: genre
+                        filterType: string
+                        key: /library/sections/2/genre?type=2
+                        title: Genre
+                        type: filter
+                      - filter: genre
+                        filterType: string
+                        key: /library/sections/2/genre?type=2
+                        title: Genre
+                        type: filter
+                      - filter: genre
+                        filterType: string
+                        key: /library/sections/2/genre?type=2
+                        title: Genre
+                        type: filter
+                    Sort: []
+                    active: false
+                    key: /library/sections/2/all?type=2
+                    title: TV Shows
+                    type: show
+              Metadata:
+                - Country:
+                    - tag: United States of America
+                    - tag: United States of America
+                  Director:
+                    - tag: James Cameron
+                    - tag: James Cameron
+                  Genre:
+                    - tag: Adventure
+                    - tag: Adventure
+                    - tag: Adventure
+                  Guid:
+                    - id: imdb://tt13015952
+                  Media:
+                    - Part:
+                        - container: mkv
+                          duration: 11558112
+                          file: /movies/Avatar The Way of Water (2022)/Avatar.The.Way.of.Water.2022.2160p.WEB-DL.DDP5.1.Atmos.DV.HDR10.HEVC-CMRG.mkv
+                          id: 119542
+                          key: /library/parts/119542/1680457526/file.mkv
+                          size: 36158371307
+                          videoProfile: main 10
+                        - container: mkv
+                          duration: 11558112
+                          file: /movies/Avatar The Way of Water (2022)/Avatar.The.Way.of.Water.2022.2160p.WEB-DL.DDP5.1.Atmos.DV.HDR10.HEVC-CMRG.mkv
+                          id: 119542
+                          key: /library/parts/119542/1680457526/file.mkv
+                          size: 36158371307
+                          videoProfile: main 10
+                        - container: mkv
+                          duration: 11558112
+                          file: /movies/Avatar The Way of Water (2022)/Avatar.The.Way.of.Water.2022.2160p.WEB-DL.DDP5.1.Atmos.DV.HDR10.HEVC-CMRG.mkv
+                          id: 119542
+                          key: /library/parts/119542/1680457526/file.mkv
+                          size: 36158371307
+                          videoProfile: main 10
+                      aspectRatio: 1.85
+                      audioChannels: 6
+                      audioCodec: eac3
+                      bitrate: 25025
+                      container: mkv
+                      duration: 11558112
+                      height: 2072
+                      id: 119534
+                      videoCodec: hevc
+                      videoFrameRate: 24p
+                      videoProfile: main 10
+                      videoResolution: 4k
+                      width: 3840
+                  Role:
+                    - tag: Sigourney Weaver
+                    - tag: Sigourney Weaver
+                    - tag: Sigourney Weaver
+                  Writer:
+                    - tag: James Cameron
+                  addedAt: 1680457607
+                  art: /library/metadata/58683/art/1703239236
+                  audienceRating: 9.2
+                  audienceRatingImage: rottentomatoes://image.rating.upright
+                  chapterSource: media
+                  childCount: 1
+                  contentRating: PG-13
+                  duration: 11558112
+                  grandparentArt: /library/metadata/66/art/1705716261
+                  grandparentGuid: plex://show/5d9c081b170e24001f2a7be4
+                  grandparentKey: /library/metadata/66
+                  grandparentRatingKey: "66"
+                  grandparentTheme: /library/metadata/66/theme/1705716261
+                  grandparentThumb: /library/metadata/66/thumb/1705716261
+                  grandparentTitle: Caprica
+                  guid: plex://movie/5d7768ba96b655001fdc0408
+                  hasPremiumExtras: "1"
+                  hasPremiumPrimaryExtra: "1"
+                  index: 1
+                  key: /library/metadata/58683
+                  lastViewedAt: 1682752242
+                  leafCount: 14
+                  originalTitle: 映画 ブラッククローバー 魔法帝の剣
+                  originallyAvailableAt: "2022-12-14T00:00:00Z"
+                  parentGuid: plex://show/5d9c081b170e24001f2a7be4
+                  parentIndex: 1
+                  parentKey: /library/metadata/66
+                  parentRatingKey: "66"
+                  parentStudio: UCP
+                  parentTheme: /library/metadata/66/theme/1705716261
+                  parentThumb: /library/metadata/66/thumb/1705716261
+                  parentTitle: Caprica
+                  parentYear: 2010
+                  primaryExtraKey: /library/metadata/58684
+                  rating: 7.6
+                  ratingImage: rottentomatoes://image.rating.ripe
+                  ratingKey: "58683"
+                  skipCount: 1
+                  studio: 20th Century Studios
+                  summary: Jake Sully lives with his newfound family formed on the extrasolar moon Pandora. Once a familiar threat returns to finish what was previously started, Jake must work with Neytiri and the army of the Na'vi race to protect their home.
+                  tagline: Return to Pandora.
+                  theme: /library/metadata/1/theme/1705636920
+                  thumb: /library/metadata/58683/thumb/1703239236
+                  title: 'Avatar: The Way of Water'
+                  titleSort: Whale
+                  type: movie
+                  updatedAt: 1703239236
+                  viewCount: 1
+                  viewOffset: 5222500
+                  viewedLeafCount: 0
+                  year: 2022
+                - Country:
+                    - tag: United States of America
+                  Director:
+                    - tag: James Cameron
+                    - tag: James Cameron
+                    - tag: James Cameron
+                  Genre: []
+                  Guid:
+                    - id: imdb://tt13015952
+                  Media:
+                    - Part:
+                        - container: mkv
+                          duration: 11558112
+                          file: /movies/Avatar The Way of Water (2022)/Avatar.The.Way.of.Water.2022.2160p.WEB-DL.DDP5.1.Atmos.DV.HDR10.HEVC-CMRG.mkv
+                          id: 119542
+                          key: /library/parts/119542/1680457526/file.mkv
+                          size: 36158371307
+                          videoProfile: main 10
+                      aspectRatio: 1.85
+                      audioChannels: 6
+                      audioCodec: eac3
+                      bitrate: 25025
+                      container: mkv
+                      duration: 11558112
+                      height: 2072
+                      id: 119534
+                      videoCodec: hevc
+                      videoFrameRate: 24p
+                      videoProfile: main 10
+                      videoResolution: 4k
+                      width: 3840
+                  Role:
+                    - tag: Sigourney Weaver
+                    - tag: Sigourney Weaver
+                    - tag: Sigourney Weaver
+                  Writer:
+                    - tag: James Cameron
+                  addedAt: 1680457607
+                  art: /library/metadata/58683/art/1703239236
+                  audienceRating: 9.2
+                  audienceRatingImage: rottentomatoes://image.rating.upright
+                  chapterSource: media
+                  childCount: 1
+                  contentRating: PG-13
+                  duration: 11558112
+                  grandparentArt: /library/metadata/66/art/1705716261
+                  grandparentGuid: plex://show/5d9c081b170e24001f2a7be4
+                  grandparentKey: /library/metadata/66
+                  grandparentRatingKey: "66"
+                  grandparentTheme: /library/metadata/66/theme/1705716261
+                  grandparentThumb: /library/metadata/66/thumb/1705716261
+                  grandparentTitle: Caprica
+                  guid: plex://movie/5d7768ba96b655001fdc0408
+                  hasPremiumExtras: "1"
+                  hasPremiumPrimaryExtra: "1"
+                  index: 1
+                  key: /library/metadata/58683
+                  lastViewedAt: 1682752242
+                  leafCount: 14
+                  originalTitle: 映画 ブラッククローバー 魔法帝の剣
+                  originallyAvailableAt: "2022-12-14T00:00:00Z"
+                  parentGuid: plex://show/5d9c081b170e24001f2a7be4
+                  parentIndex: 1
+                  parentKey: /library/metadata/66
+                  parentRatingKey: "66"
+                  parentStudio: UCP
+                  parentTheme: /library/metadata/66/theme/1705716261
+                  parentThumb: /library/metadata/66/thumb/1705716261
+                  parentTitle: Caprica
+                  parentYear: 2010
+                  primaryExtraKey: /library/metadata/58684
+                  rating: 7.6
+                  ratingImage: rottentomatoes://image.rating.ripe
+                  ratingKey: "58683"
+                  skipCount: 1
+                  studio: 20th Century Studios
+                  summary: Jake Sully lives with his newfound family formed on the extrasolar moon Pandora. Once a familiar threat returns to finish what was previously started, Jake must work with Neytiri and the army of the Na'vi race to protect their home.
+                  tagline: Return to Pandora.
+                  theme: /library/metadata/1/theme/1705636920
+                  thumb: /library/metadata/58683/thumb/1703239236
+                  title: 'Avatar: The Way of Water'
+                  titleSort: Whale
+                  type: movie
+                  updatedAt: 1703239236
+                  viewCount: 1
+                  viewOffset: 5222500
+                  viewedLeafCount: 0
+                  year: 2022
+              allowSync: true
+              art: /:/resources/movie-fanart.jpg
+              identifier: com.plexapp.plugins.library
+              librarySectionID: <value>
+              librarySectionTitle: Movies
+              librarySectionUUID: 322a231a-b7f7-49f5-920f-14c61199cd30
+              mediaTagPrefix: /system/bundle/media/flags/
+              mediaTagVersion: 1701731894
+              mixedParents: true
+              size: 70
+              thumb: /:/resources/movie.png
+              title1: Movies
+              title2: Recently Released
+              viewGroup: movie
+              viewMode: 65592
+        "400":
+          application/json:
+            errors:
+              - code: 1000
+                message: X-Plex-Client-Identifier is missing
+                status: 400
+        "401":
+          application/json:
+            errors:
+              - code: 1001
+                message: User could not be authenticated
+                status: 401
   get-media-providers:
     speakeasy-default-get-media-providers:
       parameters:
@@ -1721,7 +2034,7 @@ examples:
     speakeasy-default-get-resized-photo:
       parameters:
         query:
-          blur: 4000
+          blur: 0
           height: 165
           minSize: 0
           opacity: 643869
@@ -1947,7 +2260,7 @@ examples:
     speakeasy-default-get-source-connection-information:
       parameters:
         query:
-          source: server://client-identifier
+          source: provider://provider-identifier
       responses:
         "400":
           application/json:
@@ -2041,13 +2354,13 @@ examples:
             pin: string
             profile:
               autoSelectAudio: true
-              autoSelectSubtitle: "1"
+              autoSelectSubtitle: 1
               defaultAudioLanguage: ja
-              defaultSubtitleAccessibility: "1"
-              defaultSubtitleForced: "0"
+              defaultSubtitleAccessibility: 1
+              defaultSubtitleForced: 1
               defaultSubtitleLanguage: en
-              mediaReviewsVisibility: 0
-              watchedIndicator: "1"
+              mediaReviewsVisibility: 1
+              watchedIndicator: 1
             protected: false
             rememberExpiresAt: 1556281940
             restricted: false
@@ -2282,7 +2595,7 @@ examples:
       parameters:
         query:
           limit: 5
-          query: arnold
+          query: dylan
       responses:
         "400":
           application/json:
@@ -2343,7 +2656,7 @@ examples:
             maxHomeSize: 15
             pastSubscriptions:
               - billing:
-                  paymentMethodId: 569045
+                  paymentMethodId: 481656
                 canConvert: false
                 canDowngrade: false
                 canReactivate: false
@@ -2361,13 +2674,13 @@ examples:
             pin: string
             profile:
               autoSelectAudio: true
-              autoSelectSubtitle: "1"
+              autoSelectSubtitle: 1
               defaultAudioLanguage: ja
-              defaultSubtitleAccessibility: "1"
-              defaultSubtitleForced: "0"
+              defaultSubtitleAccessibility: 1
+              defaultSubtitleForced: 1
               defaultSubtitleLanguage: en
-              mediaReviewsVisibility: 0
-              watchedIndicator: "1"
+              mediaReviewsVisibility: 1
+              watchedIndicator: 1
             protected: false
             rememberExpiresAt: 1556281940
             restricted: false
@@ -2524,6 +2837,7 @@ examples:
         query:
           force: 0
           path: /home/barkley/playlist.m3u
+          sectionID: 1
       responses:
         "400":
           application/json:

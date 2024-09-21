@@ -4,7 +4,7 @@ import Foundation
 
 extension Operations {
     /// The auto-select subtitle mode (0 = Manually selected, 1 = Shown with foreign audio, 2 = Always enabled)
-    public enum PostUsersSignInDataAutoSelectSubtitle: String, Codable, APIValue {
-        case zero = "0"
-        case one = "1"
+    public enum PostUsersSignInDataAutoSelectSubtitle: Int, Codable, APIValue {
+        case disable = 0
+        case enable = 1
     }}

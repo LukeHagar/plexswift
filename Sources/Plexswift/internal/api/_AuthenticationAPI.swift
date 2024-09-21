@@ -38,7 +38,7 @@ class _AuthenticationAPI: AuthenticationAPI {
         )
     }
     
-    public func postUsersSignInData(request: Operations.PostUsersSignInDataRequest, server: AuthenticationServers.PostUsersSignInData?) async throws -> Response<Operations.PostUsersSignInDataResponse> {
+    public func postUsersSignInData(request: Operations.PostUsersSignInDataRequestBody, server: AuthenticationServers.PostUsersSignInData?) async throws -> Response<Operations.PostUsersSignInDataResponse> {
         return try await client.makeRequest(
             with: try server?.server() ?? AuthenticationServers.PostUsersSignInData.default(),
             configureRequest: { configuration in
@@ -72,12 +72,11 @@ private func configureGetTokenDetailsRequest(with configuration: URLRequestConfi
     configuration.telemetryHeader = .userAgent
 }
 
-private func configurePostUsersSignInDataRequest(with configuration: URLRequestConfiguration, request: Operations.PostUsersSignInDataRequest) throws {
+private func configurePostUsersSignInDataRequest(with configuration: URLRequestConfiguration, request: Operations.PostUsersSignInDataRequestBody) throws {
     configuration.path = "/users/signin"
     configuration.method = .post
-    configuration.queryParameterSerializable = request
     configuration.contentType = "application/x-www-form-urlencoded"
-    configuration.body = try serializeFormData(with: request.requestBody)
+    configuration.body = try serializeFormData(with: request)
     configuration.telemetryHeader = .userAgent
 }
 

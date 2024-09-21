@@ -5,37 +5,31 @@ import Foundation
 extension Operations {
     /// A model object
     public struct UserProfile {
+        /// If the account has automatically select audio and subtitle tracks enabled
+        public let autoSelectAudio: Bool
+        public let autoSelectSubtitle: Operations.AutoSelectSubtitle
         /// The preferred audio language for the account
         public let defaultAudioLanguage: String
+        public let defaultSubtitleAccessibility: Operations.DefaultSubtitleAccessibility
+        public let defaultSubtitleForced: Operations.DefaultSubtitleForced
         /// The preferred subtitle language for the account
         public let defaultSubtitleLanguage: String
-        /// If the account has automatically select audio and subtitle tracks enabled
-        public let autoSelectAudio: Bool?
-        /// The auto-select subtitle mode (0 = Manually selected, 1 = Shown with foreign audio, 2 = Always enabled)
-        public let autoSelectSubtitle: Operations.AutoSelectSubtitle?
-        /// The subtitles for the deaf or hard-of-hearing (SDH) searches mode (0 = Prefer non-SDH subtitles, 1 = Prefer SDH subtitles, 2 = Only show SDH subtitles, 3 = Only shown non-SDH subtitles)
-        public let defaultSubtitleAccessibility: Operations.DefaultSubtitleAccessibility?
-        /// The forced subtitles searches mode (0 = Prefer non-forced subtitles, 1 = Prefer forced subtitles, 2 = Only show forced subtitles, 3 = Only show non-forced subtitles)
-        public let defaultSubtitleForced: Operations.DefaultSubtitleForced?
-        public let mediaReviewsVisibility: Operations.MediaReviewsVisibility?
-        public let watchedIndicator: Operations.WatchedIndicator?
+        public let mediaReviewsVisibility: Operations.MediaReviewsVisibility
+        public let watchedIndicator: Operations.WatchedIndicator
 
         /// Creates an object with the specified parameters
         ///
+        /// - Parameter autoSelectAudio: If the account has automatically select audio and subtitle tracks enabled
         /// - Parameter defaultAudioLanguage: The preferred audio language for the account
         /// - Parameter defaultSubtitleLanguage: The preferred subtitle language for the account
-        /// - Parameter autoSelectAudio: If the account has automatically select audio and subtitle tracks enabled
-        /// - Parameter autoSelectSubtitle: The auto-select subtitle mode (0 = Manually selected, 1 = Shown with foreign audio, 2 = Always enabled)
-        /// - Parameter defaultSubtitleAccessibility: The subtitles for the deaf or hard-of-hearing (SDH) searches mode (0 = Prefer non-SDH subtitles, 1 = Prefer SDH subtitles, 2 = Only show SDH subtitles, 3 = Only shown non-SDH subtitles)
-        /// - Parameter defaultSubtitleForced: The forced subtitles searches mode (0 = Prefer non-forced subtitles, 1 = Prefer forced subtitles, 2 = Only show forced subtitles, 3 = Only show non-forced subtitles)
         ///
-        public init(defaultAudioLanguage: String, defaultSubtitleLanguage: String, autoSelectAudio: Bool? = nil, autoSelectSubtitle: Operations.AutoSelectSubtitle? = nil, defaultSubtitleAccessibility: Operations.DefaultSubtitleAccessibility? = nil, defaultSubtitleForced: Operations.DefaultSubtitleForced? = nil, mediaReviewsVisibility: Operations.MediaReviewsVisibility? = nil, watchedIndicator: Operations.WatchedIndicator? = nil) {
-            self.defaultAudioLanguage = defaultAudioLanguage
-            self.defaultSubtitleLanguage = defaultSubtitleLanguage
+        public init(autoSelectAudio: Bool, autoSelectSubtitle: Operations.AutoSelectSubtitle, defaultAudioLanguage: String, defaultSubtitleAccessibility: Operations.DefaultSubtitleAccessibility, defaultSubtitleForced: Operations.DefaultSubtitleForced, defaultSubtitleLanguage: String, mediaReviewsVisibility: Operations.MediaReviewsVisibility, watchedIndicator: Operations.WatchedIndicator) {
             self.autoSelectAudio = autoSelectAudio
             self.autoSelectSubtitle = autoSelectSubtitle
+            self.defaultAudioLanguage = defaultAudioLanguage
             self.defaultSubtitleAccessibility = defaultSubtitleAccessibility
             self.defaultSubtitleForced = defaultSubtitleForced
+            self.defaultSubtitleLanguage = defaultSubtitleLanguage
             self.mediaReviewsVisibility = mediaReviewsVisibility
             self.watchedIndicator = watchedIndicator
         }
@@ -43,12 +37,12 @@ extension Operations {
 
 extension Operations.UserProfile: Codable {
     enum CodingKeys: String, CodingKey {
-        case defaultAudioLanguage
-        case defaultSubtitleLanguage
         case autoSelectAudio
         case autoSelectSubtitle
+        case defaultAudioLanguage
         case defaultSubtitleAccessibility
         case defaultSubtitleForced
+        case defaultSubtitleLanguage
         case mediaReviewsVisibility
         case watchedIndicator
     }

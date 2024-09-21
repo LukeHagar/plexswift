@@ -5,37 +5,31 @@ import Foundation
 extension Operations {
     /// A model object
     public struct PostUsersSignInDataUserProfile {
+        /// If the account has automatically select audio and subtitle tracks enabled
+        public let autoSelectAudio: Bool
+        public let autoSelectSubtitle: Operations.PostUsersSignInDataAutoSelectSubtitle
         /// The preferred audio language for the account
         public let defaultAudioLanguage: String
+        public let defaultSubtitleAccessibility: Operations.PostUsersSignInDataDefaultSubtitleAccessibility
+        public let defaultSubtitleForced: Operations.PostUsersSignInDataDefaultSubtitleForced
         /// The preferred subtitle language for the account
         public let defaultSubtitleLanguage: String
-        /// If the account has automatically select audio and subtitle tracks enabled
-        public let autoSelectAudio: Bool?
-        /// The auto-select subtitle mode (0 = Manually selected, 1 = Shown with foreign audio, 2 = Always enabled)
-        public let autoSelectSubtitle: Operations.PostUsersSignInDataAutoSelectSubtitle?
-        /// The subtitles for the deaf or hard-of-hearing (SDH) searches mode (0 = Prefer non-SDH subtitles, 1 = Prefer SDH subtitles, 2 = Only show SDH subtitles, 3 = Only shown non-SDH subtitles)
-        public let defaultSubtitleAccessibility: Operations.PostUsersSignInDataDefaultSubtitleAccessibility?
-        /// The forced subtitles searches mode (0 = Prefer non-forced subtitles, 1 = Prefer forced subtitles, 2 = Only show forced subtitles, 3 = Only show non-forced subtitles)
-        public let defaultSubtitleForced: Operations.PostUsersSignInDataDefaultSubtitleForced?
-        public let mediaReviewsVisibility: Operations.PostUsersSignInDataMediaReviewsVisibility?
-        public let watchedIndicator: Operations.PostUsersSignInDataWatchedIndicator?
+        public let mediaReviewsVisibility: Operations.PostUsersSignInDataMediaReviewsVisibility
+        public let watchedIndicator: Operations.PostUsersSignInDataWatchedIndicator
 
         /// Creates an object with the specified parameters
         ///
+        /// - Parameter autoSelectAudio: If the account has automatically select audio and subtitle tracks enabled
         /// - Parameter defaultAudioLanguage: The preferred audio language for the account
         /// - Parameter defaultSubtitleLanguage: The preferred subtitle language for the account
-        /// - Parameter autoSelectAudio: If the account has automatically select audio and subtitle tracks enabled
-        /// - Parameter autoSelectSubtitle: The auto-select subtitle mode (0 = Manually selected, 1 = Shown with foreign audio, 2 = Always enabled)
-        /// - Parameter defaultSubtitleAccessibility: The subtitles for the deaf or hard-of-hearing (SDH) searches mode (0 = Prefer non-SDH subtitles, 1 = Prefer SDH subtitles, 2 = Only show SDH subtitles, 3 = Only shown non-SDH subtitles)
-        /// - Parameter defaultSubtitleForced: The forced subtitles searches mode (0 = Prefer non-forced subtitles, 1 = Prefer forced subtitles, 2 = Only show forced subtitles, 3 = Only show non-forced subtitles)
         ///
-        public init(defaultAudioLanguage: String, defaultSubtitleLanguage: String, autoSelectAudio: Bool? = nil, autoSelectSubtitle: Operations.PostUsersSignInDataAutoSelectSubtitle? = nil, defaultSubtitleAccessibility: Operations.PostUsersSignInDataDefaultSubtitleAccessibility? = nil, defaultSubtitleForced: Operations.PostUsersSignInDataDefaultSubtitleForced? = nil, mediaReviewsVisibility: Operations.PostUsersSignInDataMediaReviewsVisibility? = nil, watchedIndicator: Operations.PostUsersSignInDataWatchedIndicator? = nil) {
-            self.defaultAudioLanguage = defaultAudioLanguage
-            self.defaultSubtitleLanguage = defaultSubtitleLanguage
+        public init(autoSelectAudio: Bool, autoSelectSubtitle: Operations.PostUsersSignInDataAutoSelectSubtitle, defaultAudioLanguage: String, defaultSubtitleAccessibility: Operations.PostUsersSignInDataDefaultSubtitleAccessibility, defaultSubtitleForced: Operations.PostUsersSignInDataDefaultSubtitleForced, defaultSubtitleLanguage: String, mediaReviewsVisibility: Operations.PostUsersSignInDataMediaReviewsVisibility, watchedIndicator: Operations.PostUsersSignInDataWatchedIndicator) {
             self.autoSelectAudio = autoSelectAudio
             self.autoSelectSubtitle = autoSelectSubtitle
+            self.defaultAudioLanguage = defaultAudioLanguage
             self.defaultSubtitleAccessibility = defaultSubtitleAccessibility
             self.defaultSubtitleForced = defaultSubtitleForced
+            self.defaultSubtitleLanguage = defaultSubtitleLanguage
             self.mediaReviewsVisibility = mediaReviewsVisibility
             self.watchedIndicator = watchedIndicator
         }
@@ -43,12 +37,12 @@ extension Operations {
 
 extension Operations.PostUsersSignInDataUserProfile: Codable {
     enum CodingKeys: String, CodingKey {
-        case defaultAudioLanguage
-        case defaultSubtitleLanguage
         case autoSelectAudio
         case autoSelectSubtitle
+        case defaultAudioLanguage
         case defaultSubtitleAccessibility
         case defaultSubtitleForced
+        case defaultSubtitleLanguage
         case mediaReviewsVisibility
         case watchedIndicator
     }

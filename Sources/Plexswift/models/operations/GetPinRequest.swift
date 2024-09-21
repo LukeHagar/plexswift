@@ -5,11 +5,6 @@ import Foundation
 extension Operations {
     /// A model object
     public struct GetPinRequest: APIValue {
-        /// The unique identifier for the client application
-        /// This is used to track the client application and its usage
-        /// (UUID, serial number, or other number unique per device)
-        /// 
-        public let clientID: String?
         public let clientName: String?
         public let clientPlatform: String?
         public let clientVersion: String?
@@ -22,17 +17,12 @@ extension Operations {
 
         /// Creates an object with the specified parameters
         ///
-        /// - Parameter clientID: The unique identifier for the client application
-        /// This is used to track the client application and its usage
-        /// (UUID, serial number, or other number unique per device)
-        /// 
         /// - Parameter strong: Determines the kind of code returned by the API call
         /// Strong codes are used for Pin authentication flows
         /// Non-Strong codes are used for `Plex.tv/link`
         /// 
         ///
-        public init(clientID: String? = nil, clientName: String? = nil, clientPlatform: String? = nil, clientVersion: String? = nil, deviceName: String? = nil, strong: Bool? = nil) {
-            self.clientID = clientID
+        public init(clientName: String? = nil, clientPlatform: String? = nil, clientVersion: String? = nil, deviceName: String? = nil, strong: Bool? = nil) {
             self.clientName = clientName
             self.clientPlatform = clientPlatform
             self.clientVersion = clientVersion

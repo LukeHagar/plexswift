@@ -19,6 +19,8 @@ extension Operations {
         /// The GUID of each playlist is based on the filename.
         /// 
         public let path: String
+        /// Possibly the section ID to upload the playlist to, we are not certain.
+        public let sectionID: Int
 
         /// Creates an object with the specified parameters
         ///
@@ -34,9 +36,11 @@ extension Operations {
         /// If the `path` argument is a file, that file will be used to create a new playlist, with the name based on the filename of the file that created it. 
         /// The GUID of each playlist is based on the filename.
         /// 
+        /// - Parameter sectionID: Possibly the section ID to upload the playlist to, we are not certain.
         ///
-        public init(force: Operations.QueryParamForce, path: String) {
+        public init(force: Operations.QueryParamForce, path: String, sectionID: Int) {
             self.force = force
             self.path = path
+            self.sectionID = sectionID
         }
     }}

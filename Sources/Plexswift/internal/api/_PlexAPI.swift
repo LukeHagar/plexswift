@@ -125,7 +125,6 @@ private func configureGetTokenByPinIdRequest(with configuration: URLRequestConfi
     configuration.path = "/pins/{pinID}"
     configuration.method = .get
     configuration.pathParameterSerializable = request
-    configuration.queryParameterSerializable = request
     configuration.telemetryHeader = .userAgent
 }
 

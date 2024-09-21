@@ -5,12 +5,12 @@ import Foundation
 extension Operations {
     /// The libraries available on the Server
     public struct GetAllLibrariesResponseBody {
-        public let mediaContainer: Operations.GetAllLibrariesMediaContainer?
+        public let mediaContainer: Operations.GetAllLibrariesMediaContainer
 
         /// Creates an object with the specified parameters
         ///
         ///
-        public init(mediaContainer: Operations.GetAllLibrariesMediaContainer? = nil) {
+        public init(mediaContainer: Operations.GetAllLibrariesMediaContainer) {
             self.mediaContainer = mediaContainer
         }
     }}

@@ -8,15 +8,9 @@ extension Operations.GetTokenByPinIdRequest: Serializable {
         switch format {
         case .path:
             return try serializePathParameterSerializable(self, with: format)
-        case .query:
-            return try serializeQueryParameterSerializable(self, with: format)
-        case .header, .multipart, .form:
+        case .query, .header, .multipart, .form:
             throw SerializationError.invalidSerializationParameter(type: "Operations.GetTokenByPinIdRequest", format: format.formatDescription)
         }
-    }
-
-    func serializeQueryParameters(with format: SerializableFormat) throws -> [QueryParameter] {
-        return try serializedQueryParameters(with: nil, formatOverride: format)
     }
 }
 
@@ -25,13 +19,5 @@ extension Operations.GetTokenByPinIdRequest: PathParameterSerializable {
         return [
             "pinID": try pinID.serialize(with: formatOverride ?? .path(explode: false)),
         ].compactMapValues { $0 }
-    }
-}
-
-extension Operations.GetTokenByPinIdRequest: QueryParameterSerializable {
-    func serializedQueryParameters(with parameterDefaults: ParameterDefaults?, formatOverride: SerializableFormat?) throws -> [QueryParameter] {
-        let builder = QueryParameterBuilder()
-        try builder.addQueryParameters(from: clientID, named: "X-Plex-Client-Identifier", format: formatOverride ?? .query(style: .form, explode: true), parameterDefaults: parameterDefaults)
-        return builder.build()
     }
 }

@@ -5,27 +5,32 @@ import Foundation
 extension Operations {
     /// A model object
     public struct GetLibraryItemsMediaContainer {
-        public let allowSync: Bool?
-        public let art: String?
-        public let identifier: String?
-        public let librarySectionID: Operations.LibrarySectionID?
-        public let librarySectionTitle: String?
-        public let librarySectionUUID: String?
-        public let mediaTagPrefix: String?
-        public let mediaTagVersion: Int?
+        public let allowSync: Bool
+        public let art: String
+        public let identifier: String
+        public let librarySectionID: Operations.LibrarySectionID
+        public let librarySectionTitle: String
+        public let librarySectionUUID: String
+        public let mediaTagPrefix: String
+        public let mediaTagVersion: Int
+        public let size: Int
+        public let thumb: String
+        public let title1: String
+        public let title2: String
+        public let viewGroup: String
+        /// The Meta object is only included in the response if the `includeMeta` parameter is set to `1`.
+        /// 
+        public let meta: Operations.Meta?
         public let metadata: [Operations.GetLibraryItemsMetadata]?
         public let mixedParents: Bool?
-        public let size: Int?
-        public let thumb: String?
-        public let title1: String?
-        public let title2: String?
-        public let viewGroup: String?
         public let viewMode: Int?
 
         /// Creates an object with the specified parameters
         ///
+        /// - Parameter meta: The Meta object is only included in the response if the `includeMeta` parameter is set to `1`.
+        /// 
         ///
-        public init(allowSync: Bool? = nil, art: String? = nil, identifier: String? = nil, librarySectionID: Operations.LibrarySectionID? = nil, librarySectionTitle: String? = nil, librarySectionUUID: String? = nil, mediaTagPrefix: String? = nil, mediaTagVersion: Int? = nil, metadata: [Operations.GetLibraryItemsMetadata]? = nil, mixedParents: Bool? = nil, size: Int? = nil, thumb: String? = nil, title1: String? = nil, title2: String? = nil, viewGroup: String? = nil, viewMode: Int? = nil) {
+        public init(allowSync: Bool, art: String, identifier: String, librarySectionID: Operations.LibrarySectionID, librarySectionTitle: String, librarySectionUUID: String, mediaTagPrefix: String, mediaTagVersion: Int, size: Int, thumb: String, title1: String, title2: String, viewGroup: String, meta: Operations.Meta? = nil, metadata: [Operations.GetLibraryItemsMetadata]? = nil, mixedParents: Bool? = nil, viewMode: Int? = nil) {
             self.allowSync = allowSync
             self.art = art
             self.identifier = identifier
@@ -34,13 +39,14 @@ extension Operations {
             self.librarySectionUUID = librarySectionUUID
             self.mediaTagPrefix = mediaTagPrefix
             self.mediaTagVersion = mediaTagVersion
-            self.metadata = metadata
-            self.mixedParents = mixedParents
             self.size = size
             self.thumb = thumb
             self.title1 = title1
             self.title2 = title2
             self.viewGroup = viewGroup
+            self.meta = meta
+            self.metadata = metadata
+            self.mixedParents = mixedParents
             self.viewMode = viewMode
         }
     }}
@@ -55,13 +61,14 @@ extension Operations.GetLibraryItemsMediaContainer: Codable {
         case librarySectionUUID
         case mediaTagPrefix
         case mediaTagVersion
-        case metadata = "Metadata"
-        case mixedParents
         case size
         case thumb
         case title1
         case title2
         case viewGroup
+        case meta = "Meta"
+        case metadata = "Metadata"
+        case mixedParents
         case viewMode
     }
 }

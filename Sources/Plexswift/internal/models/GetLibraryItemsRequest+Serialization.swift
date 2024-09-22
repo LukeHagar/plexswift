@@ -32,9 +32,9 @@ extension Operations.GetLibraryItemsRequest: PathParameterSerializable {
 extension Operations.GetLibraryItemsRequest: QueryParameterSerializable {
     func serializedQueryParameters(with parameterDefaults: ParameterDefaults?, formatOverride: SerializableFormat?) throws -> [QueryParameter] {
         let builder = QueryParameterBuilder()
-        try builder.addQueryParameters(from: type, named: "type", format: formatOverride ?? .query(style: .form, explode: true), parameterDefaults: parameterDefaults)
         try builder.addQueryParameters(from: includeGuids, named: "includeGuids", format: formatOverride ?? .query(style: .form, explode: true), parameterDefaults: parameterDefaults)
         try builder.addQueryParameters(from: includeMeta, named: "includeMeta", format: formatOverride ?? .query(style: .form, explode: true), parameterDefaults: parameterDefaults)
+        try builder.addQueryParameters(from: type, named: "type", format: formatOverride ?? .query(style: .form, explode: true), parameterDefaults: parameterDefaults)
         try builder.addQueryParameters(from: xPlexContainerSize, named: "X-Plex-Container-Size", format: formatOverride ?? .query(style: .form, explode: true), parameterDefaults: parameterDefaults)
         try builder.addQueryParameters(from: xPlexContainerStart, named: "X-Plex-Container-Start", format: formatOverride ?? .query(style: .form, explode: true), parameterDefaults: parameterDefaults)
         return builder.build()

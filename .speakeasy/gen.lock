@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 5d77204e-e413-4fd0-a14a-bad3aee2247a
 management:
-  docChecksum: 1b63d7c28734a44b0339f405b186b290
+  docChecksum: 82a4a9784fb0e66e1c64f130701cdd08
   docVersion: 0.0.3
   speakeasyVersion: 1.401.2
   generationVersion: 2.421.3
-  releaseVersion: 0.7.0
-  configChecksum: 328d2e540df29d38d8fd33e39ea9a7bc
+  releaseVersion: 0.7.1
+  configChecksum: a70babc1988451efc03d40b9ae2d9385
   repoURL: https://github.com/LukeHagar/plexswift.git
 features:
   swift:
@@ -43,6 +43,7 @@ generatedFiles:
   - Sources/Plexswift/internal/api/_UpdaterAPI.swift
   - Sources/Plexswift/internal/api/_VideoAPI.swift
   - Sources/Plexswift/internal/api/_WatchlistAPI.swift
+  - Sources/Plexswift/internal/models/ActiveDirection+Serialization.swift
   - Sources/Plexswift/internal/models/AddPlaylistContentsRequest+Serialization.swift
   - Sources/Plexswift/internal/models/ApplyUpdatesRequest+Serialization.swift
   - Sources/Plexswift/internal/models/AutoSelectSubtitle+Serialization.swift
@@ -51,6 +52,7 @@ generatedFiles:
   - Sources/Plexswift/internal/models/ClearPlaylistContentsRequest+Serialization.swift
   - Sources/Plexswift/internal/models/CreatePlaylistQueryParamType+Serialization.swift
   - Sources/Plexswift/internal/models/CreatePlaylistRequest+Serialization.swift
+  - Sources/Plexswift/internal/models/DefaultDirection+Serialization.swift
   - Sources/Plexswift/internal/models/DefaultSubtitleAccessibility+Serialization.swift
   - Sources/Plexswift/internal/models/DefaultSubtitleForced+Serialization.swift
   - Sources/Plexswift/internal/models/DeleteLibraryRequest+Serialization.swift
@@ -58,6 +60,7 @@ generatedFiles:
   - Sources/Plexswift/internal/models/Download+Serialization.swift
   - Sources/Plexswift/internal/models/Features+Serialization.swift
   - Sources/Plexswift/internal/models/Filter+Serialization.swift
+  - Sources/Plexswift/internal/models/FlattenSeasons+Serialization.swift
   - Sources/Plexswift/internal/models/Force+Serialization.swift
   - Sources/Plexswift/internal/models/GetBandwidthStatisticsRequest+Serialization.swift
   - Sources/Plexswift/internal/models/GetBannerImageRequest+Serialization.swift
@@ -65,7 +68,9 @@ generatedFiles:
   - Sources/Plexswift/internal/models/GetGlobalHubsRequest+Serialization.swift
   - Sources/Plexswift/internal/models/GetLibraryDetailsRequest+Serialization.swift
   - Sources/Plexswift/internal/models/GetLibraryHubsRequest+Serialization.swift
+  - Sources/Plexswift/internal/models/GetLibraryItemsLibraryResponseType+Serialization.swift
   - Sources/Plexswift/internal/models/GetLibraryItemsRequest+Serialization.swift
+  - Sources/Plexswift/internal/models/GetLibraryItemsType+Serialization.swift
   - Sources/Plexswift/internal/models/GetMediaProvidersRequest+Serialization.swift
   - Sources/Plexswift/internal/models/GetMetaDataByRatingKeyRequest+Serialization.swift
   - Sources/Plexswift/internal/models/GetMetadataChildrenRequest+Serialization.swift
@@ -96,6 +101,7 @@ generatedFiles:
   - Sources/Plexswift/internal/models/GetTransientTokenQueryParamType+Serialization.swift
   - Sources/Plexswift/internal/models/GetTransientTokenRequest+Serialization.swift
   - Sources/Plexswift/internal/models/GetWatchListRequest+Serialization.swift
+  - Sources/Plexswift/internal/models/HasThumbnail+Serialization.swift
   - Sources/Plexswift/internal/models/IncludeCollections+Serialization.swift
   - Sources/Plexswift/internal/models/IncludeDetails+Serialization.swift
   - Sources/Plexswift/internal/models/IncludeExternalMedia+Serialization.swift
@@ -142,6 +148,7 @@ generatedFiles:
   - Sources/Plexswift/internal/models/Security+Serialization.swift
   - Sources/Plexswift/internal/models/SharedServers+Serialization.swift
   - Sources/Plexswift/internal/models/SharedSources+Serialization.swift
+  - Sources/Plexswift/internal/models/ShowOrdering+Serialization.swift
   - Sources/Plexswift/internal/models/Skip+Serialization.swift
   - Sources/Plexswift/internal/models/Smart+Serialization.swift
   - Sources/Plexswift/internal/models/StartTaskRequest+Serialization.swift
@@ -162,6 +169,8 @@ generatedFiles:
   - Sources/Plexswift/internal/models/WatchedIndicator+Serialization.swift
   - Sources/Plexswift/models/ModelScopes.swift
   - Sources/Plexswift/models/operations/Account.swift
+  - Sources/Plexswift/models/operations/Action.swift
+  - Sources/Plexswift/models/operations/ActiveDirection.swift
   - Sources/Plexswift/models/operations/Activity.swift
   - Sources/Plexswift/models/operations/AddPlaylistContentsBadRequest.swift
   - Sources/Plexswift/models/operations/AddPlaylistContentsErrors.swift
@@ -200,6 +209,7 @@ generatedFiles:
   - Sources/Plexswift/models/operations/ClearPlaylistContentsRequest.swift
   - Sources/Plexswift/models/operations/ClearPlaylistContentsResponse.swift
   - Sources/Plexswift/models/operations/ClearPlaylistContentsUnauthorized.swift
+  - Sources/Plexswift/models/operations/Collection.swift
   - Sources/Plexswift/models/operations/Connections.swift
   - Sources/Plexswift/models/operations/Context.swift
   - Sources/Plexswift/models/operations/Country.swift
@@ -213,6 +223,7 @@ generatedFiles:
   - Sources/Plexswift/models/operations/CreatePlaylistResponse.swift
   - Sources/Plexswift/models/operations/CreatePlaylistResponseBody.swift
   - Sources/Plexswift/models/operations/CreatePlaylistUnauthorized.swift
+  - Sources/Plexswift/models/operations/DefaultDirection.swift
   - Sources/Plexswift/models/operations/DefaultSubtitleAccessibility.swift
   - Sources/Plexswift/models/operations/DefaultSubtitleForced.swift
   - Sources/Plexswift/models/operations/DeleteLibraryBadRequest.swift
@@ -242,6 +253,7 @@ generatedFiles:
   - Sources/Plexswift/models/operations/Field.swift
   - Sources/Plexswift/models/operations/FieldType.swift
   - Sources/Plexswift/models/operations/Filter.swift
+  - Sources/Plexswift/models/operations/FlattenSeasons.swift
   - Sources/Plexswift/models/operations/Force.swift
   - Sources/Plexswift/models/operations/Friend.swift
   - Sources/Plexswift/models/operations/Genre.swift
@@ -358,7 +370,10 @@ generatedFiles:
   - Sources/Plexswift/models/operations/GetLibraryItemsFieldType.swift
   - Sources/Plexswift/models/operations/GetLibraryItemsFilter.swift
   - Sources/Plexswift/models/operations/GetLibraryItemsGenre.swift
+  - Sources/Plexswift/models/operations/GetLibraryItemsImage.swift
   - Sources/Plexswift/models/operations/GetLibraryItemsLibraryErrors.swift
+  - Sources/Plexswift/models/operations/GetLibraryItemsLibraryResponseType.swift
+  - Sources/Plexswift/models/operations/GetLibraryItemsLibraryType.swift
   - Sources/Plexswift/models/operations/GetLibraryItemsMedia.swift
   - Sources/Plexswift/models/operations/GetLibraryItemsMediaContainer.swift
   - Sources/Plexswift/models/operations/GetLibraryItemsMetadata.swift
@@ -671,6 +686,7 @@ generatedFiles:
   - Sources/Plexswift/models/operations/GetWatchListUnauthorized.swift
   - Sources/Plexswift/models/operations/GetWatchListWatchlistErrors.swift
   - Sources/Plexswift/models/operations/Guids.swift
+  - Sources/Plexswift/models/operations/HasThumbnail.swift
   - Sources/Plexswift/models/operations/Hub.swift
   - Sources/Plexswift/models/operations/Image.swift
   - Sources/Plexswift/models/operations/IncludeCollections.swift
@@ -782,6 +798,7 @@ generatedFiles:
   - Sources/Plexswift/models/operations/Setting.swift
   - Sources/Plexswift/models/operations/SharedServers.swift
   - Sources/Plexswift/models/operations/SharedSources.swift
+  - Sources/Plexswift/models/operations/ShowOrdering.swift
   - Sources/Plexswift/models/operations/Skip.swift
   - Sources/Plexswift/models/operations/Smart.swift
   - Sources/Plexswift/models/operations/Sort.swift
@@ -832,6 +849,7 @@ generatedFiles:
   - Sources/Plexswift/models/operations/TranscodeSession.swift
   - Sources/Plexswift/models/operations/Trials.swift
   - Sources/Plexswift/models/operations/TypeModel.swift
+  - Sources/Plexswift/models/operations/UltraBlurColors.swift
   - Sources/Plexswift/models/operations/UpdatePlayProgressBadRequest.swift
   - Sources/Plexswift/models/operations/UpdatePlayProgressErrors.swift
   - Sources/Plexswift/models/operations/UpdatePlayProgressMediaErrors.swift
@@ -1189,7 +1207,9 @@ examples:
                     title: TV Shows
                     type: show
               Metadata:
-                - Country:
+                - Collection:
+                    - tag: Working NL Subs
+                  Country:
                     - tag: United States of America
                     - tag: United States of America
                   Director:
@@ -1201,35 +1221,53 @@ examples:
                     - tag: Adventure
                   Guid:
                     - id: imdb://tt13015952
+                  Image:
+                    - alt: Episode 1
+                      type: background
+                      url: /library/metadata/45521/thumb/1644710589
+                    - alt: Episode 1
+                      type: background
+                      url: /library/metadata/45521/thumb/1644710589
                   Media:
                     - Part:
-                        - container: mkv
+                        - audioProfile: dts
+                          container: mkv
                           duration: 11558112
                           file: /movies/Avatar The Way of Water (2022)/Avatar.The.Way.of.Water.2022.2160p.WEB-DL.DDP5.1.Atmos.DV.HDR10.HEVC-CMRG.mkv
+                          hasThumbnail: "1"
                           id: 119542
+                          indexes: sd
                           key: /library/parts/119542/1680457526/file.mkv
                           size: 36158371307
                           videoProfile: main 10
-                        - container: mkv
+                        - audioProfile: dts
+                          container: mkv
                           duration: 11558112
                           file: /movies/Avatar The Way of Water (2022)/Avatar.The.Way.of.Water.2022.2160p.WEB-DL.DDP5.1.Atmos.DV.HDR10.HEVC-CMRG.mkv
+                          hasThumbnail: "1"
                           id: 119542
+                          indexes: sd
                           key: /library/parts/119542/1680457526/file.mkv
                           size: 36158371307
                           videoProfile: main 10
-                        - container: mkv
+                        - audioProfile: dts
+                          container: mkv
                           duration: 11558112
                           file: /movies/Avatar The Way of Water (2022)/Avatar.The.Way.of.Water.2022.2160p.WEB-DL.DDP5.1.Atmos.DV.HDR10.HEVC-CMRG.mkv
+                          hasThumbnail: "1"
                           id: 119542
+                          indexes: sd
                           key: /library/parts/119542/1680457526/file.mkv
                           size: 36158371307
                           videoProfile: main 10
                       aspectRatio: 1.85
                       audioChannels: 6
                       audioCodec: eac3
+                      audioProfile: dts
                       bitrate: 25025
                       container: mkv
                       duration: 11558112
+                      hasVoiceActivity: false
                       height: 2072
                       id: 119534
                       videoCodec: hevc
@@ -1241,20 +1279,28 @@ examples:
                     - tag: Sigourney Weaver
                     - tag: Sigourney Weaver
                     - tag: Sigourney Weaver
+                  UltraBlurColors:
+                    bottomLeft: 1f5066
+                    bottomRight: "73958"
+                    topLeft: 11333b
+                    topRight: 0a232d
                   Writer:
                     - tag: James Cameron
-                  addedAt: 1680457607
+                  addedAt: 1556281940
                   art: /library/metadata/58683/art/1703239236
                   audienceRating: 9.2
                   audienceRatingImage: rottentomatoes://image.rating.upright
+                  banner: /library/metadata/58683/banner/1703239236
                   chapterSource: media
                   childCount: 1
                   contentRating: PG-13
                   duration: 11558112
+                  flattenSeasons: "1"
                   grandparentArt: /library/metadata/66/art/1705716261
                   grandparentGuid: plex://show/5d9c081b170e24001f2a7be4
                   grandparentKey: /library/metadata/66
                   grandparentRatingKey: "66"
+                  grandparentSlug: alice-in-borderland-2020
                   grandparentTheme: /library/metadata/66/theme/1705716261
                   grandparentThumb: /library/metadata/66/thumb/1705716261
                   grandparentTitle: Caprica
@@ -1280,7 +1326,11 @@ examples:
                   rating: 7.6
                   ratingImage: rottentomatoes://image.rating.ripe
                   ratingKey: "58683"
+                  seasonCount: 2022
+                  showOrdering: dvd
+                  skipChildren: false
                   skipCount: 1
+                  slug: 4-for-texas
                   studio: 20th Century Studios
                   summary: Jake Sully lives with his newfound family formed on the extrasolar moon Pandora. Once a familiar threat returns to finish what was previously started, Jake must work with Neytiri and the army of the Na'vi race to protect their home.
                   tagline: Return to Pandora.
@@ -1289,12 +1339,15 @@ examples:
                   title: 'Avatar: The Way of Water'
                   titleSort: Whale
                   type: movie
-                  updatedAt: 1703239236
+                  updatedAt: 1556281940
                   viewCount: 1
                   viewOffset: 5222500
                   viewedLeafCount: 0
                   year: 2022
-                - Country:
+                - Collection:
+                    - tag: Working NL Subs
+                    - tag: Working NL Subs
+                  Country:
                     - tag: United States of America
                   Director:
                     - tag: James Cameron
@@ -1303,21 +1356,30 @@ examples:
                   Genre: []
                   Guid:
                     - id: imdb://tt13015952
+                  Image:
+                    - alt: Episode 1
+                      type: background
+                      url: /library/metadata/45521/thumb/1644710589
                   Media:
                     - Part:
-                        - container: mkv
+                        - audioProfile: dts
+                          container: mkv
                           duration: 11558112
                           file: /movies/Avatar The Way of Water (2022)/Avatar.The.Way.of.Water.2022.2160p.WEB-DL.DDP5.1.Atmos.DV.HDR10.HEVC-CMRG.mkv
+                          hasThumbnail: "1"
                           id: 119542
+                          indexes: sd
                           key: /library/parts/119542/1680457526/file.mkv
                           size: 36158371307
                           videoProfile: main 10
                       aspectRatio: 1.85
                       audioChannels: 6
                       audioCodec: eac3
+                      audioProfile: dts
                       bitrate: 25025
                       container: mkv
                       duration: 11558112
+                      hasVoiceActivity: false
                       height: 2072
                       id: 119534
                       videoCodec: hevc
@@ -1329,20 +1391,28 @@ examples:
                     - tag: Sigourney Weaver
                     - tag: Sigourney Weaver
                     - tag: Sigourney Weaver
+                  UltraBlurColors:
+                    bottomLeft: 1f5066
+                    bottomRight: "73958"
+                    topLeft: 11333b
+                    topRight: 0a232d
                   Writer:
                     - tag: James Cameron
-                  addedAt: 1680457607
+                  addedAt: 1556281940
                   art: /library/metadata/58683/art/1703239236
                   audienceRating: 9.2
                   audienceRatingImage: rottentomatoes://image.rating.upright
+                  banner: /library/metadata/58683/banner/1703239236
                   chapterSource: media
                   childCount: 1
                   contentRating: PG-13
                   duration: 11558112
+                  flattenSeasons: "1"
                   grandparentArt: /library/metadata/66/art/1705716261
                   grandparentGuid: plex://show/5d9c081b170e24001f2a7be4
                   grandparentKey: /library/metadata/66
                   grandparentRatingKey: "66"
+                  grandparentSlug: alice-in-borderland-2020
                   grandparentTheme: /library/metadata/66/theme/1705716261
                   grandparentThumb: /library/metadata/66/thumb/1705716261
                   grandparentTitle: Caprica
@@ -1368,7 +1438,11 @@ examples:
                   rating: 7.6
                   ratingImage: rottentomatoes://image.rating.ripe
                   ratingKey: "58683"
+                  seasonCount: 2022
+                  showOrdering: dvd
+                  skipChildren: false
                   skipCount: 1
+                  slug: 4-for-texas
                   studio: 20th Century Studios
                   summary: Jake Sully lives with his newfound family formed on the extrasolar moon Pandora. Once a familiar threat returns to finish what was previously started, Jake must work with Neytiri and the army of the Na'vi race to protect their home.
                   tagline: Return to Pandora.
@@ -1377,13 +1451,14 @@ examples:
                   title: 'Avatar: The Way of Water'
                   titleSort: Whale
                   type: movie
-                  updatedAt: 1703239236
+                  updatedAt: 1556281940
                   viewCount: 1
                   viewOffset: 5222500
                   viewedLeafCount: 0
                   year: 2022
               allowSync: true
               art: /:/resources/movie-fanart.jpg
+              content: secondary
               identifier: com.plexapp.plugins.library
               librarySectionID: <value>
               librarySectionTitle: Movies
@@ -1391,10 +1466,13 @@ examples:
               mediaTagPrefix: /system/bundle/media/flags/
               mediaTagVersion: 1701731894
               mixedParents: true
+              nocache: true
+              offset: 0
               size: 70
               thumb: /:/resources/movie.png
               title1: Movies
               title2: Recently Released
+              totalSize: 170
               viewGroup: movie
               viewMode: 65592
         "400":
@@ -1415,7 +1493,34 @@ examples:
         query:
           X-Plex-Token: CV5xoxjTpFKUzBTShsaf
       responses:
-        "200": {}
+        "200":
+          application/json:
+            MediaContainer:
+              MediaProvider:
+                - Feature:
+                    - Action: []
+                      flavor: global
+                      scrobbleKey: /:/scrobble/new
+                      type: <value>
+                      unscrobbleKey: /:/unscrobble/new
+                    - Action:
+                        - id: addToContinueWatching
+                          key: /actions/addToContinueWatching
+                        - id: addToContinueWatching
+                          key: /actions/addToContinueWatching
+                      flavor: global
+                      scrobbleKey: /:/scrobble/new
+                      type: <value>
+                      unscrobbleKey: /:/unscrobble/new
+                    - Action:
+                        - id: addToContinueWatching
+                          key: /actions/addToContinueWatching
+                        - id: addToContinueWatching
+                          key: /actions/addToContinueWatching
+                      flavor: global
+                      scrobbleKey: /:/scrobble/new
+                      type: <value>
+                      unscrobbleKey: /:/unscrobble/new
         "400":
           application/json:
             errors: []
@@ -2330,6 +2435,7 @@ examples:
             adsConsentReminderAt: "2019-08-24T14:15:22Z"
             adsConsentSetAt: "2019-08-24T14:15:22Z"
             anonymous: false
+            attributionPartner: null
             authToken: CxoUzBTSV5hsxjTpFKaf
             backupCodesCreated: false
             confirmed: false
@@ -2633,6 +2739,7 @@ examples:
             adsConsentReminderAt: "2019-08-24T14:15:22Z"
             adsConsentSetAt: "2019-08-24T14:15:22Z"
             anonymous: false
+            attributionPartner: null
             authToken: CxoUzBTSV5hsxjTpFKaf
             backupCodesCreated: false
             confirmed: false

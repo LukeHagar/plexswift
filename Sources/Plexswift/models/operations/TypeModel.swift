@@ -12,7 +12,7 @@ extension Operations {
     /// 
     public enum TypeModel: Int, Codable, APIValue {
         case movie = 1
-        case show = 2
+        case tvShow = 2
         case season = 3
         case episode = 4
     }}

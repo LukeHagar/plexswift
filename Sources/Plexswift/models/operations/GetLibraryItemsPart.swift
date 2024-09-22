@@ -5,18 +5,25 @@ import Foundation
 extension Operations {
     /// A model object
     public struct GetLibraryItemsPart {
-        public let container: String?
-        public let duration: Int?
-        public let file: String?
-        public let id: Int?
-        public let key: String?
-        public let size: Int?
-        public let videoProfile: String?
+        /// The container format of the media file.
+        /// 
+        public let container: String
+        public let duration: Int
+        public let file: String
+        public let id: Int
+        public let key: String
+        public let size: Int
+        public let videoProfile: String
+        public let audioProfile: String?
+        public let hasThumbnail: Operations.HasThumbnail?
+        public let indexes: String?
 
         /// Creates an object with the specified parameters
         ///
+        /// - Parameter container: The container format of the media file.
+        /// 
         ///
-        public init(container: String? = nil, duration: Int? = nil, file: String? = nil, id: Int? = nil, key: String? = nil, size: Int? = nil, videoProfile: String? = nil) {
+        public init(container: String, duration: Int, file: String, id: Int, key: String, size: Int, videoProfile: String, audioProfile: String? = nil, hasThumbnail: Operations.HasThumbnail? = nil, indexes: String? = nil) {
             self.container = container
             self.duration = duration
             self.file = file
@@ -24,6 +31,9 @@ extension Operations {
             self.key = key
             self.size = size
             self.videoProfile = videoProfile
+            self.audioProfile = audioProfile
+            self.hasThumbnail = hasThumbnail
+            self.indexes = indexes
         }
     }}
 
@@ -36,6 +46,9 @@ extension Operations.GetLibraryItemsPart: Codable {
         case key
         case size
         case videoProfile
+        case audioProfile
+        case hasThumbnail
+        case indexes
     }
 }
 

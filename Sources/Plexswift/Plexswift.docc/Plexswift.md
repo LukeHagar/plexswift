@@ -237,6 +237,8 @@ case .empty:
 
 ### Other models
 - ``Operations/Account``
+- ``Operations/Action``
+- ``Operations/ActiveDirection``
 - ``Operations/Activity``
 - ``Operations/AddPlaylistContentsErrors``
 - ``Operations/AddPlaylistContentsMediaContainer``
@@ -265,6 +267,7 @@ case .empty:
 - ``Operations/ClearPlaylistContentsPlaylistsErrors``
 - ``Operations/ClearPlaylistContentsRequest``
 - ``Operations/ClearPlaylistContentsUnauthorized``
+- ``Operations/Collection``
 - ``Operations/Connections``
 - ``Operations/Context``
 - ``Operations/Country``
@@ -276,6 +279,7 @@ case .empty:
 - ``Operations/CreatePlaylistRequest``
 - ``Operations/CreatePlaylistResponseBody``
 - ``Operations/CreatePlaylistUnauthorized``
+- ``Operations/DefaultDirection``
 - ``Operations/DefaultSubtitleAccessibility``
 - ``Operations/DefaultSubtitleForced``
 - ``Operations/DeleteLibraryErrors``
@@ -299,6 +303,7 @@ case .empty:
 - ``Operations/Field``
 - ``Operations/FieldType``
 - ``Operations/Filter``
+- ``Operations/FlattenSeasons``
 - ``Operations/Force``
 - ``Operations/Friend``
 - ``Operations/Genre``
@@ -329,7 +334,10 @@ case .empty:
 - ``Operations/GetLibraryItemsFieldType``
 - ``Operations/GetLibraryItemsFilter``
 - ``Operations/GetLibraryItemsGenre``
+- ``Operations/GetLibraryItemsImage``
 - ``Operations/GetLibraryItemsLibraryErrors``
+- ``Operations/GetLibraryItemsLibraryResponseType``
+- ``Operations/GetLibraryItemsLibraryType``
 - ``Operations/GetLibraryItemsMedia``
 - ``Operations/GetLibraryItemsMediaContainer``
 - ``Operations/GetLibraryItemsMetadata``
@@ -631,6 +639,7 @@ case .empty:
 - ``Operations/GetUserFriendsPlexErrors``
 - ``Operations/GetUserFriendsUnauthorized``
 - ``Operations/Guids``
+- ``Operations/HasThumbnail``
 - ``Operations/Hub``
 - ``Operations/Image``
 - ``Operations/IncludeCollections``
@@ -728,6 +737,7 @@ case .empty:
 - ``Operations/Setting``
 - ``Operations/SharedServers``
 - ``Operations/SharedSources``
+- ``Operations/ShowOrdering``
 - ``Operations/Skip``
 - ``Operations/Smart``
 - ``Operations/Sort``
@@ -766,6 +776,7 @@ case .empty:
 - ``Operations/TranscodeSession``
 - ``Operations/Trials``
 - ``Operations/TypeModel``
+- ``Operations/UltraBlurColors``
 - ``Operations/UpdatePlaylistErrors``
 - ``Operations/UpdatePlaylistPlaylistsErrors``
 - ``Operations/UpdatePlaylistRequest``

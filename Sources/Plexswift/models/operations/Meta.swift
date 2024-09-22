@@ -7,12 +7,12 @@ extension Operations {
     /// 
     public struct Meta {
         public let fieldType: [Operations.GetLibraryItemsFieldType]?
-        public let type: [Operations.GetLibraryItemsType]?
+        public let type: [Operations.GetLibraryItemsLibraryType]?
 
         /// Creates an object with the specified parameters
         ///
         ///
-        public init(fieldType: [Operations.GetLibraryItemsFieldType]? = nil, type: [Operations.GetLibraryItemsType]? = nil) {
+        public init(fieldType: [Operations.GetLibraryItemsFieldType]? = nil, type: [Operations.GetLibraryItemsLibraryType]? = nil) {
             self.fieldType = fieldType
             self.type = type
         }

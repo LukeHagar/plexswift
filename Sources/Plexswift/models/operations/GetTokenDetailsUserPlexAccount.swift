@@ -15,6 +15,7 @@ extension Operations {
         public private(set) var adsConsentSetAt: Date
         /// Unknown
         public let anonymous: Bool
+        public let attributionPartner: String
         /// The account token
         public let authToken: String
         /// If the two-factor authentication backup codes have been created
@@ -127,11 +128,12 @@ extension Operations {
         /// - Parameter roles: [Might be removed] List of account roles. Plexpass membership listed here
         ///
         @available(*, deprecated, message: "This initializer uses deprecated fields and will be removed in a future version.")
-        public init(adsConsent: Bool, adsConsentReminderAt: Date, adsConsentSetAt: Date, anonymous: Bool, authToken: String, backupCodesCreated: Bool, confirmed: Bool, country: String, email: String, emailOnlyAuth: Bool, entitlements: [String], experimentalFeatures: Bool, friendlyName: String, guest: Bool, hasPassword: Bool, home: Bool, homeAdmin: Bool, homeSize: Int, id: Int, joinedAt: Int, locale: String, mailingListActive: Bool, mailingListStatus: Operations.MailingListStatus, maxHomeSize: Int, profile: Operations.UserProfile, protected: Bool, rememberExpiresAt: Int, restricted: Bool, scrobbleTypes: String, services: [Operations.Services], subscription: Operations.Subscription, subscriptionDescription: String, subscriptions: [Operations.GetTokenDetailsSubscription], thumb: String, title: String, twoFactorEnabled: Bool, username: String, uuid: String, pin: String? = nil, roles: [String]? = nil) {
+        public init(adsConsent: Bool, adsConsentReminderAt: Date, adsConsentSetAt: Date, anonymous: Bool, attributionPartner: String, authToken: String, backupCodesCreated: Bool, confirmed: Bool, country: String, email: String, emailOnlyAuth: Bool, entitlements: [String], experimentalFeatures: Bool, friendlyName: String, guest: Bool, hasPassword: Bool, home: Bool, homeAdmin: Bool, homeSize: Int, id: Int, joinedAt: Int, locale: String, mailingListActive: Bool, mailingListStatus: Operations.MailingListStatus, maxHomeSize: Int, profile: Operations.UserProfile, protected: Bool, rememberExpiresAt: Int, restricted: Bool, scrobbleTypes: String, services: [Operations.Services], subscription: Operations.Subscription, subscriptionDescription: String, subscriptions: [Operations.GetTokenDetailsSubscription], thumb: String, title: String, twoFactorEnabled: Bool, username: String, uuid: String, pin: String? = nil, roles: [String]? = nil) {
             self.adsConsent = adsConsent
             self._adsConsentReminderAt = DateTime<Date>(wrappedValue: adsConsentReminderAt)
             self._adsConsentSetAt = DateTime<Date>(wrappedValue: adsConsentSetAt)
             self.anonymous = anonymous
+            self.attributionPartner = attributionPartner
             self.authToken = authToken
             self.backupCodesCreated = backupCodesCreated
             self.confirmed = confirmed
@@ -177,6 +179,7 @@ extension Operations.GetTokenDetailsUserPlexAccount: Codable {
         case adsConsentReminderAt
         case adsConsentSetAt
         case anonymous
+        case attributionPartner
         case authToken
         case backupCodesCreated
         case confirmed
@@ -221,6 +224,7 @@ extension Operations.GetTokenDetailsUserPlexAccount: Codable {
         self._adsConsentReminderAt = try container.decode(DateTime<Date>.self, forKey: .adsConsentReminderAt)
         self._adsConsentSetAt = try container.decode(DateTime<Date>.self, forKey: .adsConsentSetAt)
         self.anonymous = try container.decode(Bool.self, forKey: .anonymous)
+        self.attributionPartner = try container.decode(String.self, forKey: .attributionPartner)
         self.authToken = try container.decode(String.self, forKey: .authToken)
         self.backupCodesCreated = try container.decode(Bool.self, forKey: .backupCodesCreated)
         self.confirmed = try container.decode(Bool.self, forKey: .confirmed)
@@ -265,6 +269,7 @@ extension Operations.GetTokenDetailsUserPlexAccount: Codable {
         try container.encode(self._adsConsentReminderAt, forKey: .adsConsentReminderAt)
         try container.encode(self._adsConsentSetAt, forKey: .adsConsentSetAt)
         try container.encode(self.anonymous, forKey: .anonymous)
+        try container.encode(self.attributionPartner, forKey: .attributionPartner)
         try container.encode(self.authToken, forKey: .authToken)
         try container.encode(self.backupCodesCreated, forKey: .backupCodesCreated)
         try container.encode(self.confirmed, forKey: .confirmed)

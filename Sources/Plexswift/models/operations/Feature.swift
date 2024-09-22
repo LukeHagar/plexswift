@@ -5,25 +5,37 @@ import Foundation
 extension Operations {
     /// A model object
     public struct Feature {
+        public let type: String
+        public let action: [Operations.Action]?
         public let directory: [Operations.GetMediaProvidersDirectory]?
+        public let flavor: String?
         public let key: String?
-        public let type: String?
+        public let scrobbleKey: String?
+        public let unscrobbleKey: String?
 
         /// Creates an object with the specified parameters
         ///
         ///
-        public init(directory: [Operations.GetMediaProvidersDirectory]? = nil, key: String? = nil, type: String? = nil) {
-            self.directory = directory
-            self.key = key
+        public init(type: String, action: [Operations.Action]? = nil, directory: [Operations.GetMediaProvidersDirectory]? = nil, flavor: String? = nil, key: String? = nil, scrobbleKey: String? = nil, unscrobbleKey: String? = nil) {
             self.type = type
+            self.action = action
+            self.directory = directory
+            self.flavor = flavor
+            self.key = key
+            self.scrobbleKey = scrobbleKey
+            self.unscrobbleKey = unscrobbleKey
         }
     }}
 
 extension Operations.Feature: Codable {
     enum CodingKeys: String, CodingKey {
-        case directory = "Directory"
-        case key
         case type
+        case action = "Action"
+        case directory = "Directory"
+        case flavor
+        case key
+        case scrobbleKey
+        case unscrobbleKey
     }
 }
 

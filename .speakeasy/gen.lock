@@ -5,8 +5,8 @@ management:
   docVersion: 0.0.3
   speakeasyVersion: 1.401.2
   generationVersion: 2.421.3
-  releaseVersion: 0.7.1
-  configChecksum: a70babc1988451efc03d40b9ae2d9385
+  releaseVersion: 0.7.2
+  configChecksum: 33c995f1fab7f7fe21f3ada142e66d93
   repoURL: https://github.com/LukeHagar/plexswift.git
 features:
   swift:

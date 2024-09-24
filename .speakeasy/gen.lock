@@ -3,10 +3,10 @@ id: 5d77204e-e413-4fd0-a14a-bad3aee2247a
 management:
   docChecksum: 82a4a9784fb0e66e1c64f130701cdd08
   docVersion: 0.0.3
-  speakeasyVersion: 1.401.2
-  generationVersion: 2.421.3
-  releaseVersion: 0.7.2
-  configChecksum: 33c995f1fab7f7fe21f3ada142e66d93
+  speakeasyVersion: 1.402.0
+  generationVersion: 2.422.6
+  releaseVersion: 0.7.3
+  configChecksum: d90c6eac570e5b48878c6fb4d767f261
   repoURL: https://github.com/LukeHagar/plexswift.git
 features:
   swift:

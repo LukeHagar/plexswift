@@ -5,13 +5,13 @@ import Foundation
 extension Operations {
     /// A model object
     public struct Operator {
-        public let key: String?
-        public let title: String?
+        public let key: String
+        public let title: String
 
         /// Creates an object with the specified parameters
         ///
         ///
-        public init(key: String? = nil, title: String? = nil) {
+        public init(key: String, title: String) {
             self.key = key
             self.title = title
         }

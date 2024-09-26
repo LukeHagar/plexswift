@@ -6,9 +6,7 @@ extension Operations {
     /// A response model
     public enum GetRecentlyAddedResponse {
         case empty
-        case badRequest(Operations.GetRecentlyAddedBadRequest)
         case object(Operations.GetRecentlyAddedResponseBody)
-        case unauthorized(Operations.GetRecentlyAddedUnauthorized)
 
         var isEmpty: Bool {
             if case .empty = self {
@@ -18,22 +16,8 @@ extension Operations {
             }
         }
 
-        public func badRequest() throws -> Operations.GetRecentlyAddedBadRequest {
-            guard case .badRequest(let value) = self else {
-                throw PlexswiftError.missingResponseData
-            }
-            return value
-        }
-
         public func object() throws -> Operations.GetRecentlyAddedResponseBody {
             guard case .object(let value) = self else {
-                throw PlexswiftError.missingResponseData
-            }
-            return value
-        }
-
-        public func unauthorized() throws -> Operations.GetRecentlyAddedUnauthorized {
-            guard case .unauthorized(let value) = self else {
                 throw PlexswiftError.missingResponseData
             }
             return value

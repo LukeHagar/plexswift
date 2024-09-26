@@ -3,13 +3,14 @@
 import Foundation
 
 extension Operations {
-    /// A model object
+    /// The Meta object is only included in the response if the `includeMeta` parameter is set to `1`.
+    /// 
     public struct GetLibraryItemsMediaContainer {
         public let allowSync: Bool
         public let art: String
         public let content: String
         public let identifier: String
-        public let librarySectionID: Operations.LibrarySectionID
+        public let librarySectionID: Int
         public let librarySectionTitle: String
         public let librarySectionUUID: String
         public let mediaTagPrefix: String
@@ -22,11 +23,13 @@ extension Operations {
         public let title2: String
         public let totalSize: Int
         public let viewGroup: String
+        public let fieldType: [Operations.GetLibraryItemsFieldType]?
         /// The Meta object is only included in the response if the `includeMeta` parameter is set to `1`.
         /// 
-        public let meta: Operations.Meta?
+        public let meta: Operations.GetLibraryItemsMeta?
         public let mixedParents: Bool?
         public let nocache: Bool?
+        public let type: [Operations.GetLibraryItemsType]?
         public let viewMode: Int?
 
         /// Creates an object with the specified parameters
@@ -34,7 +37,7 @@ extension Operations {
         /// - Parameter meta: The Meta object is only included in the response if the `includeMeta` parameter is set to `1`.
         /// 
         ///
-        public init(allowSync: Bool, art: String, content: String, identifier: String, librarySectionID: Operations.LibrarySectionID, librarySectionTitle: String, librarySectionUUID: String, mediaTagPrefix: String, mediaTagVersion: Int, metadata: [Operations.GetLibraryItemsMetadata], offset: Int, size: Int, thumb: String, title1: String, title2: String, totalSize: Int, viewGroup: String, meta: Operations.Meta? = nil, mixedParents: Bool? = nil, nocache: Bool? = nil, viewMode: Int? = nil) {
+        public init(allowSync: Bool, art: String, content: String, identifier: String, librarySectionID: Int, librarySectionTitle: String, librarySectionUUID: String, mediaTagPrefix: String, mediaTagVersion: Int, metadata: [Operations.GetLibraryItemsMetadata], offset: Int, size: Int, thumb: String, title1: String, title2: String, totalSize: Int, viewGroup: String, fieldType: [Operations.GetLibraryItemsFieldType]? = nil, meta: Operations.GetLibraryItemsMeta? = nil, mixedParents: Bool? = nil, nocache: Bool? = nil, type: [Operations.GetLibraryItemsType]? = nil, viewMode: Int? = nil) {
             self.allowSync = allowSync
             self.art = art
             self.content = content
@@ -52,9 +55,11 @@ extension Operations {
             self.title2 = title2
             self.totalSize = totalSize
             self.viewGroup = viewGroup
+            self.fieldType = fieldType
             self.meta = meta
             self.mixedParents = mixedParents
             self.nocache = nocache
+            self.type = type
             self.viewMode = viewMode
         }
     }}
@@ -78,9 +83,11 @@ extension Operations.GetLibraryItemsMediaContainer: Codable {
         case title2
         case totalSize
         case viewGroup
+        case fieldType = "FieldType"
         case meta = "Meta"
         case mixedParents
         case nocache
+        case type = "Type"
         case viewMode
     }
 }

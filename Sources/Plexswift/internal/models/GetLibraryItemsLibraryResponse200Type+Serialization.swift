@@ -3,7 +3,7 @@
 
 import Foundation
 
-extension Operations.GetLibraryItemsLibraryResponseType: Serializable {
+extension Operations.GetLibraryItemsLibraryResponse200Type: Serializable {
     func serialize(with format: SerializableFormat) throws -> String {
         return try rawValue.serialize(with: format)
     }

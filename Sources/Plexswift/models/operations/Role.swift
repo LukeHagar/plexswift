@@ -5,19 +5,46 @@ import Foundation
 extension Operations {
     /// A model object
     public struct Role {
+        /// The filter used to find the actor or tag.
+        public let filter: String?
+        /// The ID of the tag or actor.
+        public let id: Int?
+        /// The role of the actor or tag in the media.
+        public let role: String?
+        /// The name of the tag or actor.
         public let tag: String?
+        /// Unique identifier for the tag.
+        public let tagKey: String?
+        /// The thumbnail of the actor
+        public let thumb: String?
 
         /// Creates an object with the specified parameters
         ///
+        /// - Parameter filter: The filter used to find the actor or tag.
+        /// - Parameter id: The ID of the tag or actor.
+        /// - Parameter role: The role of the actor or tag in the media.
+        /// - Parameter tag: The name of the tag or actor.
+        /// - Parameter tagKey: Unique identifier for the tag.
+        /// - Parameter thumb: The thumbnail of the actor
         ///
-        public init(tag: String? = nil) {
+        public init(filter: String? = nil, id: Int? = nil, role: String? = nil, tag: String? = nil, tagKey: String? = nil, thumb: String? = nil) {
+            self.filter = filter
+            self.id = id
+            self.role = role
             self.tag = tag
+            self.tagKey = tagKey
+            self.thumb = thumb
         }
     }}
 
 extension Operations.Role: Codable {
     enum CodingKeys: String, CodingKey {
+        case filter
+        case id
+        case role
         case tag
+        case tagKey
+        case thumb
     }
 }
 

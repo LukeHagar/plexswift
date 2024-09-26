@@ -4,18 +4,18 @@ import Foundation
 
 extension Operations {
     /// Unauthorized - Returned if the X-Plex-Token is missing from the header or query.
-    public struct GetRecentlyAddedUnauthorized {
-        public let errors: [Operations.GetRecentlyAddedLibraryErrors]?
+    public struct GetRecentlyAddedLibraryUnauthorized {
+        public let errors: [Operations.GetRecentlyAddedLibraryLibraryErrors]?
 
         /// Creates an object with the specified parameters
         ///
         ///
-        public init(errors: [Operations.GetRecentlyAddedLibraryErrors]? = nil) {
+        public init(errors: [Operations.GetRecentlyAddedLibraryLibraryErrors]? = nil) {
             self.errors = errors
         }
     }}
 
-extension Operations.GetRecentlyAddedUnauthorized: Codable {
+extension Operations.GetRecentlyAddedLibraryUnauthorized: Codable {
     enum CodingKeys: String, CodingKey {
         case errors
     }

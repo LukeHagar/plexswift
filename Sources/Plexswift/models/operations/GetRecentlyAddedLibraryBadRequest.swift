@@ -4,18 +4,18 @@ import Foundation
 
 extension Operations {
     /// Bad Request - A parameter was not specified, or was specified incorrectly.
-    public struct GetRecentlyAddedBadRequest {
-        public let errors: [Operations.GetRecentlyAddedErrors]?
+    public struct GetRecentlyAddedLibraryBadRequest {
+        public let errors: [Operations.GetRecentlyAddedLibraryErrors]?
 
         /// Creates a request model with the specified parameters
         ///
         ///
-        public init(errors: [Operations.GetRecentlyAddedErrors]? = nil) {
+        public init(errors: [Operations.GetRecentlyAddedLibraryErrors]? = nil) {
             self.errors = errors
         }
     }}
 
-extension Operations.GetRecentlyAddedBadRequest: Codable {
+extension Operations.GetRecentlyAddedLibraryBadRequest: Codable {
     enum CodingKeys: String, CodingKey {
         case errors
     }

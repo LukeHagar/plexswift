@@ -5,6 +5,23 @@ import Foundation
 extension Operations {
     /// A model object
     public struct GetRecentlyAddedRequest: APIValue {
+        /// The content directory ID.
+        public let contentDirectoryID: Int
+        /// The type of media to retrieve.
+        /// 1 = movie
+        /// 2 = show
+        /// 3 = season
+        /// 4 = episode
+        /// E.g. A movie library will not return anything with type 3 as there are no seasons for movie libraries
+        /// 
+        public let type: Operations.TypeModel
+        /// Adds the Meta object to the response
+        /// 
+        public let includeMeta: Operations.IncludeMeta?
+        /// Comma-separated list of pinned content directory IDs.
+        public let pinnedContentDirectoryID: String?
+        /// The library section ID for filtering content.
+        public let sectionID: Int?
         /// The number of items to return. If not specified, all items will be returned.
         /// If the number of items exceeds the limit, the response will be paginated.
         /// By default this is 50
@@ -18,6 +35,18 @@ extension Operations {
 
         /// Creates an object with the specified parameters
         ///
+        /// - Parameter contentDirectoryID: The content directory ID.
+        /// - Parameter type: The type of media to retrieve.
+        /// 1 = movie
+        /// 2 = show
+        /// 3 = season
+        /// 4 = episode
+        /// E.g. A movie library will not return anything with type 3 as there are no seasons for movie libraries
+        /// 
+        /// - Parameter includeMeta: Adds the Meta object to the response
+        /// 
+        /// - Parameter pinnedContentDirectoryID: Comma-separated list of pinned content directory IDs.
+        /// - Parameter sectionID: The library section ID for filtering content.
         /// - Parameter xPlexContainerSize: The number of items to return. If not specified, all items will be returned.
         /// If the number of items exceeds the limit, the response will be paginated.
         /// By default this is 50
@@ -27,7 +56,12 @@ extension Operations {
         /// By default this is 0
         /// 
         ///
-        public init(xPlexContainerSize: Int? = nil, xPlexContainerStart: Int? = nil) {
+        public init(contentDirectoryID: Int, type: Operations.TypeModel, includeMeta: Operations.IncludeMeta? = nil, pinnedContentDirectoryID: String? = nil, sectionID: Int? = nil, xPlexContainerSize: Int? = nil, xPlexContainerStart: Int? = nil) {
+            self.contentDirectoryID = contentDirectoryID
+            self.type = type
+            self.includeMeta = includeMeta
+            self.pinnedContentDirectoryID = pinnedContentDirectoryID
+            self.sectionID = sectionID
             self.xPlexContainerSize = xPlexContainerSize
             self.xPlexContainerStart = xPlexContainerStart
         }

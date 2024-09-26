@@ -15,15 +15,18 @@ extension Operations {
         public let size: Int
         public let videoProfile: String
         public let audioProfile: String?
-        public let hasThumbnail: Operations.HasThumbnail?
+        public let has64bitOffsets: Bool?
+        public let hasThumbnail: Operations.GetLibraryItemsHasThumbnail?
         public let indexes: String?
+        public let optimizedForStreaming: Bool?
+        public let stream: [Operations.GetLibraryItemsStream]?
 
         /// Creates an object with the specified parameters
         ///
         /// - Parameter container: The container format of the media file.
         /// 
         ///
-        public init(container: String, duration: Int, file: String, id: Int, key: String, size: Int, videoProfile: String, audioProfile: String? = nil, hasThumbnail: Operations.HasThumbnail? = nil, indexes: String? = nil) {
+        public init(container: String, duration: Int, file: String, id: Int, key: String, size: Int, videoProfile: String, audioProfile: String? = nil, has64bitOffsets: Bool? = nil, hasThumbnail: Operations.GetLibraryItemsHasThumbnail? = nil, indexes: String? = nil, optimizedForStreaming: Bool? = nil, stream: [Operations.GetLibraryItemsStream]? = nil) {
             self.container = container
             self.duration = duration
             self.file = file
@@ -32,8 +35,11 @@ extension Operations {
             self.size = size
             self.videoProfile = videoProfile
             self.audioProfile = audioProfile
+            self.has64bitOffsets = has64bitOffsets
             self.hasThumbnail = hasThumbnail
             self.indexes = indexes
+            self.optimizedForStreaming = optimizedForStreaming
+            self.stream = stream
         }
     }}
 
@@ -47,8 +53,11 @@ extension Operations.GetLibraryItemsPart: Codable {
         case size
         case videoProfile
         case audioProfile
+        case has64bitOffsets
         case hasThumbnail
         case indexes
+        case optimizedForStreaming
+        case stream = "Stream"
     }
 }
 

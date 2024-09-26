@@ -4,7 +4,7 @@ import Foundation
 
 extension Operations {
     /// A model object
-    public struct GetRecentlyAddedErrors {
+    public struct GetRecentlyAddedLibraryLibraryErrors {
         public let code: Int?
         public let message: String?
         public let status: Int?
@@ -19,7 +19,7 @@ extension Operations {
         }
     }}
 
-extension Operations.GetRecentlyAddedErrors: Codable {
+extension Operations.GetRecentlyAddedLibraryLibraryErrors: Codable {
     enum CodingKeys: String, CodingKey {
         case code
         case message

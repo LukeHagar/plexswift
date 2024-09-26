@@ -5,35 +5,41 @@ import Foundation
 extension Operations {
     /// A model object
     public struct Part {
-        public let container: String?
-        @DecimalSerialized
-        public private(set) var duration: Double?
-        public let file: String?
+        /// The container format of the media file.
+        /// 
+        public let container: String
+        public let duration: Int
+        public let file: String
+        public let id: Int
+        public let key: String
+        public let size: Int
+        public let videoProfile: String
+        public let audioProfile: String?
         public let has64bitOffsets: Bool?
-        @DecimalSerialized
-        public private(set) var hasThumbnail: Double?
-        @DecimalSerialized
-        public private(set) var id: Double?
-        public let key: String?
+        public let hasThumbnail: Operations.HasThumbnail?
+        public let indexes: String?
         public let optimizedForStreaming: Bool?
-        @DecimalSerialized
-        public private(set) var size: Double?
-        public let videoProfile: String?
+        public let stream: [Operations.Stream]?
 
         /// Creates an object with the specified parameters
         ///
+        /// - Parameter container: The container format of the media file.
+        /// 
         ///
-        public init(container: String? = nil, duration: Double? = nil, file: String? = nil, has64bitOffsets: Bool? = nil, hasThumbnail: Double? = nil, id: Double? = nil, key: String? = nil, optimizedForStreaming: Bool? = nil, size: Double? = nil, videoProfile: String? = nil) {
+        public init(container: String, duration: Int, file: String, id: Int, key: String, size: Int, videoProfile: String, audioProfile: String? = nil, has64bitOffsets: Bool? = nil, hasThumbnail: Operations.HasThumbnail? = nil, indexes: String? = nil, optimizedForStreaming: Bool? = nil, stream: [Operations.Stream]? = nil) {
             self.container = container
-            self._duration = DecimalSerialized<Double?>(wrappedValue: duration)
+            self.duration = duration
             self.file = file
-            self.has64bitOffsets = has64bitOffsets
-            self._hasThumbnail = DecimalSerialized<Double?>(wrappedValue: hasThumbnail)
-            self._id = DecimalSerialized<Double?>(wrappedValue: id)
+            self.id = id
             self.key = key
-            self.optimizedForStreaming = optimizedForStreaming
-            self._size = DecimalSerialized<Double?>(wrappedValue: size)
+            self.size = size
             self.videoProfile = videoProfile
+            self.audioProfile = audioProfile
+            self.has64bitOffsets = has64bitOffsets
+            self.hasThumbnail = hasThumbnail
+            self.indexes = indexes
+            self.optimizedForStreaming = optimizedForStreaming
+            self.stream = stream
         }
     }}
 
@@ -42,63 +48,16 @@ extension Operations.Part: Codable {
         case container
         case duration
         case file
-        case has64bitOffsets
-        case hasThumbnail
         case id
         case key
-        case optimizedForStreaming
         case size
         case videoProfile
-    }
-
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        self.container = try container.decodeIfPresent(String.self, forKey: .container)
-        self._duration = try container.decodeIfPresent(DecimalSerialized<Double?>.self, forKey: .duration) ?? DecimalSerialized<Double?>(wrappedValue: nil)
-        self.file = try container.decodeIfPresent(String.self, forKey: .file)
-        self.has64bitOffsets = try container.decodeIfPresent(Bool.self, forKey: .has64bitOffsets)
-        self._hasThumbnail = try container.decodeIfPresent(DecimalSerialized<Double?>.self, forKey: .hasThumbnail) ?? DecimalSerialized<Double?>(wrappedValue: nil)
-        self._id = try container.decodeIfPresent(DecimalSerialized<Double?>.self, forKey: .id) ?? DecimalSerialized<Double?>(wrappedValue: nil)
-        self.key = try container.decodeIfPresent(String.self, forKey: .key)
-        self.optimizedForStreaming = try container.decodeIfPresent(Bool.self, forKey: .optimizedForStreaming)
-        self._size = try container.decodeIfPresent(DecimalSerialized<Double?>.self, forKey: .size) ?? DecimalSerialized<Double?>(wrappedValue: nil)
-        self.videoProfile = try container.decodeIfPresent(String.self, forKey: .videoProfile)
-    }
-
-    public func encode(to encoder: Encoder) throws {
-        var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encodeIfPresent(self.container, forKey: .container)
-        if self.duration != nil {
-            try container.encode(self._duration, forKey: .duration)
-        }
-        try container.encodeIfPresent(self.file, forKey: .file)
-        try container.encodeIfPresent(self.has64bitOffsets, forKey: .has64bitOffsets)
-        if self.hasThumbnail != nil {
-            try container.encode(self._hasThumbnail, forKey: .hasThumbnail)
-        }
-        if self.id != nil {
-            try container.encode(self._id, forKey: .id)
-        }
-        try container.encodeIfPresent(self.key, forKey: .key)
-        try container.encodeIfPresent(self.optimizedForStreaming, forKey: .optimizedForStreaming)
-        if self.size != nil {
-            try container.encode(self._size, forKey: .size)
-        }
-        try container.encodeIfPresent(self.videoProfile, forKey: .videoProfile)
+        case audioProfile
+        case has64bitOffsets
+        case hasThumbnail
+        case indexes
+        case optimizedForStreaming
+        case stream = "Stream"
     }
 }
 
-extension Operations.Part {
-    var idWrapper: DecimalSerialized<Double?> {
-        return _id
-    }
-    var durationWrapper: DecimalSerialized<Double?> {
-        return _duration
-    }
-    var sizeWrapper: DecimalSerialized<Double?> {
-        return _size
-    }
-    var hasThumbnailWrapper: DecimalSerialized<Double?> {
-        return _hasThumbnail
-    }
-}

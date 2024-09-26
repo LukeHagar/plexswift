@@ -21,12 +21,14 @@ extension Operations {
         public let videoResolution: String
         public let width: Int
         public let audioProfile: String?
+        public let has64bitOffsets: Bool?
         public let hasVoiceActivity: Bool?
+        public let optimizedForStreaming: Operations.GetLibraryItemsOptimizedForStreaming?
 
         /// Creates an object with the specified parameters
         ///
         ///
-        public init(aspectRatio: Double, audioChannels: Int, audioCodec: String, bitrate: Int, container: String, duration: Int, height: Int, id: Int, part: [Operations.GetLibraryItemsPart], videoCodec: String, videoFrameRate: String, videoProfile: String, videoResolution: String, width: Int, audioProfile: String? = nil, hasVoiceActivity: Bool? = nil) {
+        public init(aspectRatio: Double, audioChannels: Int, audioCodec: String, bitrate: Int, container: String, duration: Int, height: Int, id: Int, part: [Operations.GetLibraryItemsPart], videoCodec: String, videoFrameRate: String, videoProfile: String, videoResolution: String, width: Int, audioProfile: String? = nil, has64bitOffsets: Bool? = nil, hasVoiceActivity: Bool? = nil, optimizedForStreaming: Operations.GetLibraryItemsOptimizedForStreaming? = nil) {
             self._aspectRatio = DecimalSerialized<Double>(wrappedValue: aspectRatio)
             self.audioChannels = audioChannels
             self.audioCodec = audioCodec
@@ -42,7 +44,9 @@ extension Operations {
             self.videoResolution = videoResolution
             self.width = width
             self.audioProfile = audioProfile
+            self.has64bitOffsets = has64bitOffsets
             self.hasVoiceActivity = hasVoiceActivity
+            self.optimizedForStreaming = optimizedForStreaming
         }
     }}
 
@@ -63,7 +67,9 @@ extension Operations.GetLibraryItemsMedia: Codable {
         case videoResolution
         case width
         case audioProfile
+        case has64bitOffsets
         case hasVoiceActivity
+        case optimizedForStreaming
     }
 
     public init(from decoder: Decoder) throws {
@@ -83,7 +89,9 @@ extension Operations.GetLibraryItemsMedia: Codable {
         self.videoResolution = try container.decode(String.self, forKey: .videoResolution)
         self.width = try container.decode(Int.self, forKey: .width)
         self.audioProfile = try container.decodeIfPresent(String.self, forKey: .audioProfile)
+        self.has64bitOffsets = try container.decodeIfPresent(Bool.self, forKey: .has64bitOffsets)
         self.hasVoiceActivity = try container.decodeIfPresent(Bool.self, forKey: .hasVoiceActivity)
+        self.optimizedForStreaming = try container.decodeIfPresent(Operations.GetLibraryItemsOptimizedForStreaming.self, forKey: .optimizedForStreaming)
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -103,7 +111,9 @@ extension Operations.GetLibraryItemsMedia: Codable {
         try container.encode(self.videoResolution, forKey: .videoResolution)
         try container.encode(self.width, forKey: .width)
         try container.encodeIfPresent(self.audioProfile, forKey: .audioProfile)
+        try container.encodeIfPresent(self.has64bitOffsets, forKey: .has64bitOffsets)
         try container.encodeIfPresent(self.hasVoiceActivity, forKey: .hasVoiceActivity)
+        try container.encodeIfPresent(self.optimizedForStreaming, forKey: .optimizedForStreaming)
     }
 }
 

@@ -5,13 +5,13 @@ import Foundation
 extension Operations {
     /// A model object
     public struct FieldType {
-        public let `operator`: [Operations.Operator]?
-        public let type: String?
+        public let `operator`: [Operations.Operator]
+        public let type: String
 
         /// Creates an object with the specified parameters
         ///
         ///
-        public init(`operator`: [Operations.Operator]? = nil, type: String? = nil) {
+        public init(`operator`: [Operations.Operator], type: String) {
             self.`operator` = `operator`
             self.type = type
         }

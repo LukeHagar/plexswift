@@ -3,9 +3,39 @@
 import Foundation
 
 extension Operations {
-    public enum GetLibraryItemsLibraryResponseType: String, Codable, APIValue {
-        case coverPoster = "coverPoster"
-        case background = "background"
-        case snapshot = "snapshot"
-        case clearLogo = "clearLogo"
+    /// A model object
+    public struct GetLibraryItemsLibraryResponseType {
+        public let active: Bool
+        public let key: String
+        public let title: String
+        public let type: String
+        public let field: [Operations.GetLibraryItemsLibraryField]?
+        public let filter: [Operations.GetLibraryItemsLibraryFilter]?
+        public let sort: [Operations.GetLibraryItemsLibrarySort]?
+
+        /// Creates an object with the specified parameters
+        ///
+        ///
+        public init(active: Bool, key: String, title: String, type: String, field: [Operations.GetLibraryItemsLibraryField]? = nil, filter: [Operations.GetLibraryItemsLibraryFilter]? = nil, sort: [Operations.GetLibraryItemsLibrarySort]? = nil) {
+            self.active = active
+            self.key = key
+            self.title = title
+            self.type = type
+            self.field = field
+            self.filter = filter
+            self.sort = sort
+        }
     }}
+
+extension Operations.GetLibraryItemsLibraryResponseType: Codable {
+    enum CodingKeys: String, CodingKey {
+        case active
+        case key
+        case title
+        case type
+        case field = "Field"
+        case filter = "Filter"
+        case sort = "Sort"
+    }
+}
+

@@ -1,16 +1,16 @@
 lockVersion: 2.0.0
 id: 5d77204e-e413-4fd0-a14a-bad3aee2247a
 management:
-  docChecksum: 82a4a9784fb0e66e1c64f130701cdd08
+  docChecksum: 5e039359563b41bbe118fc6701ba22dc
   docVersion: 0.0.3
-  speakeasyVersion: 1.402.12
-  generationVersion: 2.422.15
-  releaseVersion: 0.7.4
-  configChecksum: 691665a660b327c1f17c69db1fc1f667
+  speakeasyVersion: 1.402.14
+  generationVersion: 2.422.22
+  releaseVersion: 0.8.0
+  configChecksum: 9e515fc5ccbcbb494ef87004ae11ca42
   repoURL: https://github.com/LukeHagar/plexswift.git
 features:
   swift:
-    core: 3.2.14
+    core: 3.2.15
     deprecations: 2.81.2
     enums: 2.81.1
     globalSecurity: 2.81.6
@@ -18,7 +18,6 @@ features:
     globals: 2.81.3
     methodServerURLs: 3.0.1
     nameOverrides: 2.81.2
-    unions: 2.81.6
 generatedFiles:
   - .gitattributes
   - CONTRIBUTING.md
@@ -68,9 +67,19 @@ generatedFiles:
   - Sources/Plexswift/internal/models/GetGlobalHubsRequest+Serialization.swift
   - Sources/Plexswift/internal/models/GetLibraryDetailsRequest+Serialization.swift
   - Sources/Plexswift/internal/models/GetLibraryHubsRequest+Serialization.swift
-  - Sources/Plexswift/internal/models/GetLibraryItemsLibraryResponseType+Serialization.swift
+  - Sources/Plexswift/internal/models/GetLibraryItemsActiveDirection+Serialization.swift
+  - Sources/Plexswift/internal/models/GetLibraryItemsDefaultDirection+Serialization.swift
+  - Sources/Plexswift/internal/models/GetLibraryItemsFlattenSeasons+Serialization.swift
+  - Sources/Plexswift/internal/models/GetLibraryItemsHasThumbnail+Serialization.swift
+  - Sources/Plexswift/internal/models/GetLibraryItemsLibraryActiveDirection+Serialization.swift
+  - Sources/Plexswift/internal/models/GetLibraryItemsLibraryDefaultDirection+Serialization.swift
+  - Sources/Plexswift/internal/models/GetLibraryItemsLibraryResponse200Type+Serialization.swift
+  - Sources/Plexswift/internal/models/GetLibraryItemsLibraryType+Serialization.swift
+  - Sources/Plexswift/internal/models/GetLibraryItemsOptimizedForStreaming+Serialization.swift
+  - Sources/Plexswift/internal/models/GetLibraryItemsQueryParamIncludeMeta+Serialization.swift
+  - Sources/Plexswift/internal/models/GetLibraryItemsQueryParamType+Serialization.swift
   - Sources/Plexswift/internal/models/GetLibraryItemsRequest+Serialization.swift
-  - Sources/Plexswift/internal/models/GetLibraryItemsType+Serialization.swift
+  - Sources/Plexswift/internal/models/GetLibraryItemsShowOrdering+Serialization.swift
   - Sources/Plexswift/internal/models/GetMediaProvidersRequest+Serialization.swift
   - Sources/Plexswift/internal/models/GetMetaDataByRatingKeyRequest+Serialization.swift
   - Sources/Plexswift/internal/models/GetMetadataChildrenRequest+Serialization.swift
@@ -79,10 +88,16 @@ generatedFiles:
   - Sources/Plexswift/internal/models/GetPlaylistContentsRequest+Serialization.swift
   - Sources/Plexswift/internal/models/GetPlaylistRequest+Serialization.swift
   - Sources/Plexswift/internal/models/GetPlaylistsRequest+Serialization.swift
+  - Sources/Plexswift/internal/models/GetRecentlyAddedActiveDirection+Serialization.swift
+  - Sources/Plexswift/internal/models/GetRecentlyAddedDefaultDirection+Serialization.swift
+  - Sources/Plexswift/internal/models/GetRecentlyAddedHubsResponseType+Serialization.swift
+  - Sources/Plexswift/internal/models/GetRecentlyAddedHubsType+Serialization.swift
+  - Sources/Plexswift/internal/models/GetRecentlyAddedLibraryRequest+Serialization.swift
   - Sources/Plexswift/internal/models/GetRecentlyAddedRequest+Serialization.swift
   - Sources/Plexswift/internal/models/GetRefreshLibraryMetadataRequest+Serialization.swift
   - Sources/Plexswift/internal/models/GetResizedPhotoRequest+Serialization.swift
   - Sources/Plexswift/internal/models/GetResourcesStatisticsRequest+Serialization.swift
+  - Sources/Plexswift/internal/models/GetSearchLibraryQueryParamType+Serialization.swift
   - Sources/Plexswift/internal/models/GetSearchLibraryRequest+Serialization.swift
   - Sources/Plexswift/internal/models/GetSearchResultsRequest+Serialization.swift
   - Sources/Plexswift/internal/models/GetServerResourcesRequest+Serialization.swift
@@ -112,7 +127,6 @@ generatedFiles:
   - Sources/Plexswift/internal/models/IncludeRelay+Serialization.swift
   - Sources/Plexswift/internal/models/InternalPaymentMethod+Serialization.swift
   - Sources/Plexswift/internal/models/Level+Serialization.swift
-  - Sources/Plexswift/internal/models/LibrarySectionID+Serialization.swift
   - Sources/Plexswift/internal/models/Libtype+Serialization.swift
   - Sources/Plexswift/internal/models/LogLineRequest+Serialization.swift
   - Sources/Plexswift/internal/models/MailingListStatus+Serialization.swift
@@ -121,6 +135,7 @@ generatedFiles:
   - Sources/Plexswift/internal/models/MediaReviewsVisibility+Serialization.swift
   - Sources/Plexswift/internal/models/MinSize+Serialization.swift
   - Sources/Plexswift/internal/models/OnlyTransient+Serialization.swift
+  - Sources/Plexswift/internal/models/OptimizedForStreaming+Serialization.swift
   - Sources/Plexswift/internal/models/PathParamTaskName+Serialization.swift
   - Sources/Plexswift/internal/models/PerformSearchRequest+Serialization.swift
   - Sources/Plexswift/internal/models/PerformVoiceSearchRequest+Serialization.swift
@@ -134,6 +149,7 @@ generatedFiles:
   - Sources/Plexswift/internal/models/PostUsersSignInDataFeatures+Serialization.swift
   - Sources/Plexswift/internal/models/PostUsersSignInDataMailingListStatus+Serialization.swift
   - Sources/Plexswift/internal/models/PostUsersSignInDataMediaReviewsVisibility+Serialization.swift
+  - Sources/Plexswift/internal/models/PostUsersSignInDataRequest+Serialization.swift
   - Sources/Plexswift/internal/models/PostUsersSignInDataRequestBody+Serialization.swift
   - Sources/Plexswift/internal/models/PostUsersSignInDataState+Serialization.swift
   - Sources/Plexswift/internal/models/PostUsersSignInDataStatus+Serialization.swift
@@ -141,6 +157,7 @@ generatedFiles:
   - Sources/Plexswift/internal/models/Protocol+Serialization.swift
   - Sources/Plexswift/internal/models/QueryParamFilter+Serialization.swift
   - Sources/Plexswift/internal/models/QueryParamForce+Serialization.swift
+  - Sources/Plexswift/internal/models/QueryParamIncludeMeta+Serialization.swift
   - Sources/Plexswift/internal/models/QueryParamOnlyTransient+Serialization.swift
   - Sources/Plexswift/internal/models/QueryParamSmart+Serialization.swift
   - Sources/Plexswift/internal/models/QueryParamType+Serialization.swift
@@ -337,12 +354,16 @@ generatedFiles:
   - Sources/Plexswift/models/operations/GetLibraryDetailsBadRequest.swift
   - Sources/Plexswift/models/operations/GetLibraryDetailsDirectory.swift
   - Sources/Plexswift/models/operations/GetLibraryDetailsErrors.swift
+  - Sources/Plexswift/models/operations/GetLibraryDetailsField.swift
+  - Sources/Plexswift/models/operations/GetLibraryDetailsFieldType.swift
   - Sources/Plexswift/models/operations/GetLibraryDetailsFilter.swift
   - Sources/Plexswift/models/operations/GetLibraryDetailsLibraryErrors.swift
   - Sources/Plexswift/models/operations/GetLibraryDetailsMediaContainer.swift
+  - Sources/Plexswift/models/operations/GetLibraryDetailsOperator.swift
   - Sources/Plexswift/models/operations/GetLibraryDetailsRequest.swift
   - Sources/Plexswift/models/operations/GetLibraryDetailsResponse.swift
   - Sources/Plexswift/models/operations/GetLibraryDetailsResponseBody.swift
+  - Sources/Plexswift/models/operations/GetLibraryDetailsSort.swift
   - Sources/Plexswift/models/operations/GetLibraryDetailsType.swift
   - Sources/Plexswift/models/operations/GetLibraryDetailsUnauthorized.swift
   - Sources/Plexswift/models/operations/GetLibraryHubsBadRequest.swift
@@ -362,29 +383,51 @@ generatedFiles:
   - Sources/Plexswift/models/operations/GetLibraryHubsRole.swift
   - Sources/Plexswift/models/operations/GetLibraryHubsUnauthorized.swift
   - Sources/Plexswift/models/operations/GetLibraryHubsWriter.swift
+  - Sources/Plexswift/models/operations/GetLibraryItemsActiveDirection.swift
   - Sources/Plexswift/models/operations/GetLibraryItemsBadRequest.swift
+  - Sources/Plexswift/models/operations/GetLibraryItemsCollection.swift
   - Sources/Plexswift/models/operations/GetLibraryItemsCountry.swift
+  - Sources/Plexswift/models/operations/GetLibraryItemsDefaultDirection.swift
   - Sources/Plexswift/models/operations/GetLibraryItemsDirector.swift
   - Sources/Plexswift/models/operations/GetLibraryItemsErrors.swift
   - Sources/Plexswift/models/operations/GetLibraryItemsField.swift
   - Sources/Plexswift/models/operations/GetLibraryItemsFieldType.swift
   - Sources/Plexswift/models/operations/GetLibraryItemsFilter.swift
+  - Sources/Plexswift/models/operations/GetLibraryItemsFlattenSeasons.swift
   - Sources/Plexswift/models/operations/GetLibraryItemsGenre.swift
+  - Sources/Plexswift/models/operations/GetLibraryItemsHasThumbnail.swift
   - Sources/Plexswift/models/operations/GetLibraryItemsImage.swift
+  - Sources/Plexswift/models/operations/GetLibraryItemsLibraryActiveDirection.swift
+  - Sources/Plexswift/models/operations/GetLibraryItemsLibraryDefaultDirection.swift
   - Sources/Plexswift/models/operations/GetLibraryItemsLibraryErrors.swift
+  - Sources/Plexswift/models/operations/GetLibraryItemsLibraryField.swift
+  - Sources/Plexswift/models/operations/GetLibraryItemsLibraryFieldType.swift
+  - Sources/Plexswift/models/operations/GetLibraryItemsLibraryFilter.swift
+  - Sources/Plexswift/models/operations/GetLibraryItemsLibraryOperator.swift
+  - Sources/Plexswift/models/operations/GetLibraryItemsLibraryResponse200Type.swift
   - Sources/Plexswift/models/operations/GetLibraryItemsLibraryResponseType.swift
+  - Sources/Plexswift/models/operations/GetLibraryItemsLibrarySort.swift
   - Sources/Plexswift/models/operations/GetLibraryItemsLibraryType.swift
   - Sources/Plexswift/models/operations/GetLibraryItemsMedia.swift
   - Sources/Plexswift/models/operations/GetLibraryItemsMediaContainer.swift
+  - Sources/Plexswift/models/operations/GetLibraryItemsMediaGuid.swift
+  - Sources/Plexswift/models/operations/GetLibraryItemsMeta.swift
+  - Sources/Plexswift/models/operations/GetLibraryItemsMetaDataRating.swift
   - Sources/Plexswift/models/operations/GetLibraryItemsMetadata.swift
   - Sources/Plexswift/models/operations/GetLibraryItemsOperator.swift
+  - Sources/Plexswift/models/operations/GetLibraryItemsOptimizedForStreaming.swift
   - Sources/Plexswift/models/operations/GetLibraryItemsPart.swift
+  - Sources/Plexswift/models/operations/GetLibraryItemsQueryParamIncludeMeta.swift
+  - Sources/Plexswift/models/operations/GetLibraryItemsQueryParamType.swift
   - Sources/Plexswift/models/operations/GetLibraryItemsRequest.swift
   - Sources/Plexswift/models/operations/GetLibraryItemsResponse.swift
   - Sources/Plexswift/models/operations/GetLibraryItemsResponseBody.swift
   - Sources/Plexswift/models/operations/GetLibraryItemsRole.swift
+  - Sources/Plexswift/models/operations/GetLibraryItemsShowOrdering.swift
   - Sources/Plexswift/models/operations/GetLibraryItemsSort.swift
+  - Sources/Plexswift/models/operations/GetLibraryItemsStream.swift
   - Sources/Plexswift/models/operations/GetLibraryItemsType.swift
+  - Sources/Plexswift/models/operations/GetLibraryItemsUltraBlurColors.swift
   - Sources/Plexswift/models/operations/GetLibraryItemsUnauthorized.swift
   - Sources/Plexswift/models/operations/GetLibraryItemsWriter.swift
   - Sources/Plexswift/models/operations/GetMediaProvidersBadRequest.swift
@@ -410,6 +453,7 @@ generatedFiles:
   - Sources/Plexswift/models/operations/GetMetaDataByRatingKeyResponse.swift
   - Sources/Plexswift/models/operations/GetMetaDataByRatingKeyResponseBody.swift
   - Sources/Plexswift/models/operations/GetMetaDataByRatingKeyRole.swift
+  - Sources/Plexswift/models/operations/GetMetaDataByRatingKeyStream.swift
   - Sources/Plexswift/models/operations/GetMetaDataByRatingKeyUnauthorized.swift
   - Sources/Plexswift/models/operations/GetMetaDataByRatingKeyWriter.swift
   - Sources/Plexswift/models/operations/GetMetadataChildrenBadRequest.swift
@@ -480,15 +524,40 @@ generatedFiles:
   - Sources/Plexswift/models/operations/GetPlaylistsResponse.swift
   - Sources/Plexswift/models/operations/GetPlaylistsResponseBody.swift
   - Sources/Plexswift/models/operations/GetPlaylistsUnauthorized.swift
-  - Sources/Plexswift/models/operations/GetRecentlyAddedBadRequest.swift
-  - Sources/Plexswift/models/operations/GetRecentlyAddedErrors.swift
+  - Sources/Plexswift/models/operations/GetRecentlyAddedActiveDirection.swift
+  - Sources/Plexswift/models/operations/GetRecentlyAddedDefaultDirection.swift
+  - Sources/Plexswift/models/operations/GetRecentlyAddedField.swift
+  - Sources/Plexswift/models/operations/GetRecentlyAddedFieldType.swift
+  - Sources/Plexswift/models/operations/GetRecentlyAddedFilter.swift
+  - Sources/Plexswift/models/operations/GetRecentlyAddedHubsResponseType.swift
+  - Sources/Plexswift/models/operations/GetRecentlyAddedHubsType.swift
+  - Sources/Plexswift/models/operations/GetRecentlyAddedImage.swift
+  - Sources/Plexswift/models/operations/GetRecentlyAddedLibraryBadRequest.swift
+  - Sources/Plexswift/models/operations/GetRecentlyAddedLibraryCountry.swift
+  - Sources/Plexswift/models/operations/GetRecentlyAddedLibraryDirector.swift
   - Sources/Plexswift/models/operations/GetRecentlyAddedLibraryErrors.swift
+  - Sources/Plexswift/models/operations/GetRecentlyAddedLibraryFilter.swift
+  - Sources/Plexswift/models/operations/GetRecentlyAddedLibraryGenre.swift
+  - Sources/Plexswift/models/operations/GetRecentlyAddedLibraryLibraryErrors.swift
+  - Sources/Plexswift/models/operations/GetRecentlyAddedLibraryMedia.swift
+  - Sources/Plexswift/models/operations/GetRecentlyAddedLibraryMediaContainer.swift
+  - Sources/Plexswift/models/operations/GetRecentlyAddedLibraryMetadata.swift
+  - Sources/Plexswift/models/operations/GetRecentlyAddedLibraryPart.swift
+  - Sources/Plexswift/models/operations/GetRecentlyAddedLibraryRequest.swift
+  - Sources/Plexswift/models/operations/GetRecentlyAddedLibraryResponse.swift
+  - Sources/Plexswift/models/operations/GetRecentlyAddedLibraryResponseBody.swift
+  - Sources/Plexswift/models/operations/GetRecentlyAddedLibraryRole.swift
+  - Sources/Plexswift/models/operations/GetRecentlyAddedLibraryType.swift
+  - Sources/Plexswift/models/operations/GetRecentlyAddedLibraryUnauthorized.swift
+  - Sources/Plexswift/models/operations/GetRecentlyAddedLibraryWriter.swift
   - Sources/Plexswift/models/operations/GetRecentlyAddedMediaContainer.swift
   - Sources/Plexswift/models/operations/GetRecentlyAddedMetadata.swift
+  - Sources/Plexswift/models/operations/GetRecentlyAddedOperator.swift
   - Sources/Plexswift/models/operations/GetRecentlyAddedRequest.swift
   - Sources/Plexswift/models/operations/GetRecentlyAddedResponse.swift
   - Sources/Plexswift/models/operations/GetRecentlyAddedResponseBody.swift
-  - Sources/Plexswift/models/operations/GetRecentlyAddedUnauthorized.swift
+  - Sources/Plexswift/models/operations/GetRecentlyAddedSort.swift
+  - Sources/Plexswift/models/operations/GetRecentlyAddedType.swift
   - Sources/Plexswift/models/operations/GetRefreshLibraryMetadataBadRequest.swift
   - Sources/Plexswift/models/operations/GetRefreshLibraryMetadataErrors.swift
   - Sources/Plexswift/models/operations/GetRefreshLibraryMetadataLibraryErrors.swift
@@ -514,6 +583,7 @@ generatedFiles:
   - Sources/Plexswift/models/operations/GetSearchLibraryLibraryErrors.swift
   - Sources/Plexswift/models/operations/GetSearchLibraryMediaContainer.swift
   - Sources/Plexswift/models/operations/GetSearchLibraryMetadata.swift
+  - Sources/Plexswift/models/operations/GetSearchLibraryQueryParamType.swift
   - Sources/Plexswift/models/operations/GetSearchLibraryRequest.swift
   - Sources/Plexswift/models/operations/GetSearchLibraryResponse.swift
   - Sources/Plexswift/models/operations/GetSearchLibraryResponseBody.swift
@@ -699,7 +769,6 @@ generatedFiles:
   - Sources/Plexswift/models/operations/IncludeRelay.swift
   - Sources/Plexswift/models/operations/InternalPaymentMethod.swift
   - Sources/Plexswift/models/operations/Level.swift
-  - Sources/Plexswift/models/operations/LibrarySectionID.swift
   - Sources/Plexswift/models/operations/Libtype.swift
   - Sources/Plexswift/models/operations/Location.swift
   - Sources/Plexswift/models/operations/LogLineBadRequest.swift
@@ -732,11 +801,13 @@ generatedFiles:
   - Sources/Plexswift/models/operations/MediaProvider.swift
   - Sources/Plexswift/models/operations/MediaReviewsVisibility.swift
   - Sources/Plexswift/models/operations/Meta.swift
+  - Sources/Plexswift/models/operations/MetaDataRating.swift
   - Sources/Plexswift/models/operations/Metadata.swift
   - Sources/Plexswift/models/operations/MinSize.swift
   - Sources/Plexswift/models/operations/MyPlex.swift
   - Sources/Plexswift/models/operations/OnlyTransient.swift
   - Sources/Plexswift/models/operations/Operator.swift
+  - Sources/Plexswift/models/operations/OptimizedForStreaming.swift
   - Sources/Plexswift/models/operations/Part.swift
   - Sources/Plexswift/models/operations/PastSubscription.swift
   - Sources/Plexswift/models/operations/PathParamTaskName.swift
@@ -769,6 +840,7 @@ generatedFiles:
   - Sources/Plexswift/models/operations/PostUsersSignInDataFeatures.swift
   - Sources/Plexswift/models/operations/PostUsersSignInDataMailingListStatus.swift
   - Sources/Plexswift/models/operations/PostUsersSignInDataMediaReviewsVisibility.swift
+  - Sources/Plexswift/models/operations/PostUsersSignInDataRequest.swift
   - Sources/Plexswift/models/operations/PostUsersSignInDataRequestBody.swift
   - Sources/Plexswift/models/operations/PostUsersSignInDataResponse.swift
   - Sources/Plexswift/models/operations/PostUsersSignInDataServices.swift
@@ -784,6 +856,7 @@ generatedFiles:
   - Sources/Plexswift/models/operations/Provider.swift
   - Sources/Plexswift/models/operations/QueryParamFilter.swift
   - Sources/Plexswift/models/operations/QueryParamForce.swift
+  - Sources/Plexswift/models/operations/QueryParamIncludeMeta.swift
   - Sources/Plexswift/models/operations/QueryParamOnlyTransient.swift
   - Sources/Plexswift/models/operations/QueryParamSmart.swift
   - Sources/Plexswift/models/operations/QueryParamType.swift
@@ -1138,6 +1211,27 @@ examples:
         "200":
           application/json:
             MediaContainer:
+              FieldType:
+                - Operator:
+                    - key: =
+                      title: is
+                    - key: =
+                      title: is
+                    - key: =
+                      title: is
+                  type: tag
+                - Operator:
+                    - key: =
+                      title: is
+                    - key: =
+                      title: is
+                  type: tag
+                - Operator:
+                    - key: =
+                      title: is
+                    - key: =
+                      title: is
+                  type: tag
               Meta:
                 FieldType:
                   - Operator:
@@ -1230,34 +1324,233 @@ examples:
                       url: /library/metadata/45521/thumb/1644710589
                   Media:
                     - Part:
-                        - audioProfile: dts
+                        - Stream:
+                            - audioChannelLayout: stereo
+                              bitDepth: 8
+                              bitrate: 6273
+                              canAutoSync: false
+                              channels: 2
+                              chromaLocation: left
+                              chromaSubsampling: "4:2:0"
+                              closedCaptions: false
+                              codec: h264
+                              codedHeight: 1088
+                              codedWidth: 1920
+                              colorPrimaries: bt709
+                              colorRange: tv
+                              colorSpace: bt709
+                              colorTrc: bt709
+                              default: true
+                              displayTitle: 1080p (H.264)
+                              embeddedInVideo: "1"
+                              extendedDisplayTitle: 1080p (H.264)
+                              frameRate: 29.97
+                              hasScalingMatrix: false
+                              hearingImpaired: false
+                              height: 1080
+                              id: 272796
+                              index: 0
+                              language: English
+                              languageCode: eng
+                              languageTag: en
+                              level: 40
+                              profile: main
+                              refFrames: 4
+                              samplingRate: 48000
+                              scanType: progressive
+                              selected: true
+                              streamIdentifier: "2"
+                              streamType: 1
+                              title: English
+                              width: 1920
+                          audioProfile: dts
                           container: mkv
                           duration: 11558112
                           file: /movies/Avatar The Way of Water (2022)/Avatar.The.Way.of.Water.2022.2160p.WEB-DL.DDP5.1.Atmos.DV.HDR10.HEVC-CMRG.mkv
+                          has64bitOffsets: false
                           hasThumbnail: "1"
                           id: 119542
                           indexes: sd
                           key: /library/parts/119542/1680457526/file.mkv
+                          optimizedForStreaming: false
                           size: 36158371307
                           videoProfile: main 10
-                        - audioProfile: dts
+                        - Stream:
+                            - audioChannelLayout: stereo
+                              bitDepth: 8
+                              bitrate: 6273
+                              canAutoSync: false
+                              channels: 2
+                              chromaLocation: left
+                              chromaSubsampling: "4:2:0"
+                              closedCaptions: false
+                              codec: h264
+                              codedHeight: 1088
+                              codedWidth: 1920
+                              colorPrimaries: bt709
+                              colorRange: tv
+                              colorSpace: bt709
+                              colorTrc: bt709
+                              default: true
+                              displayTitle: 1080p (H.264)
+                              embeddedInVideo: "1"
+                              extendedDisplayTitle: 1080p (H.264)
+                              frameRate: 29.97
+                              hasScalingMatrix: false
+                              hearingImpaired: false
+                              height: 1080
+                              id: 272796
+                              index: 0
+                              language: English
+                              languageCode: eng
+                              languageTag: en
+                              level: 40
+                              profile: main
+                              refFrames: 4
+                              samplingRate: 48000
+                              scanType: progressive
+                              selected: true
+                              streamIdentifier: "2"
+                              streamType: 1
+                              title: English
+                              width: 1920
+                            - audioChannelLayout: stereo
+                              bitDepth: 8
+                              bitrate: 6273
+                              canAutoSync: false
+                              channels: 2
+                              chromaLocation: left
+                              chromaSubsampling: "4:2:0"
+                              closedCaptions: false
+                              codec: h264
+                              codedHeight: 1088
+                              codedWidth: 1920
+                              colorPrimaries: bt709
+                              colorRange: tv
+                              colorSpace: bt709
+                              colorTrc: bt709
+                              default: true
+                              displayTitle: 1080p (H.264)
+                              embeddedInVideo: "1"
+                              extendedDisplayTitle: 1080p (H.264)
+                              frameRate: 29.97
+                              hasScalingMatrix: false
+                              hearingImpaired: false
+                              height: 1080
+                              id: 272796
+                              index: 0
+                              language: English
+                              languageCode: eng
+                              languageTag: en
+                              level: 40
+                              profile: main
+                              refFrames: 4
+                              samplingRate: 48000
+                              scanType: progressive
+                              selected: true
+                              streamIdentifier: "2"
+                              streamType: 1
+                              title: English
+                              width: 1920
+                            - audioChannelLayout: stereo
+                              bitDepth: 8
+                              bitrate: 6273
+                              canAutoSync: false
+                              channels: 2
+                              chromaLocation: left
+                              chromaSubsampling: "4:2:0"
+                              closedCaptions: false
+                              codec: h264
+                              codedHeight: 1088
+                              codedWidth: 1920
+                              colorPrimaries: bt709
+                              colorRange: tv
+                              colorSpace: bt709
+                              colorTrc: bt709
+                              default: true
+                              displayTitle: 1080p (H.264)
+                              embeddedInVideo: "1"
+                              extendedDisplayTitle: 1080p (H.264)
+                              frameRate: 29.97
+                              hasScalingMatrix: false
+                              hearingImpaired: false
+                              height: 1080
+                              id: 272796
+                              index: 0
+                              language: English
+                              languageCode: eng
+                              languageTag: en
+                              level: 40
+                              profile: main
+                              refFrames: 4
+                              samplingRate: 48000
+                              scanType: progressive
+                              selected: true
+                              streamIdentifier: "2"
+                              streamType: 1
+                              title: English
+                              width: 1920
+                          audioProfile: dts
                           container: mkv
                           duration: 11558112
                           file: /movies/Avatar The Way of Water (2022)/Avatar.The.Way.of.Water.2022.2160p.WEB-DL.DDP5.1.Atmos.DV.HDR10.HEVC-CMRG.mkv
+                          has64bitOffsets: false
                           hasThumbnail: "1"
                           id: 119542
                           indexes: sd
                           key: /library/parts/119542/1680457526/file.mkv
+                          optimizedForStreaming: false
                           size: 36158371307
                           videoProfile: main 10
-                        - audioProfile: dts
+                        - Stream:
+                            - audioChannelLayout: stereo
+                              bitDepth: 8
+                              bitrate: 6273
+                              canAutoSync: false
+                              channels: 2
+                              chromaLocation: left
+                              chromaSubsampling: "4:2:0"
+                              closedCaptions: false
+                              codec: h264
+                              codedHeight: 1088
+                              codedWidth: 1920
+                              colorPrimaries: bt709
+                              colorRange: tv
+                              colorSpace: bt709
+                              colorTrc: bt709
+                              default: true
+                              displayTitle: 1080p (H.264)
+                              embeddedInVideo: "1"
+                              extendedDisplayTitle: 1080p (H.264)
+                              frameRate: 29.97
+                              hasScalingMatrix: false
+                              hearingImpaired: false
+                              height: 1080
+                              id: 272796
+                              index: 0
+                              language: English
+                              languageCode: eng
+                              languageTag: en
+                              level: 40
+                              profile: main
+                              refFrames: 4
+                              samplingRate: 48000
+                              scanType: progressive
+                              selected: true
+                              streamIdentifier: "2"
+                              streamType: 1
+                              title: English
+                              width: 1920
+                          audioProfile: dts
                           container: mkv
                           duration: 11558112
                           file: /movies/Avatar The Way of Water (2022)/Avatar.The.Way.of.Water.2022.2160p.WEB-DL.DDP5.1.Atmos.DV.HDR10.HEVC-CMRG.mkv
+                          has64bitOffsets: false
                           hasThumbnail: "1"
                           id: 119542
                           indexes: sd
                           key: /library/parts/119542/1680457526/file.mkv
+                          optimizedForStreaming: false
                           size: 36158371307
                           videoProfile: main 10
                       aspectRatio: 1.85
@@ -1267,18 +1560,39 @@ examples:
                       bitrate: 25025
                       container: mkv
                       duration: 11558112
+                      has64bitOffsets: false
                       hasVoiceActivity: false
                       height: 2072
                       id: 119534
+                      optimizedForStreaming: 1
                       videoCodec: hevc
                       videoFrameRate: 24p
                       videoProfile: main 10
                       videoResolution: 4k
                       width: 3840
+                  Rating:
+                    - image: themoviedb://image.rating
+                      type: audience
+                      value: 3
                   Role:
-                    - tag: Sigourney Weaver
-                    - tag: Sigourney Weaver
-                    - tag: Sigourney Weaver
+                    - filter: actor=294129
+                      id: 294129
+                      role: Self
+                      tag: Mike Smith
+                      tagKey: 668e7e7b22bcad9064350c91
+                      thumb: https://metadata-static.plex.tv/2/people/27b85844536c39f3f9ac943aaad46608.jpg
+                    - filter: actor=294129
+                      id: 294129
+                      role: Self
+                      tag: Mike Smith
+                      tagKey: 668e7e7b22bcad9064350c91
+                      thumb: https://metadata-static.plex.tv/2/people/27b85844536c39f3f9ac943aaad46608.jpg
+                    - filter: actor=294129
+                      id: 294129
+                      role: Self
+                      tag: Mike Smith
+                      tagKey: 668e7e7b22bcad9064350c91
+                      thumb: https://metadata-static.plex.tv/2/people/27b85844536c39f3f9ac943aaad46608.jpg
                   UltraBlurColors:
                     bottomLeft: 1f5066
                     bottomRight: "73958"
@@ -1311,12 +1625,16 @@ examples:
                   key: /library/metadata/58683
                   lastViewedAt: 1682752242
                   leafCount: 14
+                  librarySectionID: 1
+                  librarySectionKey: /library/sections/1
+                  librarySectionTitle: Movies
                   originalTitle: 映画 ブラッククローバー 魔法帝の剣
                   originallyAvailableAt: "2022-12-14T00:00:00Z"
                   parentGuid: plex://show/5d9c081b170e24001f2a7be4
                   parentIndex: 1
                   parentKey: /library/metadata/66
                   parentRatingKey: "66"
+                  parentSlug: alice-in-borderland-2020
                   parentStudio: UCP
                   parentTheme: /library/metadata/66/theme/1705716261
                   parentThumb: /library/metadata/66/thumb/1705716261
@@ -1362,14 +1680,55 @@ examples:
                       url: /library/metadata/45521/thumb/1644710589
                   Media:
                     - Part:
-                        - audioProfile: dts
+                        - Stream:
+                            - audioChannelLayout: stereo
+                              bitDepth: 8
+                              bitrate: 6273
+                              canAutoSync: false
+                              channels: 2
+                              chromaLocation: left
+                              chromaSubsampling: "4:2:0"
+                              closedCaptions: false
+                              codec: h264
+                              codedHeight: 1088
+                              codedWidth: 1920
+                              colorPrimaries: bt709
+                              colorRange: tv
+                              colorSpace: bt709
+                              colorTrc: bt709
+                              default: true
+                              displayTitle: 1080p (H.264)
+                              embeddedInVideo: "1"
+                              extendedDisplayTitle: 1080p (H.264)
+                              frameRate: 29.97
+                              hasScalingMatrix: false
+                              hearingImpaired: false
+                              height: 1080
+                              id: 272796
+                              index: 0
+                              language: English
+                              languageCode: eng
+                              languageTag: en
+                              level: 40
+                              profile: main
+                              refFrames: 4
+                              samplingRate: 48000
+                              scanType: progressive
+                              selected: true
+                              streamIdentifier: "2"
+                              streamType: 1
+                              title: English
+                              width: 1920
+                          audioProfile: dts
                           container: mkv
                           duration: 11558112
                           file: /movies/Avatar The Way of Water (2022)/Avatar.The.Way.of.Water.2022.2160p.WEB-DL.DDP5.1.Atmos.DV.HDR10.HEVC-CMRG.mkv
+                          has64bitOffsets: false
                           hasThumbnail: "1"
                           id: 119542
                           indexes: sd
                           key: /library/parts/119542/1680457526/file.mkv
+                          optimizedForStreaming: false
                           size: 36158371307
                           videoProfile: main 10
                       aspectRatio: 1.85
@@ -1379,18 +1738,36 @@ examples:
                       bitrate: 25025
                       container: mkv
                       duration: 11558112
+                      has64bitOffsets: false
                       hasVoiceActivity: false
                       height: 2072
                       id: 119534
+                      optimizedForStreaming: 1
                       videoCodec: hevc
                       videoFrameRate: 24p
                       videoProfile: main 10
                       videoResolution: 4k
                       width: 3840
+                  Rating: []
                   Role:
-                    - tag: Sigourney Weaver
-                    - tag: Sigourney Weaver
-                    - tag: Sigourney Weaver
+                    - filter: actor=294129
+                      id: 294129
+                      role: Self
+                      tag: Mike Smith
+                      tagKey: 668e7e7b22bcad9064350c91
+                      thumb: https://metadata-static.plex.tv/2/people/27b85844536c39f3f9ac943aaad46608.jpg
+                    - filter: actor=294129
+                      id: 294129
+                      role: Self
+                      tag: Mike Smith
+                      tagKey: 668e7e7b22bcad9064350c91
+                      thumb: https://metadata-static.plex.tv/2/people/27b85844536c39f3f9ac943aaad46608.jpg
+                    - filter: actor=294129
+                      id: 294129
+                      role: Self
+                      tag: Mike Smith
+                      tagKey: 668e7e7b22bcad9064350c91
+                      thumb: https://metadata-static.plex.tv/2/people/27b85844536c39f3f9ac943aaad46608.jpg
                   UltraBlurColors:
                     bottomLeft: 1f5066
                     bottomRight: "73958"
@@ -1423,12 +1800,16 @@ examples:
                   key: /library/metadata/58683
                   lastViewedAt: 1682752242
                   leafCount: 14
+                  librarySectionID: 1
+                  librarySectionKey: /library/sections/1
+                  librarySectionTitle: Movies
                   originalTitle: 映画 ブラッククローバー 魔法帝の剣
                   originallyAvailableAt: "2022-12-14T00:00:00Z"
                   parentGuid: plex://show/5d9c081b170e24001f2a7be4
                   parentIndex: 1
                   parentKey: /library/metadata/66
                   parentRatingKey: "66"
+                  parentSlug: alice-in-borderland-2020
                   parentStudio: UCP
                   parentTheme: /library/metadata/66/theme/1705716261
                   parentThumb: /library/metadata/66/thumb/1705716261
@@ -1456,11 +1837,49 @@ examples:
                   viewOffset: 5222500
                   viewedLeafCount: 0
                   year: 2022
+              Type:
+                - Field:
+                    - key: show.title
+                      subType: rating
+                      title: Show Title
+                      type: string
+                  Filter:
+                    - filter: genre
+                      filterType: string
+                      key: /library/sections/2/genre?type=2
+                      title: Genre
+                      type: filter
+                    - filter: genre
+                      filterType: string
+                      key: /library/sections/2/genre?type=2
+                      title: Genre
+                      type: filter
+                  Sort:
+                    - active: false
+                      activeDirection: asc
+                      default: asc
+                      defaultDirection: asc
+                      descKey: titleSort:desc
+                      firstCharacterKey: /library/sections/2/firstCharacter
+                      key: titleSort
+                      title: Title
+                    - active: false
+                      activeDirection: asc
+                      default: asc
+                      defaultDirection: asc
+                      descKey: titleSort:desc
+                      firstCharacterKey: /library/sections/2/firstCharacter
+                      key: titleSort
+                      title: Title
+                  active: false
+                  key: /library/sections/2/all?type=2
+                  title: TV Shows
+                  type: show
               allowSync: true
               art: /:/resources/movie-fanart.jpg
               content: secondary
               identifier: com.plexapp.plugins.library
-              librarySectionID: <value>
+              librarySectionID: 1
               librarySectionTitle: Movies
               librarySectionUUID: 322a231a-b7f7-49f5-920f-14c61199cd30
               mediaTagPrefix: /system/bundle/media/flags/
@@ -1551,6 +1970,566 @@ examples:
         "401":
           application/json:
             errors: []
+  get-recently-added:
+    speakeasy-default-get-recently-added:
+      parameters:
+        query:
+          X-Plex-Container-Size: 50
+          X-Plex-Container-Start: 0
+          contentDirectoryID: 470161
+          includeMeta: 1
+          sectionID: 2
+          type: 2
+      responses:
+        "200":
+          application/json:
+            MediaContainer:
+              Meta:
+                FieldType:
+                  - Operator:
+                      - key: =
+                        title: is
+                    type: tag
+                  - Operator: []
+                    type: tag
+                  - Operator: []
+                    type: tag
+                Type:
+                  - Field:
+                      - key: show.title
+                        subType: rating
+                        title: Show Title
+                        type: string
+                      - key: show.title
+                        subType: rating
+                        title: Show Title
+                        type: string
+                      - key: show.title
+                        subType: rating
+                        title: Show Title
+                        type: string
+                    Filter:
+                      - filter: genre
+                        filterType: string
+                        key: /library/sections/2/genre?type=2
+                        title: Genre
+                        type: filter
+                      - filter: genre
+                        filterType: string
+                        key: /library/sections/2/genre?type=2
+                        title: Genre
+                        type: filter
+                      - filter: genre
+                        filterType: string
+                        key: /library/sections/2/genre?type=2
+                        title: Genre
+                        type: filter
+                    Sort:
+                      - active: false
+                        activeDirection: asc
+                        default: asc
+                        defaultDirection: asc
+                        descKey: titleSort:desc
+                        firstCharacterKey: /library/sections/2/firstCharacter
+                        key: titleSort
+                        title: Title
+                    active: false
+                    key: /library/sections/2/all?type=2
+                    title: TV Shows
+                    type: show
+                  - Field:
+                      - key: show.title
+                        subType: rating
+                        title: Show Title
+                        type: string
+                      - key: show.title
+                        subType: rating
+                        title: Show Title
+                        type: string
+                      - key: show.title
+                        subType: rating
+                        title: Show Title
+                        type: string
+                    Filter:
+                      - filter: genre
+                        filterType: string
+                        key: /library/sections/2/genre?type=2
+                        title: Genre
+                        type: filter
+                      - filter: genre
+                        filterType: string
+                        key: /library/sections/2/genre?type=2
+                        title: Genre
+                        type: filter
+                      - filter: genre
+                        filterType: string
+                        key: /library/sections/2/genre?type=2
+                        title: Genre
+                        type: filter
+                    Sort:
+                      - active: false
+                        activeDirection: asc
+                        default: asc
+                        defaultDirection: asc
+                        descKey: titleSort:desc
+                        firstCharacterKey: /library/sections/2/firstCharacter
+                        key: titleSort
+                        title: Title
+                      - active: false
+                        activeDirection: asc
+                        default: asc
+                        defaultDirection: asc
+                        descKey: titleSort:desc
+                        firstCharacterKey: /library/sections/2/firstCharacter
+                        key: titleSort
+                        title: Title
+                      - active: false
+                        activeDirection: asc
+                        default: asc
+                        defaultDirection: asc
+                        descKey: titleSort:desc
+                        firstCharacterKey: /library/sections/2/firstCharacter
+                        key: titleSort
+                        title: Title
+                    active: false
+                    key: /library/sections/2/all?type=2
+                    title: TV Shows
+                    type: show
+                  - Field:
+                      - key: show.title
+                        subType: rating
+                        title: Show Title
+                        type: string
+                      - key: show.title
+                        subType: rating
+                        title: Show Title
+                        type: string
+                      - key: show.title
+                        subType: rating
+                        title: Show Title
+                        type: string
+                    Filter:
+                      - filter: genre
+                        filterType: string
+                        key: /library/sections/2/genre?type=2
+                        title: Genre
+                        type: filter
+                      - filter: genre
+                        filterType: string
+                        key: /library/sections/2/genre?type=2
+                        title: Genre
+                        type: filter
+                      - filter: genre
+                        filterType: string
+                        key: /library/sections/2/genre?type=2
+                        title: Genre
+                        type: filter
+                    Sort:
+                      - active: false
+                        activeDirection: asc
+                        default: asc
+                        defaultDirection: asc
+                        descKey: titleSort:desc
+                        firstCharacterKey: /library/sections/2/firstCharacter
+                        key: titleSort
+                        title: Title
+                      - active: false
+                        activeDirection: asc
+                        default: asc
+                        defaultDirection: asc
+                        descKey: titleSort:desc
+                        firstCharacterKey: /library/sections/2/firstCharacter
+                        key: titleSort
+                        title: Title
+                    active: false
+                    key: /library/sections/2/all?type=2
+                    title: TV Shows
+                    type: show
+              Metadata:
+                - Collection: []
+                  Country: []
+                  Director:
+                    - tag: James Cameron
+                    - tag: James Cameron
+                  Genre:
+                    - tag: Adventure
+                  Guid:
+                    - id: imdb://tt13015952
+                    - id: imdb://tt13015952
+                    - id: imdb://tt13015952
+                  Image:
+                    - alt: Episode 1
+                      type: background
+                      url: /library/metadata/45521/thumb/1644710589
+                    - alt: Episode 1
+                      type: background
+                      url: /library/metadata/45521/thumb/1644710589
+                    - alt: Episode 1
+                      type: background
+                      url: /library/metadata/45521/thumb/1644710589
+                  Media:
+                    - Part:
+                        - Stream:
+                            - audioChannelLayout: stereo
+                              bitDepth: 8
+                              bitrate: 6273
+                              canAutoSync: false
+                              channels: 2
+                              chromaLocation: left
+                              chromaSubsampling: "4:2:0"
+                              closedCaptions: false
+                              codec: h264
+                              codedHeight: 1088
+                              codedWidth: 1920
+                              colorPrimaries: bt709
+                              colorRange: tv
+                              colorSpace: bt709
+                              colorTrc: bt709
+                              default: true
+                              displayTitle: 1080p (H.264)
+                              embeddedInVideo: "1"
+                              extendedDisplayTitle: 1080p (H.264)
+                              frameRate: 29.97
+                              hasScalingMatrix: false
+                              hearingImpaired: false
+                              height: 1080
+                              id: 272796
+                              index: 0
+                              language: English
+                              languageCode: eng
+                              languageTag: en
+                              level: 40
+                              profile: main
+                              refFrames: 4
+                              samplingRate: 48000
+                              scanType: progressive
+                              selected: true
+                              streamIdentifier: "2"
+                              streamType: 1
+                              title: English
+                              width: 1920
+                          audioProfile: dts
+                          container: mkv
+                          duration: 11558112
+                          file: /movies/Avatar The Way of Water (2022)/Avatar.The.Way.of.Water.2022.2160p.WEB-DL.DDP5.1.Atmos.DV.HDR10.HEVC-CMRG.mkv
+                          has64bitOffsets: false
+                          hasThumbnail: "1"
+                          id: 119542
+                          indexes: sd
+                          key: /library/parts/119542/1680457526/file.mkv
+                          optimizedForStreaming: false
+                          size: 36158371307
+                          videoProfile: main 10
+                        - Stream: []
+                          audioProfile: dts
+                          container: mkv
+                          duration: 11558112
+                          file: /movies/Avatar The Way of Water (2022)/Avatar.The.Way.of.Water.2022.2160p.WEB-DL.DDP5.1.Atmos.DV.HDR10.HEVC-CMRG.mkv
+                          has64bitOffsets: false
+                          hasThumbnail: "1"
+                          id: 119542
+                          indexes: sd
+                          key: /library/parts/119542/1680457526/file.mkv
+                          optimizedForStreaming: false
+                          size: 36158371307
+                          videoProfile: main 10
+                      aspectRatio: 1.85
+                      audioChannels: 6
+                      audioCodec: eac3
+                      audioProfile: dts
+                      bitrate: 25025
+                      container: mkv
+                      duration: 11558112
+                      has64bitOffsets: false
+                      hasVoiceActivity: false
+                      height: 2072
+                      id: 119534
+                      optimizedForStreaming: 1
+                      videoCodec: hevc
+                      videoFrameRate: 24p
+                      videoProfile: main 10
+                      videoResolution: 4k
+                      width: 3840
+                  Rating: []
+                  Role:
+                    - filter: actor=294129
+                      id: 294129
+                      role: Self
+                      tag: Mike Smith
+                      tagKey: 668e7e7b22bcad9064350c91
+                      thumb: https://metadata-static.plex.tv/2/people/27b85844536c39f3f9ac943aaad46608.jpg
+                    - filter: actor=294129
+                      id: 294129
+                      role: Self
+                      tag: Mike Smith
+                      tagKey: 668e7e7b22bcad9064350c91
+                      thumb: https://metadata-static.plex.tv/2/people/27b85844536c39f3f9ac943aaad46608.jpg
+                    - filter: actor=294129
+                      id: 294129
+                      role: Self
+                      tag: Mike Smith
+                      tagKey: 668e7e7b22bcad9064350c91
+                      thumb: https://metadata-static.plex.tv/2/people/27b85844536c39f3f9ac943aaad46608.jpg
+                  UltraBlurColors:
+                    bottomLeft: 1f5066
+                    bottomRight: "73958"
+                    topLeft: 11333b
+                    topRight: 0a232d
+                  Writer: []
+                  addedAt: 1556281940
+                  art: /library/metadata/58683/art/1703239236
+                  audienceRating: 9.2
+                  audienceRatingImage: rottentomatoes://image.rating.upright
+                  banner: /library/metadata/58683/banner/1703239236
+                  chapterSource: media
+                  childCount: 1
+                  contentRating: PG-13
+                  duration: 11558112
+                  flattenSeasons: "1"
+                  grandparentArt: /library/metadata/66/art/1705716261
+                  grandparentGuid: plex://show/5d9c081b170e24001f2a7be4
+                  grandparentKey: /library/metadata/66
+                  grandparentRatingKey: "66"
+                  grandparentSlug: alice-in-borderland-2020
+                  grandparentTheme: /library/metadata/66/theme/1705716261
+                  grandparentThumb: /library/metadata/66/thumb/1705716261
+                  grandparentTitle: Caprica
+                  guid: plex://movie/5d7768ba96b655001fdc0408
+                  hasPremiumExtras: "1"
+                  hasPremiumPrimaryExtra: "1"
+                  index: 1
+                  key: /library/metadata/58683
+                  lastViewedAt: 1682752242
+                  leafCount: 14
+                  librarySectionID: 1
+                  librarySectionKey: /library/sections/1
+                  librarySectionTitle: Movies
+                  originalTitle: 映画 ブラッククローバー 魔法帝の剣
+                  originallyAvailableAt: "2022-12-14T00:00:00Z"
+                  parentGuid: plex://show/5d9c081b170e24001f2a7be4
+                  parentIndex: 1
+                  parentKey: /library/metadata/66
+                  parentRatingKey: "66"
+                  parentSlug: alice-in-borderland-2020
+                  parentStudio: UCP
+                  parentTheme: /library/metadata/66/theme/1705716261
+                  parentThumb: /library/metadata/66/thumb/1705716261
+                  parentTitle: Caprica
+                  parentYear: 2010
+                  primaryExtraKey: /library/metadata/58684
+                  rating: 7.6
+                  ratingImage: rottentomatoes://image.rating.ripe
+                  ratingKey: "58683"
+                  seasonCount: 2022
+                  showOrdering: dvd
+                  skipChildren: false
+                  skipCount: 1
+                  slug: 4-for-texas
+                  studio: 20th Century Studios
+                  summary: Jake Sully lives with his newfound family formed on the extrasolar moon Pandora. Once a familiar threat returns to finish what was previously started, Jake must work with Neytiri and the army of the Na'vi race to protect their home.
+                  tagline: Return to Pandora.
+                  theme: /library/metadata/1/theme/1705636920
+                  thumb: /library/metadata/58683/thumb/1703239236
+                  title: 'Avatar: The Way of Water'
+                  titleSort: Whale
+                  type: movie
+                  updatedAt: 1556281940
+                  viewCount: 1
+                  viewOffset: 5222500
+                  viewedLeafCount: 0
+                  year: 2022
+              identifier: com.plexapp.plugins.library
+              size: 50
+  get-recently-added-library:
+    speakeasy-default-get-recently-added-library:
+      parameters:
+        query:
+          X-Plex-Container-Size: 50
+          X-Plex-Container-Start: 0
+          contentDirectoryID: 2
+          includeMeta: 1
+          pinnedContentDirectoryID:
+            - 3
+            - 5
+            - 7
+            - 13
+            - 12
+            - 1
+            - 6
+            - 14
+            - 2
+            - 10
+            - 16
+            - 17
+          sectionID: 2
+          type: 2
+      responses:
+        "200":
+          application/json:
+            MediaContainer:
+              FieldType: []
+              Metadata:
+                - Country: []
+                  Director:
+                    - tag: Peyton Reed
+                  Genre: []
+                  Media:
+                    - Part: []
+                      aspectRatio: 2.35
+                      audioChannels: 6
+                      audioCodec: ac3
+                      bitrate: 3623
+                      container: mp4
+                      duration: 7474422
+                      height: 804
+                      id: 120345
+                      optimizedForStreaming: 0
+                      videoCodec: h264
+                      videoFrameRate: 24p
+                      videoProfile: high
+                      videoResolution: 1080
+                      width: 1920
+                  Role:
+                    - tag: Paul Rudd
+                    - tag: Paul Rudd
+                    - tag: Paul Rudd
+                  Writer: []
+                  addedAt: 1681803215
+                  art: /library/metadata/59398/art/1681888010
+                  audienceRating: 8.3
+                  audienceRatingImage: rottentomatoes://image.rating.upright
+                  chapterSource: media
+                  contentRating: PG-13
+                  duration: 7474422
+                  guid: plex://movie/5e161a83bea6ac004126e148
+                  key: /library/metadata/59398
+                  librarySectionID: 1
+                  librarySectionTitle: Movies
+                  librarySectionUUID: 322a231a-b7f7-49f5-920f-14c61199cd30
+                  originallyAvailableAt: "2023-02-15T00:00:00Z"
+                  primaryExtraKey: /library/metadata/59399
+                  rating: 4.7
+                  ratingImage: rottentomatoes://image.rating.rotten
+                  ratingKey: 59398
+                  studio: Marvel Studios
+                  summary: Scott Lang and Hope Van Dyne along with Hank Pym and Janet Van Dyne explore the Quantum Realm where they interact with strange creatures and embark on an adventure that goes beyond the limits of what they thought was possible.
+                  tagline: Witness the beginning of a new dynasty.
+                  thumb: /library/metadata/59398/thumb/1681888010
+                  title: 'Ant-Man and the Wasp: Quantumania'
+                  type: movie
+                  updatedAt: 1681888010
+                  year: 2023
+              Type:
+                - Field:
+                    - key: show.title
+                      subType: rating
+                      title: Show Title
+                      type: string
+                    - key: show.title
+                      subType: rating
+                      title: Show Title
+                      type: string
+                  Filter:
+                    - filter: genre
+                      filterType: string
+                      key: /library/sections/2/genre?type=2
+                      title: Genre
+                      type: filter
+                  Sort:
+                    - active: false
+                      activeDirection: asc
+                      default: asc
+                      defaultDirection: asc
+                      descKey: titleSort:desc
+                      firstCharacterKey: /library/sections/2/firstCharacter
+                      key: titleSort
+                      title: Title
+                    - active: false
+                      activeDirection: asc
+                      default: asc
+                      defaultDirection: asc
+                      descKey: titleSort:desc
+                      firstCharacterKey: /library/sections/2/firstCharacter
+                      key: titleSort
+                      title: Title
+                    - active: false
+                      activeDirection: asc
+                      default: asc
+                      defaultDirection: asc
+                      descKey: titleSort:desc
+                      firstCharacterKey: /library/sections/2/firstCharacter
+                      key: titleSort
+                      title: Title
+                  active: false
+                  key: /library/sections/2/all?type=2
+                  title: TV Shows
+                  type: show
+                - Field:
+                    - key: show.title
+                      subType: rating
+                      title: Show Title
+                      type: string
+                    - key: show.title
+                      subType: rating
+                      title: Show Title
+                      type: string
+                  Filter:
+                    - filter: genre
+                      filterType: string
+                      key: /library/sections/2/genre?type=2
+                      title: Genre
+                      type: filter
+                  Sort:
+                    - active: false
+                      activeDirection: asc
+                      default: asc
+                      defaultDirection: asc
+                      descKey: titleSort:desc
+                      firstCharacterKey: /library/sections/2/firstCharacter
+                      key: titleSort
+                      title: Title
+                    - active: false
+                      activeDirection: asc
+                      default: asc
+                      defaultDirection: asc
+                      descKey: titleSort:desc
+                      firstCharacterKey: /library/sections/2/firstCharacter
+                      key: titleSort
+                      title: Title
+                    - active: false
+                      activeDirection: asc
+                      default: asc
+                      defaultDirection: asc
+                      descKey: titleSort:desc
+                      firstCharacterKey: /library/sections/2/firstCharacter
+                      key: titleSort
+                      title: Title
+                  active: false
+                  key: /library/sections/2/all?type=2
+                  title: TV Shows
+                  type: show
+              identifier: com.plexapp.plugins.library
+              mediaTagPrefix: /system/bundle/media/flags/
+              mediaTagVersion: 1680021154
+              size: 50
+        "400":
+          application/json:
+            errors:
+              - code: 1000
+                message: X-Plex-Client-Identifier is missing
+                status: 400
+        "401":
+          application/json:
+            errors:
+              - code: 1001
+                message: User could not be authenticated
+                status: 401
+              - code: 1001
+                message: User could not be authenticated
+                status: 401
+              - code: 1001
+                message: User could not be authenticated
+                status: 401
   get-refresh-library-metadata:
     speakeasy-default-get-refresh-library-metadata:
       parameters:
@@ -2723,6 +3702,125 @@ examples:
           application/json:
             errors: []
   post-users-sign-in-data:
+    "":
+      parameters:
+        query:
+          X-Plex-Client-Identifier: gcgzw5rz2xovp84b4vha3a40
+          X-Plex-Device: Linux
+          X-Plex-Platform: Chrome
+          X-Plex-Product: Plex Web
+          X-Plex-Version: 4.133.0
+      requestBody:
+        application/x-www-form-urlencoded:
+          login: username@email.com
+          password: password123
+          verificationCode: "123456"
+      responses:
+        "201":
+          application/json:
+            adsConsent: true
+            adsConsentReminderAt: "2019-08-24T14:15:22Z"
+            adsConsentSetAt: "2019-08-24T14:15:22Z"
+            anonymous: false
+            attributionPartner: null
+            authToken: CxoUzBTSV5hsxjTpFKaf
+            backupCodesCreated: false
+            confirmed: false
+            country: US
+            email: username@email.com
+            emailOnlyAuth: false
+            entitlements: []
+            experimentalFeatures: false
+            friendlyName: friendlyUsername
+            guest: false
+            hasPassword: true
+            home: false
+            homeAdmin: false
+            homeSize: 1
+            id: 13692262
+            joinedAt: 1721154902
+            locale: null
+            mailingListActive: false
+            mailingListStatus: unsubscribed
+            maxHomeSize: 15
+            pastSubscriptions:
+              - billing:
+                  paymentMethodId: 481656
+                canConvert: "0"
+                canDowngrade: "0"
+                canReactivate: "0"
+                canUpgrade: "0"
+                canceled: "0"
+                endsAt: "1556281940"
+                gracePeriod: "0"
+                id: string
+                mode: string
+                onHold: "0"
+                renewsAt: string
+                state: ended
+                transfer: string
+                type: plexpass
+            pin: string
+            profile:
+              autoSelectAudio: true
+              autoSelectSubtitle: 1
+              defaultAudioLanguage: ja
+              defaultSubtitleAccessibility: 1
+              defaultSubtitleForced: 1
+              defaultSubtitleLanguage: en
+              mediaReviewsVisibility: 1
+              watchedIndicator: 1
+            protected: false
+            rememberExpiresAt: 1722364046
+            restricted: false
+            roles:
+              - string
+            scrobbleTypes: ""
+            services:
+              - endpoint: https://epg.provider.plex.tv
+                identifier: metadata-dev
+                secret: string
+                status: online
+                token: DjoMtqFAGRL1uVtCyF1dKIorTbShJeqv
+            subscription:
+              active: true
+              features:
+                - Android - Dolby Vision
+              paymentService: string
+              plan: string
+              status: Inactive
+              subscribedAt: "2021-04-12T18:21:12Z"
+            subscriptionDescription: string
+            subscriptions:
+              - active: true
+                features:
+                  - Android - Dolby Vision
+                paymentService: string
+                plan: string
+                status: Inactive
+                subscribedAt: "2021-04-12T18:21:12Z"
+            thumb: https://plex.tv/users/a4f43c1ebfde43a5/avatar?c=8372075101
+            title: UsernameTitle
+            trials:
+              - {}
+            twoFactorEnabled: false
+            username: Username
+            uuid: dae343c1f45beb4f
+        "400":
+          application/json:
+            errors:
+              - code: 1000
+                message: X-Plex-Client-Identifier is missing
+                status: 400
+              - code: 1000
+                message: X-Plex-Client-Identifier is missing
+                status: 400
+              - code: 1000
+                message: X-Plex-Client-Identifier is missing
+                status: 400
+        "401":
+          application/json:
+            errors: []
     speakeasy-default-post-users-sign-in-data:
       parameters:
         query:

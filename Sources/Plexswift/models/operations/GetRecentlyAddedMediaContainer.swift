@@ -5,73 +5,69 @@ import Foundation
 extension Operations {
     /// A model object
     public struct GetRecentlyAddedMediaContainer {
+        @DecimalSerialized
+        public private(set) var size: Double
         public let allowSync: Bool?
         public let identifier: String?
-        public let mediaTagPrefix: String?
-        @DecimalSerialized
-        public private(set) var mediaTagVersion: Double?
+        /// The Meta object is only included in the response if the `includeMeta` parameter is set to `1`.
+        /// 
+        public let meta: Operations.Meta?
         public let metadata: [Operations.GetRecentlyAddedMetadata]?
-        public let mixedParents: Bool?
-        @DecimalSerialized
-        public private(set) var size: Double?
+        public let offset: Int?
+        public let totalSize: Int?
 
         /// Creates an object with the specified parameters
         ///
+        /// - Parameter meta: The Meta object is only included in the response if the `includeMeta` parameter is set to `1`.
+        /// 
         ///
-        public init(allowSync: Bool? = nil, identifier: String? = nil, mediaTagPrefix: String? = nil, mediaTagVersion: Double? = nil, metadata: [Operations.GetRecentlyAddedMetadata]? = nil, mixedParents: Bool? = nil, size: Double? = nil) {
+        public init(size: Double, allowSync: Bool? = nil, identifier: String? = nil, meta: Operations.Meta? = nil, metadata: [Operations.GetRecentlyAddedMetadata]? = nil, offset: Int? = nil, totalSize: Int? = nil) {
+            self._size = DecimalSerialized<Double>(wrappedValue: size)
             self.allowSync = allowSync
             self.identifier = identifier
-            self.mediaTagPrefix = mediaTagPrefix
-            self._mediaTagVersion = DecimalSerialized<Double?>(wrappedValue: mediaTagVersion)
+            self.meta = meta
             self.metadata = metadata
-            self.mixedParents = mixedParents
-            self._size = DecimalSerialized<Double?>(wrappedValue: size)
+            self.offset = offset
+            self.totalSize = totalSize
         }
     }}
 
 extension Operations.GetRecentlyAddedMediaContainer: Codable {
     enum CodingKeys: String, CodingKey {
+        case size
         case allowSync
         case identifier
-        case mediaTagPrefix
-        case mediaTagVersion
+        case meta = "Meta"
         case metadata = "Metadata"
-        case mixedParents
-        case size
+        case offset
+        case totalSize
     }
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
+        self._size = try container.decode(DecimalSerialized<Double>.self, forKey: .size)
         self.allowSync = try container.decodeIfPresent(Bool.self, forKey: .allowSync)
         self.identifier = try container.decodeIfPresent(String.self, forKey: .identifier)
-        self.mediaTagPrefix = try container.decodeIfPresent(String.self, forKey: .mediaTagPrefix)
-        self._mediaTagVersion = try container.decodeIfPresent(DecimalSerialized<Double?>.self, forKey: .mediaTagVersion) ?? DecimalSerialized<Double?>(wrappedValue: nil)
+        self.meta = try container.decodeIfPresent(Operations.Meta.self, forKey: .meta)
         self.metadata = try container.decodeIfPresent([Operations.GetRecentlyAddedMetadata].self, forKey: .metadata)
-        self.mixedParents = try container.decodeIfPresent(Bool.self, forKey: .mixedParents)
-        self._size = try container.decodeIfPresent(DecimalSerialized<Double?>.self, forKey: .size) ?? DecimalSerialized<Double?>(wrappedValue: nil)
+        self.offset = try container.decodeIfPresent(Int.self, forKey: .offset)
+        self.totalSize = try container.decodeIfPresent(Int.self, forKey: .totalSize)
     }
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(self._size, forKey: .size)
         try container.encodeIfPresent(self.allowSync, forKey: .allowSync)
         try container.encodeIfPresent(self.identifier, forKey: .identifier)
-        try container.encodeIfPresent(self.mediaTagPrefix, forKey: .mediaTagPrefix)
-        if self.mediaTagVersion != nil {
-            try container.encode(self._mediaTagVersion, forKey: .mediaTagVersion)
-        }
+        try container.encodeIfPresent(self.meta, forKey: .meta)
         try container.encodeIfPresent(self.metadata, forKey: .metadata)
-        try container.encodeIfPresent(self.mixedParents, forKey: .mixedParents)
-        if self.size != nil {
-            try container.encode(self._size, forKey: .size)
-        }
+        try container.encodeIfPresent(self.offset, forKey: .offset)
+        try container.encodeIfPresent(self.totalSize, forKey: .totalSize)
     }
 }
 
 extension Operations.GetRecentlyAddedMediaContainer {
-    var sizeWrapper: DecimalSerialized<Double?> {
+    var sizeWrapper: DecimalSerialized<Double> {
         return _size
-    }
-    var mediaTagVersionWrapper: DecimalSerialized<Double?> {
-        return _mediaTagVersion
     }
 }

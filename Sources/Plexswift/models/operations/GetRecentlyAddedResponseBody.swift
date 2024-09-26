@@ -3,7 +3,7 @@
 import Foundation
 
 extension Operations {
-    /// The recently added content
+    /// A successful response with recently added content.
     public struct GetRecentlyAddedResponseBody {
         public let mediaContainer: Operations.GetRecentlyAddedMediaContainer?
 

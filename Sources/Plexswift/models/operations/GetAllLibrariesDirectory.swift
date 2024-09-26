@@ -10,6 +10,7 @@ extension Operations {
         public let art: String
         public let composite: String
         public let content: Bool
+        /// Unix epoch datetime in seconds
         public let contentChangedAt: Int
         /// Unix epoch datetime in seconds
         public let createdAt: Int
@@ -32,6 +33,7 @@ extension Operations {
 
         /// Creates an object with the specified parameters
         ///
+        /// - Parameter contentChangedAt: Unix epoch datetime in seconds
         /// - Parameter createdAt: Unix epoch datetime in seconds
         /// - Parameter scannedAt: Unix epoch datetime in seconds
         /// - Parameter updatedAt: Unix epoch datetime in seconds

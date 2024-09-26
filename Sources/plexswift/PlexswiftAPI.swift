@@ -642,6 +642,7 @@ public protocol PlexAPI {
 /// ### API calls
 ///
 /// - ``getGlobalHubs(request:)``
+/// - ``getRecentlyAdded(request:)``
 /// - ``getLibraryHubs(request:)``
 ///
 public protocol HubsAPI {
@@ -651,6 +652,14 @@ public protocol HubsAPI {
     /// - Returns: A ``Operations/GetGlobalHubsResponse`` object describing the result of the API operation
     /// - Throws: An error of type ``PlexswiftError``
     func getGlobalHubs(request: Operations.GetGlobalHubsRequest) async throws -> Response<Operations.GetGlobalHubsResponse>
+
+    /// This endpoint will return the recently added content.
+    /// 
+    /// 
+    /// - Parameter request: A ``Operations/GetRecentlyAddedRequest`` object describing the input to the API operation
+    /// - Returns: A ``Operations/GetRecentlyAddedResponse`` object describing the result of the API operation
+    /// - Throws: An error of type ``PlexswiftError``
+    func getRecentlyAdded(request: Operations.GetRecentlyAddedRequest) async throws -> Response<Operations.GetRecentlyAddedResponse>
 
     /// This endpoint will return a list of library specific hubs
     /// 
@@ -723,7 +732,7 @@ public protocol SearchAPI {
 /// ### API calls
 ///
 /// - ``getFileHash(request:)``
-/// - ``getRecentlyAdded(request:)``
+/// - ``getRecentlyAddedLibrary(request:)``
 /// - ``getAllLibraries()``
 /// - ``getLibraryDetails(request:)``
 /// - ``deleteLibrary(request:)``
@@ -746,10 +755,10 @@ public protocol LibraryAPI {
     /// This endpoint will return the recently added content.
     /// 
     /// 
-    /// - Parameter request: A ``Operations/GetRecentlyAddedRequest`` object describing the input to the API operation
-    /// - Returns: A ``Operations/GetRecentlyAddedResponse`` object describing the result of the API operation
+    /// - Parameter request: A ``Operations/GetRecentlyAddedLibraryRequest`` object describing the input to the API operation
+    /// - Returns: A ``Operations/GetRecentlyAddedLibraryResponse`` object describing the result of the API operation
     /// - Throws: An error of type ``PlexswiftError``
-    func getRecentlyAdded(request: Operations.GetRecentlyAddedRequest) async throws -> Response<Operations.GetRecentlyAddedResponse>
+    func getRecentlyAddedLibrary(request: Operations.GetRecentlyAddedLibraryRequest) async throws -> Response<Operations.GetRecentlyAddedLibraryResponse>
 
     /// A library section (commonly referred to as just a library) is a collection of media. 
     /// Libraries are typed, and depending on their type provide either a flat or a hierarchical view of the media. 
@@ -1239,11 +1248,11 @@ public protocol AuthenticationAPI {
 
     /// Sign in user with username and password and return user data with Plex authentication token
     /// 
-    /// - Parameter request: A ``Operations/PostUsersSignInDataRequestBody`` object describing the input to the API operation
+    /// - Parameter request: A ``Operations/PostUsersSignInDataRequest`` object describing the input to the API operation
     /// - Parameter server: An optional server override to use for this operation
     /// - Returns: A ``Operations/PostUsersSignInDataResponse`` object describing the result of the API operation
     /// - Throws: An error of type ``PlexswiftError``
-    func postUsersSignInData(request: Operations.PostUsersSignInDataRequestBody, server: AuthenticationServers.PostUsersSignInData?) async throws -> Response<Operations.PostUsersSignInDataResponse>
+    func postUsersSignInData(request: Operations.PostUsersSignInDataRequest, server: AuthenticationServers.PostUsersSignInData?) async throws -> Response<Operations.PostUsersSignInDataResponse>
 }
 
 // MARK: - StatisticsAPI

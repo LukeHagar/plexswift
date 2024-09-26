@@ -6,13 +6,13 @@ extension Operations {
     /// The Meta object is only included in the response if the `includeMeta` parameter is set to `1`.
     /// 
     public struct Meta {
-        public let fieldType: [Operations.GetLibraryItemsFieldType]?
-        public let type: [Operations.GetLibraryItemsLibraryType]?
+        public let fieldType: [Operations.GetRecentlyAddedFieldType]?
+        public let type: [Operations.GetRecentlyAddedType]?
 
         /// Creates an object with the specified parameters
         ///
         ///
-        public init(fieldType: [Operations.GetLibraryItemsFieldType]? = nil, type: [Operations.GetLibraryItemsLibraryType]? = nil) {
+        public init(fieldType: [Operations.GetRecentlyAddedFieldType]? = nil, type: [Operations.GetRecentlyAddedType]? = nil) {
             self.fieldType = fieldType
             self.type = type
         }

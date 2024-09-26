@@ -19,12 +19,12 @@ class _LibraryAPI: LibraryAPI {
         )
     }
     
-    public func getRecentlyAdded(request: Operations.GetRecentlyAddedRequest) async throws -> Response<Operations.GetRecentlyAddedResponse> {
+    public func getRecentlyAddedLibrary(request: Operations.GetRecentlyAddedLibraryRequest) async throws -> Response<Operations.GetRecentlyAddedLibraryResponse> {
         return try await client.makeRequest(
             configureRequest: { configuration in
-                try configureGetRecentlyAddedRequest(with: configuration, request: request)
+                try configureGetRecentlyAddedLibraryRequest(with: configuration, request: request)
             },
-            handleResponse: handleGetRecentlyAddedResponse
+            handleResponse: handleGetRecentlyAddedLibraryResponse
         )
     }
     
@@ -129,7 +129,7 @@ private func configureGetFileHashRequest(with configuration: URLRequestConfigura
     configuration.telemetryHeader = .userAgent
 }
 
-private func configureGetRecentlyAddedRequest(with configuration: URLRequestConfiguration, request: Operations.GetRecentlyAddedRequest) throws {
+private func configureGetRecentlyAddedLibraryRequest(with configuration: URLRequestConfiguration, request: Operations.GetRecentlyAddedLibraryRequest) throws {
     configuration.path = "/library/recentlyAdded"
     configuration.method = .get
     configuration.queryParameterSerializable = request
@@ -237,13 +237,13 @@ private func handleGetFileHashResponse(response: Client.APIResponse) throws -> O
     return .empty
 }
 
-private func handleGetRecentlyAddedResponse(response: Client.APIResponse) throws -> Operations.GetRecentlyAddedResponse {
+private func handleGetRecentlyAddedLibraryResponse(response: Client.APIResponse) throws -> Operations.GetRecentlyAddedLibraryResponse {
     let httpResponse = response.httpResponse
     
     if httpResponse.statusCode == 200 { 
         if httpResponse.contentType.matchContentType(pattern: "application/json"), let data = response.data {
             do {
-                return .object(try JSONDecoder().decode(Operations.GetRecentlyAddedResponseBody.self, from: data))
+                return .object(try JSONDecoder().decode(Operations.GetRecentlyAddedLibraryResponseBody.self, from: data))
             } catch {
                 throw ResponseHandlerError.failedToDecodeJSON(error)
             }
@@ -251,7 +251,7 @@ private func handleGetRecentlyAddedResponse(response: Client.APIResponse) throws
     } else if httpResponse.statusCode == 400 { 
         if httpResponse.contentType.matchContentType(pattern: "application/json"), let data = response.data {
             do {
-                return .badRequest(try JSONDecoder().decode(Operations.GetRecentlyAddedBadRequest.self, from: data))
+                return .badRequest(try JSONDecoder().decode(Operations.GetRecentlyAddedLibraryBadRequest.self, from: data))
             } catch {
                 throw ResponseHandlerError.failedToDecodeJSON(error)
             }
@@ -259,7 +259,7 @@ private func handleGetRecentlyAddedResponse(response: Client.APIResponse) throws
     } else if httpResponse.statusCode == 401 { 
         if httpResponse.contentType.matchContentType(pattern: "application/json"), let data = response.data {
             do {
-                return .unauthorized(try JSONDecoder().decode(Operations.GetRecentlyAddedUnauthorized.self, from: data))
+                return .unauthorized(try JSONDecoder().decode(Operations.GetRecentlyAddedLibraryUnauthorized.self, from: data))
             } catch {
                 throw ResponseHandlerError.failedToDecodeJSON(error)
             }

@@ -14,13 +14,13 @@ extension Operations {
         public let key: String?
         public let optimizedForStreaming: Bool?
         public let size: Int?
-        public let stream: [Operations.Stream]?
+        public let stream: [Operations.GetMetaDataByRatingKeyStream]?
         public let videoProfile: String?
 
         /// Creates an object with the specified parameters
         ///
         ///
-        public init(audioProfile: String? = nil, container: String? = nil, duration: Int? = nil, file: String? = nil, has64bitOffsets: Bool? = nil, id: Int? = nil, key: String? = nil, optimizedForStreaming: Bool? = nil, size: Int? = nil, stream: [Operations.Stream]? = nil, videoProfile: String? = nil) {
+        public init(audioProfile: String? = nil, container: String? = nil, duration: Int? = nil, file: String? = nil, has64bitOffsets: Bool? = nil, id: Int? = nil, key: String? = nil, optimizedForStreaming: Bool? = nil, size: Int? = nil, stream: [Operations.GetMetaDataByRatingKeyStream]? = nil, videoProfile: String? = nil) {
             self.audioProfile = audioProfile
             self.container = container
             self.duration = duration

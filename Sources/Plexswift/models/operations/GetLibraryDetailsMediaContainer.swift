@@ -9,7 +9,7 @@ extension Operations {
         public let art: String?
         public let content: String?
         public let directory: [Operations.GetLibraryDetailsDirectory]?
-        public let fieldType: [Operations.FieldType]?
+        public let fieldType: [Operations.GetLibraryDetailsFieldType]?
         public let identifier: String?
         public let librarySectionID: Int?
         public let mediaTagPrefix: String?
@@ -24,7 +24,7 @@ extension Operations {
         /// Creates an object with the specified parameters
         ///
         ///
-        public init(allowSync: Bool? = nil, art: String? = nil, content: String? = nil, directory: [Operations.GetLibraryDetailsDirectory]? = nil, fieldType: [Operations.FieldType]? = nil, identifier: String? = nil, librarySectionID: Int? = nil, mediaTagPrefix: String? = nil, mediaTagVersion: Int? = nil, size: Int? = nil, thumb: String? = nil, title1: String? = nil, type: [Operations.GetLibraryDetailsType]? = nil, viewGroup: String? = nil, viewMode: Int? = nil) {
+        public init(allowSync: Bool? = nil, art: String? = nil, content: String? = nil, directory: [Operations.GetLibraryDetailsDirectory]? = nil, fieldType: [Operations.GetLibraryDetailsFieldType]? = nil, identifier: String? = nil, librarySectionID: Int? = nil, mediaTagPrefix: String? = nil, mediaTagVersion: Int? = nil, size: Int? = nil, thumb: String? = nil, title1: String? = nil, type: [Operations.GetLibraryDetailsType]? = nil, viewGroup: String? = nil, viewMode: Int? = nil) {
             self.allowSync = allowSync
             self.art = art
             self.content = content

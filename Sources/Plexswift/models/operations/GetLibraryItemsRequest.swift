@@ -16,7 +16,7 @@ extension Operations {
         public let includeGuids: Operations.IncludeGuids?
         /// Adds the Meta object to the response
         /// 
-        public let includeMeta: Operations.IncludeMeta?
+        public let includeMeta: Operations.GetLibraryItemsQueryParamIncludeMeta?
         /// The type of media to retrieve.
         /// 1 = movie
         /// 2 = show
@@ -24,7 +24,7 @@ extension Operations {
         /// 4 = episode
         /// E.g. A movie library will not return anything with type 3 as there are no seasons for movie libraries
         /// 
-        public let type: Operations.TypeModel?
+        public let type: Operations.GetLibraryItemsQueryParamType?
         /// The number of items to return. If not specified, all items will be returned.
         /// If the number of items exceeds the limit, the response will be paginated.
         /// By default this is 50
@@ -62,7 +62,7 @@ extension Operations {
         /// By default this is 0
         /// 
         ///
-        public init(sectionKey: Int, tag: Operations.Tag, includeGuids: Operations.IncludeGuids? = nil, includeMeta: Operations.IncludeMeta? = nil, type: Operations.TypeModel? = nil, xPlexContainerSize: Int? = nil, xPlexContainerStart: Int? = nil) {
+        public init(sectionKey: Int, tag: Operations.Tag, includeGuids: Operations.IncludeGuids? = nil, includeMeta: Operations.GetLibraryItemsQueryParamIncludeMeta? = nil, type: Operations.GetLibraryItemsQueryParamType? = nil, xPlexContainerSize: Int? = nil, xPlexContainerStart: Int? = nil) {
             self.sectionKey = sectionKey
             self.tag = tag
             self.includeGuids = includeGuids

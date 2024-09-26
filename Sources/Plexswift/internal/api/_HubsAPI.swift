@@ -19,6 +19,15 @@ class _HubsAPI: HubsAPI {
         )
     }
     
+    public func getRecentlyAdded(request: Operations.GetRecentlyAddedRequest) async throws -> Response<Operations.GetRecentlyAddedResponse> {
+        return try await client.makeRequest(
+            configureRequest: { configuration in
+                try configureGetRecentlyAddedRequest(with: configuration, request: request)
+            },
+            handleResponse: handleGetRecentlyAddedResponse
+        )
+    }
+    
     public func getLibraryHubs(request: Operations.GetLibraryHubsRequest) async throws -> Response<Operations.GetLibraryHubsResponse> {
         return try await client.makeRequest(
             configureRequest: { configuration in
@@ -34,6 +43,13 @@ class _HubsAPI: HubsAPI {
 
 private func configureGetGlobalHubsRequest(with configuration: URLRequestConfiguration, request: Operations.GetGlobalHubsRequest) throws {
     configuration.path = "/hubs"
+    configuration.method = .get
+    configuration.queryParameterSerializable = request
+    configuration.telemetryHeader = .userAgent
+}
+
+private func configureGetRecentlyAddedRequest(with configuration: URLRequestConfiguration, request: Operations.GetRecentlyAddedRequest) throws {
+    configuration.path = "/hubs/home/recentlyAdded"
     configuration.method = .get
     configuration.queryParameterSerializable = request
     configuration.telemetryHeader = .userAgent
@@ -76,6 +92,24 @@ private func handleGetGlobalHubsResponse(response: Client.APIResponse) throws ->
                 throw ResponseHandlerError.failedToDecodeJSON(error)
             }
         }
+    }
+
+    return .empty
+}
+
+private func handleGetRecentlyAddedResponse(response: Client.APIResponse) throws -> Operations.GetRecentlyAddedResponse {
+    let httpResponse = response.httpResponse
+    
+    if httpResponse.statusCode == 200 { 
+        if httpResponse.contentType.matchContentType(pattern: "application/json"), let data = response.data {
+            do {
+                return .object(try JSONDecoder().decode(Operations.GetRecentlyAddedResponseBody.self, from: data))
+            } catch {
+                throw ResponseHandlerError.failedToDecodeJSON(error)
+            }
+        }
+    } else if [400, 401].contains(httpResponse.statusCode) { 
+        return .empty
     }
 
     return .empty

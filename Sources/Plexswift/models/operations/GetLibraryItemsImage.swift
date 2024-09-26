@@ -6,13 +6,13 @@ extension Operations {
     /// A model object
     public struct GetLibraryItemsImage {
         public let alt: String
-        public let type: Operations.GetLibraryItemsLibraryResponseType
+        public let type: Operations.GetLibraryItemsLibraryResponse200Type
         public let url: String
 
         /// Creates an object with the specified parameters
         ///
         ///
-        public init(alt: String, type: Operations.GetLibraryItemsLibraryResponseType, url: String) {
+        public init(alt: String, type: Operations.GetLibraryItemsLibraryResponse200Type, url: String) {
             self.alt = alt
             self.type = type
             self.url = url

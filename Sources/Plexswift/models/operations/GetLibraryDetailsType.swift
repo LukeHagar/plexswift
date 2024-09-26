@@ -6,17 +6,17 @@ extension Operations {
     /// A model object
     public struct GetLibraryDetailsType {
         public let active: Bool?
-        public let field: [Operations.Field]?
+        public let field: [Operations.GetLibraryDetailsField]?
         public let filter: [Operations.GetLibraryDetailsFilter]?
         public let key: String?
-        public let sort: [Operations.Sort]?
+        public let sort: [Operations.GetLibraryDetailsSort]?
         public let title: String?
         public let type: String?
 
         /// Creates an object with the specified parameters
         ///
         ///
-        public init(active: Bool? = nil, field: [Operations.Field]? = nil, filter: [Operations.GetLibraryDetailsFilter]? = nil, key: String? = nil, sort: [Operations.Sort]? = nil, title: String? = nil, type: String? = nil) {
+        public init(active: Bool? = nil, field: [Operations.GetLibraryDetailsField]? = nil, filter: [Operations.GetLibraryDetailsFilter]? = nil, key: String? = nil, sort: [Operations.GetLibraryDetailsSort]? = nil, title: String? = nil, type: String? = nil) {
             self.active = active
             self.field = field
             self.filter = filter

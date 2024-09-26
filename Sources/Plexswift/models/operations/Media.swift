@@ -6,51 +6,47 @@ extension Operations {
     /// A model object
     public struct Media {
         @DecimalSerialized
-        public private(set) var aspectRatio: Double?
-        @DecimalSerialized
-        public private(set) var audioChannels: Double?
-        public let audioCodec: String?
-        @DecimalSerialized
-        public private(set) var bitrate: Double?
-        public let container: String?
-        @DecimalSerialized
-        public private(set) var duration: Double?
+        public private(set) var aspectRatio: Double
+        public let audioChannels: Int
+        public let audioCodec: String
+        public let bitrate: Int
+        public let container: String
+        public let duration: Int
+        public let height: Int
+        public let id: Int
+        public let part: [Operations.Part]
+        public let videoCodec: String
+        public let videoFrameRate: String
+        public let videoProfile: String
+        public let videoResolution: String
+        public let width: Int
+        public let audioProfile: String?
         public let has64bitOffsets: Bool?
-        @DecimalSerialized
-        public private(set) var height: Double?
-        @DecimalSerialized
-        public private(set) var id: Double?
-        @DecimalSerialized
-        public private(set) var optimizedForStreaming: Double?
-        public let part: [Operations.Part]?
-        public let videoCodec: String?
-        public let videoFrameRate: String?
-        public let videoProfile: String?
-        @DecimalSerialized
-        public private(set) var videoResolution: Double?
-        @DecimalSerialized
-        public private(set) var width: Double?
+        public let hasVoiceActivity: Bool?
+        public let optimizedForStreaming: Operations.OptimizedForStreaming?
 
         /// Creates an object with the specified parameters
         ///
         ///
-        public init(aspectRatio: Double? = nil, audioChannels: Double? = nil, audioCodec: String? = nil, bitrate: Double? = nil, container: String? = nil, duration: Double? = nil, has64bitOffsets: Bool? = nil, height: Double? = nil, id: Double? = nil, optimizedForStreaming: Double? = nil, part: [Operations.Part]? = nil, videoCodec: String? = nil, videoFrameRate: String? = nil, videoProfile: String? = nil, videoResolution: Double? = nil, width: Double? = nil) {
-            self._aspectRatio = DecimalSerialized<Double?>(wrappedValue: aspectRatio)
-            self._audioChannels = DecimalSerialized<Double?>(wrappedValue: audioChannels)
+        public init(aspectRatio: Double, audioChannels: Int, audioCodec: String, bitrate: Int, container: String, duration: Int, height: Int, id: Int, part: [Operations.Part], videoCodec: String, videoFrameRate: String, videoProfile: String, videoResolution: String, width: Int, audioProfile: String? = nil, has64bitOffsets: Bool? = nil, hasVoiceActivity: Bool? = nil, optimizedForStreaming: Operations.OptimizedForStreaming? = nil) {
+            self._aspectRatio = DecimalSerialized<Double>(wrappedValue: aspectRatio)
+            self.audioChannels = audioChannels
             self.audioCodec = audioCodec
-            self._bitrate = DecimalSerialized<Double?>(wrappedValue: bitrate)
+            self.bitrate = bitrate
             self.container = container
-            self._duration = DecimalSerialized<Double?>(wrappedValue: duration)
-            self.has64bitOffsets = has64bitOffsets
-            self._height = DecimalSerialized<Double?>(wrappedValue: height)
-            self._id = DecimalSerialized<Double?>(wrappedValue: id)
-            self._optimizedForStreaming = DecimalSerialized<Double?>(wrappedValue: optimizedForStreaming)
+            self.duration = duration
+            self.height = height
+            self.id = id
             self.part = part
             self.videoCodec = videoCodec
             self.videoFrameRate = videoFrameRate
             self.videoProfile = videoProfile
-            self._videoResolution = DecimalSerialized<Double?>(wrappedValue: videoResolution)
-            self._width = DecimalSerialized<Double?>(wrappedValue: width)
+            self.videoResolution = videoResolution
+            self.width = width
+            self.audioProfile = audioProfile
+            self.has64bitOffsets = has64bitOffsets
+            self.hasVoiceActivity = hasVoiceActivity
+            self.optimizedForStreaming = optimizedForStreaming
         }
     }}
 
@@ -62,103 +58,67 @@ extension Operations.Media: Codable {
         case bitrate
         case container
         case duration
-        case has64bitOffsets
         case height
         case id
-        case optimizedForStreaming
         case part = "Part"
         case videoCodec
         case videoFrameRate
         case videoProfile
         case videoResolution
         case width
+        case audioProfile
+        case has64bitOffsets
+        case hasVoiceActivity
+        case optimizedForStreaming
     }
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        self._aspectRatio = try container.decodeIfPresent(DecimalSerialized<Double?>.self, forKey: .aspectRatio) ?? DecimalSerialized<Double?>(wrappedValue: nil)
-        self._audioChannels = try container.decodeIfPresent(DecimalSerialized<Double?>.self, forKey: .audioChannels) ?? DecimalSerialized<Double?>(wrappedValue: nil)
-        self.audioCodec = try container.decodeIfPresent(String.self, forKey: .audioCodec)
-        self._bitrate = try container.decodeIfPresent(DecimalSerialized<Double?>.self, forKey: .bitrate) ?? DecimalSerialized<Double?>(wrappedValue: nil)
-        self.container = try container.decodeIfPresent(String.self, forKey: .container)
-        self._duration = try container.decodeIfPresent(DecimalSerialized<Double?>.self, forKey: .duration) ?? DecimalSerialized<Double?>(wrappedValue: nil)
+        self._aspectRatio = try container.decode(DecimalSerialized<Double>.self, forKey: .aspectRatio)
+        self.audioChannels = try container.decode(Int.self, forKey: .audioChannels)
+        self.audioCodec = try container.decode(String.self, forKey: .audioCodec)
+        self.bitrate = try container.decode(Int.self, forKey: .bitrate)
+        self.container = try container.decode(String.self, forKey: .container)
+        self.duration = try container.decode(Int.self, forKey: .duration)
+        self.height = try container.decode(Int.self, forKey: .height)
+        self.id = try container.decode(Int.self, forKey: .id)
+        self.part = try container.decode([Operations.Part].self, forKey: .part)
+        self.videoCodec = try container.decode(String.self, forKey: .videoCodec)
+        self.videoFrameRate = try container.decode(String.self, forKey: .videoFrameRate)
+        self.videoProfile = try container.decode(String.self, forKey: .videoProfile)
+        self.videoResolution = try container.decode(String.self, forKey: .videoResolution)
+        self.width = try container.decode(Int.self, forKey: .width)
+        self.audioProfile = try container.decodeIfPresent(String.self, forKey: .audioProfile)
         self.has64bitOffsets = try container.decodeIfPresent(Bool.self, forKey: .has64bitOffsets)
-        self._height = try container.decodeIfPresent(DecimalSerialized<Double?>.self, forKey: .height) ?? DecimalSerialized<Double?>(wrappedValue: nil)
-        self._id = try container.decodeIfPresent(DecimalSerialized<Double?>.self, forKey: .id) ?? DecimalSerialized<Double?>(wrappedValue: nil)
-        self._optimizedForStreaming = try container.decodeIfPresent(DecimalSerialized<Double?>.self, forKey: .optimizedForStreaming) ?? DecimalSerialized<Double?>(wrappedValue: nil)
-        self.part = try container.decodeIfPresent([Operations.Part].self, forKey: .part)
-        self.videoCodec = try container.decodeIfPresent(String.self, forKey: .videoCodec)
-        self.videoFrameRate = try container.decodeIfPresent(String.self, forKey: .videoFrameRate)
-        self.videoProfile = try container.decodeIfPresent(String.self, forKey: .videoProfile)
-        self._videoResolution = try container.decodeIfPresent(DecimalSerialized<Double?>.self, forKey: .videoResolution) ?? DecimalSerialized<Double?>(wrappedValue: nil)
-        self._width = try container.decodeIfPresent(DecimalSerialized<Double?>.self, forKey: .width) ?? DecimalSerialized<Double?>(wrappedValue: nil)
+        self.hasVoiceActivity = try container.decodeIfPresent(Bool.self, forKey: .hasVoiceActivity)
+        self.optimizedForStreaming = try container.decodeIfPresent(Operations.OptimizedForStreaming.self, forKey: .optimizedForStreaming)
     }
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        if self.aspectRatio != nil {
-            try container.encode(self._aspectRatio, forKey: .aspectRatio)
-        }
-        if self.audioChannels != nil {
-            try container.encode(self._audioChannels, forKey: .audioChannels)
-        }
-        try container.encodeIfPresent(self.audioCodec, forKey: .audioCodec)
-        if self.bitrate != nil {
-            try container.encode(self._bitrate, forKey: .bitrate)
-        }
-        try container.encodeIfPresent(self.container, forKey: .container)
-        if self.duration != nil {
-            try container.encode(self._duration, forKey: .duration)
-        }
+        try container.encode(self._aspectRatio, forKey: .aspectRatio)
+        try container.encode(self.audioChannels, forKey: .audioChannels)
+        try container.encode(self.audioCodec, forKey: .audioCodec)
+        try container.encode(self.bitrate, forKey: .bitrate)
+        try container.encode(self.container, forKey: .container)
+        try container.encode(self.duration, forKey: .duration)
+        try container.encode(self.height, forKey: .height)
+        try container.encode(self.id, forKey: .id)
+        try container.encode(self.part, forKey: .part)
+        try container.encode(self.videoCodec, forKey: .videoCodec)
+        try container.encode(self.videoFrameRate, forKey: .videoFrameRate)
+        try container.encode(self.videoProfile, forKey: .videoProfile)
+        try container.encode(self.videoResolution, forKey: .videoResolution)
+        try container.encode(self.width, forKey: .width)
+        try container.encodeIfPresent(self.audioProfile, forKey: .audioProfile)
         try container.encodeIfPresent(self.has64bitOffsets, forKey: .has64bitOffsets)
-        if self.height != nil {
-            try container.encode(self._height, forKey: .height)
-        }
-        if self.id != nil {
-            try container.encode(self._id, forKey: .id)
-        }
-        if self.optimizedForStreaming != nil {
-            try container.encode(self._optimizedForStreaming, forKey: .optimizedForStreaming)
-        }
-        try container.encodeIfPresent(self.part, forKey: .part)
-        try container.encodeIfPresent(self.videoCodec, forKey: .videoCodec)
-        try container.encodeIfPresent(self.videoFrameRate, forKey: .videoFrameRate)
-        try container.encodeIfPresent(self.videoProfile, forKey: .videoProfile)
-        if self.videoResolution != nil {
-            try container.encode(self._videoResolution, forKey: .videoResolution)
-        }
-        if self.width != nil {
-            try container.encode(self._width, forKey: .width)
-        }
+        try container.encodeIfPresent(self.hasVoiceActivity, forKey: .hasVoiceActivity)
+        try container.encodeIfPresent(self.optimizedForStreaming, forKey: .optimizedForStreaming)
     }
 }
 
 extension Operations.Media {
-    var idWrapper: DecimalSerialized<Double?> {
-        return _id
-    }
-    var durationWrapper: DecimalSerialized<Double?> {
-        return _duration
-    }
-    var bitrateWrapper: DecimalSerialized<Double?> {
-        return _bitrate
-    }
-    var widthWrapper: DecimalSerialized<Double?> {
-        return _width
-    }
-    var heightWrapper: DecimalSerialized<Double?> {
-        return _height
-    }
-    var aspectRatioWrapper: DecimalSerialized<Double?> {
+    var aspectRatioWrapper: DecimalSerialized<Double> {
         return _aspectRatio
-    }
-    var audioChannelsWrapper: DecimalSerialized<Double?> {
-        return _audioChannels
-    }
-    var videoResolutionWrapper: DecimalSerialized<Double?> {
-        return _videoResolution
-    }
-    var optimizedForStreamingWrapper: DecimalSerialized<Double?> {
-        return _optimizedForStreaming
     }
 }

@@ -16,7 +16,7 @@ extension Operations {
         /// 4 = episode
         /// E.g. A movie library will not return anything with type 3 as there are no seasons for movie libraries
         /// 
-        public let type: Operations.QueryParamType
+        public let type: Operations.GetSearchLibraryQueryParamType
 
         /// Creates an object with the specified parameters
         ///
@@ -31,7 +31,7 @@ extension Operations {
         /// E.g. A movie library will not return anything with type 3 as there are no seasons for movie libraries
         /// 
         ///
-        public init(sectionKey: Int, type: Operations.QueryParamType) {
+        public init(sectionKey: Int, type: Operations.GetSearchLibraryQueryParamType) {
             self.sectionKey = sectionKey
             self.type = type
         }

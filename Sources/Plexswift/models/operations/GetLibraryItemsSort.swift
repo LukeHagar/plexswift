@@ -7,13 +7,13 @@ extension Operations {
     public struct GetLibraryItemsSort {
         /// The direction of the sort. Can be either `asc` or `desc`.
         /// 
-        public let defaultDirection: Operations.DefaultDirection
+        public let defaultDirection: Operations.GetLibraryItemsDefaultDirection
         public let key: String
         public let title: String
         public let active: Bool?
         /// The direction of the sort. Can be either `asc` or `desc`.
         /// 
-        public let activeDirection: Operations.ActiveDirection?
+        public let activeDirection: Operations.GetLibraryItemsActiveDirection?
         public let `default`: String?
         public let descKey: String?
         public let firstCharacterKey: String?
@@ -25,7 +25,7 @@ extension Operations {
         /// - Parameter activeDirection: The direction of the sort. Can be either `asc` or `desc`.
         /// 
         ///
-        public init(defaultDirection: Operations.DefaultDirection, key: String, title: String, active: Bool? = nil, activeDirection: Operations.ActiveDirection? = nil, `default`: String? = nil, descKey: String? = nil, firstCharacterKey: String? = nil) {
+        public init(defaultDirection: Operations.GetLibraryItemsDefaultDirection, key: String, title: String, active: Bool? = nil, activeDirection: Operations.GetLibraryItemsActiveDirection? = nil, `default`: String? = nil, descKey: String? = nil, firstCharacterKey: String? = nil) {
             self.defaultDirection = defaultDirection
             self.key = key
             self.title = title

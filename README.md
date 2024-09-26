@@ -38,7 +38,7 @@ You can add `plexswift` to your project directly in Xcode `(File > Add Packages.
 
 ```bash
 dependencies: [
-    .package(url: "https://github.com/LukeHagar/plexswift.git", .upToNextMajor(from: "0.7.4"))
+    .package(url: "https://github.com/LukeHagar/plexswift.git", .upToNextMajor(from: "0.8.0"))
 ]
 ```
 <!-- End SDK Installation [installation] -->
@@ -103,12 +103,13 @@ case .empty:
 ### [Hubs](docs/sdks/hubs/README.md)
 
 * [getGlobalHubs](docs/sdks/hubs/README.md#getglobalhubs) - Get Global Hubs
+* [getRecentlyAdded](docs/sdks/hubs/README.md#getrecentlyadded) - Get Recently Added
 * [getLibraryHubs](docs/sdks/hubs/README.md#getlibraryhubs) - Get library specific hubs
 
 ### [Library](docs/sdks/library/README.md)
 
 * [getFileHash](docs/sdks/library/README.md#getfilehash) - Get Hash Value
-* [getRecentlyAdded](docs/sdks/library/README.md#getrecentlyadded) - Get Recently Added
+* [getRecentlyAddedLibrary](docs/sdks/library/README.md#getrecentlyaddedlibrary) - Get Recently Added
 * [getAllLibraries](docs/sdks/library/README.md#getalllibraries) - Get All Libraries
 * [getLibraryDetails](docs/sdks/library/README.md#getlibrarydetails) - Get Library Details
 * [deleteLibrary](docs/sdks/library/README.md#deletelibrary) - Delete Library Section

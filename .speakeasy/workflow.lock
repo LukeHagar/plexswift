@@ -11,7 +11,7 @@ targets:
     plexswift:
         source: plexapi
         codeSamplesNamespace: code-samples-swift-plexswift
-        codeSamplesRevisionDigest: sha256:4794efee0a2f342bc47f1a2d5b2351d447da8c13c2699adb1675221e03ea027c
+        codeSamplesRevisionDigest: sha256:6b78631ea49c5a9446f4bb8887c3ce13d9eb09fb3f1b74288c82f3ceafea483f
         outLocation: /github/workspace/repo
 workflow:
     workflowVersion: 1.0.0

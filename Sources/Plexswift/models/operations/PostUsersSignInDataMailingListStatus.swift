@@ -3,7 +3,7 @@
 import Foundation
 
 extension Operations {
-    /// Your current mailing list status
+    /// Your current mailing list status (active or unsubscribed)
     public enum PostUsersSignInDataMailingListStatus: String, Codable, APIValue {
         case active = "active"
         case unsubscribed = "unsubscribed"

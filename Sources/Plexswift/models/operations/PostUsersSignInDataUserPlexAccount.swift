@@ -52,7 +52,7 @@ extension Operations {
         public let locale: String
         /// If you are subscribed to the Plex newsletter
         public let mailingListActive: Bool
-        /// Your current mailing list status
+        /// Your current mailing list status (active or unsubscribed)
         public let mailingListStatus: Operations.PostUsersSignInDataMailingListStatus
         /// The maximum number of accounts allowed in the Plex Home
         public let maxHomeSize: Int
@@ -113,7 +113,7 @@ extension Operations {
         /// - Parameter joinedAt: Unix epoch datetime in seconds
         /// - Parameter locale: The account locale
         /// - Parameter mailingListActive: If you are subscribed to the Plex newsletter
-        /// - Parameter mailingListStatus: Your current mailing list status
+        /// - Parameter mailingListStatus: Your current mailing list status (active or unsubscribed)
         /// - Parameter maxHomeSize: The maximum number of accounts allowed in the Plex Home
         /// - Parameter protected: If the account has a Plex Home PIN enabled
         /// - Parameter rememberExpiresAt: Unix epoch datetime in seconds

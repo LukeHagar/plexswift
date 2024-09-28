@@ -1,16 +1,16 @@
 lockVersion: 2.0.0
 id: 5d77204e-e413-4fd0-a14a-bad3aee2247a
 management:
-  docChecksum: 5e039359563b41bbe118fc6701ba22dc
+  docChecksum: e7673f3f46e5b0bf495c378378aa7ad6
   docVersion: 0.0.3
-  speakeasyVersion: 1.403.3
-  generationVersion: 2.424.0
-  releaseVersion: 0.8.1
-  configChecksum: be96c47580761fceed9e17bd650c14fe
+  speakeasyVersion: 1.404.5
+  generationVersion: 2.426.2
+  releaseVersion: 0.8.2
+  configChecksum: c0385fa3ce563806154ec26c3205928f
   repoURL: https://github.com/LukeHagar/plexswift.git
 features:
   swift:
-    core: 3.2.15
+    core: 3.2.16
     deprecations: 2.81.2
     enums: 2.81.1
     globalSecurity: 2.81.6
@@ -3399,6 +3399,10 @@ examples:
           pinID: 408895
         query:
           X-Plex-Client-Identifier: gcgzw5rz2xovp84b4vha3a40
+          X-Plex-Device: Linux
+          X-Plex-Platform: Chrome
+          X-Plex-Product: Plex Web
+          X-Plex-Version: 4.133.0
       responses:
         "404":
           application/json:
@@ -3434,7 +3438,7 @@ examples:
             joinedAt: 1556281940
             locale: null
             mailingListActive: false
-            mailingListStatus: unsubscribed
+            mailingListStatus: active
             maxHomeSize: 15
             pin: string
             profile:

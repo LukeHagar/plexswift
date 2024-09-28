@@ -359,7 +359,7 @@ public enum PlexServers {
     public enum GetCompanionsData: Servers, ServerConvertible {
         /// Supported server value.
         ///
-        /// Corresponds to `https://plex.tv/api/v2/`
+        /// Corresponds to `https://plex.tv/api/v2`
         case server1
 
         /// Defines the raw URL strings for each server option.
@@ -369,11 +369,11 @@ public enum PlexServers {
         /// The available URL strings are defined as:
         /// ```swift
         /// public static let urlStrings = [
-        ///     "https://plex.tv/api/v2/"
+        ///     "https://plex.tv/api/v2"
         /// ]
         /// ```
         public static let urlStrings = [
-            "https://plex.tv/api/v2/"
+            "https://plex.tv/api/v2"
         ]
 
         static func `default`() throws -> Server {
@@ -394,7 +394,7 @@ public enum PlexServers {
     public enum GetUserFriends: Servers, ServerConvertible {
         /// Supported server value.
         ///
-        /// Corresponds to `https://plex.tv/api/v2/`
+        /// Corresponds to `https://plex.tv/api/v2`
         case server1
 
         /// Defines the raw URL strings for each server option.
@@ -404,11 +404,11 @@ public enum PlexServers {
         /// The available URL strings are defined as:
         /// ```swift
         /// public static let urlStrings = [
-        ///     "https://plex.tv/api/v2/"
+        ///     "https://plex.tv/api/v2"
         /// ]
         /// ```
         public static let urlStrings = [
-            "https://plex.tv/api/v2/"
+            "https://plex.tv/api/v2"
         ]
 
         static func `default`() throws -> Server {
@@ -429,7 +429,7 @@ public enum PlexServers {
     public enum GetGeoData: Servers, ServerConvertible {
         /// Supported server value.
         ///
-        /// Corresponds to `https://plex.tv/api/v2/`
+        /// Corresponds to `https://plex.tv/api/v2`
         case server1
 
         /// Defines the raw URL strings for each server option.
@@ -439,11 +439,11 @@ public enum PlexServers {
         /// The available URL strings are defined as:
         /// ```swift
         /// public static let urlStrings = [
-        ///     "https://plex.tv/api/v2/"
+        ///     "https://plex.tv/api/v2"
         /// ]
         /// ```
         public static let urlStrings = [
-            "https://plex.tv/api/v2/"
+            "https://plex.tv/api/v2"
         ]
 
         static func `default`() throws -> Server {
@@ -464,7 +464,7 @@ public enum PlexServers {
     public enum GetServerResources: Servers, ServerConvertible {
         /// Supported server value.
         ///
-        /// Corresponds to `https://plex.tv/api/v2/`
+        /// Corresponds to `https://plex.tv/api/v2`
         case server1
 
         /// Defines the raw URL strings for each server option.
@@ -474,11 +474,11 @@ public enum PlexServers {
         /// The available URL strings are defined as:
         /// ```swift
         /// public static let urlStrings = [
-        ///     "https://plex.tv/api/v2/"
+        ///     "https://plex.tv/api/v2"
         /// ]
         /// ```
         public static let urlStrings = [
-            "https://plex.tv/api/v2/"
+            "https://plex.tv/api/v2"
         ]
 
         static func `default`() throws -> Server {
@@ -499,7 +499,7 @@ public enum PlexServers {
     public enum GetPin: Servers, ServerConvertible {
         /// Supported server value.
         ///
-        /// Corresponds to `https://plex.tv/api/v2/`
+        /// Corresponds to `https://plex.tv/api/v2`
         case server1
 
         /// Defines the raw URL strings for each server option.
@@ -509,11 +509,11 @@ public enum PlexServers {
         /// The available URL strings are defined as:
         /// ```swift
         /// public static let urlStrings = [
-        ///     "https://plex.tv/api/v2/"
+        ///     "https://plex.tv/api/v2"
         /// ]
         /// ```
         public static let urlStrings = [
-            "https://plex.tv/api/v2/"
+            "https://plex.tv/api/v2"
         ]
 
         static func `default`() throws -> Server {
@@ -534,7 +534,7 @@ public enum PlexServers {
     public enum GetTokenByPinId: Servers, ServerConvertible {
         /// Supported server value.
         ///
-        /// Corresponds to `https://plex.tv/api/v2/`
+        /// Corresponds to `https://plex.tv/api/v2`
         case server1
 
         /// Defines the raw URL strings for each server option.
@@ -544,11 +544,11 @@ public enum PlexServers {
         /// The available URL strings are defined as:
         /// ```swift
         /// public static let urlStrings = [
-        ///     "https://plex.tv/api/v2/"
+        ///     "https://plex.tv/api/v2"
         /// ]
         /// ```
         public static let urlStrings = [
-            "https://plex.tv/api/v2/"
+            "https://plex.tv/api/v2"
         ]
 
         static func `default`() throws -> Server {
@@ -1144,7 +1144,7 @@ public enum AuthenticationServers {
     public enum GetTokenDetails: Servers, ServerConvertible {
         /// Supported server value.
         ///
-        /// Corresponds to `https://plex.tv/api/v2/`
+        /// Corresponds to `https://plex.tv/api/v2`
         case server1
 
         /// Defines the raw URL strings for each server option.
@@ -1154,11 +1154,11 @@ public enum AuthenticationServers {
         /// The available URL strings are defined as:
         /// ```swift
         /// public static let urlStrings = [
-        ///     "https://plex.tv/api/v2/"
+        ///     "https://plex.tv/api/v2"
         /// ]
         /// ```
         public static let urlStrings = [
-            "https://plex.tv/api/v2/"
+            "https://plex.tv/api/v2"
         ]
 
         static func `default`() throws -> Server {
@@ -1179,7 +1179,7 @@ public enum AuthenticationServers {
     public enum PostUsersSignInData: Servers, ServerConvertible {
         /// Supported server value.
         ///
-        /// Corresponds to `https://plex.tv/api/v2/`
+        /// Corresponds to `https://plex.tv/api/v2`
         case server1
 
         /// Defines the raw URL strings for each server option.
@@ -1189,11 +1189,11 @@ public enum AuthenticationServers {
         /// The available URL strings are defined as:
         /// ```swift
         /// public static let urlStrings = [
-        ///     "https://plex.tv/api/v2/"
+        ///     "https://plex.tv/api/v2"
         /// ]
         /// ```
         public static let urlStrings = [
-            "https://plex.tv/api/v2/"
+            "https://plex.tv/api/v2"
         ]
 
         static func `default`() throws -> Server {

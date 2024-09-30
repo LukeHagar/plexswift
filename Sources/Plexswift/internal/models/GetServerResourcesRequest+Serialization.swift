@@ -21,6 +21,7 @@ extension Operations.GetServerResourcesRequest: Serializable {
 extension Operations.GetServerResourcesRequest: QueryParameterSerializable {
     func serializedQueryParameters(with parameterDefaults: ParameterDefaults?, formatOverride: SerializableFormat?) throws -> [QueryParameter] {
         let builder = QueryParameterBuilder()
+        try builder.addQueryParameters(from: clientID, named: "X-Plex-Client-Identifier", format: formatOverride ?? .query(style: .form, explode: true), parameterDefaults: parameterDefaults)
         try builder.addQueryParameters(from: includeHttps, named: "includeHttps", format: formatOverride ?? .query(style: .form, explode: true), parameterDefaults: parameterDefaults)
         try builder.addQueryParameters(from: includeIPv6, named: "includeIPv6", format: formatOverride ?? .query(style: .form, explode: true), parameterDefaults: parameterDefaults)
         try builder.addQueryParameters(from: includeRelay, named: "includeRelay", format: formatOverride ?? .query(style: .form, explode: true), parameterDefaults: parameterDefaults)

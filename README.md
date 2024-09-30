@@ -63,7 +63,7 @@ You can add `plexswift` to your project directly in Xcode `(File > Add Packages.
 
 ```bash
 dependencies: [
-    .package(url: "https://github.com/LukeHagar/plexswift.git", .upToNextMajor(from: "0.8.3"))
+    .package(url: "https://github.com/LukeHagar/plexswift.git", .upToNextMajor(from: "0.8.4"))
 ]
 ```
 <!-- End SDK Installation [installation] -->
@@ -276,7 +276,7 @@ case .empty:
 
 Certain parameters are configured globally. These parameters may be set on the SDK client instance itself during initialization. When configured as an option during SDK initialization, These global values will be used as defaults on the operations that use them. When such operations are called, there is a place in each to override the global value, if needed.
 
-For example, you can set `ClientID` to `"gcgzw5rz2xovp84b4vha3a40"` at SDK initialization and then you do not have to pass the same value on calls to operations like `getPin`. But if you want to do so you may, which will locally override the global setting. See the example code below for a demonstration.
+For example, you can set `ClientID` to `"gcgzw5rz2xovp84b4vha3a40"` at SDK initialization and then you do not have to pass the same value on calls to operations like `getServerResources`. But if you want to do so you may, which will locally override the global setting. See the example code below for a demonstration.
 
 
 ### Available Globals
@@ -301,17 +301,24 @@ This is used to track the client application and its usage
 import Foundation
 import Plexswift
 
-let client = Client()
+let client = Client(security: .accessToken("<YOUR_API_KEY_HERE>"))
 
-let response = try await client.plex.getPin(
-    request: Operations.GetPinRequest()
+let response = try await client.plex.getServerResources(
+    request: Operations.GetServerResourcesRequest(
+        includeHttps: .enable, 
+        includeIPv6: .enable, 
+        includeRelay: .enable
+    )
 )
 
 switch response.data {
-case .authPinContainer(let authPinContainer):
+case .plexDevices(let plexDevices):
     // Handle response
     break
 case .badRequest(let badRequest):
+    // Handle response
+    break
+case .unauthorized(let unauthorized):
     // Handle response
     break
 case .empty:

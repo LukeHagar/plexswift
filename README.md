@@ -63,7 +63,7 @@ You can add `plexswift` to your project directly in Xcode `(File > Add Packages.
 
 ```bash
 dependencies: [
-    .package(url: "https://github.com/LukeHagar/plexswift.git", .upToNextMajor(from: "0.8.4"))
+    .package(url: "https://github.com/LukeHagar/plexswift.git", .upToNextMajor(from: "0.8.5"))
 ]
 ```
 <!-- End SDK Installation [installation] -->
@@ -285,10 +285,7 @@ The following global parameters are available.
 
 | Name | Type | Required | Description |
 | ---- | ---- |:--------:| ----------- |
-| clientID | String |  | The unique identifier for the client application
-This is used to track the client application and its usage
-(UUID, serial number, or other number unique per device)
- |
+| clientID | String |  | The unique identifier for the client application. This is used to track the client application and its usage. (UUID, serial number, or other number unique per device) |
 | clientName | String |  | The clientName parameter. |
 | clientVersion | String |  | The clientVersion parameter. |
 | clientPlatform | String |  | The clientPlatform parameter. |

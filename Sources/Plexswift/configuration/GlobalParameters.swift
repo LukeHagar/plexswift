@@ -14,10 +14,7 @@ public struct GlobalParameters {
 
     /// Creates an object with the given parameters
     ///
-    /// - Parameter clientID: The unique identifier for the client application
-    /// This is used to track the client application and its usage
-    /// (UUID, serial number, or other number unique per device)
-    /// 
+    /// - Parameter clientID: The unique identifier for the client application. This is used to track the client application and its usage. (UUID, serial number, or other number unique per device)
     ///
     public init(
         clientID: String? = nil,

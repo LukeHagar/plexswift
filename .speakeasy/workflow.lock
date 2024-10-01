@@ -1,4 +1,4 @@
-speakeasyVersion: 1.322.3
+speakeasyVersion: 1.405.6
 sources:
     my-source:
         sourceNamespace: my-source
@@ -7,12 +7,21 @@ sources:
         tags:
             - latest
             - main
+    plexapi:
+        sourceNamespace: plexapi
+        sourceRevisionDigest: sha256:c52cde0b8d51e160f7b9f1a3d3ea4dbb1aca6d5caad714e549201fb757fadd57
+        sourceBlobDigest: sha256:f417b03ff71356808554313f24c3d06d670474bf51bc9a0631de1ad49c13a361
+        tags:
+            - latest
+            - main
 targets:
     plexswift:
         source: plexapi
+        sourceNamespace: plexapi
+        sourceRevisionDigest: sha256:c52cde0b8d51e160f7b9f1a3d3ea4dbb1aca6d5caad714e549201fb757fadd57
+        sourceBlobDigest: sha256:f417b03ff71356808554313f24c3d06d670474bf51bc9a0631de1ad49c13a361
         codeSamplesNamespace: code-samples-swift-plexswift
-        codeSamplesRevisionDigest: sha256:20106c25ec86489069579bcd149cfca15f0066540312450af1e531dce819d6db
-        outLocation: /github/workspace/repo
+        codeSamplesRevisionDigest: sha256:e46cddd9caae008aee2ea7b63b667fea012731501716d7a7e36f646135ab9e20
 workflow:
     workflowVersion: 1.0.0
     speakeasyVersion: latest

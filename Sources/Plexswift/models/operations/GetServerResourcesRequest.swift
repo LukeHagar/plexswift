@@ -5,10 +5,7 @@ import Foundation
 extension Operations {
     /// A model object
     public struct GetServerResourcesRequest: APIValue {
-        /// The unique identifier for the client application
-        /// This is used to track the client application and its usage
-        /// (UUID, serial number, or other number unique per device)
-        /// 
+        /// The unique identifier for the client application. This is used to track the client application and its usage. (UUID, serial number, or other number unique per device)
         public let clientID: String?
         /// Include Https entries in the results
         public let includeHttps: Operations.IncludeHttps?
@@ -21,10 +18,7 @@ extension Operations {
 
         /// Creates an object with the specified parameters
         ///
-        /// - Parameter clientID: The unique identifier for the client application
-        /// This is used to track the client application and its usage
-        /// (UUID, serial number, or other number unique per device)
-        /// 
+        /// - Parameter clientID: The unique identifier for the client application. This is used to track the client application and its usage. (UUID, serial number, or other number unique per device)
         /// - Parameter includeHttps: Include Https entries in the results
         /// - Parameter includeIPv6: Include IPv6 entries in the results
         /// - Parameter includeRelay: Include Relay addresses in the results 

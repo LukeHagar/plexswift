@@ -7,10 +7,7 @@ extension Operations {
     public struct GetTokenByPinIdRequest: APIValue {
         /// The PinID to retrieve an access token for
         public let pinID: Int
-        /// The unique identifier for the client application
-        /// This is used to track the client application and its usage
-        /// (UUID, serial number, or other number unique per device)
-        /// 
+        /// The unique identifier for the client application. This is used to track the client application and its usage. (UUID, serial number, or other number unique per device)
         public let clientID: String?
         public let clientName: String?
         public let clientPlatform: String?
@@ -20,10 +17,7 @@ extension Operations {
         /// Creates an object with the specified parameters
         ///
         /// - Parameter pinID: The PinID to retrieve an access token for
-        /// - Parameter clientID: The unique identifier for the client application
-        /// This is used to track the client application and its usage
-        /// (UUID, serial number, or other number unique per device)
-        /// 
+        /// - Parameter clientID: The unique identifier for the client application. This is used to track the client application and its usage. (UUID, serial number, or other number unique per device)
         ///
         public init(pinID: Int, clientID: String? = nil, clientName: String? = nil, clientPlatform: String? = nil, clientVersion: String? = nil, deviceName: String? = nil) {
             self.pinID = pinID

@@ -141,7 +141,7 @@ private func configureGetResizedPhotoRequest(with configuration: URLRequestConfi
 private func configureGetMediaProvidersRequest(with configuration: URLRequestConfiguration, request: Operations.GetMediaProvidersRequest) throws {
     configuration.path = "/media/providers"
     configuration.method = .get
-    configuration.queryParameterSerializable = request
+    configuration.headerParameterSerializable = request
     configuration.telemetryHeader = .userAgent
 }
 

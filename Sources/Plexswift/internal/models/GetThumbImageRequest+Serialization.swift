@@ -10,7 +10,9 @@ extension Operations.GetThumbImageRequest: Serializable {
             return try serializePathParameterSerializable(self, with: format)
         case .query:
             return try serializeQueryParameterSerializable(self, with: format)
-        case .header, .multipart, .form:
+        case .header:
+            return serializeModel(with: try serializedHeaderParameters(), format: format)
+        case .multipart, .form:
             throw SerializationError.invalidSerializationParameter(type: "Operations.GetThumbImageRequest", format: format.formatDescription)
         }
     }
@@ -35,7 +37,14 @@ extension Operations.GetThumbImageRequest: QueryParameterSerializable {
         try builder.addQueryParameters(from: minSize, named: "minSize", format: formatOverride ?? .query(style: .form, explode: true), parameterDefaults: parameterDefaults)
         try builder.addQueryParameters(from: upscale, named: "upscale", format: formatOverride ?? .query(style: .form, explode: true), parameterDefaults: parameterDefaults)
         try builder.addQueryParameters(from: width, named: "width", format: formatOverride ?? .query(style: .form, explode: true), parameterDefaults: parameterDefaults)
-        try builder.addQueryParameters(from: xPlexToken, named: "X-Plex-Token", format: formatOverride ?? .query(style: .form, explode: true), parameterDefaults: parameterDefaults)
         return builder.build()
+    }
+}
+
+extension Operations.GetThumbImageRequest: HeaderParameterSerializable {
+    func serializedHeaderParameters() throws -> [SerializedParameter] {
+        return [
+            SerializedParameter(name: "X-Plex-Token", serialized: try xPlexToken.serialize(with: .header(explode: false)))
+        ]
     }
 }

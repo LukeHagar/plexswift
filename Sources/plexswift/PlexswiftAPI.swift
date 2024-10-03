@@ -739,6 +739,7 @@ public protocol SearchAPI {
 /// - ``getLibraryItems(request:)``
 /// - ``getRefreshLibraryMetadata(request:)``
 /// - ``getSearchLibrary(request:)``
+/// - ``getSearchAllLibraries(request:)``
 /// - ``getMetaDataByRatingKey(request:)``
 /// - ``getMetadataChildren(request:)``
 /// - ``getTopWatchedContent(request:)``
@@ -884,6 +885,14 @@ public protocol LibraryAPI {
     /// - Returns: A ``Operations/GetSearchLibraryResponse`` object describing the result of the API operation
     /// - Throws: An error of type ``PlexswiftError``
     func getSearchLibrary(request: Operations.GetSearchLibraryRequest) async throws -> Response<Operations.GetSearchLibraryResponse>
+
+    /// Search the provided query across all library sections, or a single section, and return matches as hubs, split up by type.
+    /// 
+    /// 
+    /// - Parameter request: A ``Operations/GetSearchAllLibrariesRequest`` object describing the input to the API operation
+    /// - Returns: A ``Operations/GetSearchAllLibrariesResponse`` object describing the result of the API operation
+    /// - Throws: An error of type ``PlexswiftError``
+    func getSearchAllLibraries(request: Operations.GetSearchAllLibrariesRequest) async throws -> Response<Operations.GetSearchAllLibrariesResponse>
 
     /// This endpoint will return the metadata of a library item specified with the ratingKey.
     /// 

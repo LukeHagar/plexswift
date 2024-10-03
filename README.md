@@ -50,7 +50,6 @@ The following SDKs are generated from the OpenAPI Specification. They are automa
 * [SDK Installation](#sdk-installation)
 * [SDK Example Usage](#sdk-example-usage)
 * [Available Resources and Operations](#available-resources-and-operations)
-* [Global Parameters](#global-parameters)
 * [Authentication](#authentication)
 <!-- End Table of Contents [toc] -->
 
@@ -63,7 +62,7 @@ You can add `plexswift` to your project directly in Xcode `(File > Add Packages.
 
 ```bash
 dependencies: [
-    .package(url: "https://github.com/LukeHagar/plexswift.git", .upToNextMajor(from: "0.8.5"))
+    .package(url: "https://github.com/LukeHagar/plexswift.git", .upToNextMajor(from: "0.8.7"))
 ]
 ```
 <!-- End SDK Installation [installation] -->
@@ -141,6 +140,7 @@ case .empty:
 * [getLibraryItems](docs/sdks/library/README.md#getlibraryitems) - Get Library Items
 * [getRefreshLibraryMetadata](docs/sdks/library/README.md#getrefreshlibrarymetadata) - Refresh Metadata Of The Library
 * [getSearchLibrary](docs/sdks/library/README.md#getsearchlibrary) - Search Library
+* [getSearchAllLibraries](docs/sdks/library/README.md#getsearchalllibraries) - Search All Libraries
 * [getMetaDataByRatingKey](docs/sdks/library/README.md#getmetadatabyratingkey) - Get Metadata by RatingKey
 * [getMetadataChildren](docs/sdks/library/README.md#getmetadatachildren) - Get Items Children
 * [getTopWatchedContent](docs/sdks/library/README.md#gettopwatchedcontent) - Get Top Watched Content
@@ -270,61 +270,6 @@ case .empty:
 
 ```
 <!-- End Authentication [security] -->
-
-<!-- Start Global Parameters [global-parameters] -->
-## Global Parameters
-
-Certain parameters are configured globally. These parameters may be set on the SDK client instance itself during initialization. When configured as an option during SDK initialization, These global values will be used as defaults on the operations that use them. When such operations are called, there is a place in each to override the global value, if needed.
-
-For example, you can set `ClientID` to `"gcgzw5rz2xovp84b4vha3a40"` at SDK initialization and then you do not have to pass the same value on calls to operations like `getServerResources`. But if you want to do so you may, which will locally override the global setting. See the example code below for a demonstration.
-
-
-### Available Globals
-
-The following global parameters are available.
-
-| Name | Type | Required | Description |
-| ---- | ---- |:--------:| ----------- |
-| clientID | String |  | The unique identifier for the client application. This is used to track the client application and its usage. (UUID, serial number, or other number unique per device) |
-| clientName | String |  | The clientName parameter. |
-| clientVersion | String |  | The clientVersion parameter. |
-| clientPlatform | String |  | The clientPlatform parameter. |
-| deviceName | String |  | The deviceName parameter. |
-
-
-### Example
-
-```swift
-import Foundation
-import Plexswift
-
-let client = Client(security: .accessToken("<YOUR_API_KEY_HERE>"))
-
-let response = try await client.plex.getServerResources(
-    request: Operations.GetServerResourcesRequest(
-        includeHttps: .enable, 
-        includeIPv6: .enable, 
-        includeRelay: .enable
-    )
-)
-
-switch response.data {
-case .plexDevices(let plexDevices):
-    // Handle response
-    break
-case .badRequest(let badRequest):
-    // Handle response
-    break
-case .unauthorized(let unauthorized):
-    // Handle response
-    break
-case .empty:
-    // Handle empty response
-    break
-}
-
-```
-<!-- End Global Parameters [global-parameters] -->
 
 <!-- Placeholder for Future Speakeasy SDK Sections -->
 

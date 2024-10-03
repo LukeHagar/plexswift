@@ -7,7 +7,7 @@ extension Operations {
     public struct GetWatchListRequest: APIValue {
         /// Filter
         public let filter: Operations.Filter
-        /// Plex Authentication Token
+        /// An authentication token, obtained from plex.tv
         public let xPlexToken: String
         /// include collections in the results
         /// 
@@ -41,7 +41,7 @@ extension Operations {
         /// Creates an object with the specified parameters
         ///
         /// - Parameter filter: Filter
-        /// - Parameter xPlexToken: Plex Authentication Token
+        /// - Parameter xPlexToken: An authentication token, obtained from plex.tv
         /// - Parameter includeCollections: include collections in the results
         /// 
         /// - Parameter includeExternalMedia: include external media in the results

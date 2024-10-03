@@ -644,6 +644,12 @@ actions:
         - lang: swift
           label: library
           source: "import Foundation\nimport Plexswift\n\nlet client = Client(security: .accessToken(\"<YOUR_API_KEY_HERE>\"))\n\nlet response = try await client.library.getRecentlyAddedLibrary(\n    request: Operations.GetRecentlyAddedLibraryRequest(\n        type: .tvShow, \n        contentDirectoryID: 2, \n        includeMeta: .enable, \n        pinnedContentDirectoryID: [\n            3,\n            5,\n            7,\n            13,\n            12,\n            1,\n            6,\n            14,\n            2,\n            10,\n            16,\n            17,\n        ], \n        sectionID: 2, \n        xPlexContainerSize: 50, \n        xPlexContainerStart: 0\n    )\n)\n\nswitch response.data {\ncase .object(let object):\n    // Handle response\n    break\ncase .badRequest(let badRequest):\n    // Handle response\n    break\ncase .unauthorized(let unauthorized):\n    // Handle response\n    break\ncase .empty:\n    // Handle empty response\n    break\n}"
+  - target: $["paths"]["/library/search"]["get"]
+    update:
+      x-codeSamples:
+        - lang: swift
+          label: libraries
+          source: "import Foundation\nimport Plexswift\n\nlet client = Client(security: .accessToken(\"<YOUR_API_KEY_HERE>\"))\n\nlet response = try await client.library.getSearchAllLibraries(\n    request: Operations.GetSearchAllLibrariesRequest(\n        query: \"<value>\", \n        includeCollections: .enable, \n        includeExternalMedia: .enable, \n        searchTypes: [\n            .people,\n        ]\n    )\n)\n\nswitch response.data {\ncase .object(let object):\n    // Handle response\n    break\ncase .badRequest(let badRequest):\n    // Handle response\n    break\ncase .unauthorized(let unauthorized):\n    // Handle response\n    break\ncase .empty:\n    // Handle empty response\n    break\n}"
   - target: $["paths"]["/library/sections"]["get"]
     update:
       x-codeSamples:

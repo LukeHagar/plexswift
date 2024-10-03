@@ -75,7 +75,7 @@ private func configureGetTokenDetailsRequest(with configuration: URLRequestConfi
 private func configurePostUsersSignInDataRequest(with configuration: URLRequestConfiguration, request: Operations.PostUsersSignInDataRequest) throws {
     configuration.path = "/users/signin"
     configuration.method = .post
-    configuration.queryParameterSerializable = request
+    configuration.headerParameterSerializable = request
     configuration.contentType = "application/x-www-form-urlencoded"
     configuration.body = try serializeFormData(with: request.requestBody)
     configuration.telemetryHeader = .userAgent

@@ -8,15 +8,11 @@ extension Operations.GetTokenByPinIdRequest: Serializable {
         switch format {
         case .path:
             return try serializePathParameterSerializable(self, with: format)
-        case .query:
-            return try serializeQueryParameterSerializable(self, with: format)
-        case .header, .multipart, .form:
+        case .header:
+            return serializeModel(with: try serializedHeaderParameters(), format: format)
+        case .query, .multipart, .form:
             throw SerializationError.invalidSerializationParameter(type: "Operations.GetTokenByPinIdRequest", format: format.formatDescription)
         }
-    }
-
-    func serializeQueryParameters(with format: SerializableFormat) throws -> [QueryParameter] {
-        return try serializedQueryParameters(with: nil, formatOverride: format)
     }
 }
 
@@ -28,14 +24,14 @@ extension Operations.GetTokenByPinIdRequest: PathParameterSerializable {
     }
 }
 
-extension Operations.GetTokenByPinIdRequest: QueryParameterSerializable {
-    func serializedQueryParameters(with parameterDefaults: ParameterDefaults?, formatOverride: SerializableFormat?) throws -> [QueryParameter] {
-        let builder = QueryParameterBuilder()
-        try builder.addQueryParameters(from: clientID, named: "X-Plex-Client-Identifier", format: formatOverride ?? .query(style: .form, explode: true), parameterDefaults: parameterDefaults)
-        try builder.addQueryParameters(from: clientName, named: "X-Plex-Product", format: formatOverride ?? .query(style: .form, explode: true), parameterDefaults: parameterDefaults)
-        try builder.addQueryParameters(from: clientPlatform, named: "X-Plex-Platform", format: formatOverride ?? .query(style: .form, explode: true), parameterDefaults: parameterDefaults)
-        try builder.addQueryParameters(from: clientVersion, named: "X-Plex-Version", format: formatOverride ?? .query(style: .form, explode: true), parameterDefaults: parameterDefaults)
-        try builder.addQueryParameters(from: deviceName, named: "X-Plex-Device", format: formatOverride ?? .query(style: .form, explode: true), parameterDefaults: parameterDefaults)
-        return builder.build()
+extension Operations.GetTokenByPinIdRequest: HeaderParameterSerializable {
+    func serializedHeaderParameters() throws -> [SerializedParameter] {
+        return [
+            SerializedParameter(name: "X-Plex-Client-Identifier", serialized: try clientID?.serialize(with: .header(explode: false))),
+            SerializedParameter(name: "X-Plex-Product", serialized: try clientName?.serialize(with: .header(explode: false))),
+            SerializedParameter(name: "X-Plex-Version", serialized: try clientVersion?.serialize(with: .header(explode: false))),
+            SerializedParameter(name: "X-Plex-Device", serialized: try deviceNickname?.serialize(with: .header(explode: false))),
+            SerializedParameter(name: "X-Plex-Platform", serialized: try platform?.serialize(with: .header(explode: false)))
+        ]
     }
 }

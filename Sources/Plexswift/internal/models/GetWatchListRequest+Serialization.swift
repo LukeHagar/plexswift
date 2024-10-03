@@ -10,7 +10,9 @@ extension Operations.GetWatchListRequest: Serializable {
             return try serializePathParameterSerializable(self, with: format)
         case .query:
             return try serializeQueryParameterSerializable(self, with: format)
-        case .header, .multipart, .form:
+        case .header:
+            return serializeModel(with: try serializedHeaderParameters(), format: format)
+        case .multipart, .form:
             throw SerializationError.invalidSerializationParameter(type: "Operations.GetWatchListRequest", format: format.formatDescription)
         }
     }
@@ -31,7 +33,6 @@ extension Operations.GetWatchListRequest: PathParameterSerializable {
 extension Operations.GetWatchListRequest: QueryParameterSerializable {
     func serializedQueryParameters(with parameterDefaults: ParameterDefaults?, formatOverride: SerializableFormat?) throws -> [QueryParameter] {
         let builder = QueryParameterBuilder()
-        try builder.addQueryParameters(from: xPlexToken, named: "X-Plex-Token", format: formatOverride ?? .query(style: .form, explode: true), parameterDefaults: parameterDefaults)
         try builder.addQueryParameters(from: includeCollections, named: "includeCollections", format: formatOverride ?? .query(style: .form, explode: true), parameterDefaults: parameterDefaults)
         try builder.addQueryParameters(from: includeExternalMedia, named: "includeExternalMedia", format: formatOverride ?? .query(style: .form, explode: true), parameterDefaults: parameterDefaults)
         try builder.addQueryParameters(from: libtype, named: "libtype", format: formatOverride ?? .query(style: .form, explode: true), parameterDefaults: parameterDefaults)
@@ -40,5 +41,13 @@ extension Operations.GetWatchListRequest: QueryParameterSerializable {
         try builder.addQueryParameters(from: xPlexContainerSize, named: "X-Plex-Container-Size", format: formatOverride ?? .query(style: .form, explode: true), parameterDefaults: parameterDefaults)
         try builder.addQueryParameters(from: xPlexContainerStart, named: "X-Plex-Container-Start", format: formatOverride ?? .query(style: .form, explode: true), parameterDefaults: parameterDefaults)
         return builder.build()
+    }
+}
+
+extension Operations.GetWatchListRequest: HeaderParameterSerializable {
+    func serializedHeaderParameters() throws -> [SerializedParameter] {
+        return [
+            SerializedParameter(name: "X-Plex-Token", serialized: try xPlexToken.serialize(with: .header(explode: false)))
+        ]
     }
 }

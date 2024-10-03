@@ -82,6 +82,15 @@ class _LibraryAPI: LibraryAPI {
         )
     }
     
+    public func getSearchAllLibraries(request: Operations.GetSearchAllLibrariesRequest) async throws -> Response<Operations.GetSearchAllLibrariesResponse> {
+        return try await client.makeRequest(
+            configureRequest: { configuration in
+                try configureGetSearchAllLibrariesRequest(with: configuration, request: request)
+            },
+            handleResponse: handleGetSearchAllLibrariesResponse
+        )
+    }
+    
     public func getMetaDataByRatingKey(request: Operations.GetMetaDataByRatingKeyRequest) async throws -> Response<Operations.GetMetaDataByRatingKeyResponse> {
         return try await client.makeRequest(
             configureRequest: { configuration in
@@ -178,6 +187,14 @@ private func configureGetSearchLibraryRequest(with configuration: URLRequestConf
     configuration.method = .get
     configuration.pathParameterSerializable = request
     configuration.queryParameterSerializable = request
+    configuration.telemetryHeader = .userAgent
+}
+
+private func configureGetSearchAllLibrariesRequest(with configuration: URLRequestConfiguration, request: Operations.GetSearchAllLibrariesRequest) throws {
+    configuration.path = "/library/search"
+    configuration.method = .get
+    configuration.queryParameterSerializable = request
+    configuration.headerParameterSerializable = request
     configuration.telemetryHeader = .userAgent
 }
 
@@ -440,6 +457,38 @@ private func handleGetSearchLibraryResponse(response: Client.APIResponse) throws
         if httpResponse.contentType.matchContentType(pattern: "application/json"), let data = response.data {
             do {
                 return .unauthorized(try JSONDecoder().decode(Operations.GetSearchLibraryUnauthorized.self, from: data))
+            } catch {
+                throw ResponseHandlerError.failedToDecodeJSON(error)
+            }
+        }
+    }
+
+    return .empty
+}
+
+private func handleGetSearchAllLibrariesResponse(response: Client.APIResponse) throws -> Operations.GetSearchAllLibrariesResponse {
+    let httpResponse = response.httpResponse
+    
+    if httpResponse.statusCode == 200 { 
+        if httpResponse.contentType.matchContentType(pattern: "application/json"), let data = response.data {
+            do {
+                return .object(try JSONDecoder().decode(Operations.GetSearchAllLibrariesResponseBody.self, from: data))
+            } catch {
+                throw ResponseHandlerError.failedToDecodeJSON(error)
+            }
+        }
+    } else if httpResponse.statusCode == 400 { 
+        if httpResponse.contentType.matchContentType(pattern: "application/json"), let data = response.data {
+            do {
+                return .badRequest(try JSONDecoder().decode(Operations.GetSearchAllLibrariesBadRequest.self, from: data))
+            } catch {
+                throw ResponseHandlerError.failedToDecodeJSON(error)
+            }
+        }
+    } else if httpResponse.statusCode == 401 { 
+        if httpResponse.contentType.matchContentType(pattern: "application/json"), let data = response.data {
+            do {
+                return .unauthorized(try JSONDecoder().decode(Operations.GetSearchAllLibrariesUnauthorized.self, from: data))
             } catch {
                 throw ResponseHandlerError.failedToDecodeJSON(error)
             }

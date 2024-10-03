@@ -6,22 +6,18 @@ import Foundation
 extension Operations.GetMediaProvidersRequest: Serializable {
     func serialize(with format: SerializableFormat) throws -> String {
         switch format {
-        case .query:
-            return try serializeQueryParameterSerializable(self, with: format)
-        case .path, .header, .multipart, .form:
+        case .header:
+            return serializeModel(with: try serializedHeaderParameters(), format: format)
+        case .path, .query, .multipart, .form:
             throw SerializationError.invalidSerializationParameter(type: "Operations.GetMediaProvidersRequest", format: format.formatDescription)
         }
     }
-
-    func serializeQueryParameters(with format: SerializableFormat) throws -> [QueryParameter] {
-        return try serializedQueryParameters(with: nil, formatOverride: format)
-    }
 }
 
-extension Operations.GetMediaProvidersRequest: QueryParameterSerializable {
-    func serializedQueryParameters(with parameterDefaults: ParameterDefaults?, formatOverride: SerializableFormat?) throws -> [QueryParameter] {
-        let builder = QueryParameterBuilder()
-        try builder.addQueryParameters(from: xPlexToken, named: "X-Plex-Token", format: formatOverride ?? .query(style: .form, explode: true), parameterDefaults: parameterDefaults)
-        return builder.build()
+extension Operations.GetMediaProvidersRequest: HeaderParameterSerializable {
+    func serializedHeaderParameters() throws -> [SerializedParameter] {
+        return [
+            SerializedParameter(name: "X-Plex-Token", serialized: try xPlexToken.serialize(with: .header(explode: false)))
+        ]
     }
 }

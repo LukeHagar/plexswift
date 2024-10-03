@@ -23,7 +23,7 @@ The following SDKs are generated from the OpenAPI Specification. They are automa
 | Swift                 | [GitHub](https://github.com/LukeHagar/plexswift)  | [Releases](https://github.com/LukeHagar/plexswift/releases)                                      | -                                                       |
 | PHP                   | [GitHub](https://github.com/LukeHagar/plexphp)    | [Releases](https://github.com/LukeHagar/plexphp/releases)                                        | -                                                       |
 | Java                  | [GitHub](https://github.com/LukeHagar/plexjava)   | [Releases](https://github.com/LukeHagar/plexjava/releases)                                       | -                                                       |
-| C#                    | [GitHub](https://github.com/LukeHagar/plexcsharp) | [Releases](https://github.com/LukeHagar/plexcsharp/releases)                                     | -     
+| C#                    | [GitHub](https://github.com/LukeHagar/plexcsharp) | [Releases](https://github.com/LukeHagar/plexcsharp/releases)                                     | -
 
 `plexswift` is a Swift library which provides functionality for making requests to the API using a modern, easy-to-use Swift API:
 
@@ -125,6 +125,7 @@ case .empty:
 - ``Operations/GetMetaDataByRatingKeyBadRequest``
 - ``Operations/GetRecentlyAddedLibraryBadRequest``
 - ``Operations/GetRefreshLibraryMetadataBadRequest``
+- ``Operations/GetSearchAllLibrariesBadRequest``
 - ``Operations/GetSearchLibraryBadRequest``
 - ``Operations/GetServerResourcesBadRequest``
 - ``Operations/GetThumbImageBadRequest``
@@ -201,6 +202,7 @@ case .empty:
 - ``Operations/GetRecentlyAddedResponse``
 - ``Operations/GetRecentlyAddedLibraryResponse``
 - ``Operations/GetRefreshLibraryMetadataResponse``
+- ``Operations/GetSearchAllLibrariesResponse``
 - ``Operations/GetSearchLibraryResponse``
 - ``Operations/GetServerIdentityResponse``
 - ``Operations/GetServerResourcesResponse``
@@ -323,7 +325,6 @@ case .empty:
 - ``Operations/EnablePaperTrailUnauthorized``
 - ``Operations/Errors``
 - ``Operations/Feature``
-- ``Operations/Features``
 - ``Operations/Field``
 - ``Operations/FieldType``
 - ``Operations/Filter``
@@ -335,6 +336,7 @@ case .empty:
 - ``Operations/GetAllLibrariesDirectory``
 - ``Operations/GetAllLibrariesErrors``
 - ``Operations/GetAllLibrariesLibraryErrors``
+- ``Operations/GetAllLibrariesLocation``
 - ``Operations/GetAllLibrariesMediaContainer``
 - ``Operations/GetAllLibrariesResponseBody``
 - ``Operations/GetAllLibrariesUnauthorized``
@@ -379,6 +381,7 @@ case .empty:
 - ``Operations/GetLibraryItemsLibraryResponseType``
 - ``Operations/GetLibraryItemsLibrarySort``
 - ``Operations/GetLibraryItemsLibraryType``
+- ``Operations/GetLibraryItemsLocation``
 - ``Operations/GetLibraryItemsMedia``
 - ``Operations/GetLibraryItemsMediaContainer``
 - ``Operations/GetLibraryItemsMediaGuid``
@@ -457,6 +460,33 @@ case .empty:
 - ``Operations/GetRefreshLibraryMetadataLibraryErrors``
 - ``Operations/GetRefreshLibraryMetadataRequest``
 - ``Operations/GetRefreshLibraryMetadataUnauthorized``
+- ``Operations/GetSearchAllLibrariesCollection``
+- ``Operations/GetSearchAllLibrariesCountry``
+- ``Operations/GetSearchAllLibrariesDirector``
+- ``Operations/GetSearchAllLibrariesErrors``
+- ``Operations/GetSearchAllLibrariesFlattenSeasons``
+- ``Operations/GetSearchAllLibrariesGenre``
+- ``Operations/GetSearchAllLibrariesHasThumbnail``
+- ``Operations/GetSearchAllLibrariesImage``
+- ``Operations/GetSearchAllLibrariesLibraryErrors``
+- ``Operations/GetSearchAllLibrariesLibraryType``
+- ``Operations/GetSearchAllLibrariesLocation``
+- ``Operations/GetSearchAllLibrariesMedia``
+- ``Operations/GetSearchAllLibrariesMediaContainer``
+- ``Operations/GetSearchAllLibrariesMediaGuid``
+- ``Operations/GetSearchAllLibrariesMetadata``
+- ``Operations/GetSearchAllLibrariesMetaDataRating``
+- ``Operations/GetSearchAllLibrariesOptimizedForStreaming``
+- ``Operations/GetSearchAllLibrariesPart``
+- ``Operations/GetSearchAllLibrariesRequest``
+- ``Operations/GetSearchAllLibrariesResponseBody``
+- ``Operations/GetSearchAllLibrariesRole``
+- ``Operations/GetSearchAllLibrariesShowOrdering``
+- ``Operations/GetSearchAllLibrariesStream``
+- ``Operations/GetSearchAllLibrariesType``
+- ``Operations/GetSearchAllLibrariesUltraBlurColors``
+- ``Operations/GetSearchAllLibrariesUnauthorized``
+- ``Operations/GetSearchAllLibrariesWriter``
 - ``Operations/GetSearchLibraryErrors``
 - ``Operations/GetSearchLibraryLibraryErrors``
 - ``Operations/GetSearchLibraryMediaContainer``
@@ -679,7 +709,6 @@ case .empty:
 - ``Operations/GetTokenDetailsAuthenticationResponseStatus``
 - ``Operations/GetTokenDetailsAuthenticationStatus``
 - ``Operations/GetTokenDetailsErrors``
-- ``Operations/GetTokenDetailsFeatures``
 - ``Operations/GetTokenDetailsStatus``
 - ``Operations/GetTokenDetailsSubscription``
 - ``Operations/GetTokenDetailsUnauthorized``
@@ -775,7 +804,6 @@ case .empty:
 - ``Operations/PlaylistType``
 - ``Operations/PlexDevice``
 - ``Operations/PostUsersSignInDataAuthenticationErrors``
-- ``Operations/PostUsersSignInDataAuthenticationFeatures``
 - ``Operations/PostUsersSignInDataAuthenticationResponseStatus``
 - ``Operations/PostUsersSignInDataAuthenticationStatus``
 - ``Operations/PostUsersSignInDataAuthenticationSubscription``
@@ -783,7 +811,6 @@ case .empty:
 - ``Operations/PostUsersSignInDataDefaultSubtitleAccessibility``
 - ``Operations/PostUsersSignInDataDefaultSubtitleForced``
 - ``Operations/PostUsersSignInDataErrors``
-- ``Operations/PostUsersSignInDataFeatures``
 - ``Operations/PostUsersSignInDataMailingListStatus``
 - ``Operations/PostUsersSignInDataMediaReviewsVisibility``
 - ``Operations/PostUsersSignInDataRequest``
@@ -801,6 +828,8 @@ case .empty:
 - ``Operations/Provider``
 - ``Operations/QueryParamFilter``
 - ``Operations/QueryParamForce``
+- ``Operations/QueryParamIncludeCollections``
+- ``Operations/QueryParamIncludeExternalMedia``
 - ``Operations/QueryParamIncludeMeta``
 - ``Operations/QueryParamOnlyTransient``
 - ``Operations/QueryParamSmart``
@@ -810,6 +839,8 @@ case .empty:
 - ``Operations/ResponseBody``
 - ``Operations/Role``
 - ``Operations/Scope``
+- ``Operations/SearchResult``
+- ``Operations/SearchTypes``
 - ``Operations/Server``
 - ``Operations/Services``
 - ``Operations/Session``

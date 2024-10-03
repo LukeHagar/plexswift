@@ -5,12 +5,16 @@ import Foundation
 extension Operations {
     /// A model object
     public struct GetPinRequest: APIValue {
-        /// The unique identifier for the client application. This is used to track the client application and its usage. (UUID, serial number, or other number unique per device)
+        /// An opaque identifier unique to the client (UUID, serial number, or other unique device ID)
         public let clientID: String?
+        /// The name of the client application. (Plex Web, Plex Media Server, etc.)
         public let clientName: String?
-        public let clientPlatform: String?
+        /// The version of the client application.
         public let clientVersion: String?
-        public let deviceName: String?
+        /// A relatively friendly name for the client device
+        public let deviceNickname: String?
+        /// The platform of the client application.
+        public let platform: String?
         /// Determines the kind of code returned by the API call
         /// Strong codes are used for Pin authentication flows
         /// Non-Strong codes are used for `Plex.tv/link`
@@ -19,18 +23,22 @@ extension Operations {
 
         /// Creates an object with the specified parameters
         ///
-        /// - Parameter clientID: The unique identifier for the client application. This is used to track the client application and its usage. (UUID, serial number, or other number unique per device)
+        /// - Parameter clientID: An opaque identifier unique to the client (UUID, serial number, or other unique device ID)
+        /// - Parameter clientName: The name of the client application. (Plex Web, Plex Media Server, etc.)
+        /// - Parameter clientVersion: The version of the client application.
+        /// - Parameter deviceNickname: A relatively friendly name for the client device
+        /// - Parameter platform: The platform of the client application.
         /// - Parameter strong: Determines the kind of code returned by the API call
         /// Strong codes are used for Pin authentication flows
         /// Non-Strong codes are used for `Plex.tv/link`
         /// 
         ///
-        public init(clientID: String? = nil, clientName: String? = nil, clientPlatform: String? = nil, clientVersion: String? = nil, deviceName: String? = nil, strong: Bool? = nil) {
+        public init(clientID: String? = nil, clientName: String? = nil, clientVersion: String? = nil, deviceNickname: String? = nil, platform: String? = nil, strong: Bool? = nil) {
             self.clientID = clientID
             self.clientName = clientName
-            self.clientPlatform = clientPlatform
             self.clientVersion = clientVersion
-            self.deviceName = deviceName
+            self.deviceNickname = deviceNickname
+            self.platform = platform
             self.strong = strong
         }
     }}

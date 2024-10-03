@@ -3,7 +3,7 @@
 
 import Foundation
 
-extension Operations.GetTokenDetailsFeatures: Serializable {
+extension Operations.GetSearchAllLibrariesType: Serializable {
     func serialize(with format: SerializableFormat) throws -> String {
         return try rawValue.serialize(with: format)
     }

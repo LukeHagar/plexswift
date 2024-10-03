@@ -5,12 +5,12 @@ import Foundation
 extension Operations {
     /// A model object
     public struct GetMediaProvidersRequest: APIValue {
-        /// Plex Authentication Token
+        /// An authentication token, obtained from plex.tv
         public let xPlexToken: String
 
         /// Creates an object with the specified parameters
         ///
-        /// - Parameter xPlexToken: Plex Authentication Token
+        /// - Parameter xPlexToken: An authentication token, obtained from plex.tv
         ///
         public init(xPlexToken: String) {
             self.xPlexToken = xPlexToken

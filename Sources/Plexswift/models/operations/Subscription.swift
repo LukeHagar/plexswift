@@ -8,7 +8,7 @@ extension Operations {
         /// If the account's Plex Pass subscription is active
         public let active: Bool?
         /// List of features allowed on your Plex Pass subscription
-        public let features: [Operations.Features]?
+        public let features: [String]?
         /// Payment service used for your Plex Pass subscription
         public let paymentService: String?
         /// Name of Plex Pass subscription plan
@@ -27,7 +27,7 @@ extension Operations {
         /// - Parameter status: String representation of subscriptionActive
         /// - Parameter subscribedAt: Date the account subscribed to Plex Pass
         ///
-        public init(active: Bool? = nil, features: [Operations.Features]? = nil, paymentService: String? = nil, plan: String? = nil, status: Operations.GetTokenDetailsAuthenticationStatus? = nil, subscribedAt: String? = nil) {
+        public init(active: Bool? = nil, features: [String]? = nil, paymentService: String? = nil, plan: String? = nil, status: Operations.GetTokenDetailsAuthenticationStatus? = nil, subscribedAt: String? = nil) {
             self.active = active
             self.features = features
             self.paymentService = paymentService

@@ -85,6 +85,7 @@ private func configureGetBannerImageRequest(with configuration: URLRequestConfig
     configuration.method = .get
     configuration.pathParameterSerializable = request
     configuration.queryParameterSerializable = request
+    configuration.headerParameterSerializable = request
     configuration.telemetryHeader = .userAgent
 }
 
@@ -93,6 +94,7 @@ private func configureGetThumbImageRequest(with configuration: URLRequestConfigu
     configuration.method = .get
     configuration.pathParameterSerializable = request
     configuration.queryParameterSerializable = request
+    configuration.headerParameterSerializable = request
     configuration.telemetryHeader = .userAgent
 }
 

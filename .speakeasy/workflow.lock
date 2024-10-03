@@ -9,8 +9,8 @@ sources:
             - main
     plexapi:
         sourceNamespace: plexapi
-        sourceRevisionDigest: sha256:c52cde0b8d51e160f7b9f1a3d3ea4dbb1aca6d5caad714e549201fb757fadd57
-        sourceBlobDigest: sha256:f417b03ff71356808554313f24c3d06d670474bf51bc9a0631de1ad49c13a361
+        sourceRevisionDigest: sha256:c6ab8f13847c7cdc4ab3752f517164d7da08266726255aa0d614b1eaea66fb0e
+        sourceBlobDigest: sha256:64c7694915a0828aeb256d10d2fa0ea477681785b818916b6681be8cc5ffb93b
         tags:
             - latest
             - main
@@ -18,10 +18,10 @@ targets:
     plexswift:
         source: plexapi
         sourceNamespace: plexapi
-        sourceRevisionDigest: sha256:c52cde0b8d51e160f7b9f1a3d3ea4dbb1aca6d5caad714e549201fb757fadd57
-        sourceBlobDigest: sha256:f417b03ff71356808554313f24c3d06d670474bf51bc9a0631de1ad49c13a361
+        sourceRevisionDigest: sha256:c6ab8f13847c7cdc4ab3752f517164d7da08266726255aa0d614b1eaea66fb0e
+        sourceBlobDigest: sha256:64c7694915a0828aeb256d10d2fa0ea477681785b818916b6681be8cc5ffb93b
         codeSamplesNamespace: code-samples-swift-plexswift
-        codeSamplesRevisionDigest: sha256:e46cddd9caae008aee2ea7b63b667fea012731501716d7a7e36f646135ab9e20
+        codeSamplesRevisionDigest: sha256:ceb91e4d90a11c0893bbeda90ab2c216f3d5575443f3ea243225243646ef2d9b
 workflow:
     workflowVersion: 1.0.0
     speakeasyVersion: latest

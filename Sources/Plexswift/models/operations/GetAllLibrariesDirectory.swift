@@ -19,7 +19,7 @@ extension Operations {
         public let hidden: Int
         public let key: String
         public let language: String
-        public let location: [Operations.Location]
+        public let location: [Operations.GetAllLibrariesLocation]
         public let refreshing: Bool
         /// Unix epoch datetime in seconds
         public let scannedAt: Int
@@ -38,7 +38,7 @@ extension Operations {
         /// - Parameter scannedAt: Unix epoch datetime in seconds
         /// - Parameter updatedAt: Unix epoch datetime in seconds
         ///
-        public init(agent: String, allowSync: Bool, art: String, composite: String, content: Bool, contentChangedAt: Int, createdAt: Int, directory: Bool, filters: Bool, hidden: Int, key: String, language: String, location: [Operations.Location], refreshing: Bool, scannedAt: Int, scanner: String, thumb: String, title: String, type: String, updatedAt: Int, uuid: String) {
+        public init(agent: String, allowSync: Bool, art: String, composite: String, content: Bool, contentChangedAt: Int, createdAt: Int, directory: Bool, filters: Bool, hidden: Int, key: String, language: String, location: [Operations.GetAllLibrariesLocation], refreshing: Bool, scannedAt: Int, scanner: String, thumb: String, title: String, type: String, updatedAt: Int, uuid: String) {
             self.agent = agent
             self.allowSync = allowSync
             self.art = art

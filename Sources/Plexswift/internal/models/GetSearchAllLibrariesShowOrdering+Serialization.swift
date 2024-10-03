@@ -3,7 +3,7 @@
 
 import Foundation
 
-extension Operations.Features: Serializable {
+extension Operations.GetSearchAllLibrariesShowOrdering: Serializable {
     func serialize(with format: SerializableFormat) throws -> String {
         return try rawValue.serialize(with: format)
     }

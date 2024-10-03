@@ -111,6 +111,7 @@ private func configureGetServerResourcesRequest(with configuration: URLRequestCo
     configuration.path = "/resources"
     configuration.method = .get
     configuration.queryParameterSerializable = request
+    configuration.headerParameterSerializable = request
     configuration.telemetryHeader = .userAgent
 }
 
@@ -118,6 +119,7 @@ private func configureGetPinRequest(with configuration: URLRequestConfiguration,
     configuration.path = "/pins"
     configuration.method = .post
     configuration.queryParameterSerializable = request
+    configuration.headerParameterSerializable = request
     configuration.telemetryHeader = .userAgent
 }
 
@@ -125,7 +127,7 @@ private func configureGetTokenByPinIdRequest(with configuration: URLRequestConfi
     configuration.path = "/pins/{pinID}"
     configuration.method = .get
     configuration.pathParameterSerializable = request
-    configuration.queryParameterSerializable = request
+    configuration.headerParameterSerializable = request
     configuration.telemetryHeader = .userAgent
 }
 

@@ -49,6 +49,7 @@ extension Operations {
         public let librarySectionID: Int?
         public let librarySectionKey: String?
         public let librarySectionTitle: String?
+        public let location: [Operations.Location]?
         /// The Media object is only included when type query is `4` or higher.
         /// 
         public let media: [Operations.Media]?
@@ -125,7 +126,7 @@ extension Operations {
         /// 
         /// - Parameter updatedAt: Unix epoch datetime in seconds
         ///
-        public init(addedAt: Int, guid: String, key: String, ratingKey: String, summary: String, title: String, type: Operations.GetRecentlyAddedHubsType, art: String? = nil, audienceRating: Double? = nil, audienceRatingImage: String? = nil, banner: String? = nil, chapterSource: String? = nil, childCount: Int? = nil, collection: [Operations.Collection]? = nil, contentRating: String? = nil, country: [Operations.Country]? = nil, director: [Operations.Director]? = nil, duration: Int? = nil, flattenSeasons: Operations.FlattenSeasons? = nil, genre: [Operations.Genre]? = nil, grandparentArt: String? = nil, grandparentGuid: String? = nil, grandparentKey: String? = nil, grandparentRatingKey: String? = nil, grandparentSlug: String? = nil, grandparentTheme: String? = nil, grandparentThumb: String? = nil, grandparentTitle: String? = nil, hasPremiumExtras: String? = nil, hasPremiumPrimaryExtra: String? = nil, image: [Operations.GetRecentlyAddedImage]? = nil, index: Int? = nil, lastViewedAt: Int? = nil, leafCount: Int? = nil, librarySectionID: Int? = nil, librarySectionKey: String? = nil, librarySectionTitle: String? = nil, media: [Operations.Media]? = nil, mediaGuid: [Operations.MediaGuid]? = nil, metaDataRating: [Operations.MetaDataRating]? = nil, originallyAvailableAt: Date? = nil, originalTitle: String? = nil, parentGuid: String? = nil, parentIndex: Int? = nil, parentKey: String? = nil, parentRatingKey: String? = nil, parentSlug: String? = nil, parentStudio: String? = nil, parentTheme: String? = nil, parentThumb: String? = nil, parentTitle: String? = nil, parentYear: Int? = nil, primaryExtraKey: String? = nil, rating: Double? = nil, ratingImage: String? = nil, role: [Operations.Role]? = nil, seasonCount: Int? = nil, showOrdering: Operations.ShowOrdering? = nil, skipChildren: Bool? = nil, skipCount: Int? = nil, slug: String? = nil, studio: String? = nil, tagline: String? = nil, theme: String? = nil, thumb: String? = nil, titleSort: String? = nil, ultraBlurColors: Operations.UltraBlurColors? = nil, updatedAt: Int? = nil, viewCount: Int? = nil, viewedLeafCount: Int? = nil, viewOffset: Int? = nil, writer: [Operations.Writer]? = nil, year: Int? = nil) {
+        public init(addedAt: Int, guid: String, key: String, ratingKey: String, summary: String, title: String, type: Operations.GetRecentlyAddedHubsType, art: String? = nil, audienceRating: Double? = nil, audienceRatingImage: String? = nil, banner: String? = nil, chapterSource: String? = nil, childCount: Int? = nil, collection: [Operations.Collection]? = nil, contentRating: String? = nil, country: [Operations.Country]? = nil, director: [Operations.Director]? = nil, duration: Int? = nil, flattenSeasons: Operations.FlattenSeasons? = nil, genre: [Operations.Genre]? = nil, grandparentArt: String? = nil, grandparentGuid: String? = nil, grandparentKey: String? = nil, grandparentRatingKey: String? = nil, grandparentSlug: String? = nil, grandparentTheme: String? = nil, grandparentThumb: String? = nil, grandparentTitle: String? = nil, hasPremiumExtras: String? = nil, hasPremiumPrimaryExtra: String? = nil, image: [Operations.GetRecentlyAddedImage]? = nil, index: Int? = nil, lastViewedAt: Int? = nil, leafCount: Int? = nil, librarySectionID: Int? = nil, librarySectionKey: String? = nil, librarySectionTitle: String? = nil, location: [Operations.Location]? = nil, media: [Operations.Media]? = nil, mediaGuid: [Operations.MediaGuid]? = nil, metaDataRating: [Operations.MetaDataRating]? = nil, originallyAvailableAt: Date? = nil, originalTitle: String? = nil, parentGuid: String? = nil, parentIndex: Int? = nil, parentKey: String? = nil, parentRatingKey: String? = nil, parentSlug: String? = nil, parentStudio: String? = nil, parentTheme: String? = nil, parentThumb: String? = nil, parentTitle: String? = nil, parentYear: Int? = nil, primaryExtraKey: String? = nil, rating: Double? = nil, ratingImage: String? = nil, role: [Operations.Role]? = nil, seasonCount: Int? = nil, showOrdering: Operations.ShowOrdering? = nil, skipChildren: Bool? = nil, skipCount: Int? = nil, slug: String? = nil, studio: String? = nil, tagline: String? = nil, theme: String? = nil, thumb: String? = nil, titleSort: String? = nil, ultraBlurColors: Operations.UltraBlurColors? = nil, updatedAt: Int? = nil, viewCount: Int? = nil, viewedLeafCount: Int? = nil, viewOffset: Int? = nil, writer: [Operations.Writer]? = nil, year: Int? = nil) {
             self.addedAt = addedAt
             self.guid = guid
             self.key = key
@@ -163,6 +164,7 @@ extension Operations {
             self.librarySectionID = librarySectionID
             self.librarySectionKey = librarySectionKey
             self.librarySectionTitle = librarySectionTitle
+            self.location = location
             self.media = media
             self.mediaGuid = mediaGuid
             self.metaDataRating = metaDataRating
@@ -241,6 +243,7 @@ extension Operations.GetRecentlyAddedMetadata: Codable {
         case librarySectionID
         case librarySectionKey
         case librarySectionTitle
+        case location = "Location"
         case media = "Media"
         case mediaGuid = "Guid"
         case metaDataRating = "Rating"
@@ -318,6 +321,7 @@ extension Operations.GetRecentlyAddedMetadata: Codable {
         self.librarySectionID = try container.decodeIfPresent(Int.self, forKey: .librarySectionID)
         self.librarySectionKey = try container.decodeIfPresent(String.self, forKey: .librarySectionKey)
         self.librarySectionTitle = try container.decodeIfPresent(String.self, forKey: .librarySectionTitle)
+        self.location = try container.decodeIfPresent([Operations.Location].self, forKey: .location)
         self.media = try container.decodeIfPresent([Operations.Media].self, forKey: .media)
         self.mediaGuid = try container.decodeIfPresent([Operations.MediaGuid].self, forKey: .mediaGuid)
         self.metaDataRating = try container.decodeIfPresent([Operations.MetaDataRating].self, forKey: .metaDataRating)
@@ -397,6 +401,7 @@ extension Operations.GetRecentlyAddedMetadata: Codable {
         try container.encodeIfPresent(self.librarySectionID, forKey: .librarySectionID)
         try container.encodeIfPresent(self.librarySectionKey, forKey: .librarySectionKey)
         try container.encodeIfPresent(self.librarySectionTitle, forKey: .librarySectionTitle)
+        try container.encodeIfPresent(self.location, forKey: .location)
         try container.encodeIfPresent(self.media, forKey: .media)
         try container.encodeIfPresent(self.mediaGuid, forKey: .mediaGuid)
         try container.encodeIfPresent(self.metaDataRating, forKey: .metaDataRating)

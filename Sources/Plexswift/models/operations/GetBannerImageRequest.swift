@@ -11,13 +11,13 @@ extension Operations {
         public let ratingKey: Int
         public let upscale: Int
         public let width: Int
-        /// Plex Authentication Token
+        /// An authentication token, obtained from plex.tv
         public let xPlexToken: String
 
         /// Creates an object with the specified parameters
         ///
         /// - Parameter ratingKey: the id of the library item to return the children of.
-        /// - Parameter xPlexToken: Plex Authentication Token
+        /// - Parameter xPlexToken: An authentication token, obtained from plex.tv
         ///
         public init(height: Int, minSize: Int, ratingKey: Int, upscale: Int, width: Int, xPlexToken: String) {
             self.height = height

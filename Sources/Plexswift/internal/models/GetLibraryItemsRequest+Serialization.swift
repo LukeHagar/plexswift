@@ -23,8 +23,8 @@ extension Operations.GetLibraryItemsRequest: Serializable {
 extension Operations.GetLibraryItemsRequest: PathParameterSerializable {
     func serializedPathParameters(formatOverride: SerializableFormat?) throws -> [String: String] {
         return [
-            "sectionKey": try sectionKey.serialize(with: formatOverride ?? .path(explode: false)),
             "tag": try tag.serialize(with: formatOverride ?? .path(explode: false)),
+            "sectionKey": try sectionKey.serialize(with: formatOverride ?? .path(explode: false)),
         ].compactMapValues { $0 }
     }
 }

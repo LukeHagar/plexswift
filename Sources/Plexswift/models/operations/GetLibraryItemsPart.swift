@@ -8,56 +8,56 @@ extension Operations {
         /// The container format of the media file.
         /// 
         public let container: String
-        public let duration: Int
         public let file: String
         public let id: Int
         public let key: String
         public let size: Int
-        public let videoProfile: String
         public let audioProfile: String?
+        public let duration: Int?
         public let has64bitOffsets: Bool?
         public let hasThumbnail: Operations.GetLibraryItemsHasThumbnail?
         public let indexes: String?
         public let optimizedForStreaming: Bool?
         public let stream: [Operations.GetLibraryItemsStream]?
+        public let videoProfile: String?
 
         /// Creates an object with the specified parameters
         ///
         /// - Parameter container: The container format of the media file.
         /// 
         ///
-        public init(container: String, duration: Int, file: String, id: Int, key: String, size: Int, videoProfile: String, audioProfile: String? = nil, has64bitOffsets: Bool? = nil, hasThumbnail: Operations.GetLibraryItemsHasThumbnail? = nil, indexes: String? = nil, optimizedForStreaming: Bool? = nil, stream: [Operations.GetLibraryItemsStream]? = nil) {
+        public init(container: String, file: String, id: Int, key: String, size: Int, audioProfile: String? = nil, duration: Int? = nil, has64bitOffsets: Bool? = nil, hasThumbnail: Operations.GetLibraryItemsHasThumbnail? = nil, indexes: String? = nil, optimizedForStreaming: Bool? = nil, stream: [Operations.GetLibraryItemsStream]? = nil, videoProfile: String? = nil) {
             self.container = container
-            self.duration = duration
             self.file = file
             self.id = id
             self.key = key
             self.size = size
-            self.videoProfile = videoProfile
             self.audioProfile = audioProfile
+            self.duration = duration
             self.has64bitOffsets = has64bitOffsets
             self.hasThumbnail = hasThumbnail
             self.indexes = indexes
             self.optimizedForStreaming = optimizedForStreaming
             self.stream = stream
+            self.videoProfile = videoProfile
         }
     }}
 
 extension Operations.GetLibraryItemsPart: Codable {
     enum CodingKeys: String, CodingKey {
         case container
-        case duration
         case file
         case id
         case key
         case size
-        case videoProfile
         case audioProfile
+        case duration
         case has64bitOffsets
         case hasThumbnail
         case indexes
         case optimizedForStreaming
         case stream = "Stream"
+        case videoProfile
     }
 }
 

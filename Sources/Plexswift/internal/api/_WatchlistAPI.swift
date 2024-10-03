@@ -29,6 +29,7 @@ private func configureGetWatchListRequest(with configuration: URLRequestConfigur
     configuration.method = .get
     configuration.pathParameterSerializable = request
     configuration.queryParameterSerializable = request
+    configuration.headerParameterSerializable = request
     configuration.telemetryHeader = .userAgent
 }
 

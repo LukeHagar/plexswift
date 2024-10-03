@@ -3,7 +3,7 @@
 
 import Foundation
 
-extension Operations.PostUsersSignInDataAuthenticationFeatures: Serializable {
+extension Operations.GetSearchAllLibrariesLibraryType: Serializable {
     func serialize(with format: SerializableFormat) throws -> String {
         return try rawValue.serialize(with: format)
     }

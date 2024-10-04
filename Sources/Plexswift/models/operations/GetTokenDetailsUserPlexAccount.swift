@@ -7,12 +7,8 @@ extension Operations {
     public struct GetTokenDetailsUserPlexAccount {
         /// Unknown
         public let adsConsent: Bool
-        /// Unknown
-        @DateTime
-        public private(set) var adsConsentReminderAt: Date
-        /// Unknown
-        @DateTime
-        public private(set) var adsConsentSetAt: Date
+        public let adsConsentReminderAt: Int
+        public let adsConsentSetAt: Int
         /// Unknown
         public let anonymous: Bool
         public let attributionPartner: String
@@ -90,8 +86,6 @@ extension Operations {
         /// Creates an object with the specified parameters
         ///
         /// - Parameter adsConsent: Unknown
-        /// - Parameter adsConsentReminderAt: Unknown
-        /// - Parameter adsConsentSetAt: Unknown
         /// - Parameter anonymous: Unknown
         /// - Parameter authToken: The account token
         /// - Parameter backupCodesCreated: If the two-factor authentication backup codes have been created
@@ -128,10 +122,10 @@ extension Operations {
         /// - Parameter roles: [Might be removed] List of account roles. Plexpass membership listed here
         ///
         @available(*, deprecated, message: "This initializer uses deprecated fields and will be removed in a future version.")
-        public init(adsConsent: Bool, adsConsentReminderAt: Date, adsConsentSetAt: Date, anonymous: Bool, attributionPartner: String, authToken: String, backupCodesCreated: Bool, confirmed: Bool, country: String, email: String, emailOnlyAuth: Bool, entitlements: [String], experimentalFeatures: Bool, friendlyName: String, guest: Bool, hasPassword: Bool, home: Bool, homeAdmin: Bool, homeSize: Int, id: Int, joinedAt: Int, locale: String, mailingListActive: Bool, mailingListStatus: Operations.MailingListStatus, maxHomeSize: Int, profile: Operations.UserProfile, protected: Bool, rememberExpiresAt: Int, restricted: Bool, scrobbleTypes: String, services: [Operations.Services], subscription: Operations.Subscription, subscriptionDescription: String, subscriptions: [Operations.GetTokenDetailsSubscription], thumb: String, title: String, twoFactorEnabled: Bool, username: String, uuid: String, pin: String? = nil, roles: [String]? = nil) {
+        public init(adsConsent: Bool, adsConsentReminderAt: Int, adsConsentSetAt: Int, anonymous: Bool, attributionPartner: String, authToken: String, backupCodesCreated: Bool, confirmed: Bool, country: String, email: String, emailOnlyAuth: Bool, entitlements: [String], experimentalFeatures: Bool, friendlyName: String, guest: Bool, hasPassword: Bool, home: Bool, homeAdmin: Bool, homeSize: Int, id: Int, joinedAt: Int, locale: String, mailingListActive: Bool, mailingListStatus: Operations.MailingListStatus, maxHomeSize: Int, profile: Operations.UserProfile, protected: Bool, rememberExpiresAt: Int, restricted: Bool, scrobbleTypes: String, services: [Operations.Services], subscription: Operations.Subscription, subscriptionDescription: String, subscriptions: [Operations.GetTokenDetailsSubscription], thumb: String, title: String, twoFactorEnabled: Bool, username: String, uuid: String, pin: String? = nil, roles: [String]? = nil) {
             self.adsConsent = adsConsent
-            self._adsConsentReminderAt = DateTime<Date>(wrappedValue: adsConsentReminderAt)
-            self._adsConsentSetAt = DateTime<Date>(wrappedValue: adsConsentSetAt)
+            self.adsConsentReminderAt = adsConsentReminderAt
+            self.adsConsentSetAt = adsConsentSetAt
             self.anonymous = anonymous
             self.attributionPartner = attributionPartner
             self.authToken = authToken
@@ -217,103 +211,5 @@ extension Operations.GetTokenDetailsUserPlexAccount: Codable {
         case pin
         case roles
     }
-
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        self.adsConsent = try container.decode(Bool.self, forKey: .adsConsent)
-        self._adsConsentReminderAt = try container.decode(DateTime<Date>.self, forKey: .adsConsentReminderAt)
-        self._adsConsentSetAt = try container.decode(DateTime<Date>.self, forKey: .adsConsentSetAt)
-        self.anonymous = try container.decode(Bool.self, forKey: .anonymous)
-        self.attributionPartner = try container.decode(String.self, forKey: .attributionPartner)
-        self.authToken = try container.decode(String.self, forKey: .authToken)
-        self.backupCodesCreated = try container.decode(Bool.self, forKey: .backupCodesCreated)
-        self.confirmed = try container.decode(Bool.self, forKey: .confirmed)
-        self.country = try container.decode(String.self, forKey: .country)
-        self.email = try container.decode(String.self, forKey: .email)
-        self.emailOnlyAuth = try container.decode(Bool.self, forKey: .emailOnlyAuth)
-        self.entitlements = try container.decode([String].self, forKey: .entitlements)
-        self.experimentalFeatures = try container.decode(Bool.self, forKey: .experimentalFeatures)
-        self.friendlyName = try container.decode(String.self, forKey: .friendlyName)
-        self.guest = try container.decode(Bool.self, forKey: .guest)
-        self.hasPassword = try container.decode(Bool.self, forKey: .hasPassword)
-        self.home = try container.decode(Bool.self, forKey: .home)
-        self.homeAdmin = try container.decode(Bool.self, forKey: .homeAdmin)
-        self.homeSize = try container.decode(Int.self, forKey: .homeSize)
-        self.id = try container.decode(Int.self, forKey: .id)
-        self.joinedAt = try container.decode(Int.self, forKey: .joinedAt)
-        self.locale = try container.decode(String.self, forKey: .locale)
-        self.mailingListActive = try container.decode(Bool.self, forKey: .mailingListActive)
-        self.mailingListStatus = try container.decode(Operations.MailingListStatus.self, forKey: .mailingListStatus)
-        self.maxHomeSize = try container.decode(Int.self, forKey: .maxHomeSize)
-        self.profile = try container.decode(Operations.UserProfile.self, forKey: .profile)
-        self.protected = try container.decode(Bool.self, forKey: .protected)
-        self.rememberExpiresAt = try container.decode(Int.self, forKey: .rememberExpiresAt)
-        self.restricted = try container.decode(Bool.self, forKey: .restricted)
-        self.scrobbleTypes = try container.decode(String.self, forKey: .scrobbleTypes)
-        self.services = try container.decode([Operations.Services].self, forKey: .services)
-        self.subscription = try container.decode(Operations.Subscription.self, forKey: .subscription)
-        self.subscriptionDescription = try container.decode(String.self, forKey: .subscriptionDescription)
-        self.subscriptions = try container.decode([Operations.GetTokenDetailsSubscription].self, forKey: .subscriptions)
-        self.thumb = try container.decode(String.self, forKey: .thumb)
-        self.title = try container.decode(String.self, forKey: .title)
-        self.twoFactorEnabled = try container.decode(Bool.self, forKey: .twoFactorEnabled)
-        self.username = try container.decode(String.self, forKey: .username)
-        self.uuid = try container.decode(String.self, forKey: .uuid)
-        self.pin = try container.decodeIfPresent(String.self, forKey: .pin)
-        self.roles = try container.decodeIfPresent([String].self, forKey: .roles)
-    }
-
-    public func encode(to encoder: Encoder) throws {
-        var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encode(self.adsConsent, forKey: .adsConsent)
-        try container.encode(self._adsConsentReminderAt, forKey: .adsConsentReminderAt)
-        try container.encode(self._adsConsentSetAt, forKey: .adsConsentSetAt)
-        try container.encode(self.anonymous, forKey: .anonymous)
-        try container.encode(self.attributionPartner, forKey: .attributionPartner)
-        try container.encode(self.authToken, forKey: .authToken)
-        try container.encode(self.backupCodesCreated, forKey: .backupCodesCreated)
-        try container.encode(self.confirmed, forKey: .confirmed)
-        try container.encode(self.country, forKey: .country)
-        try container.encode(self.email, forKey: .email)
-        try container.encode(self.emailOnlyAuth, forKey: .emailOnlyAuth)
-        try container.encode(self.entitlements, forKey: .entitlements)
-        try container.encode(self.experimentalFeatures, forKey: .experimentalFeatures)
-        try container.encode(self.friendlyName, forKey: .friendlyName)
-        try container.encode(self.guest, forKey: .guest)
-        try container.encode(self.hasPassword, forKey: .hasPassword)
-        try container.encode(self.home, forKey: .home)
-        try container.encode(self.homeAdmin, forKey: .homeAdmin)
-        try container.encode(self.homeSize, forKey: .homeSize)
-        try container.encode(self.id, forKey: .id)
-        try container.encode(self.joinedAt, forKey: .joinedAt)
-        try container.encode(self.locale, forKey: .locale)
-        try container.encode(self.mailingListActive, forKey: .mailingListActive)
-        try container.encode(self.mailingListStatus, forKey: .mailingListStatus)
-        try container.encode(self.maxHomeSize, forKey: .maxHomeSize)
-        try container.encode(self.profile, forKey: .profile)
-        try container.encode(self.protected, forKey: .protected)
-        try container.encode(self.rememberExpiresAt, forKey: .rememberExpiresAt)
-        try container.encode(self.restricted, forKey: .restricted)
-        try container.encode(self.scrobbleTypes, forKey: .scrobbleTypes)
-        try container.encode(self.services, forKey: .services)
-        try container.encode(self.subscription, forKey: .subscription)
-        try container.encode(self.subscriptionDescription, forKey: .subscriptionDescription)
-        try container.encode(self.subscriptions, forKey: .subscriptions)
-        try container.encode(self.thumb, forKey: .thumb)
-        try container.encode(self.title, forKey: .title)
-        try container.encode(self.twoFactorEnabled, forKey: .twoFactorEnabled)
-        try container.encode(self.username, forKey: .username)
-        try container.encode(self.uuid, forKey: .uuid)
-        try container.encodeIfPresent(self.pin, forKey: .pin)
-        try container.encodeIfPresent(self.roles, forKey: .roles)
-    }
 }
 
-extension Operations.GetTokenDetailsUserPlexAccount {
-    var adsConsentReminderAtWrapper: DateTime<Date> {
-        return _adsConsentReminderAt
-    }
-    var adsConsentSetAtWrapper: DateTime<Date> {
-        return _adsConsentSetAt
-    }
-}

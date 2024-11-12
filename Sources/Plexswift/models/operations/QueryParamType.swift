@@ -15,4 +15,5 @@ extension Operations {
         case tvShow = 2
         case season = 3
         case episode = 4
+        case audio = 8
     }}

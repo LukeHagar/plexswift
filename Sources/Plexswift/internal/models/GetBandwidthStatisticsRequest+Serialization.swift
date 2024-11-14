@@ -21,7 +21,7 @@ extension Operations.GetBandwidthStatisticsRequest: Serializable {
 extension Operations.GetBandwidthStatisticsRequest: QueryParameterSerializable {
     func serializedQueryParameters(with parameterDefaults: ParameterDefaults?, formatOverride: SerializableFormat?) throws -> [QueryParameter] {
         let builder = QueryParameterBuilder()
-        try builder.addQueryParameters(from: timespan, named: "Timespan", format: formatOverride ?? .query(style: .form, explode: true), parameterDefaults: parameterDefaults)
+        try builder.addQueryParameters(from: timespan, named: "timespan", format: formatOverride ?? .query(style: .form, explode: true), parameterDefaults: parameterDefaults)
         return builder.build()
     }
 }

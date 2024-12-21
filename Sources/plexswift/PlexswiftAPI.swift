@@ -846,6 +846,7 @@ public protocol LibraryAPI {
     /// - `resolution`: Items categorized by resolution.
     /// - `firstCharacter`: Items categorized by the first letter.
     /// - `folder`: Items categorized by folder.
+    /// - `albums`: Items categorized by album.
     /// 
     /// 
     /// - Parameter request: A ``Operations/GetLibraryItemsRequest`` object describing the input to the API operation

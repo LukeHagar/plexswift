@@ -6,7 +6,7 @@ extension Operations {
     /// A model object
     public struct PostUsersSignInDataRequest: APIValue {
         /// An opaque identifier unique to the client (UUID, serial number, or other unique device ID)
-        public let clientID: String?
+        public let clientID: String
         /// The name of the client application. (Plex Web, Plex Media Server, etc.)
         public let clientName: String?
         /// The version of the client application.
@@ -27,7 +27,7 @@ extension Operations {
         /// - Parameter platform: The platform of the client application.
         /// - Parameter requestBody: Login credentials
         ///
-        public init(clientID: String? = nil, clientName: String? = nil, clientVersion: String? = nil, deviceNickname: String? = nil, platform: String? = nil, requestBody: Operations.PostUsersSignInDataRequestBody? = nil) {
+        public init(clientID: String, clientName: String? = nil, clientVersion: String? = nil, deviceNickname: String? = nil, platform: String? = nil, requestBody: Operations.PostUsersSignInDataRequestBody? = nil) {
             self.clientID = clientID
             self.clientName = clientName
             self.clientVersion = clientVersion

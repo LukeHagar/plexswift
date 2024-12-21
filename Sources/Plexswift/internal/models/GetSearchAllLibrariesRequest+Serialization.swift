@@ -35,7 +35,7 @@ extension Operations.GetSearchAllLibrariesRequest: QueryParameterSerializable {
 extension Operations.GetSearchAllLibrariesRequest: HeaderParameterSerializable {
     func serializedHeaderParameters() throws -> [SerializedParameter] {
         return [
-            SerializedParameter(name: "X-Plex-Client-Identifier", serialized: try clientID?.serialize(with: .header(explode: false)))
+            SerializedParameter(name: "X-Plex-Client-Identifier", serialized: try clientID.serialize(with: .header(explode: false)))
         ]
     }
 }

@@ -24,4 +24,5 @@ extension Operations {
         case resolution = "resolution"
         case firstCharacter = "firstCharacter"
         case folder = "folder"
+        case albums = "albums"
     }}

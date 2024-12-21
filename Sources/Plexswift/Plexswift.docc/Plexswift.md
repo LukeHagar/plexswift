@@ -66,7 +66,6 @@ case .empty:
 ### Connecting to the API
 
 - ``Client``
-- ``GlobalParameters``
 - ``Shared/Security``
 - ``Response``
 - ``ResponseWithHeaders``

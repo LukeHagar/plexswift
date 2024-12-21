@@ -649,7 +649,7 @@ actions:
       x-codeSamples:
         - lang: swift
           label: libraries
-          source: "import Foundation\nimport Plexswift\n\nlet client = Client(security: .accessToken(\"<YOUR_API_KEY_HERE>\"))\n\nlet response = try await client.library.getSearchAllLibraries(\n    request: Operations.GetSearchAllLibrariesRequest(\n        query: \"<value>\", \n        includeCollections: .enable, \n        includeExternalMedia: .enable, \n        searchTypes: [\n            .people,\n        ]\n    )\n)\n\nswitch response.data {\ncase .object(let object):\n    // Handle response\n    break\ncase .badRequest(let badRequest):\n    // Handle response\n    break\ncase .unauthorized(let unauthorized):\n    // Handle response\n    break\ncase .empty:\n    // Handle empty response\n    break\n}"
+          source: "import Foundation\nimport Plexswift\n\nlet client = Client(security: .accessToken(\"<YOUR_API_KEY_HERE>\"))\n\nlet response = try await client.library.getSearchAllLibraries(\n    request: Operations.GetSearchAllLibrariesRequest(\n        clientID: \"3381b62b-9ab7-4e37-827b-203e9809eb58\", \n        query: \"<value>\", \n        includeCollections: .enable, \n        includeExternalMedia: .enable, \n        searchTypes: [\n            .people,\n        ]\n    )\n)\n\nswitch response.data {\ncase .object(let object):\n    // Handle response\n    break\ncase .badRequest(let badRequest):\n    // Handle response\n    break\ncase .unauthorized(let unauthorized):\n    // Handle response\n    break\ncase .empty:\n    // Handle empty response\n    break\n}"
   - target: $["paths"]["/library/sections"]["get"]
     update:
       x-codeSamples:
@@ -858,33 +858,13 @@ actions:
       x-codeSamples:
         - lang: swift
           label: getPin
-          source: |-
-            import Foundation
-            import Plexswift
-
-            let client = Client()
-
-            let response = try await client.plex.getPin(
-                request: Operations.GetPinRequest()
-            )
-
-            switch response.data {
-            case .authPinContainer(let authPinContainer):
-                // Handle response
-                break
-            case .badRequest(let badRequest):
-                // Handle response
-                break
-            case .empty:
-                // Handle empty response
-                break
-            }
+          source: "import Foundation\nimport Plexswift\n\nlet client = Client()\n\nlet response = try await client.plex.getPin(\n    request: Operations.GetPinRequest(\n        clientID: \"3381b62b-9ab7-4e37-827b-203e9809eb58\", \n        clientName: \"Plex for Roku\", \n        clientVersion: \"2.4.1\", \n        deviceNickname: \"Roku 3\", \n        platform: \"Roku\", \n    )\n)\n\nswitch response.data {\ncase .authPinContainer(let authPinContainer):\n    // Handle response\n    break\ncase .badRequest(let badRequest):\n    // Handle response\n    break\ncase .empty:\n    // Handle empty response\n    break\n}"
   - target: $["paths"]["/pins/{pinID}"]["get"]
     update:
       x-codeSamples:
         - lang: swift
           label: getTokenByPinId
-          source: "import Foundation\nimport Plexswift\n\nlet client = Client()\n\nlet response = try await client.plex.getTokenByPinId(\n    request: Operations.GetTokenByPinIdRequest(\n        pinID: 408895, \n    )\n)\n\nswitch response.data {\ncase .authPinContainer(let authPinContainer):\n    // Handle response\n    break\ncase .badRequest(let badRequest):\n    // Handle response\n    break\ncase .object(let object):\n    // Handle response\n    break\ncase .empty:\n    // Handle empty response\n    break\n}"
+          source: "import Foundation\nimport Plexswift\n\nlet client = Client()\n\nlet response = try await client.plex.getTokenByPinId(\n    request: Operations.GetTokenByPinIdRequest(\n        clientID: \"3381b62b-9ab7-4e37-827b-203e9809eb58\", \n        pinID: 408895, \n        clientName: \"Plex for Roku\", \n        clientVersion: \"2.4.1\", \n        deviceNickname: \"Roku 3\", \n        platform: \"Roku\"\n    )\n)\n\nswitch response.data {\ncase .authPinContainer(let authPinContainer):\n    // Handle response\n    break\ncase .badRequest(let badRequest):\n    // Handle response\n    break\ncase .object(let object):\n    // Handle response\n    break\ncase .empty:\n    // Handle empty response\n    break\n}"
   - target: $["paths"]["/playlists"]["get"]
     update:
       x-codeSamples:
@@ -1036,7 +1016,7 @@ actions:
       x-codeSamples:
         - lang: swift
           label: resources
-          source: "import Foundation\nimport Plexswift\n\nlet client = Client(security: .accessToken(\"<YOUR_API_KEY_HERE>\"))\n\nlet response = try await client.plex.getServerResources(\n    request: Operations.GetServerResourcesRequest(\n        includeHttps: .enable, \n        includeIPv6: .enable, \n        includeRelay: .enable\n    )\n)\n\nswitch response.data {\ncase .plexDevices(let plexDevices):\n    // Handle response\n    break\ncase .badRequest(let badRequest):\n    // Handle response\n    break\ncase .unauthorized(let unauthorized):\n    // Handle response\n    break\ncase .empty:\n    // Handle empty response\n    break\n}"
+          source: "import Foundation\nimport Plexswift\n\nlet client = Client(security: .accessToken(\"<YOUR_API_KEY_HERE>\"))\n\nlet response = try await client.plex.getServerResources(\n    request: Operations.GetServerResourcesRequest(\n        clientID: \"3381b62b-9ab7-4e37-827b-203e9809eb58\", \n        includeHttps: .enable, \n        includeIPv6: .enable, \n        includeRelay: .enable\n    )\n)\n\nswitch response.data {\ncase .plexDevices(let plexDevices):\n    // Handle response\n    break\ncase .badRequest(let badRequest):\n    // Handle response\n    break\ncase .unauthorized(let unauthorized):\n    // Handle response\n    break\ncase .empty:\n    // Handle empty response\n    break\n}"
   - target: $["paths"]["/search"]["get"]
     update:
       x-codeSamples:
@@ -1403,7 +1383,7 @@ actions:
       x-codeSamples:
         - lang: swift
           label: data
-          source: "import Foundation\nimport Plexswift\n\nlet client = Client()\n\nlet response = try await client.authentication.postUsersSignInData(\n    request: Operations.PostUsersSignInDataRequest(\n        requestBody: Operations.PostUsersSignInDataRequestBody(\n            login: \"username@email.com\", \n            password: \"password123\", \n            verificationCode: \"123456\"\n        )\n    )\n)\n\nswitch response.data {\ncase .userPlexAccount(let userPlexAccount):\n    // Handle response\n    break\ncase .badRequest(let badRequest):\n    // Handle response\n    break\ncase .unauthorized(let unauthorized):\n    // Handle response\n    break\ncase .empty:\n    // Handle empty response\n    break\n}"
+          source: "import Foundation\nimport Plexswift\n\nlet client = Client()\n\nlet response = try await client.authentication.postUsersSignInData(\n    request: Operations.PostUsersSignInDataRequest(\n        clientID: \"3381b62b-9ab7-4e37-827b-203e9809eb58\", \n        clientName: \"Plex for Roku\", \n        clientVersion: \"2.4.1\", \n        deviceNickname: \"Roku 3\", \n        platform: \"Roku\", \n        requestBody: Operations.PostUsersSignInDataRequestBody(\n            login: \"username@email.com\", \n            password: \"password123\", \n            verificationCode: \"123456\"\n        )\n    )\n)\n\nswitch response.data {\ncase .userPlexAccount(let userPlexAccount):\n    // Handle response\n    break\ncase .badRequest(let badRequest):\n    // Handle response\n    break\ncase .unauthorized(let unauthorized):\n    // Handle response\n    break\ncase .empty:\n    // Handle empty response\n    break\n}"
   - target: $["paths"]["/video/:/transcode/universal/start.mpd"]["get"]
     update:
       x-codeSamples:

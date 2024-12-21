@@ -17,7 +17,7 @@ extension Operations.PostUsersSignInDataRequest: Serializable {
 extension Operations.PostUsersSignInDataRequest: HeaderParameterSerializable {
     func serializedHeaderParameters() throws -> [SerializedParameter] {
         return [
-            SerializedParameter(name: "X-Plex-Client-Identifier", serialized: try clientID?.serialize(with: .header(explode: false))),
+            SerializedParameter(name: "X-Plex-Client-Identifier", serialized: try clientID.serialize(with: .header(explode: false))),
             SerializedParameter(name: "X-Plex-Product", serialized: try clientName?.serialize(with: .header(explode: false))),
             SerializedParameter(name: "X-Plex-Version", serialized: try clientVersion?.serialize(with: .header(explode: false))),
             SerializedParameter(name: "X-Plex-Device", serialized: try deviceNickname?.serialize(with: .header(explode: false))),

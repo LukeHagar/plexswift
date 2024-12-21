@@ -52,7 +52,7 @@ import FoundationNetworking
 ///
 /// ### Initializers
 ///
-/// - ``init(globalParameters:security:)``
+/// - ``init(security:)``
 ///
 /// ### API calls
 ///
@@ -91,14 +91,12 @@ public final class Client {
 
     // Underscore-prefix properties so these do not potentially conflict with any operation namespaces.
     private lazy var _session = URLSession(configuration: .default)
-    private var _globalParameters: GlobalParameters?
     private var _security: Shared.Security?
 
     private var _selectedServer: GlobalServers?
 
     /// Creates an API client object with the specified parameters.
-    public init(globalParameters: GlobalParameters? = nil, security: Shared.Security? = nil) {
-        self._globalParameters = globalParameters
+    public init(security: Shared.Security? = nil) {
         self._security = security
     }
 
@@ -168,7 +166,7 @@ public final class Client {
         do {
             let builder = URLRequestBuilder(
                 baseURL: try baseURL(serverOverride: server),
-                parameterDefaults: _globalParameters,
+                parameterDefaults: nil,
                 defaultSecurityParameterProviding: _security
             )
             try configureRequest(builder)

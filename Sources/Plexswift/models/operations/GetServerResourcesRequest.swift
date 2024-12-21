@@ -6,7 +6,7 @@ extension Operations {
     /// A model object
     public struct GetServerResourcesRequest: APIValue {
         /// An opaque identifier unique to the client (UUID, serial number, or other unique device ID)
-        public let clientID: String?
+        public let clientID: String
         /// Include Https entries in the results
         public let includeHttps: Operations.IncludeHttps?
         /// Include IPv6 entries in the results
@@ -25,7 +25,7 @@ extension Operations {
         /// E.g: https://10-0-0-25.bbf8e10c7fa20447cacee74cd9914cde.plex.direct:32400
         /// 
         ///
-        public init(clientID: String? = nil, includeHttps: Operations.IncludeHttps? = nil, includeIPv6: Operations.IncludeIPv6? = nil, includeRelay: Operations.IncludeRelay? = nil) {
+        public init(clientID: String, includeHttps: Operations.IncludeHttps? = nil, includeIPv6: Operations.IncludeIPv6? = nil, includeRelay: Operations.IncludeRelay? = nil) {
             self.clientID = clientID
             self.includeHttps = includeHttps
             self.includeIPv6 = includeIPv6

@@ -15,9 +15,13 @@ extension Operations {
         public let director: [Operations.GetMetaDataByRatingKeyDirector]?
         public let duration: Int?
         public let genre: [Operations.GetMetaDataByRatingKeyGenre]?
+        /// The name of the album artist for the track when audio, and the name of the TV show for the episode when video.
+        public let grandparentTitle: String?
         public let guid: String?
         public let guids: [Operations.Guids]?
         public let hasPremiumPrimaryExtra: String?
+        /// The index starting from 0 of this media item in the MetaData array.
+        public let index: Int?
         public let key: String?
         public let librarySectionID: Int?
         public let librarySectionKey: String?
@@ -25,6 +29,12 @@ extension Operations {
         public let media: [Operations.GetMetaDataByRatingKeyMedia]?
         @DateOnly
         public private(set) var originallyAvailableAt: Date?
+        /// The orginal untranslated name of the media item when non-english.
+        public let originalTitle: String?
+        /// The parent index starting from 0 of this media item in the parent MetaData array.
+        public let parentIndex: Int?
+        /// The name of the album for the track when audio, and the name of the season for the episode when TV show.
+        public let parentTitle: String?
         public let producer: [Operations.Producer]?
         @DecimalSerialized
         public private(set) var rating: Double?
@@ -44,8 +54,13 @@ extension Operations {
 
         /// Creates an object with the specified parameters
         ///
+        /// - Parameter grandparentTitle: The name of the album artist for the track when audio, and the name of the TV show for the episode when video.
+        /// - Parameter index: The index starting from 0 of this media item in the MetaData array.
+        /// - Parameter originalTitle: The orginal untranslated name of the media item when non-english.
+        /// - Parameter parentIndex: The parent index starting from 0 of this media item in the parent MetaData array.
+        /// - Parameter parentTitle: The name of the album for the track when audio, and the name of the season for the episode when TV show.
         ///
-        public init(addedAt: Int? = nil, art: String? = nil, audienceRating: Double? = nil, audienceRatingImage: String? = nil, contentRating: String? = nil, country: [Operations.GetMetaDataByRatingKeyCountry]? = nil, director: [Operations.GetMetaDataByRatingKeyDirector]? = nil, duration: Int? = nil, genre: [Operations.GetMetaDataByRatingKeyGenre]? = nil, guid: String? = nil, guids: [Operations.Guids]? = nil, hasPremiumPrimaryExtra: String? = nil, key: String? = nil, librarySectionID: Int? = nil, librarySectionKey: String? = nil, librarySectionTitle: String? = nil, media: [Operations.GetMetaDataByRatingKeyMedia]? = nil, originallyAvailableAt: Date? = nil, producer: [Operations.Producer]? = nil, rating: Double? = nil, ratingImage: String? = nil, ratingKey: String? = nil, ratings: [Operations.Ratings]? = nil, role: [Operations.GetMetaDataByRatingKeyRole]? = nil, studio: String? = nil, summary: String? = nil, tagline: String? = nil, thumb: String? = nil, title: String? = nil, type: String? = nil, updatedAt: Int? = nil, writer: [Operations.GetMetaDataByRatingKeyWriter]? = nil, year: Int? = nil) {
+        public init(addedAt: Int? = nil, art: String? = nil, audienceRating: Double? = nil, audienceRatingImage: String? = nil, contentRating: String? = nil, country: [Operations.GetMetaDataByRatingKeyCountry]? = nil, director: [Operations.GetMetaDataByRatingKeyDirector]? = nil, duration: Int? = nil, genre: [Operations.GetMetaDataByRatingKeyGenre]? = nil, grandparentTitle: String? = nil, guid: String? = nil, guids: [Operations.Guids]? = nil, hasPremiumPrimaryExtra: String? = nil, index: Int? = nil, key: String? = nil, librarySectionID: Int? = nil, librarySectionKey: String? = nil, librarySectionTitle: String? = nil, media: [Operations.GetMetaDataByRatingKeyMedia]? = nil, originallyAvailableAt: Date? = nil, originalTitle: String? = nil, parentIndex: Int? = nil, parentTitle: String? = nil, producer: [Operations.Producer]? = nil, rating: Double? = nil, ratingImage: String? = nil, ratingKey: String? = nil, ratings: [Operations.Ratings]? = nil, role: [Operations.GetMetaDataByRatingKeyRole]? = nil, studio: String? = nil, summary: String? = nil, tagline: String? = nil, thumb: String? = nil, title: String? = nil, type: String? = nil, updatedAt: Int? = nil, writer: [Operations.GetMetaDataByRatingKeyWriter]? = nil, year: Int? = nil) {
             self.addedAt = addedAt
             self.art = art
             self._audienceRating = DecimalSerialized<Double?>(wrappedValue: audienceRating)
@@ -55,15 +70,20 @@ extension Operations {
             self.director = director
             self.duration = duration
             self.genre = genre
+            self.grandparentTitle = grandparentTitle
             self.guid = guid
             self.guids = guids
             self.hasPremiumPrimaryExtra = hasPremiumPrimaryExtra
+            self.index = index
             self.key = key
             self.librarySectionID = librarySectionID
             self.librarySectionKey = librarySectionKey
             self.librarySectionTitle = librarySectionTitle
             self.media = media
             self._originallyAvailableAt = DateOnly<Date?>(wrappedValue: originallyAvailableAt)
+            self.originalTitle = originalTitle
+            self.parentIndex = parentIndex
+            self.parentTitle = parentTitle
             self.producer = producer
             self._rating = DecimalSerialized<Double?>(wrappedValue: rating)
             self.ratingImage = ratingImage
@@ -93,15 +113,20 @@ extension Operations.GetMetaDataByRatingKeyMetadata: Codable {
         case director = "Director"
         case duration
         case genre = "Genre"
+        case grandparentTitle
         case guid
         case guids = "Guid"
         case hasPremiumPrimaryExtra
+        case index
         case key
         case librarySectionID
         case librarySectionKey
         case librarySectionTitle
         case media = "Media"
         case originallyAvailableAt
+        case originalTitle
+        case parentIndex
+        case parentTitle
         case producer = "Producer"
         case rating
         case ratingImage
@@ -130,15 +155,20 @@ extension Operations.GetMetaDataByRatingKeyMetadata: Codable {
         self.director = try container.decodeIfPresent([Operations.GetMetaDataByRatingKeyDirector].self, forKey: .director)
         self.duration = try container.decodeIfPresent(Int.self, forKey: .duration)
         self.genre = try container.decodeIfPresent([Operations.GetMetaDataByRatingKeyGenre].self, forKey: .genre)
+        self.grandparentTitle = try container.decodeIfPresent(String.self, forKey: .grandparentTitle)
         self.guid = try container.decodeIfPresent(String.self, forKey: .guid)
         self.guids = try container.decodeIfPresent([Operations.Guids].self, forKey: .guids)
         self.hasPremiumPrimaryExtra = try container.decodeIfPresent(String.self, forKey: .hasPremiumPrimaryExtra)
+        self.index = try container.decodeIfPresent(Int.self, forKey: .index)
         self.key = try container.decodeIfPresent(String.self, forKey: .key)
         self.librarySectionID = try container.decodeIfPresent(Int.self, forKey: .librarySectionID)
         self.librarySectionKey = try container.decodeIfPresent(String.self, forKey: .librarySectionKey)
         self.librarySectionTitle = try container.decodeIfPresent(String.self, forKey: .librarySectionTitle)
         self.media = try container.decodeIfPresent([Operations.GetMetaDataByRatingKeyMedia].self, forKey: .media)
         self._originallyAvailableAt = try container.decodeIfPresent(DateOnly<Date?>.self, forKey: .originallyAvailableAt) ?? DateOnly<Date?>(wrappedValue: nil)
+        self.originalTitle = try container.decodeIfPresent(String.self, forKey: .originalTitle)
+        self.parentIndex = try container.decodeIfPresent(Int.self, forKey: .parentIndex)
+        self.parentTitle = try container.decodeIfPresent(String.self, forKey: .parentTitle)
         self.producer = try container.decodeIfPresent([Operations.Producer].self, forKey: .producer)
         self._rating = try container.decodeIfPresent(DecimalSerialized<Double?>.self, forKey: .rating) ?? DecimalSerialized<Double?>(wrappedValue: nil)
         self.ratingImage = try container.decodeIfPresent(String.self, forKey: .ratingImage)
@@ -169,9 +199,11 @@ extension Operations.GetMetaDataByRatingKeyMetadata: Codable {
         try container.encodeIfPresent(self.director, forKey: .director)
         try container.encodeIfPresent(self.duration, forKey: .duration)
         try container.encodeIfPresent(self.genre, forKey: .genre)
+        try container.encodeIfPresent(self.grandparentTitle, forKey: .grandparentTitle)
         try container.encodeIfPresent(self.guid, forKey: .guid)
         try container.encodeIfPresent(self.guids, forKey: .guids)
         try container.encodeIfPresent(self.hasPremiumPrimaryExtra, forKey: .hasPremiumPrimaryExtra)
+        try container.encodeIfPresent(self.index, forKey: .index)
         try container.encodeIfPresent(self.key, forKey: .key)
         try container.encodeIfPresent(self.librarySectionID, forKey: .librarySectionID)
         try container.encodeIfPresent(self.librarySectionKey, forKey: .librarySectionKey)
@@ -180,6 +212,9 @@ extension Operations.GetMetaDataByRatingKeyMetadata: Codable {
         if self.originallyAvailableAt != nil {
             try container.encode(self._originallyAvailableAt, forKey: .originallyAvailableAt)
         }
+        try container.encodeIfPresent(self.originalTitle, forKey: .originalTitle)
+        try container.encodeIfPresent(self.parentIndex, forKey: .parentIndex)
+        try container.encodeIfPresent(self.parentTitle, forKey: .parentTitle)
         try container.encodeIfPresent(self.producer, forKey: .producer)
         if self.rating != nil {
             try container.encode(self._rating, forKey: .rating)

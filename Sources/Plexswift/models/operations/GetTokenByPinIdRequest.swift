@@ -5,10 +5,10 @@ import Foundation
 extension Operations {
     /// A model object
     public struct GetTokenByPinIdRequest: APIValue {
+        /// An opaque identifier unique to the client (UUID, serial number, or other unique device ID)
+        public let clientID: String
         /// The PinID to retrieve an access token for
         public let pinID: Int
-        /// An opaque identifier unique to the client (UUID, serial number, or other unique device ID)
-        public let clientID: String?
         /// The name of the client application. (Plex Web, Plex Media Server, etc.)
         public let clientName: String?
         /// The version of the client application.
@@ -20,16 +20,16 @@ extension Operations {
 
         /// Creates an object with the specified parameters
         ///
-        /// - Parameter pinID: The PinID to retrieve an access token for
         /// - Parameter clientID: An opaque identifier unique to the client (UUID, serial number, or other unique device ID)
+        /// - Parameter pinID: The PinID to retrieve an access token for
         /// - Parameter clientName: The name of the client application. (Plex Web, Plex Media Server, etc.)
         /// - Parameter clientVersion: The version of the client application.
         /// - Parameter deviceNickname: A relatively friendly name for the client device
         /// - Parameter platform: The platform of the client application.
         ///
-        public init(pinID: Int, clientID: String? = nil, clientName: String? = nil, clientVersion: String? = nil, deviceNickname: String? = nil, platform: String? = nil) {
-            self.pinID = pinID
+        public init(clientID: String, pinID: Int, clientName: String? = nil, clientVersion: String? = nil, deviceNickname: String? = nil, platform: String? = nil) {
             self.clientID = clientID
+            self.pinID = pinID
             self.clientName = clientName
             self.clientVersion = clientVersion
             self.deviceNickname = deviceNickname

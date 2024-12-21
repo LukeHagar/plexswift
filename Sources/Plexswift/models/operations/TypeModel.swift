@@ -16,4 +16,6 @@ extension Operations {
         case season = 3
         case episode = 4
         case audio = 8
+        case album = 9
+        case track = 10
     }}

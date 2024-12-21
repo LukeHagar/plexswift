@@ -5,10 +5,10 @@ import Foundation
 extension Operations {
     /// A model object
     public struct GetSearchAllLibrariesRequest: APIValue {
+        /// An opaque identifier unique to the client (UUID, serial number, or other unique device ID)
+        public let clientID: String
         /// The search query term.
         public let query: String
-        /// An opaque identifier unique to the client (UUID, serial number, or other unique device ID)
-        public let clientID: String?
         /// Whether to include collections in the search results.
         public let includeCollections: Operations.QueryParamIncludeCollections?
         /// Whether to include external media in the search results.
@@ -21,17 +21,17 @@ extension Operations {
 
         /// Creates an object with the specified parameters
         ///
-        /// - Parameter query: The search query term.
         /// - Parameter clientID: An opaque identifier unique to the client (UUID, serial number, or other unique device ID)
+        /// - Parameter query: The search query term.
         /// - Parameter includeCollections: Whether to include collections in the search results.
         /// - Parameter includeExternalMedia: Whether to include external media in the search results.
         /// - Parameter limit: Limit the number of results returned.
         /// - Parameter searchTypes: A comma-separated list of search types to include. Valid values are: movies, music, otherVideos, people, tv.
         /// 
         ///
-        public init(query: String, clientID: String? = nil, includeCollections: Operations.QueryParamIncludeCollections? = nil, includeExternalMedia: Operations.QueryParamIncludeExternalMedia? = nil, limit: Int? = nil, searchTypes: [Operations.SearchTypes]? = nil) {
-            self.query = query
+        public init(clientID: String, query: String, includeCollections: Operations.QueryParamIncludeCollections? = nil, includeExternalMedia: Operations.QueryParamIncludeExternalMedia? = nil, limit: Int? = nil, searchTypes: [Operations.SearchTypes]? = nil) {
             self.clientID = clientID
+            self.query = query
             self.includeCollections = includeCollections
             self.includeExternalMedia = includeExternalMedia
             self.limit = limit

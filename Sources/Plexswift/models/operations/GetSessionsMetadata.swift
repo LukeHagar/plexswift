@@ -22,6 +22,8 @@ extension Operations {
         public let librarySectionTitle: String?
         public let media: [Operations.GetSessionsMedia]?
         public let musicAnalysisVersion: String?
+        /// The original untranslated name of the media item when non-english, or the track artist if an audio Item has an album artist
+        public let originalTitle: String?
         public let parentGuid: String?
         public let parentIndex: Int?
         public let parentKey: String?
@@ -45,8 +47,9 @@ extension Operations {
 
         /// Creates an object with the specified parameters
         ///
+        /// - Parameter originalTitle: The original untranslated name of the media item when non-english, or the track artist if an audio Item has an album artist
         ///
-        public init(addedAt: Int? = nil, art: String? = nil, duration: Int? = nil, grandparentArt: String? = nil, grandparentGuid: String? = nil, grandparentKey: String? = nil, grandparentRatingKey: String? = nil, grandparentThumb: String? = nil, grandparentTitle: String? = nil, guid: String? = nil, index: Int? = nil, key: String? = nil, librarySectionID: String? = nil, librarySectionKey: String? = nil, librarySectionTitle: String? = nil, media: [Operations.GetSessionsMedia]? = nil, musicAnalysisVersion: String? = nil, parentGuid: String? = nil, parentIndex: Int? = nil, parentKey: String? = nil, parentRatingKey: String? = nil, parentStudio: String? = nil, parentThumb: String? = nil, parentTitle: String? = nil, parentYear: Int? = nil, player: Operations.Player? = nil, ratingCount: Int? = nil, ratingKey: String? = nil, session: Operations.Session? = nil, sessionKey: String? = nil, thumb: String? = nil, title: String? = nil, titleSort: String? = nil, type: String? = nil, updatedAt: Int? = nil, user: Operations.GetSessionsUser? = nil, viewOffset: Int? = nil) {
+        public init(addedAt: Int? = nil, art: String? = nil, duration: Int? = nil, grandparentArt: String? = nil, grandparentGuid: String? = nil, grandparentKey: String? = nil, grandparentRatingKey: String? = nil, grandparentThumb: String? = nil, grandparentTitle: String? = nil, guid: String? = nil, index: Int? = nil, key: String? = nil, librarySectionID: String? = nil, librarySectionKey: String? = nil, librarySectionTitle: String? = nil, media: [Operations.GetSessionsMedia]? = nil, musicAnalysisVersion: String? = nil, originalTitle: String? = nil, parentGuid: String? = nil, parentIndex: Int? = nil, parentKey: String? = nil, parentRatingKey: String? = nil, parentStudio: String? = nil, parentThumb: String? = nil, parentTitle: String? = nil, parentYear: Int? = nil, player: Operations.Player? = nil, ratingCount: Int? = nil, ratingKey: String? = nil, session: Operations.Session? = nil, sessionKey: String? = nil, thumb: String? = nil, title: String? = nil, titleSort: String? = nil, type: String? = nil, updatedAt: Int? = nil, user: Operations.GetSessionsUser? = nil, viewOffset: Int? = nil) {
             self.addedAt = addedAt
             self.art = art
             self.duration = duration
@@ -64,6 +67,7 @@ extension Operations {
             self.librarySectionTitle = librarySectionTitle
             self.media = media
             self.musicAnalysisVersion = musicAnalysisVersion
+            self.originalTitle = originalTitle
             self.parentGuid = parentGuid
             self.parentIndex = parentIndex
             self.parentKey = parentKey
@@ -106,6 +110,7 @@ extension Operations.GetSessionsMetadata: Codable {
         case librarySectionTitle
         case media = "Media"
         case musicAnalysisVersion
+        case originalTitle
         case parentGuid
         case parentIndex
         case parentKey

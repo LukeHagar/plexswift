@@ -3,7 +3,9 @@
 import Foundation
 
 extension Operations {
+    /// Setting that indicates if seasons are set to hidden for the show. (-1 = Library default, 0 = Hide, 1 = Show).
     public enum GetLibraryItemsFlattenSeasons: String, Codable, APIValue {
-        case `false` = "0"
-        case `true` = "1"
+        case libraryDefault = "-1"
+        case hide = "0"
+        case show = "1"
     }}

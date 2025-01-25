@@ -319,9 +319,11 @@ case .empty:
 - ``Operations/Director``
 - ``Operations/Directory``
 - ``Operations/Download``
+- ``Operations/EnableCreditsMarkerGeneration``
 - ``Operations/EnablePaperTrailErrors``
 - ``Operations/EnablePaperTrailLogErrors``
 - ``Operations/EnablePaperTrailUnauthorized``
+- ``Operations/EpisodeSort``
 - ``Operations/Errors``
 - ``Operations/Feature``
 - ``Operations/Field``
@@ -361,6 +363,8 @@ case .empty:
 - ``Operations/GetLibraryItemsCountry``
 - ``Operations/GetLibraryItemsDefaultDirection``
 - ``Operations/GetLibraryItemsDirector``
+- ``Operations/GetLibraryItemsEnableCreditsMarkerGeneration``
+- ``Operations/GetLibraryItemsEpisodeSort``
 - ``Operations/GetLibraryItemsErrors``
 - ``Operations/GetLibraryItemsField``
 - ``Operations/GetLibraryItemsFieldType``
@@ -462,6 +466,8 @@ case .empty:
 - ``Operations/GetSearchAllLibrariesCollection``
 - ``Operations/GetSearchAllLibrariesCountry``
 - ``Operations/GetSearchAllLibrariesDirector``
+- ``Operations/GetSearchAllLibrariesEnableCreditsMarkerGeneration``
+- ``Operations/GetSearchAllLibrariesEpisodeSort``
 - ``Operations/GetSearchAllLibrariesErrors``
 - ``Operations/GetSearchAllLibrariesFlattenSeasons``
 - ``Operations/GetSearchAllLibrariesGenre``

@@ -3,17 +3,17 @@
 import Foundation
 
 extension Operations {
-    /// Setting that indicates the episode ordering for the show
+    /// Setting that indicates the episode ordering for the show.
     /// None = Library default,
     /// tmdbAiring = The Movie Database (Aired),
-    /// tvdbAiring = TheTVDB (Aired),
-    /// tvdbDvd = TheTVDB (DVD),
-    /// tvdbAbsolute = TheTVDB (Absolute)).
+    /// aired = TheTVDB (Aired),
+    /// dvd = TheTVDB (DVD),
+    /// absolute = TheTVDB (Absolute)).
     /// 
     public enum GetLibraryItemsShowOrdering: String, Codable, APIValue {
         case `none` = "None"
         case tmdbAiring = "tmdbAiring"
-        case tvdbAiring = "tvdbAiring"
-        case tvdbDvd = "tvdbDvd"
-        case tvdbAbsolute = "tvdbAbsolute"
+        case tvdbAired = "aired"
+        case tvdbDvd = "dvd"
+        case tvdbAbsolute = "absolute"
     }}

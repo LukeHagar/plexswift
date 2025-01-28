@@ -83,12 +83,12 @@ extension Operations {
         public let ratingImage: String?
         public let role: [Operations.GetLibraryItemsRole]?
         public let seasonCount: Int?
-        /// Setting that indicates the episode ordering for the show
+        /// Setting that indicates the episode ordering for the show.
         /// None = Library default,
         /// tmdbAiring = The Movie Database (Aired),
-        /// tvdbAiring = TheTVDB (Aired),
-        /// tvdbDvd = TheTVDB (DVD),
-        /// tvdbAbsolute = TheTVDB (Absolute)).
+        /// aired = TheTVDB (Aired),
+        /// dvd = TheTVDB (DVD),
+        /// absolute = TheTVDB (Absolute)).
         /// 
         public let showOrdering: Operations.GetLibraryItemsShowOrdering?
         public let skipChildren: Bool?
@@ -125,12 +125,12 @@ extension Operations {
         /// 
         /// - Parameter parentRatingKey: The rating key of the parent item.
         /// 
-        /// - Parameter showOrdering: Setting that indicates the episode ordering for the show
+        /// - Parameter showOrdering: Setting that indicates the episode ordering for the show.
         /// None = Library default,
         /// tmdbAiring = The Movie Database (Aired),
-        /// tvdbAiring = TheTVDB (Aired),
-        /// tvdbDvd = TheTVDB (DVD),
-        /// tvdbAbsolute = TheTVDB (Absolute)).
+        /// aired = TheTVDB (Aired),
+        /// dvd = TheTVDB (DVD),
+        /// absolute = TheTVDB (Absolute)).
         /// 
         /// - Parameter updatedAt: Unix epoch datetime in seconds
         ///

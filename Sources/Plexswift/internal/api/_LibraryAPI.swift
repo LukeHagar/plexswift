@@ -82,6 +82,24 @@ class _LibraryAPI: LibraryAPI {
         )
     }
     
+    public func getGenresLibrary(request: Operations.GetGenresLibraryRequest) async throws -> Response<Operations.GetGenresLibraryResponse> {
+        return try await client.makeRequest(
+            configureRequest: { configuration in
+                try configureGetGenresLibraryRequest(with: configuration, request: request)
+            },
+            handleResponse: handleGetGenresLibraryResponse
+        )
+    }
+    
+    public func getCountriesLibrary(request: Operations.GetCountriesLibraryRequest) async throws -> Response<Operations.GetCountriesLibraryResponse> {
+        return try await client.makeRequest(
+            configureRequest: { configuration in
+                try configureGetCountriesLibraryRequest(with: configuration, request: request)
+            },
+            handleResponse: handleGetCountriesLibraryResponse
+        )
+    }
+    
     public func getSearchAllLibraries(request: Operations.GetSearchAllLibrariesRequest) async throws -> Response<Operations.GetSearchAllLibrariesResponse> {
         return try await client.makeRequest(
             configureRequest: { configuration in
@@ -187,6 +205,20 @@ private func configureGetSearchLibraryRequest(with configuration: URLRequestConf
     configuration.method = .get
     configuration.pathParameterSerializable = request
     configuration.queryParameterSerializable = request
+    configuration.telemetryHeader = .userAgent
+}
+
+private func configureGetGenresLibraryRequest(with configuration: URLRequestConfiguration, request: Operations.GetGenresLibraryRequest) throws {
+    configuration.path = "/library/sections/{sectionKey}/genre"
+    configuration.method = .get
+    configuration.pathParameterSerializable = request
+    configuration.telemetryHeader = .userAgent
+}
+
+private func configureGetCountriesLibraryRequest(with configuration: URLRequestConfiguration, request: Operations.GetCountriesLibraryRequest) throws {
+    configuration.path = "/library/sections/{sectionKey}/country"
+    configuration.method = .get
+    configuration.pathParameterSerializable = request
     configuration.telemetryHeader = .userAgent
 }
 
@@ -461,6 +493,74 @@ private func handleGetSearchLibraryResponse(response: Client.APIResponse) throws
                 throw ResponseHandlerError.failedToDecodeJSON(error)
             }
         }
+    }
+
+    return .empty
+}
+
+private func handleGetGenresLibraryResponse(response: Client.APIResponse) throws -> Operations.GetGenresLibraryResponse {
+    let httpResponse = response.httpResponse
+    
+    if httpResponse.statusCode == 200 { 
+        if httpResponse.contentType.matchContentType(pattern: "application/json"), let data = response.data {
+            do {
+                return .object(try JSONDecoder().decode(Operations.GetGenresLibraryResponseBody.self, from: data))
+            } catch {
+                throw ResponseHandlerError.failedToDecodeJSON(error)
+            }
+        }
+    } else if httpResponse.statusCode == 400 { 
+        if httpResponse.contentType.matchContentType(pattern: "application/json"), let data = response.data {
+            do {
+                return .badRequest(try JSONDecoder().decode(Operations.GetGenresLibraryBadRequest.self, from: data))
+            } catch {
+                throw ResponseHandlerError.failedToDecodeJSON(error)
+            }
+        }
+    } else if httpResponse.statusCode == 401 { 
+        if httpResponse.contentType.matchContentType(pattern: "application/json"), let data = response.data {
+            do {
+                return .unauthorized(try JSONDecoder().decode(Operations.GetGenresLibraryUnauthorized.self, from: data))
+            } catch {
+                throw ResponseHandlerError.failedToDecodeJSON(error)
+            }
+        }
+    } else if httpResponse.statusCode == 404 { 
+        return .empty
+    }
+
+    return .empty
+}
+
+private func handleGetCountriesLibraryResponse(response: Client.APIResponse) throws -> Operations.GetCountriesLibraryResponse {
+    let httpResponse = response.httpResponse
+    
+    if httpResponse.statusCode == 200 { 
+        if httpResponse.contentType.matchContentType(pattern: "application/json"), let data = response.data {
+            do {
+                return .object(try JSONDecoder().decode(Operations.GetCountriesLibraryResponseBody.self, from: data))
+            } catch {
+                throw ResponseHandlerError.failedToDecodeJSON(error)
+            }
+        }
+    } else if httpResponse.statusCode == 400 { 
+        if httpResponse.contentType.matchContentType(pattern: "application/json"), let data = response.data {
+            do {
+                return .badRequest(try JSONDecoder().decode(Operations.GetCountriesLibraryBadRequest.self, from: data))
+            } catch {
+                throw ResponseHandlerError.failedToDecodeJSON(error)
+            }
+        }
+    } else if httpResponse.statusCode == 401 { 
+        if httpResponse.contentType.matchContentType(pattern: "application/json"), let data = response.data {
+            do {
+                return .unauthorized(try JSONDecoder().decode(Operations.GetCountriesLibraryUnauthorized.self, from: data))
+            } catch {
+                throw ResponseHandlerError.failedToDecodeJSON(error)
+            }
+        }
+    } else if httpResponse.statusCode == 404 { 
+        return .empty
     }
 
     return .empty

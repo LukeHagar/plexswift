@@ -739,6 +739,8 @@ public protocol SearchAPI {
 /// - ``getLibraryItems(request:)``
 /// - ``getRefreshLibraryMetadata(request:)``
 /// - ``getSearchLibrary(request:)``
+/// - ``getGenresLibrary(request:)``
+/// - ``getCountriesLibrary(request:)``
 /// - ``getSearchAllLibraries(request:)``
 /// - ``getMetaDataByRatingKey(request:)``
 /// - ``getMetadataChildren(request:)``
@@ -886,6 +888,22 @@ public protocol LibraryAPI {
     /// - Returns: A ``Operations/GetSearchLibraryResponse`` object describing the result of the API operation
     /// - Throws: An error of type ``PlexswiftError``
     func getSearchLibrary(request: Operations.GetSearchLibraryRequest) async throws -> Response<Operations.GetSearchLibraryResponse>
+
+    /// Retrieves a list of all the genres that are found for the media in this library.
+    /// 
+    /// 
+    /// - Parameter request: A ``Operations/GetGenresLibraryRequest`` object describing the input to the API operation
+    /// - Returns: A ``Operations/GetGenresLibraryResponse`` object describing the result of the API operation
+    /// - Throws: An error of type ``PlexswiftError``
+    func getGenresLibrary(request: Operations.GetGenresLibraryRequest) async throws -> Response<Operations.GetGenresLibraryResponse>
+
+    /// Retrieves a list of all the countries that are found for the media in this library.
+    /// 
+    /// 
+    /// - Parameter request: A ``Operations/GetCountriesLibraryRequest`` object describing the input to the API operation
+    /// - Returns: A ``Operations/GetCountriesLibraryResponse`` object describing the result of the API operation
+    /// - Throws: An error of type ``PlexswiftError``
+    func getCountriesLibrary(request: Operations.GetCountriesLibraryRequest) async throws -> Response<Operations.GetCountriesLibraryResponse>
 
     /// Search the provided query across all library sections, or a single section, and return matches as hubs, split up by type.
     /// 

@@ -62,7 +62,7 @@ You can add `plexswift` to your project directly in Xcode `(File > Add Packages.
 
 ```bash
 dependencies: [
-    .package(url: "https://github.com/LukeHagar/plexswift.git", .upToNextMajor(from: "0.9.7"))
+    .package(url: "https://github.com/LukeHagar/plexswift.git", .upToNextMajor(from: "0.9.9"))
 ]
 ```
 <!-- End SDK Installation [installation] -->
@@ -140,6 +140,8 @@ case .empty:
 * [getLibraryItems](docs/sdks/library/README.md#getlibraryitems) - Get Library Items
 * [getRefreshLibraryMetadata](docs/sdks/library/README.md#getrefreshlibrarymetadata) - Refresh Metadata Of The Library
 * [getSearchLibrary](docs/sdks/library/README.md#getsearchlibrary) - Search Library
+* [getGenresLibrary](docs/sdks/library/README.md#getgenreslibrary) - Get Genres of library media
+* [getCountriesLibrary](docs/sdks/library/README.md#getcountrieslibrary) - Get Countries of library media
 * [getSearchAllLibraries](docs/sdks/library/README.md#getsearchalllibraries) - Search All Libraries
 * [getMetaDataByRatingKey](docs/sdks/library/README.md#getmetadatabyratingkey) - Get Metadata by RatingKey
 * [getMetadataChildren](docs/sdks/library/README.md#getmetadatachildren) - Get Items Children

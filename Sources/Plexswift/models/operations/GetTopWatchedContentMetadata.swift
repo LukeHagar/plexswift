@@ -36,14 +36,14 @@ extension Operations {
         public let title: String?
         public let type: String?
         public let updatedAt: Int?
-        public let user: [Operations.User]?
+        public let user: [Operations.GetTopWatchedContentUser]?
         public let viewedLeafCount: Int?
         public let year: Int?
 
         /// Creates an object with the specified parameters
         ///
         ///
-        public init(addedAt: Int? = nil, art: String? = nil, audienceRating: Double? = nil, audienceRatingImage: String? = nil, childCount: Int? = nil, contentRating: String? = nil, country: [Operations.GetTopWatchedContentCountry]? = nil, duration: Int? = nil, genre: [Operations.GetTopWatchedContentGenre]? = nil, globalViewCount: Int? = nil, guid: String? = nil, guids: [Operations.GetTopWatchedContentGuids]? = nil, index: Int? = nil, key: String? = nil, leafCount: Int? = nil, librarySectionID: Int? = nil, librarySectionKey: String? = nil, librarySectionTitle: String? = nil, originallyAvailableAt: Date? = nil, ratingKey: String? = nil, role: [Operations.GetTopWatchedContentRole]? = nil, slug: String? = nil, studio: String? = nil, summary: String? = nil, tagline: String? = nil, thumb: String? = nil, title: String? = nil, type: String? = nil, updatedAt: Int? = nil, user: [Operations.User]? = nil, viewedLeafCount: Int? = nil, year: Int? = nil) {
+        public init(addedAt: Int? = nil, art: String? = nil, audienceRating: Double? = nil, audienceRatingImage: String? = nil, childCount: Int? = nil, contentRating: String? = nil, country: [Operations.GetTopWatchedContentCountry]? = nil, duration: Int? = nil, genre: [Operations.GetTopWatchedContentGenre]? = nil, globalViewCount: Int? = nil, guid: String? = nil, guids: [Operations.GetTopWatchedContentGuids]? = nil, index: Int? = nil, key: String? = nil, leafCount: Int? = nil, librarySectionID: Int? = nil, librarySectionKey: String? = nil, librarySectionTitle: String? = nil, originallyAvailableAt: Date? = nil, ratingKey: String? = nil, role: [Operations.GetTopWatchedContentRole]? = nil, slug: String? = nil, studio: String? = nil, summary: String? = nil, tagline: String? = nil, thumb: String? = nil, title: String? = nil, type: String? = nil, updatedAt: Int? = nil, user: [Operations.GetTopWatchedContentUser]? = nil, viewedLeafCount: Int? = nil, year: Int? = nil) {
             self.addedAt = addedAt
             self.art = art
             self._audienceRating = DecimalSerialized<Double?>(wrappedValue: audienceRating)
@@ -146,7 +146,7 @@ extension Operations.GetTopWatchedContentMetadata: Codable {
         self.title = try container.decodeIfPresent(String.self, forKey: .title)
         self.type = try container.decodeIfPresent(String.self, forKey: .type)
         self.updatedAt = try container.decodeIfPresent(Int.self, forKey: .updatedAt)
-        self.user = try container.decodeIfPresent([Operations.User].self, forKey: .user)
+        self.user = try container.decodeIfPresent([Operations.GetTopWatchedContentUser].self, forKey: .user)
         self.viewedLeafCount = try container.decodeIfPresent(Int.self, forKey: .viewedLeafCount)
         self.year = try container.decodeIfPresent(Int.self, forKey: .year)
     }

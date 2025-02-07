@@ -1440,6 +1440,12 @@ actions:
                 // Handle empty response
                 break
             }
+  - target: $["paths"]["/users"]["get"]
+    update:
+      x-codeSamples:
+        - lang: swift
+          label: users
+          source: "import Foundation\nimport Plexswift\n\nlet client = Client()\n\nlet response = try await client.users.getUsers(\n    request: Operations.GetUsersRequest(\n        clientID: \"3381b62b-9ab7-4e37-827b-203e9809eb58\", \n        xPlexToken: \"CV5xoxjTpFKUzBTShsaf\", \n        clientFeatures: \"external-media,indirect-media,hub-style-list\", \n        clientName: \"Plex for Roku\", \n        clientVersion: \"2.4.1\", \n        deviceName: \"Chrome\", \n        deviceNickname: \"Roku 3\", \n        deviceScreenResolution: \"1487x1165,2560x1440\", \n        model: \"4200X\", \n        platform: \"Roku\", \n        platformVersion: \"4.3 build 1057\", \n        xPlexLanguage: \"en\", \n        xPlexSessionId: \"97e136ef-4ddd-4ff3-89a7-a5820c96c2ca\"\n    )\n)\n\nswitch response.data {\ncase .body(let body):\n    // Handle response\n    break\ncase .badRequest(let badRequest):\n    // Handle response\n    break\ncase .unauthorized(let unauthorized):\n    // Handle response\n    break\ncase .empty:\n    // Handle empty response\n    break\n}"
   - target: $["paths"]["/users/signin"]["post"]
     update:
       x-codeSamples:

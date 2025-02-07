@@ -92,6 +92,7 @@ case .empty:
 - ``StatisticsAPI``
 - ``SessionsAPI``
 - ``UpdaterAPI``
+- ``UsersAPI``
 
 ### Server configuration
 - ``PlexServers/GetCompanionsData``
@@ -103,6 +104,7 @@ case .empty:
 - ``WatchlistServers/GetWatchList``
 - ``AuthenticationServers/GetTokenDetails``
 - ``AuthenticationServers/PostUsersSignInData``
+- ``UsersServers/GetUsers``
 
 ### Shared models
 
@@ -130,6 +132,7 @@ case .empty:
 - ``Operations/GetSearchLibraryBadRequest``
 - ``Operations/GetServerResourcesBadRequest``
 - ``Operations/GetThumbImageBadRequest``
+- ``Operations/GetUsersBadRequest``
 - ``Operations/GetWatchListBadRequest``
 - ``Operations/GetAvailableClientsBadRequest``
 - ``Operations/GetBandwidthStatisticsBadRequest``
@@ -210,6 +213,7 @@ case .empty:
 - ``Operations/GetServerIdentityResponse``
 - ``Operations/GetServerResourcesResponse``
 - ``Operations/GetThumbImageResponse``
+- ``Operations/GetUsersResponse``
 - ``Operations/GetWatchListResponse``
 - ``Operations/GetAvailableClientsResponse``
 - ``Operations/GetBandwidthStatisticsResponse``
@@ -276,6 +280,12 @@ case .empty:
 - ``Operations/AddPlaylistContentsRequest``
 - ``Operations/AddPlaylistContentsResponseBody``
 - ``Operations/AddPlaylistContentsUnauthorized``
+- ``Operations/AllLibraries``
+- ``Operations/AllowCameraUpload``
+- ``Operations/AllowChannels``
+- ``Operations/AllowSubtitleAdmin``
+- ``Operations/AllowSync``
+- ``Operations/AllowTuners``
 - ``Operations/ApplyUpdatesErrors``
 - ``Operations/ApplyUpdatesRequest``
 - ``Operations/ApplyUpdatesUnauthorized``
@@ -529,6 +539,13 @@ case .empty:
 - ``Operations/GetThumbImageMediaErrors``
 - ``Operations/GetThumbImageRequest``
 - ``Operations/GetThumbImageUnauthorized``
+- ``Operations/GetUsersErrors``
+- ``Operations/GetUsersMediaContainer``
+- ``Operations/GetUsersRequest``
+- ``Operations/GetUsersResponseBody``
+- ``Operations/GetUsersServer``
+- ``Operations/GetUsersUnauthorized``
+- ``Operations/GetUsersUsersErrors``
 - ``Operations/GetWatchListErrors``
 - ``Operations/GetWatchListRequest``
 - ``Operations/GetWatchListResponseBody``
@@ -748,6 +765,7 @@ case .empty:
 - ``Operations/GetTopWatchedContentResponseBody``
 - ``Operations/GetTopWatchedContentRole``
 - ``Operations/GetTopWatchedContentUnauthorized``
+- ``Operations/GetTopWatchedContentUser``
 - ``Operations/GetTranscodeSessionsErrors``
 - ``Operations/GetTranscodeSessionsMediaContainer``
 - ``Operations/GetTranscodeSessionsResponseBody``
@@ -768,6 +786,7 @@ case .empty:
 - ``Operations/GetUserFriendsUnauthorized``
 - ``Operations/Guids``
 - ``Operations/HasThumbnail``
+- ``Operations/Home``
 - ``Operations/Hub``
 - ``Operations/Image``
 - ``Operations/IncludeCollections``
@@ -811,9 +830,11 @@ case .empty:
 - ``Operations/OnlyTransient``
 - ``Operations/Operator``
 - ``Operations/OptimizedForStreaming``
+- ``Operations/Owned``
 - ``Operations/Part``
 - ``Operations/PastSubscription``
 - ``Operations/PathParamTaskName``
+- ``Operations/Pending``
 - ``Operations/PerformSearchErrors``
 - ``Operations/PerformSearchRequest``
 - ``Operations/PerformSearchSearchErrors``
@@ -847,6 +868,7 @@ case .empty:
 - ``Operations/PostUsersSignInDataUserProfile``
 - ``Operations/PostUsersSignInDataWatchedIndicator``
 - ``Operations/Producer``
+- ``Operations/Protected``
 - ``Operations/`Protocol```
 - ``Operations/Provider``
 - ``Operations/QueryParamFilter``
@@ -860,6 +882,7 @@ case .empty:
 - ``Operations/Ratings``
 - ``Operations/Release``
 - ``Operations/ResponseBody``
+- ``Operations/Restricted``
 - ``Operations/Role``
 - ``Operations/Scope``
 - ``Operations/SearchResult``

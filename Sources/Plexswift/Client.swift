@@ -79,6 +79,7 @@ import FoundationNetworking
 /// - ``statistics``
 /// - ``sessions``
 /// - ``updater``
+/// - ``users``
 ///
 public final class Client {
     internal struct APIResponse {

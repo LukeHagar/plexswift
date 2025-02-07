@@ -33,6 +33,7 @@ import Foundation
 /// - ``statistics``
 /// - ``sessions``
 /// - ``updater``
+/// - ``users``
 ///
 public protocol PlexswiftAPI {
 
@@ -95,6 +96,7 @@ public protocol PlexswiftAPI {
     /// Updates to the status can be observed via the Event API.
     /// 
     var updater: UpdaterAPI { get }
+    var users: UsersAPI { get }
 }
 
 // MARK: - ServerAPI
@@ -1396,4 +1398,58 @@ public protocol UpdaterAPI {
     /// - Returns: A ``Operations/ApplyUpdatesResponse`` object describing the result of the API operation
     /// - Throws: An error of type ``PlexswiftError``
     func applyUpdates(request: Operations.ApplyUpdatesRequest) async throws -> Response<Operations.ApplyUpdatesResponse>
+}
+
+// MARK: - UsersAPI
+public enum UsersServers {
+
+/// Describes the available servers that can be used when making 'get-users' requests.
+///
+/// Use this type when making calls to ``UsersAPI/getUsers(request:server:)`` to customize the server which is used.
+    public enum GetUsers: Servers, ServerConvertible {
+        /// Supported server value.
+        ///
+        /// Corresponds to `https://plex.tv/api`
+        case server1
+
+        /// Defines the raw URL strings for each server option.
+        ///
+        /// > Note: You do not need to use these values directly.
+        ///
+        /// The available URL strings are defined as:
+        /// ```swift
+        /// public static let urlStrings = [
+        ///     "https://plex.tv/api"
+        /// ]
+        /// ```
+        public static let urlStrings = [
+            "https://plex.tv/api"
+        ]
+
+        static func `default`() throws -> Server {
+            return try UsersServers.GetUsers.server1.server()
+        }
+
+        func server() throws -> Server {
+            switch self {
+            case .server1:
+                return try type(of: self).server(at: 0, substituting: nil)
+            }
+        }
+    }
+}
+/// ## Topics
+///
+/// ### API calls
+///
+/// - ``getUsers(request:server:)``
+///
+public protocol UsersAPI {
+    /// Get list of all users that are friends and have library access with the provided Plex authentication token
+    /// 
+    /// - Parameter request: A ``Operations/GetUsersRequest`` object describing the input to the API operation
+    /// - Parameter server: An optional server override to use for this operation
+    /// - Returns: A ``Operations/GetUsersResponse`` object describing the result of the API operation
+    /// - Throws: An error of type ``PlexswiftError``
+    func getUsers(request: Operations.GetUsersRequest, server: UsersServers.GetUsers?) async throws -> Response<Operations.GetUsersResponse>
 }

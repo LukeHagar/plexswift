@@ -70,6 +70,10 @@ extension Client: PlexswiftAPI {
     public var updater: UpdaterAPI {
         return _UpdaterAPI(client: self)
     }
+
+    public var users: UsersAPI {
+        return _UsersAPI(client: self)
+    }
 }
 
 // MARK: - Request Configuration

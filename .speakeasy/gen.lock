@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 5d77204e-e413-4fd0-a14a-bad3aee2247a
 management:
-  docChecksum: 14b35829d4be91a88269761c3ed01426
+  docChecksum: 7dec92ab9151a1b5a35df5faa81811ba
   docVersion: 0.0.3
   speakeasyVersion: 1.405.6
   generationVersion: 2.428.1
-  releaseVersion: 0.9.9
-  configChecksum: 9200bd9ee8c67e5072d90d0fc2cea504
+  releaseVersion: 0.9.11
+  configChecksum: 13e55494eeb94833b0c438321b3ef8ff
   repoURL: https://github.com/LukeHagar/plexswift.git
 features:
   swift:
@@ -37,10 +37,17 @@ generatedFiles:
   - Sources/Plexswift/internal/api/_SessionsAPI.swift
   - Sources/Plexswift/internal/api/_StatisticsAPI.swift
   - Sources/Plexswift/internal/api/_UpdaterAPI.swift
+  - Sources/Plexswift/internal/api/_UsersAPI.swift
   - Sources/Plexswift/internal/api/_VideoAPI.swift
   - Sources/Plexswift/internal/api/_WatchlistAPI.swift
   - Sources/Plexswift/internal/models/ActiveDirection+Serialization.swift
   - Sources/Plexswift/internal/models/AddPlaylistContentsRequest+Serialization.swift
+  - Sources/Plexswift/internal/models/AllLibraries+Serialization.swift
+  - Sources/Plexswift/internal/models/AllowCameraUpload+Serialization.swift
+  - Sources/Plexswift/internal/models/AllowChannels+Serialization.swift
+  - Sources/Plexswift/internal/models/AllowSubtitleAdmin+Serialization.swift
+  - Sources/Plexswift/internal/models/AllowSync+Serialization.swift
+  - Sources/Plexswift/internal/models/AllowTuners+Serialization.swift
   - Sources/Plexswift/internal/models/ApplyUpdatesRequest+Serialization.swift
   - Sources/Plexswift/internal/models/AutoSelectSubtitle+Serialization.swift
   - Sources/Plexswift/internal/models/CancelServerActivitiesRequest+Serialization.swift
@@ -125,8 +132,10 @@ generatedFiles:
   - Sources/Plexswift/internal/models/GetTopWatchedContentRequest+Serialization.swift
   - Sources/Plexswift/internal/models/GetTransientTokenQueryParamType+Serialization.swift
   - Sources/Plexswift/internal/models/GetTransientTokenRequest+Serialization.swift
+  - Sources/Plexswift/internal/models/GetUsersRequest+Serialization.swift
   - Sources/Plexswift/internal/models/GetWatchListRequest+Serialization.swift
   - Sources/Plexswift/internal/models/HasThumbnail+Serialization.swift
+  - Sources/Plexswift/internal/models/Home+Serialization.swift
   - Sources/Plexswift/internal/models/IncludeCollections+Serialization.swift
   - Sources/Plexswift/internal/models/IncludeDetails+Serialization.swift
   - Sources/Plexswift/internal/models/IncludeExternalMedia+Serialization.swift
@@ -146,7 +155,9 @@ generatedFiles:
   - Sources/Plexswift/internal/models/MinSize+Serialization.swift
   - Sources/Plexswift/internal/models/OnlyTransient+Serialization.swift
   - Sources/Plexswift/internal/models/OptimizedForStreaming+Serialization.swift
+  - Sources/Plexswift/internal/models/Owned+Serialization.swift
   - Sources/Plexswift/internal/models/PathParamTaskName+Serialization.swift
+  - Sources/Plexswift/internal/models/Pending+Serialization.swift
   - Sources/Plexswift/internal/models/PerformSearchRequest+Serialization.swift
   - Sources/Plexswift/internal/models/PerformVoiceSearchRequest+Serialization.swift
   - Sources/Plexswift/internal/models/PlaylistType+Serialization.swift
@@ -162,6 +173,7 @@ generatedFiles:
   - Sources/Plexswift/internal/models/PostUsersSignInDataState+Serialization.swift
   - Sources/Plexswift/internal/models/PostUsersSignInDataStatus+Serialization.swift
   - Sources/Plexswift/internal/models/PostUsersSignInDataWatchedIndicator+Serialization.swift
+  - Sources/Plexswift/internal/models/Protected+Serialization.swift
   - Sources/Plexswift/internal/models/Protocol+Serialization.swift
   - Sources/Plexswift/internal/models/QueryParamFilter+Serialization.swift
   - Sources/Plexswift/internal/models/QueryParamForce+Serialization.swift
@@ -171,6 +183,7 @@ generatedFiles:
   - Sources/Plexswift/internal/models/QueryParamOnlyTransient+Serialization.swift
   - Sources/Plexswift/internal/models/QueryParamSmart+Serialization.swift
   - Sources/Plexswift/internal/models/QueryParamType+Serialization.swift
+  - Sources/Plexswift/internal/models/Restricted+Serialization.swift
   - Sources/Plexswift/internal/models/Scope+Serialization.swift
   - Sources/Plexswift/internal/models/SearchTypes+Serialization.swift
   - Sources/Plexswift/internal/models/Security+Serialization.swift
@@ -209,6 +222,12 @@ generatedFiles:
   - Sources/Plexswift/models/operations/AddPlaylistContentsResponse.swift
   - Sources/Plexswift/models/operations/AddPlaylistContentsResponseBody.swift
   - Sources/Plexswift/models/operations/AddPlaylistContentsUnauthorized.swift
+  - Sources/Plexswift/models/operations/AllLibraries.swift
+  - Sources/Plexswift/models/operations/AllowCameraUpload.swift
+  - Sources/Plexswift/models/operations/AllowChannels.swift
+  - Sources/Plexswift/models/operations/AllowSubtitleAdmin.swift
+  - Sources/Plexswift/models/operations/AllowSync.swift
+  - Sources/Plexswift/models/operations/AllowTuners.swift
   - Sources/Plexswift/models/operations/ApplyUpdatesBadRequest.swift
   - Sources/Plexswift/models/operations/ApplyUpdatesErrors.swift
   - Sources/Plexswift/models/operations/ApplyUpdatesRequest.swift
@@ -786,6 +805,7 @@ generatedFiles:
   - Sources/Plexswift/models/operations/GetTopWatchedContentResponseBody.swift
   - Sources/Plexswift/models/operations/GetTopWatchedContentRole.swift
   - Sources/Plexswift/models/operations/GetTopWatchedContentUnauthorized.swift
+  - Sources/Plexswift/models/operations/GetTopWatchedContentUser.swift
   - Sources/Plexswift/models/operations/GetTranscodeSessionsBadRequest.swift
   - Sources/Plexswift/models/operations/GetTranscodeSessionsErrors.swift
   - Sources/Plexswift/models/operations/GetTranscodeSessionsMediaContainer.swift
@@ -812,6 +832,15 @@ generatedFiles:
   - Sources/Plexswift/models/operations/GetUserFriendsPlexErrors.swift
   - Sources/Plexswift/models/operations/GetUserFriendsResponse.swift
   - Sources/Plexswift/models/operations/GetUserFriendsUnauthorized.swift
+  - Sources/Plexswift/models/operations/GetUsersBadRequest.swift
+  - Sources/Plexswift/models/operations/GetUsersErrors.swift
+  - Sources/Plexswift/models/operations/GetUsersMediaContainer.swift
+  - Sources/Plexswift/models/operations/GetUsersRequest.swift
+  - Sources/Plexswift/models/operations/GetUsersResponse.swift
+  - Sources/Plexswift/models/operations/GetUsersResponseBody.swift
+  - Sources/Plexswift/models/operations/GetUsersServer.swift
+  - Sources/Plexswift/models/operations/GetUsersUnauthorized.swift
+  - Sources/Plexswift/models/operations/GetUsersUsersErrors.swift
   - Sources/Plexswift/models/operations/GetWatchListBadRequest.swift
   - Sources/Plexswift/models/operations/GetWatchListErrors.swift
   - Sources/Plexswift/models/operations/GetWatchListRequest.swift
@@ -821,6 +850,7 @@ generatedFiles:
   - Sources/Plexswift/models/operations/GetWatchListWatchlistErrors.swift
   - Sources/Plexswift/models/operations/Guids.swift
   - Sources/Plexswift/models/operations/HasThumbnail.swift
+  - Sources/Plexswift/models/operations/Home.swift
   - Sources/Plexswift/models/operations/Hub.swift
   - Sources/Plexswift/models/operations/Image.swift
   - Sources/Plexswift/models/operations/IncludeCollections.swift
@@ -872,9 +902,11 @@ generatedFiles:
   - Sources/Plexswift/models/operations/OnlyTransient.swift
   - Sources/Plexswift/models/operations/Operator.swift
   - Sources/Plexswift/models/operations/OptimizedForStreaming.swift
+  - Sources/Plexswift/models/operations/Owned.swift
   - Sources/Plexswift/models/operations/Part.swift
   - Sources/Plexswift/models/operations/PastSubscription.swift
   - Sources/Plexswift/models/operations/PathParamTaskName.swift
+  - Sources/Plexswift/models/operations/Pending.swift
   - Sources/Plexswift/models/operations/PerformSearchBadRequest.swift
   - Sources/Plexswift/models/operations/PerformSearchErrors.swift
   - Sources/Plexswift/models/operations/PerformSearchRequest.swift
@@ -914,6 +946,7 @@ generatedFiles:
   - Sources/Plexswift/models/operations/PostUsersSignInDataUserProfile.swift
   - Sources/Plexswift/models/operations/PostUsersSignInDataWatchedIndicator.swift
   - Sources/Plexswift/models/operations/Producer.swift
+  - Sources/Plexswift/models/operations/Protected.swift
   - Sources/Plexswift/models/operations/Protocol.swift
   - Sources/Plexswift/models/operations/Provider.swift
   - Sources/Plexswift/models/operations/QueryParamFilter.swift
@@ -927,6 +960,7 @@ generatedFiles:
   - Sources/Plexswift/models/operations/Ratings.swift
   - Sources/Plexswift/models/operations/Release.swift
   - Sources/Plexswift/models/operations/ResponseBody.swift
+  - Sources/Plexswift/models/operations/Restricted.swift
   - Sources/Plexswift/models/operations/Role.swift
   - Sources/Plexswift/models/operations/Scope.swift
   - Sources/Plexswift/models/operations/SearchResult.swift
@@ -2041,5 +2075,29 @@ examples:
           application/json: {"errors": [{"code": 1000, "message": "X-Plex-Client-Identifier is missing", "status": 400}, {"code": 1000, "message": "X-Plex-Client-Identifier is missing", "status": 400}]}
         "401":
           application/json: {"errors": [{"code": 1001, "message": "User could not be authenticated", "status": 401}, {"code": 1001, "message": "User could not be authenticated", "status": 401}, {"code": 1001, "message": "User could not be authenticated", "status": 401}]}
+  get-users:
+    "":
+      parameters:
+        header:
+          X-Plex-Client-Identifier: "3381b62b-9ab7-4e37-827b-203e9809eb58"
+          X-Plex-Product: "Plex for Roku"
+          X-Plex-Device: "Roku 3"
+          X-Plex-Device-Name: "Chrome"
+          X-Plex-Device-Screen-Resolution: "1487x1165,2560x1440"
+          X-Plex-Version: "2.4.1"
+          X-Plex-Platform: "Roku"
+          X-Plex-Features: "external-media,indirect-media,hub-style-list"
+          X-Plex-Model: "4200X"
+          X-Plex-Session-Id: "97e136ef-4ddd-4ff3-89a7-a5820c96c2ca"
+          X-Plex-Language: "en"
+          X-Plex-Platform-Version: "4.3 build 1057"
+          X-Plex-Token: "CV5xoxjTpFKUzBTShsaf"
+      responses:
+        "200":
+          application/xml: "0xa9CdebeF9E"
+        "400":
+          application/json: {"errors": [{"code": 1000, "message": "X-Plex-Client-Identifier is missing", "status": 400}, {"code": 1000, "message": "X-Plex-Client-Identifier is missing", "status": 400}]}
+        "401":
+          application/json: {"errors": [{"code": 1001, "message": "User could not be authenticated", "status": 401}, {"code": 1001, "message": "User could not be authenticated", "status": 401}]}
 examplesVersion: 1.0.0
 generatedTests: {}

@@ -4,18 +4,18 @@ import Foundation
 
 extension Operations {
     /// Bad Request - A parameter was not specified, or was specified incorrectly.
-    public struct GetMetaDataByRatingKeyBadRequest {
-        public let errors: [Operations.GetMetaDataByRatingKeyErrors]?
+    public struct GetActorsLibraryBadRequest {
+        public let errors: [Operations.GetActorsLibraryErrors]?
 
         /// Creates a request model with the specified parameters
         ///
         ///
-        public init(errors: [Operations.GetMetaDataByRatingKeyErrors]? = nil) {
+        public init(errors: [Operations.GetActorsLibraryErrors]? = nil) {
             self.errors = errors
         }
     }}
 
-extension Operations.GetMetaDataByRatingKeyBadRequest: Codable {
+extension Operations.GetActorsLibraryBadRequest: Codable {
     enum CodingKeys: String, CodingKey {
         case errors
     }

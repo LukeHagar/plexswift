@@ -9,14 +9,30 @@ extension Operations {
         /// Note: This is unique in the context of the Plex server.
         /// 
         public let sectionKey: Int
+        /// The type of media to retrieve or filter by.
+        /// 1 = movie
+        /// 2 = show
+        /// 3 = season
+        /// 4 = episode
+        /// E.g. A movie library will not return anything with type 3 as there are no seasons for movie libraries
+        /// 
+        public let type: Operations.GetCountriesLibraryQueryParamType
 
         /// Creates an object with the specified parameters
         ///
         /// - Parameter sectionKey: The unique key of the Plex library. 
         /// Note: This is unique in the context of the Plex server.
         /// 
+        /// - Parameter type: The type of media to retrieve or filter by.
+        /// 1 = movie
+        /// 2 = show
+        /// 3 = season
+        /// 4 = episode
+        /// E.g. A movie library will not return anything with type 3 as there are no seasons for movie libraries
+        /// 
         ///
-        public init(sectionKey: Int) {
+        public init(sectionKey: Int, type: Operations.GetCountriesLibraryQueryParamType) {
             self.sectionKey = sectionKey
+            self.type = type
         }
     }}

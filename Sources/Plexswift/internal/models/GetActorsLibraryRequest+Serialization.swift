@@ -3,7 +3,7 @@
 
 import Foundation
 
-extension Operations.GetGenresLibraryRequest: Serializable {
+extension Operations.GetActorsLibraryRequest: Serializable {
     func serialize(with format: SerializableFormat) throws -> String {
         switch format {
         case .path:
@@ -11,7 +11,7 @@ extension Operations.GetGenresLibraryRequest: Serializable {
         case .query:
             return try serializeQueryParameterSerializable(self, with: format)
         case .header, .multipart, .form:
-            throw SerializationError.invalidSerializationParameter(type: "Operations.GetGenresLibraryRequest", format: format.formatDescription)
+            throw SerializationError.invalidSerializationParameter(type: "Operations.GetActorsLibraryRequest", format: format.formatDescription)
         }
     }
 
@@ -20,7 +20,7 @@ extension Operations.GetGenresLibraryRequest: Serializable {
     }
 }
 
-extension Operations.GetGenresLibraryRequest: PathParameterSerializable {
+extension Operations.GetActorsLibraryRequest: PathParameterSerializable {
     func serializedPathParameters(formatOverride: SerializableFormat?) throws -> [String: String] {
         return [
             "sectionKey": try sectionKey.serialize(with: formatOverride ?? .path(explode: false)),
@@ -28,7 +28,7 @@ extension Operations.GetGenresLibraryRequest: PathParameterSerializable {
     }
 }
 
-extension Operations.GetGenresLibraryRequest: QueryParameterSerializable {
+extension Operations.GetActorsLibraryRequest: QueryParameterSerializable {
     func serializedQueryParameters(with parameterDefaults: ParameterDefaults?, formatOverride: SerializableFormat?) throws -> [QueryParameter] {
         let builder = QueryParameterBuilder()
         try builder.addQueryParameters(from: type, named: "type", format: formatOverride ?? .query(style: .form, explode: true), parameterDefaults: parameterDefaults)

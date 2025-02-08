@@ -4,7 +4,7 @@ import Foundation
 
 extension Operations {
     /// A model object
-    public struct GetGenresLibraryRequest: APIValue {
+    public struct GetActorsLibraryRequest: APIValue {
         /// The unique key of the Plex library. 
         /// Note: This is unique in the context of the Plex server.
         /// 
@@ -16,7 +16,7 @@ extension Operations {
         /// 4 = episode
         /// E.g. A movie library will not return anything with type 3 as there are no seasons for movie libraries
         /// 
-        public let type: Operations.GetGenresLibraryQueryParamType
+        public let type: Operations.GetActorsLibraryQueryParamType
 
         /// Creates an object with the specified parameters
         ///
@@ -31,7 +31,7 @@ extension Operations {
         /// E.g. A movie library will not return anything with type 3 as there are no seasons for movie libraries
         /// 
         ///
-        public init(sectionKey: Int, type: Operations.GetGenresLibraryQueryParamType) {
+        public init(sectionKey: Int, type: Operations.GetActorsLibraryQueryParamType) {
             self.sectionKey = sectionKey
             self.type = type
         }

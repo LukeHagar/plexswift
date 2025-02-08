@@ -3,19 +3,19 @@
 import Foundation
 
 extension Operations {
-    /// The metadata of the library item.
-    public struct GetMetaDataByRatingKeyResponseBody {
-        public let mediaContainer: Operations.GetMetaDataByRatingKeyMediaContainer?
+    /// Successful response containing media container data.
+    public struct GetActorsLibraryResponseBody {
+        public let mediaContainer: Operations.GetActorsLibraryMediaContainer?
 
         /// Creates an object with the specified parameters
         ///
         ///
-        public init(mediaContainer: Operations.GetMetaDataByRatingKeyMediaContainer? = nil) {
+        public init(mediaContainer: Operations.GetActorsLibraryMediaContainer? = nil) {
             self.mediaContainer = mediaContainer
         }
     }}
 
-extension Operations.GetMetaDataByRatingKeyResponseBody: Codable {
+extension Operations.GetActorsLibraryResponseBody: Codable {
     enum CodingKeys: String, CodingKey {
         case mediaContainer = "MediaContainer"
     }

@@ -4,18 +4,18 @@ import Foundation
 
 extension Operations {
     /// Unauthorized - Returned if the X-Plex-Token is missing from the header or query.
-    public struct GetMetaDataByRatingKeyUnauthorized {
-        public let errors: [Operations.GetMetaDataByRatingKeyLibraryErrors]?
+    public struct GetMediaMetaDataUnauthorized {
+        public let errors: [Operations.GetMediaMetaDataLibraryErrors]?
 
         /// Creates an object with the specified parameters
         ///
         ///
-        public init(errors: [Operations.GetMetaDataByRatingKeyLibraryErrors]? = nil) {
+        public init(errors: [Operations.GetMediaMetaDataLibraryErrors]? = nil) {
             self.errors = errors
         }
     }}
 
-extension Operations.GetMetaDataByRatingKeyUnauthorized: Codable {
+extension Operations.GetMediaMetaDataUnauthorized: Codable {
     enum CodingKeys: String, CodingKey {
         case errors
     }

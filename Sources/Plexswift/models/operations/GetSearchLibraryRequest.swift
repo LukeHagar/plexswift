@@ -9,7 +9,7 @@ extension Operations {
         /// Note: This is unique in the context of the Plex server.
         /// 
         public let sectionKey: Int
-        /// The type of media to retrieve.
+        /// The type of media to retrieve or filter by.
         /// 1 = movie
         /// 2 = show
         /// 3 = season
@@ -23,7 +23,7 @@ extension Operations {
         /// - Parameter sectionKey: The unique key of the Plex library. 
         /// Note: This is unique in the context of the Plex server.
         /// 
-        /// - Parameter type: The type of media to retrieve.
+        /// - Parameter type: The type of media to retrieve or filter by.
         /// 1 = movie
         /// 2 = show
         /// 3 = season

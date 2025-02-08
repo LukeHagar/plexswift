@@ -743,8 +743,9 @@ public protocol SearchAPI {
 /// - ``getSearchLibrary(request:)``
 /// - ``getGenresLibrary(request:)``
 /// - ``getCountriesLibrary(request:)``
+/// - ``getActorsLibrary(request:)``
 /// - ``getSearchAllLibraries(request:)``
-/// - ``getMetaDataByRatingKey(request:)``
+/// - ``getMediaMetaData(request:)``
 /// - ``getMetadataChildren(request:)``
 /// - ``getTopWatchedContent(request:)``
 /// - ``getOnDeck()``
@@ -907,6 +908,14 @@ public protocol LibraryAPI {
     /// - Throws: An error of type ``PlexswiftError``
     func getCountriesLibrary(request: Operations.GetCountriesLibraryRequest) async throws -> Response<Operations.GetCountriesLibraryResponse>
 
+    /// Retrieves a list of all the actors that are found for the media in this library.
+    /// 
+    /// 
+    /// - Parameter request: A ``Operations/GetActorsLibraryRequest`` object describing the input to the API operation
+    /// - Returns: A ``Operations/GetActorsLibraryResponse`` object describing the result of the API operation
+    /// - Throws: An error of type ``PlexswiftError``
+    func getActorsLibrary(request: Operations.GetActorsLibraryRequest) async throws -> Response<Operations.GetActorsLibraryResponse>
+
     /// Search the provided query across all library sections, or a single section, and return matches as hubs, split up by type.
     /// 
     /// 
@@ -915,13 +924,13 @@ public protocol LibraryAPI {
     /// - Throws: An error of type ``PlexswiftError``
     func getSearchAllLibraries(request: Operations.GetSearchAllLibrariesRequest) async throws -> Response<Operations.GetSearchAllLibrariesResponse>
 
-    /// This endpoint will return the metadata of a library item specified with the ratingKey.
+    /// This endpoint will return all the (meta)data of a library item specified with by the ratingKey.
     /// 
     /// 
-    /// - Parameter request: A ``Operations/GetMetaDataByRatingKeyRequest`` object describing the input to the API operation
-    /// - Returns: A ``Operations/GetMetaDataByRatingKeyResponse`` object describing the result of the API operation
+    /// - Parameter request: A ``Operations/GetMediaMetaDataRequest`` object describing the input to the API operation
+    /// - Returns: A ``Operations/GetMediaMetaDataResponse`` object describing the result of the API operation
     /// - Throws: An error of type ``PlexswiftError``
-    func getMetaDataByRatingKey(request: Operations.GetMetaDataByRatingKeyRequest) async throws -> Response<Operations.GetMetaDataByRatingKeyResponse>
+    func getMediaMetaData(request: Operations.GetMediaMetaDataRequest) async throws -> Response<Operations.GetMediaMetaDataResponse>
 
     /// This endpoint will return the children of of a library item specified with the ratingKey.
     /// 

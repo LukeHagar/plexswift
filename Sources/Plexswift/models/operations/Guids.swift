@@ -5,12 +5,14 @@ import Foundation
 extension Operations {
     /// A model object
     public struct Guids {
-        public let id: String?
+        /// The GUID value.
+        public let id: String
 
         /// Creates an object with the specified parameters
         ///
+        /// - Parameter id: The GUID value.
         ///
-        public init(id: String? = nil) {
+        public init(id: String) {
             self.id = id
         }
     }}

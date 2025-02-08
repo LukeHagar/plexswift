@@ -4,11 +4,11 @@ import Foundation
 
 extension Operations {
     /// A response model
-    public enum GetMetaDataByRatingKeyResponse {
+    public enum GetActorsLibraryResponse {
         case empty
-        case badRequest(Operations.GetMetaDataByRatingKeyBadRequest)
-        case object(Operations.GetMetaDataByRatingKeyResponseBody)
-        case unauthorized(Operations.GetMetaDataByRatingKeyUnauthorized)
+        case badRequest(Operations.GetActorsLibraryBadRequest)
+        case object(Operations.GetActorsLibraryResponseBody)
+        case unauthorized(Operations.GetActorsLibraryUnauthorized)
 
         var isEmpty: Bool {
             if case .empty = self {
@@ -18,21 +18,21 @@ extension Operations {
             }
         }
 
-        public func badRequest() throws -> Operations.GetMetaDataByRatingKeyBadRequest {
+        public func badRequest() throws -> Operations.GetActorsLibraryBadRequest {
             guard case .badRequest(let value) = self else {
                 throw PlexswiftError.missingResponseData
             }
             return value
         }
 
-        public func object() throws -> Operations.GetMetaDataByRatingKeyResponseBody {
+        public func object() throws -> Operations.GetActorsLibraryResponseBody {
             guard case .object(let value) = self else {
                 throw PlexswiftError.missingResponseData
             }
             return value
         }
 
-        public func unauthorized() throws -> Operations.GetMetaDataByRatingKeyUnauthorized {
+        public func unauthorized() throws -> Operations.GetActorsLibraryUnauthorized {
             guard case .unauthorized(let value) = self else {
                 throw PlexswiftError.missingResponseData
             }

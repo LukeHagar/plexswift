@@ -62,7 +62,7 @@ You can add `plexswift` to your project directly in Xcode `(File > Add Packages.
 
 ```bash
 dependencies: [
-    .package(url: "https://github.com/LukeHagar/plexswift.git", .upToNextMajor(from: "0.9.11"))
+    .package(url: "https://github.com/LukeHagar/plexswift.git", .upToNextMajor(from: "0.9.13"))
 ]
 ```
 <!-- End SDK Installation [installation] -->
@@ -142,8 +142,9 @@ case .empty:
 * [getSearchLibrary](docs/sdks/library/README.md#getsearchlibrary) - Search Library
 * [getGenresLibrary](docs/sdks/library/README.md#getgenreslibrary) - Get Genres of library media
 * [getCountriesLibrary](docs/sdks/library/README.md#getcountrieslibrary) - Get Countries of library media
+* [getActorsLibrary](docs/sdks/library/README.md#getactorslibrary) - Get Actors of library media
 * [getSearchAllLibraries](docs/sdks/library/README.md#getsearchalllibraries) - Search All Libraries
-* [getMetaDataByRatingKey](docs/sdks/library/README.md#getmetadatabyratingkey) - Get Metadata by RatingKey
+* [getMediaMetaData](docs/sdks/library/README.md#getmediametadata) - Get Media Metadata
 * [getMetadataChildren](docs/sdks/library/README.md#getmetadatachildren) - Get Items Children
 * [getTopWatchedContent](docs/sdks/library/README.md#gettopwatchedcontent) - Get Top Watched Content
 * [getOnDeck](docs/sdks/library/README.md#getondeck) - Get On Deck

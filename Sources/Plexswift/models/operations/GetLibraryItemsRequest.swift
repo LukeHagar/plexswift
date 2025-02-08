@@ -11,20 +11,20 @@ extension Operations {
         public let sectionKey: Int
         /// A key representing a specific tag within the section.
         public let tag: Operations.Tag
-        /// Adds the Guids object to the response
-        /// 
-        public let includeGuids: Operations.IncludeGuids?
-        /// Adds the Meta object to the response
-        /// 
-        public let includeMeta: Operations.GetLibraryItemsQueryParamIncludeMeta?
-        /// The type of media to retrieve.
+        /// The type of media to retrieve or filter by.
         /// 1 = movie
         /// 2 = show
         /// 3 = season
         /// 4 = episode
         /// E.g. A movie library will not return anything with type 3 as there are no seasons for movie libraries
         /// 
-        public let type: Operations.GetLibraryItemsQueryParamType?
+        public let type: Operations.GetLibraryItemsQueryParamType
+        /// Adds the Guids object to the response
+        /// 
+        public let includeGuids: Operations.IncludeGuids?
+        /// Adds the Meta object to the response
+        /// 
+        public let includeMeta: Operations.GetLibraryItemsQueryParamIncludeMeta?
         /// The number of items to return. If not specified, all items will be returned.
         /// If the number of items exceeds the limit, the response will be paginated.
         /// By default this is 50
@@ -42,16 +42,16 @@ extension Operations {
         /// Note: This is unique in the context of the Plex server.
         /// 
         /// - Parameter tag: A key representing a specific tag within the section.
-        /// - Parameter includeGuids: Adds the Guids object to the response
-        /// 
-        /// - Parameter includeMeta: Adds the Meta object to the response
-        /// 
-        /// - Parameter type: The type of media to retrieve.
+        /// - Parameter type: The type of media to retrieve or filter by.
         /// 1 = movie
         /// 2 = show
         /// 3 = season
         /// 4 = episode
         /// E.g. A movie library will not return anything with type 3 as there are no seasons for movie libraries
+        /// 
+        /// - Parameter includeGuids: Adds the Guids object to the response
+        /// 
+        /// - Parameter includeMeta: Adds the Meta object to the response
         /// 
         /// - Parameter xPlexContainerSize: The number of items to return. If not specified, all items will be returned.
         /// If the number of items exceeds the limit, the response will be paginated.
@@ -62,12 +62,12 @@ extension Operations {
         /// By default this is 0
         /// 
         ///
-        public init(sectionKey: Int, tag: Operations.Tag, includeGuids: Operations.IncludeGuids? = nil, includeMeta: Operations.GetLibraryItemsQueryParamIncludeMeta? = nil, type: Operations.GetLibraryItemsQueryParamType? = nil, xPlexContainerSize: Int? = nil, xPlexContainerStart: Int? = nil) {
+        public init(sectionKey: Int, tag: Operations.Tag, type: Operations.GetLibraryItemsQueryParamType, includeGuids: Operations.IncludeGuids? = nil, includeMeta: Operations.GetLibraryItemsQueryParamIncludeMeta? = nil, xPlexContainerSize: Int? = nil, xPlexContainerStart: Int? = nil) {
             self.sectionKey = sectionKey
             self.tag = tag
+            self.type = type
             self.includeGuids = includeGuids
             self.includeMeta = includeMeta
-            self.type = type
             self.xPlexContainerSize = xPlexContainerSize
             self.xPlexContainerStart = xPlexContainerStart
         }

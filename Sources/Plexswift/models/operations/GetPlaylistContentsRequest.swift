@@ -8,7 +8,7 @@ extension Operations {
         /// the ID of the playlist
         @DecimalSerialized
         public private(set) var playlistID: Double
-        /// The type of media to retrieve.
+        /// The type of media to retrieve or filter by.
         /// 1 = movie
         /// 2 = show
         /// 3 = season
@@ -20,7 +20,7 @@ extension Operations {
         /// Creates an object with the specified parameters
         ///
         /// - Parameter playlistID: the ID of the playlist
-        /// - Parameter type: The type of media to retrieve.
+        /// - Parameter type: The type of media to retrieve or filter by.
         /// 1 = movie
         /// 2 = show
         /// 3 = season

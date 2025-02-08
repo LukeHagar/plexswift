@@ -4,7 +4,7 @@ import Foundation
 
 extension Operations {
     /// A model object
-    public struct GetMetaDataByRatingKeyLibraryErrors {
+    public struct GetMediaMetaDataLibraryErrors {
         public let code: Int?
         public let message: String?
         public let status: Int?
@@ -19,7 +19,7 @@ extension Operations {
         }
     }}
 
-extension Operations.GetMetaDataByRatingKeyLibraryErrors: Codable {
+extension Operations.GetMediaMetaDataLibraryErrors: Codable {
     enum CodingKeys: String, CodingKey {
         case code
         case message

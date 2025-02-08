@@ -7,7 +7,7 @@ extension Operations {
     public struct GetRecentlyAddedRequest: APIValue {
         /// The content directory ID.
         public let contentDirectoryID: Int
-        /// The type of media to retrieve.
+        /// The type of media to retrieve or filter by.
         /// 1 = movie
         /// 2 = show
         /// 3 = season
@@ -36,7 +36,7 @@ extension Operations {
         /// Creates an object with the specified parameters
         ///
         /// - Parameter contentDirectoryID: The content directory ID.
-        /// - Parameter type: The type of media to retrieve.
+        /// - Parameter type: The type of media to retrieve or filter by.
         /// 1 = movie
         /// 2 = show
         /// 3 = season

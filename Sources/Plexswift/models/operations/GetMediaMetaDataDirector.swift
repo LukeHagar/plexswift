@@ -4,7 +4,7 @@ import Foundation
 
 extension Operations {
     /// A model object
-    public struct Producer {
+    public struct GetMediaMetaDataDirector {
         /// The filter string for the role.
         public let filter: String
         /// The unique role identifier.
@@ -37,7 +37,7 @@ extension Operations {
         }
     }}
 
-extension Operations.Producer: Codable {
+extension Operations.GetMediaMetaDataDirector: Codable {
     enum CodingKeys: String, CodingKey {
         case filter
         case id

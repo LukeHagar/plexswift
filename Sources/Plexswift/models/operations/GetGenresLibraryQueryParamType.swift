@@ -10,7 +10,7 @@ extension Operations {
     /// 4 = episode
     /// E.g. A movie library will not return anything with type 3 as there are no seasons for movie libraries
     /// 
-    public enum GetSearchLibraryQueryParamType: Int, Codable, APIValue {
+    public enum GetGenresLibraryQueryParamType: Int, Codable, APIValue {
         case movie = 1
         case tvShow = 2
         case season = 3

@@ -100,6 +100,15 @@ class _LibraryAPI: LibraryAPI {
         )
     }
     
+    public func getActorsLibrary(request: Operations.GetActorsLibraryRequest) async throws -> Response<Operations.GetActorsLibraryResponse> {
+        return try await client.makeRequest(
+            configureRequest: { configuration in
+                try configureGetActorsLibraryRequest(with: configuration, request: request)
+            },
+            handleResponse: handleGetActorsLibraryResponse
+        )
+    }
+    
     public func getSearchAllLibraries(request: Operations.GetSearchAllLibrariesRequest) async throws -> Response<Operations.GetSearchAllLibrariesResponse> {
         return try await client.makeRequest(
             configureRequest: { configuration in
@@ -109,12 +118,12 @@ class _LibraryAPI: LibraryAPI {
         )
     }
     
-    public func getMetaDataByRatingKey(request: Operations.GetMetaDataByRatingKeyRequest) async throws -> Response<Operations.GetMetaDataByRatingKeyResponse> {
+    public func getMediaMetaData(request: Operations.GetMediaMetaDataRequest) async throws -> Response<Operations.GetMediaMetaDataResponse> {
         return try await client.makeRequest(
             configureRequest: { configuration in
-                try configureGetMetaDataByRatingKeyRequest(with: configuration, request: request)
+                try configureGetMediaMetaDataRequest(with: configuration, request: request)
             },
-            handleResponse: handleGetMetaDataByRatingKeyResponse
+            handleResponse: handleGetMediaMetaDataResponse
         )
     }
     
@@ -212,6 +221,7 @@ private func configureGetGenresLibraryRequest(with configuration: URLRequestConf
     configuration.path = "/library/sections/{sectionKey}/genre"
     configuration.method = .get
     configuration.pathParameterSerializable = request
+    configuration.queryParameterSerializable = request
     configuration.telemetryHeader = .userAgent
 }
 
@@ -219,6 +229,15 @@ private func configureGetCountriesLibraryRequest(with configuration: URLRequestC
     configuration.path = "/library/sections/{sectionKey}/country"
     configuration.method = .get
     configuration.pathParameterSerializable = request
+    configuration.queryParameterSerializable = request
+    configuration.telemetryHeader = .userAgent
+}
+
+private func configureGetActorsLibraryRequest(with configuration: URLRequestConfiguration, request: Operations.GetActorsLibraryRequest) throws {
+    configuration.path = "/library/sections/{sectionKey}/actor"
+    configuration.method = .get
+    configuration.pathParameterSerializable = request
+    configuration.queryParameterSerializable = request
     configuration.telemetryHeader = .userAgent
 }
 
@@ -230,10 +249,11 @@ private func configureGetSearchAllLibrariesRequest(with configuration: URLReques
     configuration.telemetryHeader = .userAgent
 }
 
-private func configureGetMetaDataByRatingKeyRequest(with configuration: URLRequestConfiguration, request: Operations.GetMetaDataByRatingKeyRequest) throws {
+private func configureGetMediaMetaDataRequest(with configuration: URLRequestConfiguration, request: Operations.GetMediaMetaDataRequest) throws {
     configuration.path = "/library/metadata/{ratingKey}"
     configuration.method = .get
     configuration.pathParameterSerializable = request
+    configuration.queryParameterSerializable = request
     configuration.telemetryHeader = .userAgent
 }
 
@@ -566,6 +586,40 @@ private func handleGetCountriesLibraryResponse(response: Client.APIResponse) thr
     return .empty
 }
 
+private func handleGetActorsLibraryResponse(response: Client.APIResponse) throws -> Operations.GetActorsLibraryResponse {
+    let httpResponse = response.httpResponse
+    
+    if httpResponse.statusCode == 200 { 
+        if httpResponse.contentType.matchContentType(pattern: "application/json"), let data = response.data {
+            do {
+                return .object(try JSONDecoder().decode(Operations.GetActorsLibraryResponseBody.self, from: data))
+            } catch {
+                throw ResponseHandlerError.failedToDecodeJSON(error)
+            }
+        }
+    } else if httpResponse.statusCode == 400 { 
+        if httpResponse.contentType.matchContentType(pattern: "application/json"), let data = response.data {
+            do {
+                return .badRequest(try JSONDecoder().decode(Operations.GetActorsLibraryBadRequest.self, from: data))
+            } catch {
+                throw ResponseHandlerError.failedToDecodeJSON(error)
+            }
+        }
+    } else if httpResponse.statusCode == 401 { 
+        if httpResponse.contentType.matchContentType(pattern: "application/json"), let data = response.data {
+            do {
+                return .unauthorized(try JSONDecoder().decode(Operations.GetActorsLibraryUnauthorized.self, from: data))
+            } catch {
+                throw ResponseHandlerError.failedToDecodeJSON(error)
+            }
+        }
+    } else if httpResponse.statusCode == 404 { 
+        return .empty
+    }
+
+    return .empty
+}
+
 private func handleGetSearchAllLibrariesResponse(response: Client.APIResponse) throws -> Operations.GetSearchAllLibrariesResponse {
     let httpResponse = response.httpResponse
     
@@ -598,13 +652,13 @@ private func handleGetSearchAllLibrariesResponse(response: Client.APIResponse) t
     return .empty
 }
 
-private func handleGetMetaDataByRatingKeyResponse(response: Client.APIResponse) throws -> Operations.GetMetaDataByRatingKeyResponse {
+private func handleGetMediaMetaDataResponse(response: Client.APIResponse) throws -> Operations.GetMediaMetaDataResponse {
     let httpResponse = response.httpResponse
     
     if httpResponse.statusCode == 200 { 
         if httpResponse.contentType.matchContentType(pattern: "application/json"), let data = response.data {
             do {
-                return .object(try JSONDecoder().decode(Operations.GetMetaDataByRatingKeyResponseBody.self, from: data))
+                return .object(try JSONDecoder().decode(Operations.GetMediaMetaDataResponseBody.self, from: data))
             } catch {
                 throw ResponseHandlerError.failedToDecodeJSON(error)
             }
@@ -612,7 +666,7 @@ private func handleGetMetaDataByRatingKeyResponse(response: Client.APIResponse) 
     } else if httpResponse.statusCode == 400 { 
         if httpResponse.contentType.matchContentType(pattern: "application/json"), let data = response.data {
             do {
-                return .badRequest(try JSONDecoder().decode(Operations.GetMetaDataByRatingKeyBadRequest.self, from: data))
+                return .badRequest(try JSONDecoder().decode(Operations.GetMediaMetaDataBadRequest.self, from: data))
             } catch {
                 throw ResponseHandlerError.failedToDecodeJSON(error)
             }
@@ -620,11 +674,13 @@ private func handleGetMetaDataByRatingKeyResponse(response: Client.APIResponse) 
     } else if httpResponse.statusCode == 401 { 
         if httpResponse.contentType.matchContentType(pattern: "application/json"), let data = response.data {
             do {
-                return .unauthorized(try JSONDecoder().decode(Operations.GetMetaDataByRatingKeyUnauthorized.self, from: data))
+                return .unauthorized(try JSONDecoder().decode(Operations.GetMediaMetaDataUnauthorized.self, from: data))
             } catch {
                 throw ResponseHandlerError.failedToDecodeJSON(error)
             }
         }
+    } else if httpResponse.statusCode == 404 { 
+        return .empty
     }
 
     return .empty

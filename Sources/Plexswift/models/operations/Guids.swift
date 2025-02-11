@@ -5,14 +5,16 @@ import Foundation
 extension Operations {
     /// A model object
     public struct Guids {
-        /// The GUID value.
-        public let id: String
+        /// The unique identifier for the Guid. Can be imdb://tt0286347, tmdb://1763, tvdb://2337
+        /// 
+        public let id: String?
 
         /// Creates an object with the specified parameters
         ///
-        /// - Parameter id: The GUID value.
+        /// - Parameter id: The unique identifier for the Guid. Can be imdb://tt0286347, tmdb://1763, tvdb://2337
+        /// 
         ///
-        public init(id: String) {
+        public init(id: String? = nil) {
             self.id = id
         }
     }}

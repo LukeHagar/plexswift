@@ -12,11 +12,12 @@ extension Operations {
         public let field: [Operations.Field]?
         public let filter: [Operations.GetRecentlyAddedLibraryFilter]?
         public let sort: [Operations.Sort]?
+        public let subtype: String?
 
         /// Creates an object with the specified parameters
         ///
         ///
-        public init(active: Bool, key: String, title: String, type: String, field: [Operations.Field]? = nil, filter: [Operations.GetRecentlyAddedLibraryFilter]? = nil, sort: [Operations.Sort]? = nil) {
+        public init(active: Bool, key: String, title: String, type: String, field: [Operations.Field]? = nil, filter: [Operations.GetRecentlyAddedLibraryFilter]? = nil, sort: [Operations.Sort]? = nil, subtype: String? = nil) {
             self.active = active
             self.key = key
             self.title = title
@@ -24,6 +25,7 @@ extension Operations {
             self.field = field
             self.filter = filter
             self.sort = sort
+            self.subtype = subtype
         }
     }}
 
@@ -36,6 +38,7 @@ extension Operations.GetRecentlyAddedLibraryType: Codable {
         case field = "Field"
         case filter = "Filter"
         case sort = "Sort"
+        case subtype
     }
 }
 

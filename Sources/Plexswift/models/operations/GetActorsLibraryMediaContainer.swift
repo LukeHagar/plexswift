@@ -17,8 +17,8 @@ extension Operations {
         public let mediaTagVersion: Int
         /// Specifies whether caching is disabled.
         public let nocache: Bool
-        @DecimalSerialized
-        public private(set) var size: Double
+        /// Number of media items returned in this response.
+        public let size: Int
         /// URL for the thumbnail image of the media container.
         public let thumb: String
         /// The primary title of the media container.
@@ -40,6 +40,7 @@ extension Operations {
         /// - Parameter mediaTagPrefix: The prefix used for media tag resource paths.
         /// - Parameter mediaTagVersion: The version number for media tags.
         /// - Parameter nocache: Specifies whether caching is disabled.
+        /// - Parameter size: Number of media items returned in this response.
         /// - Parameter thumb: URL for the thumbnail image of the media container.
         /// - Parameter title1: The primary title of the media container.
         /// - Parameter title2: The secondary title of the media container.
@@ -47,14 +48,14 @@ extension Operations {
         /// - Parameter viewMode: Identifier for the view mode.
         /// - Parameter directory: An array of actor entries for media items.
         ///
-        public init(allowSync: Bool, art: String, identifier: String, mediaTagPrefix: String, mediaTagVersion: Int, nocache: Bool, size: Double, thumb: String, title1: String, title2: String, viewGroup: String, viewMode: String, directory: [Operations.GetActorsLibraryDirectory]? = nil) {
+        public init(allowSync: Bool, art: String, identifier: String, mediaTagPrefix: String, mediaTagVersion: Int, nocache: Bool, size: Int, thumb: String, title1: String, title2: String, viewGroup: String, viewMode: String, directory: [Operations.GetActorsLibraryDirectory]? = nil) {
             self.allowSync = allowSync
             self.art = art
             self.identifier = identifier
             self.mediaTagPrefix = mediaTagPrefix
             self.mediaTagVersion = mediaTagVersion
             self.nocache = nocache
-            self._size = DecimalSerialized<Double>(wrappedValue: size)
+            self.size = size
             self.thumb = thumb
             self.title1 = title1
             self.title2 = title2
@@ -80,44 +81,5 @@ extension Operations.GetActorsLibraryMediaContainer: Codable {
         case viewMode
         case directory = "Directory"
     }
-
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        self.allowSync = try container.decode(Bool.self, forKey: .allowSync)
-        self.art = try container.decode(String.self, forKey: .art)
-        self.identifier = try container.decode(String.self, forKey: .identifier)
-        self.mediaTagPrefix = try container.decode(String.self, forKey: .mediaTagPrefix)
-        self.mediaTagVersion = try container.decode(Int.self, forKey: .mediaTagVersion)
-        self.nocache = try container.decode(Bool.self, forKey: .nocache)
-        self._size = try container.decode(DecimalSerialized<Double>.self, forKey: .size)
-        self.thumb = try container.decode(String.self, forKey: .thumb)
-        self.title1 = try container.decode(String.self, forKey: .title1)
-        self.title2 = try container.decode(String.self, forKey: .title2)
-        self.viewGroup = try container.decode(String.self, forKey: .viewGroup)
-        self.viewMode = try container.decode(String.self, forKey: .viewMode)
-        self.directory = try container.decodeIfPresent([Operations.GetActorsLibraryDirectory].self, forKey: .directory)
-    }
-
-    public func encode(to encoder: Encoder) throws {
-        var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encode(self.allowSync, forKey: .allowSync)
-        try container.encode(self.art, forKey: .art)
-        try container.encode(self.identifier, forKey: .identifier)
-        try container.encode(self.mediaTagPrefix, forKey: .mediaTagPrefix)
-        try container.encode(self.mediaTagVersion, forKey: .mediaTagVersion)
-        try container.encode(self.nocache, forKey: .nocache)
-        try container.encode(self._size, forKey: .size)
-        try container.encode(self.thumb, forKey: .thumb)
-        try container.encode(self.title1, forKey: .title1)
-        try container.encode(self.title2, forKey: .title2)
-        try container.encode(self.viewGroup, forKey: .viewGroup)
-        try container.encode(self.viewMode, forKey: .viewMode)
-        try container.encodeIfPresent(self.directory, forKey: .directory)
-    }
 }
 
-extension Operations.GetActorsLibraryMediaContainer {
-    var sizeWrapper: DecimalSerialized<Double> {
-        return _size
-    }
-}

@@ -698,6 +698,12 @@ actions:
         - lang: swift
           label: library
           source: "import Foundation\nimport Plexswift\n\nlet client = Client(security: .accessToken(\"<YOUR_API_KEY_HERE>\"))\n\nlet response = try await client.library.getActorsLibrary(\n    request: Operations.GetActorsLibraryRequest(\n        sectionKey: 9518, \n        type: .tvShow\n    )\n)\n\nswitch response.data {\ncase .object(let object):\n    // Handle response\n    break\ncase .badRequest(let badRequest):\n    // Handle response\n    break\ncase .unauthorized(let unauthorized):\n    // Handle response\n    break\ncase .empty:\n    // Handle empty response\n    break\n}"
+  - target: $["paths"]["/library/sections/{sectionKey}/all"]["get"]
+    update:
+      x-codeSamples:
+        - lang: swift
+          label: library
+          source: "import Foundation\nimport Plexswift\n\nlet client = Client(security: .accessToken(\"<YOUR_API_KEY_HERE>\"))\n\nlet response = try await client.library.getAllMediaLibrary(\n    request: Operations.GetAllMediaLibraryRequest(\n        sectionKey: 9518, \n        type: .tvShow, \n        includeAdvanced: .enable, \n        includeCollections: .enable, \n        includeExternalMedia: .enable, \n        includeGuids: .enable, \n        includeMeta: .enable, \n        xPlexContainerSize: 50, \n        xPlexContainerStart: 0\n    )\n)\n\nswitch response.data {\ncase .object(let object):\n    // Handle response\n    break\ncase .badRequest(let badRequest):\n    // Handle response\n    break\ncase .unauthorized(let unauthorized):\n    // Handle response\n    break\ncase .empty:\n    // Handle empty response\n    break\n}"
   - target: $["paths"]["/library/sections/{sectionKey}/country"]["get"]
     update:
       x-codeSamples:

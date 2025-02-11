@@ -5,8 +5,6 @@ import Foundation
 extension Operations {
     /// A model object
     public struct GetMediaMetaDataStream {
-        /// Bitrate of the stream.
-        public let bitrate: Int
         /// Codec used by the stream.
         public let codec: String
         /// Display title for the stream.
@@ -29,6 +27,8 @@ extension Operations {
         public let audioChannelLayout: String?
         /// Bit depth of the video stream.
         public let bitDepth: Int?
+        /// Bitrate of the stream.
+        public let bitrate: Int?
         /// Indicates if the stream can auto-sync.
         public let canAutoSync: Bool?
         /// Number of audio channels (for audio streams).
@@ -74,6 +74,8 @@ extension Operations {
         @DecimalSerialized
         public private(set) var frameRate: Double?
         public let hasScalingMatrix: Bool?
+        /// Indicates whether header compression is enabled.
+        public let headerCompression: Bool?
         /// Indicates if the stream is for the hearing impaired.
         public let hearingImpaired: Bool?
         /// Height of the video stream.
@@ -98,7 +100,6 @@ extension Operations {
 
         /// Creates an object with the specified parameters
         ///
-        /// - Parameter bitrate: Bitrate of the stream.
         /// - Parameter codec: Codec used by the stream.
         /// - Parameter displayTitle: Display title for the stream.
         /// - Parameter extendedDisplayTitle: Extended display title for the stream.
@@ -110,6 +111,7 @@ extension Operations {
         /// - Parameter streamType: Stream type (1=video, 2=audio, 3=subtitle).
         /// - Parameter audioChannelLayout: Audio channel layout.
         /// - Parameter bitDepth: Bit depth of the video stream.
+        /// - Parameter bitrate: Bitrate of the stream.
         /// - Parameter canAutoSync: Indicates if the stream can auto-sync.
         /// - Parameter channels: Number of audio channels (for audio streams).
         /// - Parameter chromaLocation: Chroma sample location.
@@ -131,6 +133,7 @@ extension Operations {
         /// - Parameter doviVersion: Dolby Vision version.
         /// - Parameter dub: Indicates if the stream is a dub.
         /// - Parameter frameRate: Frame rate of the stream.
+        /// - Parameter headerCompression: Indicates whether header compression is enabled.
         /// - Parameter hearingImpaired: Indicates if the stream is for the hearing impaired.
         /// - Parameter height: Height of the video stream.
         /// - Parameter level: Video level.
@@ -142,8 +145,7 @@ extension Operations {
         /// - Parameter title: Optional title for the stream (e.g., language variant).
         /// - Parameter width: Width of the video stream.
         ///
-        public init(bitrate: Int, codec: String, displayTitle: String, extendedDisplayTitle: String, id: Int, index: Int, language: String, languageCode: String, languageTag: String, streamType: Int, audioChannelLayout: String? = nil, bitDepth: Int? = nil, canAutoSync: Bool? = nil, channels: Int? = nil, chromaLocation: String? = nil, chromaSubsampling: String? = nil, codedHeight: Int? = nil, codedWidth: Int? = nil, colorPrimaries: String? = nil, colorRange: String? = nil, colorSpace: String? = nil, colorTrc: String? = nil, `default`: Bool? = nil, doviblCompatID: Int? = nil, doviblPresent: Bool? = nil, dovielPresent: Bool? = nil, doviLevel: Int? = nil, doviPresent: Bool? = nil, doviProfile: Int? = nil, dovirpuPresent: Bool? = nil, doviVersion: String? = nil, dub: Bool? = nil, forced: Bool? = nil, frameRate: Double? = nil, hasScalingMatrix: Bool? = nil, hearingImpaired: Bool? = nil, height: Int? = nil, level: Int? = nil, original: Bool? = nil, profile: String? = nil, refFrames: Int? = nil, samplingRate: Int? = nil, scanType: String? = nil, selected: Bool? = nil, title: String? = nil, width: Int? = nil) {
-            self.bitrate = bitrate
+        public init(codec: String, displayTitle: String, extendedDisplayTitle: String, id: Int, index: Int, language: String, languageCode: String, languageTag: String, streamType: Int, audioChannelLayout: String? = nil, bitDepth: Int? = nil, bitrate: Int? = nil, canAutoSync: Bool? = nil, channels: Int? = nil, chromaLocation: String? = nil, chromaSubsampling: String? = nil, codedHeight: Int? = nil, codedWidth: Int? = nil, colorPrimaries: String? = nil, colorRange: String? = nil, colorSpace: String? = nil, colorTrc: String? = nil, `default`: Bool? = nil, doviblCompatID: Int? = nil, doviblPresent: Bool? = nil, dovielPresent: Bool? = nil, doviLevel: Int? = nil, doviPresent: Bool? = nil, doviProfile: Int? = nil, dovirpuPresent: Bool? = nil, doviVersion: String? = nil, dub: Bool? = nil, forced: Bool? = nil, frameRate: Double? = nil, hasScalingMatrix: Bool? = nil, headerCompression: Bool? = nil, hearingImpaired: Bool? = nil, height: Int? = nil, level: Int? = nil, original: Bool? = nil, profile: String? = nil, refFrames: Int? = nil, samplingRate: Int? = nil, scanType: String? = nil, selected: Bool? = nil, title: String? = nil, width: Int? = nil) {
             self.codec = codec
             self.displayTitle = displayTitle
             self.extendedDisplayTitle = extendedDisplayTitle
@@ -155,6 +157,7 @@ extension Operations {
             self.streamType = streamType
             self.audioChannelLayout = audioChannelLayout
             self.bitDepth = bitDepth
+            self.bitrate = bitrate
             self.canAutoSync = canAutoSync
             self.channels = channels
             self.chromaLocation = chromaLocation
@@ -178,6 +181,7 @@ extension Operations {
             self.forced = forced
             self._frameRate = DecimalSerialized<Double?>(wrappedValue: frameRate)
             self.hasScalingMatrix = hasScalingMatrix
+            self.headerCompression = headerCompression
             self.hearingImpaired = hearingImpaired
             self.height = height
             self.level = level
@@ -194,7 +198,6 @@ extension Operations {
 
 extension Operations.GetMediaMetaDataStream: Codable {
     enum CodingKeys: String, CodingKey {
-        case bitrate
         case codec
         case displayTitle
         case extendedDisplayTitle
@@ -206,6 +209,7 @@ extension Operations.GetMediaMetaDataStream: Codable {
         case streamType
         case audioChannelLayout
         case bitDepth
+        case bitrate
         case canAutoSync
         case channels
         case chromaLocation
@@ -229,6 +233,7 @@ extension Operations.GetMediaMetaDataStream: Codable {
         case forced
         case frameRate
         case hasScalingMatrix
+        case headerCompression
         case hearingImpaired
         case height
         case level
@@ -244,7 +249,6 @@ extension Operations.GetMediaMetaDataStream: Codable {
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        self.bitrate = try container.decode(Int.self, forKey: .bitrate)
         self.codec = try container.decode(String.self, forKey: .codec)
         self.displayTitle = try container.decode(String.self, forKey: .displayTitle)
         self.extendedDisplayTitle = try container.decode(String.self, forKey: .extendedDisplayTitle)
@@ -256,6 +260,7 @@ extension Operations.GetMediaMetaDataStream: Codable {
         self.streamType = try container.decode(Int.self, forKey: .streamType)
         self.audioChannelLayout = try container.decodeIfPresent(String.self, forKey: .audioChannelLayout)
         self.bitDepth = try container.decodeIfPresent(Int.self, forKey: .bitDepth)
+        self.bitrate = try container.decodeIfPresent(Int.self, forKey: .bitrate)
         self.canAutoSync = try container.decodeIfPresent(Bool.self, forKey: .canAutoSync)
         self.channels = try container.decodeIfPresent(Int.self, forKey: .channels)
         self.chromaLocation = try container.decodeIfPresent(String.self, forKey: .chromaLocation)
@@ -279,6 +284,7 @@ extension Operations.GetMediaMetaDataStream: Codable {
         self.forced = try container.decodeIfPresent(Bool.self, forKey: .forced)
         self._frameRate = try container.decodeIfPresent(DecimalSerialized<Double?>.self, forKey: .frameRate) ?? DecimalSerialized<Double?>(wrappedValue: nil)
         self.hasScalingMatrix = try container.decodeIfPresent(Bool.self, forKey: .hasScalingMatrix)
+        self.headerCompression = try container.decodeIfPresent(Bool.self, forKey: .headerCompression)
         self.hearingImpaired = try container.decodeIfPresent(Bool.self, forKey: .hearingImpaired)
         self.height = try container.decodeIfPresent(Int.self, forKey: .height)
         self.level = try container.decodeIfPresent(Int.self, forKey: .level)
@@ -294,7 +300,6 @@ extension Operations.GetMediaMetaDataStream: Codable {
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encode(self.bitrate, forKey: .bitrate)
         try container.encode(self.codec, forKey: .codec)
         try container.encode(self.displayTitle, forKey: .displayTitle)
         try container.encode(self.extendedDisplayTitle, forKey: .extendedDisplayTitle)
@@ -306,6 +311,7 @@ extension Operations.GetMediaMetaDataStream: Codable {
         try container.encode(self.streamType, forKey: .streamType)
         try container.encodeIfPresent(self.audioChannelLayout, forKey: .audioChannelLayout)
         try container.encodeIfPresent(self.bitDepth, forKey: .bitDepth)
+        try container.encodeIfPresent(self.bitrate, forKey: .bitrate)
         try container.encodeIfPresent(self.canAutoSync, forKey: .canAutoSync)
         try container.encodeIfPresent(self.channels, forKey: .channels)
         try container.encodeIfPresent(self.chromaLocation, forKey: .chromaLocation)
@@ -331,6 +337,7 @@ extension Operations.GetMediaMetaDataStream: Codable {
             try container.encode(self._frameRate, forKey: .frameRate)
         }
         try container.encodeIfPresent(self.hasScalingMatrix, forKey: .hasScalingMatrix)
+        try container.encodeIfPresent(self.headerCompression, forKey: .headerCompression)
         try container.encodeIfPresent(self.hearingImpaired, forKey: .hearingImpaired)
         try container.encodeIfPresent(self.height, forKey: .height)
         try container.encodeIfPresent(self.level, forKey: .level)

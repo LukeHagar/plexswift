@@ -4,7 +4,7 @@ import Foundation
 
 extension Operations {
     /// A model object
-    public struct Rating {
+    public struct Ratings {
         /// The image or reference for the rating.
         public let image: String
         /// The type of rating (e.g., audience, critic).
@@ -26,7 +26,7 @@ extension Operations {
         }
     }}
 
-extension Operations.Rating: Codable {
+extension Operations.Ratings: Codable {
     enum CodingKeys: String, CodingKey {
         case image
         case type
@@ -48,7 +48,7 @@ extension Operations.Rating: Codable {
     }
 }
 
-extension Operations.Rating {
+extension Operations.Ratings {
     var valueWrapper: DecimalSerialized<Double> {
         return _value
     }

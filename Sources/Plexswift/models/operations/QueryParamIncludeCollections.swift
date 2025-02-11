@@ -3,7 +3,7 @@
 import Foundation
 
 extension Operations {
-    /// Whether to include collections in the search results.
+
     public enum QueryParamIncludeCollections: Int, Codable, APIValue {
         case disable = 0
         case enable = 1

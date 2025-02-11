@@ -5,27 +5,48 @@ import Foundation
 extension Operations {
     /// A model object
     public struct GetGenresLibraryMediaContainer {
+        /// Indicates whether syncing is allowed.
         public let allowSync: Bool
+        /// URL for the background artwork of the media container.
         public let art: String
+        /// The content type or mode.
         public let content: String
+        /// An plugin identifier for the media container.
         public let identifier: String
+        /// The prefix used for media tag resource paths.
         public let mediaTagPrefix: String
+        /// The version number for media tags.
         public let mediaTagVersion: Int
+        /// Specifies whether caching is disabled.
         public let nocache: Bool
-        @DecimalSerialized
-        public private(set) var size: Double
+        /// Number of media items returned in this response.
+        public let size: Int
+        /// URL for the thumbnail image of the media container.
         public let thumb: String
+        /// The primary title of the media container.
         public let title1: String
+        /// The secondary title of the media container.
         public let title2: String
+        /// Identifier for the view group layout.
         public let viewGroup: String
         public let directory: [Operations.GetGenresLibraryDirectory]?
-        public let offset: Int?
-        public let totalSize: Int?
 
         /// Creates an object with the specified parameters
         ///
+        /// - Parameter allowSync: Indicates whether syncing is allowed.
+        /// - Parameter art: URL for the background artwork of the media container.
+        /// - Parameter content: The content type or mode.
+        /// - Parameter identifier: An plugin identifier for the media container.
+        /// - Parameter mediaTagPrefix: The prefix used for media tag resource paths.
+        /// - Parameter mediaTagVersion: The version number for media tags.
+        /// - Parameter nocache: Specifies whether caching is disabled.
+        /// - Parameter size: Number of media items returned in this response.
+        /// - Parameter thumb: URL for the thumbnail image of the media container.
+        /// - Parameter title1: The primary title of the media container.
+        /// - Parameter title2: The secondary title of the media container.
+        /// - Parameter viewGroup: Identifier for the view group layout.
         ///
-        public init(allowSync: Bool, art: String, content: String, identifier: String, mediaTagPrefix: String, mediaTagVersion: Int, nocache: Bool, size: Double, thumb: String, title1: String, title2: String, viewGroup: String, directory: [Operations.GetGenresLibraryDirectory]? = nil, offset: Int? = nil, totalSize: Int? = nil) {
+        public init(allowSync: Bool, art: String, content: String, identifier: String, mediaTagPrefix: String, mediaTagVersion: Int, nocache: Bool, size: Int, thumb: String, title1: String, title2: String, viewGroup: String, directory: [Operations.GetGenresLibraryDirectory]? = nil) {
             self.allowSync = allowSync
             self.art = art
             self.content = content
@@ -33,14 +54,12 @@ extension Operations {
             self.mediaTagPrefix = mediaTagPrefix
             self.mediaTagVersion = mediaTagVersion
             self.nocache = nocache
-            self._size = DecimalSerialized<Double>(wrappedValue: size)
+            self.size = size
             self.thumb = thumb
             self.title1 = title1
             self.title2 = title2
             self.viewGroup = viewGroup
             self.directory = directory
-            self.offset = offset
-            self.totalSize = totalSize
         }
     }}
 
@@ -59,51 +78,6 @@ extension Operations.GetGenresLibraryMediaContainer: Codable {
         case title2
         case viewGroup
         case directory = "Directory"
-        case offset
-        case totalSize
-    }
-
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        self.allowSync = try container.decode(Bool.self, forKey: .allowSync)
-        self.art = try container.decode(String.self, forKey: .art)
-        self.content = try container.decode(String.self, forKey: .content)
-        self.identifier = try container.decode(String.self, forKey: .identifier)
-        self.mediaTagPrefix = try container.decode(String.self, forKey: .mediaTagPrefix)
-        self.mediaTagVersion = try container.decode(Int.self, forKey: .mediaTagVersion)
-        self.nocache = try container.decode(Bool.self, forKey: .nocache)
-        self._size = try container.decode(DecimalSerialized<Double>.self, forKey: .size)
-        self.thumb = try container.decode(String.self, forKey: .thumb)
-        self.title1 = try container.decode(String.self, forKey: .title1)
-        self.title2 = try container.decode(String.self, forKey: .title2)
-        self.viewGroup = try container.decode(String.self, forKey: .viewGroup)
-        self.directory = try container.decodeIfPresent([Operations.GetGenresLibraryDirectory].self, forKey: .directory)
-        self.offset = try container.decodeIfPresent(Int.self, forKey: .offset)
-        self.totalSize = try container.decodeIfPresent(Int.self, forKey: .totalSize)
-    }
-
-    public func encode(to encoder: Encoder) throws {
-        var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encode(self.allowSync, forKey: .allowSync)
-        try container.encode(self.art, forKey: .art)
-        try container.encode(self.content, forKey: .content)
-        try container.encode(self.identifier, forKey: .identifier)
-        try container.encode(self.mediaTagPrefix, forKey: .mediaTagPrefix)
-        try container.encode(self.mediaTagVersion, forKey: .mediaTagVersion)
-        try container.encode(self.nocache, forKey: .nocache)
-        try container.encode(self._size, forKey: .size)
-        try container.encode(self.thumb, forKey: .thumb)
-        try container.encode(self.title1, forKey: .title1)
-        try container.encode(self.title2, forKey: .title2)
-        try container.encode(self.viewGroup, forKey: .viewGroup)
-        try container.encodeIfPresent(self.directory, forKey: .directory)
-        try container.encodeIfPresent(self.offset, forKey: .offset)
-        try container.encodeIfPresent(self.totalSize, forKey: .totalSize)
     }
 }
 
-extension Operations.GetGenresLibraryMediaContainer {
-    var sizeWrapper: DecimalSerialized<Double> {
-        return _size
-    }
-}

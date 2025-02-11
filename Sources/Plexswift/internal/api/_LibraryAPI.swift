@@ -64,6 +64,15 @@ class _LibraryAPI: LibraryAPI {
         )
     }
     
+    public func getAllMediaLibrary(request: Operations.GetAllMediaLibraryRequest) async throws -> Response<Operations.GetAllMediaLibraryResponse> {
+        return try await client.makeRequest(
+            configureRequest: { configuration in
+                try configureGetAllMediaLibraryRequest(with: configuration, request: request)
+            },
+            handleResponse: handleGetAllMediaLibraryResponse
+        )
+    }
+    
     public func getRefreshLibraryMetadata(request: Operations.GetRefreshLibraryMetadataRequest) async throws -> Response<Operations.GetRefreshLibraryMetadataResponse> {
         return try await client.makeRequest(
             configureRequest: { configuration in
@@ -195,6 +204,14 @@ private func configureDeleteLibraryRequest(with configuration: URLRequestConfigu
 
 private func configureGetLibraryItemsRequest(with configuration: URLRequestConfiguration, request: Operations.GetLibraryItemsRequest) throws {
     configuration.path = "/library/sections/{sectionKey}/{tag}"
+    configuration.method = .get
+    configuration.pathParameterSerializable = request
+    configuration.queryParameterSerializable = request
+    configuration.telemetryHeader = .userAgent
+}
+
+private func configureGetAllMediaLibraryRequest(with configuration: URLRequestConfiguration, request: Operations.GetAllMediaLibraryRequest) throws {
+    configuration.path = "/library/sections/{sectionKey}/all"
     configuration.method = .get
     configuration.pathParameterSerializable = request
     configuration.queryParameterSerializable = request
@@ -455,6 +472,40 @@ private func handleGetLibraryItemsResponse(response: Client.APIResponse) throws 
                 throw ResponseHandlerError.failedToDecodeJSON(error)
             }
         }
+    }
+
+    return .empty
+}
+
+private func handleGetAllMediaLibraryResponse(response: Client.APIResponse) throws -> Operations.GetAllMediaLibraryResponse {
+    let httpResponse = response.httpResponse
+    
+    if httpResponse.statusCode == 200 { 
+        if httpResponse.contentType.matchContentType(pattern: "application/json"), let data = response.data {
+            do {
+                return .object(try JSONDecoder().decode(Operations.GetAllMediaLibraryResponseBody.self, from: data))
+            } catch {
+                throw ResponseHandlerError.failedToDecodeJSON(error)
+            }
+        }
+    } else if httpResponse.statusCode == 400 { 
+        if httpResponse.contentType.matchContentType(pattern: "application/json"), let data = response.data {
+            do {
+                return .badRequest(try JSONDecoder().decode(Operations.GetAllMediaLibraryBadRequest.self, from: data))
+            } catch {
+                throw ResponseHandlerError.failedToDecodeJSON(error)
+            }
+        }
+    } else if httpResponse.statusCode == 401 { 
+        if httpResponse.contentType.matchContentType(pattern: "application/json"), let data = response.data {
+            do {
+                return .unauthorized(try JSONDecoder().decode(Operations.GetAllMediaLibraryUnauthorized.self, from: data))
+            } catch {
+                throw ResponseHandlerError.failedToDecodeJSON(error)
+            }
+        }
+    } else if httpResponse.statusCode == 404 { 
+        return .empty
     }
 
     return .empty

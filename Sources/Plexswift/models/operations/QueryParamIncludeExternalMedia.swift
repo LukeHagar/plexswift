@@ -3,7 +3,7 @@
 import Foundation
 
 extension Operations {
-    /// Whether to include external media in the search results.
+
     public enum QueryParamIncludeExternalMedia: Int, Codable, APIValue {
         case disable = 0
         case enable = 1

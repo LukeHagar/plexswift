@@ -5,10 +5,6 @@ import Foundation
 extension Operations {
     /// A model object
     public struct GetMediaMetaDataPart {
-        /// Container format of the part.
-        public let container: String
-        /// Duration of the part in milliseconds.
-        public let duration: Int
         /// File path for the part.
         public let file: String
         /// Unique part identifier.
@@ -17,57 +13,80 @@ extension Operations {
         public let key: String
         /// File size in bytes.
         public let size: Int
-        /// An array of streams for this part.
-        public let stream: [Operations.GetMediaMetaDataStream]
-        /// Video profile for the part.
-        public let videoProfile: String
         /// Indicates if the part is accessible.
         public let accessible: Bool?
+        /// The audio profile used for the media (e.g., DTS, Dolby Digital, etc.).
+        public let audioProfile: String?
+        /// Container format of the part.
+        public let container: String?
+        /// Duration of the part in milliseconds.
+        public let duration: Int?
         /// Indicates if the part exists.
         public let exists: Bool?
+        public let has64bitOffsets: Bool?
+        public let hasThumbnail: Operations.GetMediaMetaDataHasThumbnail?
         public let indexes: String?
+        /// Has this media been optimized for streaming. NOTE: This can be 0, 1, false or true
+        public let optimizedForStreaming: Operations.GetMediaMetaDataLibraryOptimizedForStreaming?
+        public let packetLength: Int?
+        /// An array of streams for this part.
+        public let stream: [Operations.GetMediaMetaDataStream]?
+        /// Video profile for the part.
+        public let videoProfile: String?
 
         /// Creates an object with the specified parameters
         ///
-        /// - Parameter container: Container format of the part.
-        /// - Parameter duration: Duration of the part in milliseconds.
         /// - Parameter file: File path for the part.
         /// - Parameter id: Unique part identifier.
         /// - Parameter key: Key to access this part.
         /// - Parameter size: File size in bytes.
+        /// - Parameter accessible: Indicates if the part is accessible.
+        /// - Parameter audioProfile: The audio profile used for the media (e.g., DTS, Dolby Digital, etc.).
+        /// - Parameter container: Container format of the part.
+        /// - Parameter duration: Duration of the part in milliseconds.
+        /// - Parameter exists: Indicates if the part exists.
+        /// - Parameter optimizedForStreaming: Has this media been optimized for streaming. NOTE: This can be 0, 1, false or true
         /// - Parameter stream: An array of streams for this part.
         /// - Parameter videoProfile: Video profile for the part.
-        /// - Parameter accessible: Indicates if the part is accessible.
-        /// - Parameter exists: Indicates if the part exists.
         ///
-        public init(container: String, duration: Int, file: String, id: Int, key: String, size: Int, stream: [Operations.GetMediaMetaDataStream], videoProfile: String, accessible: Bool? = nil, exists: Bool? = nil, indexes: String? = nil) {
-            self.container = container
-            self.duration = duration
+        public init(file: String, id: Int, key: String, size: Int, accessible: Bool? = nil, audioProfile: String? = nil, container: String? = nil, duration: Int? = nil, exists: Bool? = nil, has64bitOffsets: Bool? = nil, hasThumbnail: Operations.GetMediaMetaDataHasThumbnail? = nil, indexes: String? = nil, optimizedForStreaming: Operations.GetMediaMetaDataLibraryOptimizedForStreaming? = nil, packetLength: Int? = nil, stream: [Operations.GetMediaMetaDataStream]? = nil, videoProfile: String? = nil) {
             self.file = file
             self.id = id
             self.key = key
             self.size = size
+            self.accessible = accessible
+            self.audioProfile = audioProfile
+            self.container = container
+            self.duration = duration
+            self.exists = exists
+            self.has64bitOffsets = has64bitOffsets
+            self.hasThumbnail = hasThumbnail
+            self.indexes = indexes
+            self.optimizedForStreaming = optimizedForStreaming
+            self.packetLength = packetLength
             self.stream = stream
             self.videoProfile = videoProfile
-            self.accessible = accessible
-            self.exists = exists
-            self.indexes = indexes
         }
     }}
 
 extension Operations.GetMediaMetaDataPart: Codable {
     enum CodingKeys: String, CodingKey {
-        case container
-        case duration
         case file
         case id
         case key
         case size
+        case accessible
+        case audioProfile
+        case container
+        case duration
+        case exists
+        case has64bitOffsets
+        case hasThumbnail
+        case indexes
+        case optimizedForStreaming
+        case packetLength
         case stream = "Stream"
         case videoProfile
-        case accessible
-        case exists
-        case indexes
     }
 }
 

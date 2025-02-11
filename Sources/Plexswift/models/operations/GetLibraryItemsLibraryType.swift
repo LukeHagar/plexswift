@@ -10,4 +10,6 @@ extension Operations {
         case tvShow = "show"
         case season = "season"
         case episode = "episode"
+        case artist = "artist"
+        case album = "album"
     }}

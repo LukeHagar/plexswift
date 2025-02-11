@@ -10,9 +10,9 @@ extension Operations {
         /// The search query term.
         public let query: String
         /// Whether to include collections in the search results.
-        public let includeCollections: Operations.QueryParamIncludeCollections?
+        public let includeCollections: Operations.GetSearchAllLibrariesQueryParamIncludeCollections?
         /// Whether to include external media in the search results.
-        public let includeExternalMedia: Operations.QueryParamIncludeExternalMedia?
+        public let includeExternalMedia: Operations.GetSearchAllLibrariesQueryParamIncludeExternalMedia?
         /// Limit the number of results returned.
         public let limit: Int?
         /// A comma-separated list of search types to include. Valid values are: movies, music, otherVideos, people, tv.
@@ -29,7 +29,7 @@ extension Operations {
         /// - Parameter searchTypes: A comma-separated list of search types to include. Valid values are: movies, music, otherVideos, people, tv.
         /// 
         ///
-        public init(clientID: String, query: String, includeCollections: Operations.QueryParamIncludeCollections? = nil, includeExternalMedia: Operations.QueryParamIncludeExternalMedia? = nil, limit: Int? = nil, searchTypes: [Operations.SearchTypes]? = nil) {
+        public init(clientID: String, query: String, includeCollections: Operations.GetSearchAllLibrariesQueryParamIncludeCollections? = nil, includeExternalMedia: Operations.GetSearchAllLibrariesQueryParamIncludeExternalMedia? = nil, limit: Int? = nil, searchTypes: [Operations.SearchTypes]? = nil) {
             self.clientID = clientID
             self.query = query
             self.includeCollections = includeCollections

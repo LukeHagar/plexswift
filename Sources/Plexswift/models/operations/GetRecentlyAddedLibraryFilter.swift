@@ -10,16 +10,18 @@ extension Operations {
         public let key: String
         public let title: String
         public let type: String
+        public let advanced: Bool?
 
         /// Creates an object with the specified parameters
         ///
         ///
-        public init(filter: String, filterType: String, key: String, title: String, type: String) {
+        public init(filter: String, filterType: String, key: String, title: String, type: String, advanced: Bool? = nil) {
             self.filter = filter
             self.filterType = filterType
             self.key = key
             self.title = title
             self.type = type
+            self.advanced = advanced
         }
     }}
 
@@ -30,6 +32,7 @@ extension Operations.GetRecentlyAddedLibraryFilter: Codable {
         case key
         case title
         case type
+        case advanced
     }
 }
 

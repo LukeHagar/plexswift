@@ -5,8 +5,7 @@ import Foundation
 extension Operations {
     /// A model object
     public struct GetRecentlyAddedMediaContainer {
-        @DecimalSerialized
-        public private(set) var size: Double
+        public let size: Int
         public let allowSync: Bool?
         public let identifier: String?
         /// The Meta object is only included in the response if the `includeMeta` parameter is set to `1`.
@@ -21,8 +20,8 @@ extension Operations {
         /// - Parameter meta: The Meta object is only included in the response if the `includeMeta` parameter is set to `1`.
         /// 
         ///
-        public init(size: Double, allowSync: Bool? = nil, identifier: String? = nil, meta: Operations.Meta? = nil, metadata: [Operations.GetRecentlyAddedMetadata]? = nil, offset: Int? = nil, totalSize: Int? = nil) {
-            self._size = DecimalSerialized<Double>(wrappedValue: size)
+        public init(size: Int, allowSync: Bool? = nil, identifier: String? = nil, meta: Operations.Meta? = nil, metadata: [Operations.GetRecentlyAddedMetadata]? = nil, offset: Int? = nil, totalSize: Int? = nil) {
+            self.size = size
             self.allowSync = allowSync
             self.identifier = identifier
             self.meta = meta
@@ -42,32 +41,5 @@ extension Operations.GetRecentlyAddedMediaContainer: Codable {
         case offset
         case totalSize
     }
-
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        self._size = try container.decode(DecimalSerialized<Double>.self, forKey: .size)
-        self.allowSync = try container.decodeIfPresent(Bool.self, forKey: .allowSync)
-        self.identifier = try container.decodeIfPresent(String.self, forKey: .identifier)
-        self.meta = try container.decodeIfPresent(Operations.Meta.self, forKey: .meta)
-        self.metadata = try container.decodeIfPresent([Operations.GetRecentlyAddedMetadata].self, forKey: .metadata)
-        self.offset = try container.decodeIfPresent(Int.self, forKey: .offset)
-        self.totalSize = try container.decodeIfPresent(Int.self, forKey: .totalSize)
-    }
-
-    public func encode(to encoder: Encoder) throws {
-        var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encode(self._size, forKey: .size)
-        try container.encodeIfPresent(self.allowSync, forKey: .allowSync)
-        try container.encodeIfPresent(self.identifier, forKey: .identifier)
-        try container.encodeIfPresent(self.meta, forKey: .meta)
-        try container.encodeIfPresent(self.metadata, forKey: .metadata)
-        try container.encodeIfPresent(self.offset, forKey: .offset)
-        try container.encodeIfPresent(self.totalSize, forKey: .totalSize)
-    }
 }
 
-extension Operations.GetRecentlyAddedMediaContainer {
-    var sizeWrapper: DecimalSerialized<Double> {
-        return _size
-    }
-}

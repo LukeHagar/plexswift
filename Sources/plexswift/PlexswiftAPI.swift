@@ -739,6 +739,7 @@ public protocol SearchAPI {
 /// - ``getLibraryDetails(request:)``
 /// - ``deleteLibrary(request:)``
 /// - ``getLibraryItems(request:)``
+/// - ``getAllMediaLibrary(request:)``
 /// - ``getRefreshLibraryMetadata(request:)``
 /// - ``getSearchLibrary(request:)``
 /// - ``getGenresLibrary(request:)``
@@ -858,6 +859,14 @@ public protocol LibraryAPI {
     /// - Returns: A ``Operations/GetLibraryItemsResponse`` object describing the result of the API operation
     /// - Throws: An error of type ``PlexswiftError``
     func getLibraryItems(request: Operations.GetLibraryItemsRequest) async throws -> Response<Operations.GetLibraryItemsResponse>
+
+    /// Retrieves a list of all general media data for this library.
+    /// 
+    /// 
+    /// - Parameter request: A ``Operations/GetAllMediaLibraryRequest`` object describing the input to the API operation
+    /// - Returns: A ``Operations/GetAllMediaLibraryResponse`` object describing the result of the API operation
+    /// - Throws: An error of type ``PlexswiftError``
+    func getAllMediaLibrary(request: Operations.GetAllMediaLibraryRequest) async throws -> Response<Operations.GetAllMediaLibraryResponse>
 
     /// This endpoint Refreshes all the Metadata of the library.
     /// 

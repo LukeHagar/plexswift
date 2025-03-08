@@ -67,7 +67,6 @@ extension Operations {
         public let subscription: Operations.PostUsersSignInDataSubscription
         /// Description of the Plex Pass subscription
         public let subscriptionDescription: String
-        public let subscriptions: [Operations.PostUsersSignInDataAuthenticationSubscription]
         /// URL of the account thumbnail
         public let thumb: String
         /// The title of the account (username or friendly name)
@@ -84,6 +83,7 @@ extension Operations {
         public let pin: String?
         /// [Might be removed] List of account roles. Plexpass membership listed here
         public let roles: [String]?
+        public let subscriptions: [Operations.PostUsersSignInDataAuthenticationSubscription]?
 
         /// Creates an object with the specified parameters
         ///
@@ -124,7 +124,7 @@ extension Operations {
         /// - Parameter roles: [Might be removed] List of account roles. Plexpass membership listed here
         ///
         @available(*, deprecated, message: "This initializer uses deprecated fields and will be removed in a future version.")
-        public init(adsConsent: Bool, adsConsentReminderAt: Int, adsConsentSetAt: Int, anonymous: Bool, attributionPartner: String, authToken: String, backupCodesCreated: Bool, confirmed: Bool, country: String, email: String, emailOnlyAuth: Bool, entitlements: [String], experimentalFeatures: Bool, friendlyName: String, guest: Bool, hasPassword: Bool, home: Bool, homeAdmin: Bool, homeSize: Int, id: Int, joinedAt: Int, locale: String, mailingListActive: Bool, mailingListStatus: Operations.PostUsersSignInDataMailingListStatus, maxHomeSize: Int, pastSubscriptions: [Operations.PastSubscription], profile: Operations.PostUsersSignInDataUserProfile, protected: Bool, rememberExpiresAt: Int, restricted: Bool, scrobbleTypes: String, services: [Operations.PostUsersSignInDataServices], subscription: Operations.PostUsersSignInDataSubscription, subscriptionDescription: String, subscriptions: [Operations.PostUsersSignInDataAuthenticationSubscription], thumb: String, title: String, trials: [Operations.Trials], twoFactorEnabled: Bool, username: String, uuid: String, pin: String? = nil, roles: [String]? = nil) {
+        public init(adsConsent: Bool, adsConsentReminderAt: Int, adsConsentSetAt: Int, anonymous: Bool, attributionPartner: String, authToken: String, backupCodesCreated: Bool, confirmed: Bool, country: String, email: String, emailOnlyAuth: Bool, entitlements: [String], experimentalFeatures: Bool, friendlyName: String, guest: Bool, hasPassword: Bool, home: Bool, homeAdmin: Bool, homeSize: Int, id: Int, joinedAt: Int, locale: String, mailingListActive: Bool, mailingListStatus: Operations.PostUsersSignInDataMailingListStatus, maxHomeSize: Int, pastSubscriptions: [Operations.PastSubscription], profile: Operations.PostUsersSignInDataUserProfile, protected: Bool, rememberExpiresAt: Int, restricted: Bool, scrobbleTypes: String, services: [Operations.PostUsersSignInDataServices], subscription: Operations.PostUsersSignInDataSubscription, subscriptionDescription: String, thumb: String, title: String, trials: [Operations.Trials], twoFactorEnabled: Bool, username: String, uuid: String, pin: String? = nil, roles: [String]? = nil, subscriptions: [Operations.PostUsersSignInDataAuthenticationSubscription]? = nil) {
             self.adsConsent = adsConsent
             self.adsConsentReminderAt = adsConsentReminderAt
             self.adsConsentSetAt = adsConsentSetAt
@@ -159,7 +159,6 @@ extension Operations {
             self.services = services
             self.subscription = subscription
             self.subscriptionDescription = subscriptionDescription
-            self.subscriptions = subscriptions
             self.thumb = thumb
             self.title = title
             self.trials = trials
@@ -168,6 +167,7 @@ extension Operations {
             self.uuid = uuid
             self.pin = pin
             self.roles = roles
+            self.subscriptions = subscriptions
         }
     }}
 
@@ -207,7 +207,6 @@ extension Operations.PostUsersSignInDataUserPlexAccount: Codable {
         case services
         case subscription
         case subscriptionDescription
-        case subscriptions
         case thumb
         case title
         case trials
@@ -216,6 +215,7 @@ extension Operations.PostUsersSignInDataUserPlexAccount: Codable {
         case uuid
         case pin
         case roles
+        case subscriptions
     }
 }
 

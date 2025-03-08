@@ -66,7 +66,6 @@ extension Operations {
         public let subscription: Operations.Subscription
         /// Description of the Plex Pass subscription
         public let subscriptionDescription: String
-        public let subscriptions: [Operations.GetTokenDetailsSubscription]
         /// URL of the account thumbnail
         public let thumb: String
         /// The title of the account (username or friendly name)
@@ -82,6 +81,7 @@ extension Operations {
         public let pin: String?
         /// [Might be removed] List of account roles. Plexpass membership listed here
         public let roles: [String]?
+        public let subscriptions: [Operations.GetTokenDetailsSubscription]?
 
         /// Creates an object with the specified parameters
         ///
@@ -122,7 +122,7 @@ extension Operations {
         /// - Parameter roles: [Might be removed] List of account roles. Plexpass membership listed here
         ///
         @available(*, deprecated, message: "This initializer uses deprecated fields and will be removed in a future version.")
-        public init(adsConsent: Bool, adsConsentReminderAt: Int, adsConsentSetAt: Int, anonymous: Bool, attributionPartner: String, authToken: String, backupCodesCreated: Bool, confirmed: Bool, country: String, email: String, emailOnlyAuth: Bool, entitlements: [String], experimentalFeatures: Bool, friendlyName: String, guest: Bool, hasPassword: Bool, home: Bool, homeAdmin: Bool, homeSize: Int, id: Int, joinedAt: Int, locale: String, mailingListActive: Bool, mailingListStatus: Operations.MailingListStatus, maxHomeSize: Int, profile: Operations.UserProfile, protected: Bool, rememberExpiresAt: Int, restricted: Bool, scrobbleTypes: String, services: [Operations.Services], subscription: Operations.Subscription, subscriptionDescription: String, subscriptions: [Operations.GetTokenDetailsSubscription], thumb: String, title: String, twoFactorEnabled: Bool, username: String, uuid: String, pin: String? = nil, roles: [String]? = nil) {
+        public init(adsConsent: Bool, adsConsentReminderAt: Int, adsConsentSetAt: Int, anonymous: Bool, attributionPartner: String, authToken: String, backupCodesCreated: Bool, confirmed: Bool, country: String, email: String, emailOnlyAuth: Bool, entitlements: [String], experimentalFeatures: Bool, friendlyName: String, guest: Bool, hasPassword: Bool, home: Bool, homeAdmin: Bool, homeSize: Int, id: Int, joinedAt: Int, locale: String, mailingListActive: Bool, mailingListStatus: Operations.MailingListStatus, maxHomeSize: Int, profile: Operations.UserProfile, protected: Bool, rememberExpiresAt: Int, restricted: Bool, scrobbleTypes: String, services: [Operations.Services], subscription: Operations.Subscription, subscriptionDescription: String, thumb: String, title: String, twoFactorEnabled: Bool, username: String, uuid: String, pin: String? = nil, roles: [String]? = nil, subscriptions: [Operations.GetTokenDetailsSubscription]? = nil) {
             self.adsConsent = adsConsent
             self.adsConsentReminderAt = adsConsentReminderAt
             self.adsConsentSetAt = adsConsentSetAt
@@ -156,7 +156,6 @@ extension Operations {
             self.services = services
             self.subscription = subscription
             self.subscriptionDescription = subscriptionDescription
-            self.subscriptions = subscriptions
             self.thumb = thumb
             self.title = title
             self.twoFactorEnabled = twoFactorEnabled
@@ -164,6 +163,7 @@ extension Operations {
             self.uuid = uuid
             self.pin = pin
             self.roles = roles
+            self.subscriptions = subscriptions
         }
     }}
 
@@ -202,7 +202,6 @@ extension Operations.GetTokenDetailsUserPlexAccount: Codable {
         case services
         case subscription
         case subscriptionDescription
-        case subscriptions
         case thumb
         case title
         case twoFactorEnabled
@@ -210,6 +209,7 @@ extension Operations.GetTokenDetailsUserPlexAccount: Codable {
         case uuid
         case pin
         case roles
+        case subscriptions
     }
 }
 

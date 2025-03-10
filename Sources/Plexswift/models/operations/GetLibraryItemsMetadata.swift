@@ -31,11 +31,11 @@ extension Operations {
         public let director: [Operations.GetLibraryItemsDirector]?
         public let duration: Int?
         /// Setting that indicates if credits markers detection is enabled. (-1 = Library default, 0 = Disabled).
-        public let enableCreditsMarkerGeneration: Operations.GetLibraryItemsEnableCreditsMarkerGeneration?
+        public let enableCreditsMarkerGeneration: Operations.EnableCreditsMarkerGeneration?
         /// Setting that indicates how episodes are sorted for the show. (-1 = Library default, 0 = Oldest first, 1 = Newest first).
-        public let episodeSort: Operations.GetLibraryItemsEpisodeSort?
+        public let episodeSort: Operations.EpisodeSort?
         /// Setting that indicates if seasons are set to hidden for the show. (-1 = Library default, 0 = Hide, 1 = Show).
-        public let flattenSeasons: Operations.GetLibraryItemsFlattenSeasons?
+        public let flattenSeasons: Operations.FlattenSeasons?
         public let genre: [Operations.GetLibraryItemsGenre]?
         public let grandparentArt: String?
         public let grandparentGuid: String?
@@ -60,8 +60,8 @@ extension Operations {
         public let media: [Operations.GetLibraryItemsMedia]?
         /// The Guid object is only included in the response if the `includeGuids` parameter is set to `1`.
         /// 
-        public let mediaGuid: [Operations.GetLibraryItemsMediaGuid]?
-        public let metaDataRating: [Operations.GetLibraryItemsMetaDataRating]?
+        public let mediaGuid: [Operations.MediaGuid]?
+        public let metaDataRating: [Operations.MetaDataRating]?
         @DateOnly
         public private(set) var originallyAvailableAt: Date?
         public let originalTitle: String?
@@ -90,7 +90,7 @@ extension Operations {
         /// dvd = TheTVDB (DVD),
         /// absolute = TheTVDB (Absolute)).
         /// 
-        public let showOrdering: Operations.GetLibraryItemsShowOrdering?
+        public let showOrdering: Operations.ShowOrdering?
         public let skipChildren: Bool?
         public let skipCount: Int?
         public let slug: String?
@@ -134,7 +134,7 @@ extension Operations {
         /// 
         /// - Parameter updatedAt: Unix epoch datetime in seconds
         ///
-        public init(addedAt: Int, guid: String, key: String, ratingKey: String, summary: String, title: String, type: Operations.GetLibraryItemsLibraryType, art: String? = nil, audienceRating: Double? = nil, audienceRatingImage: String? = nil, banner: String? = nil, chapterSource: String? = nil, childCount: Int? = nil, collection: [Operations.GetLibraryItemsCollection]? = nil, contentRating: String? = nil, country: [Operations.GetLibraryItemsCountry]? = nil, director: [Operations.GetLibraryItemsDirector]? = nil, duration: Int? = nil, enableCreditsMarkerGeneration: Operations.GetLibraryItemsEnableCreditsMarkerGeneration? = nil, episodeSort: Operations.GetLibraryItemsEpisodeSort? = nil, flattenSeasons: Operations.GetLibraryItemsFlattenSeasons? = nil, genre: [Operations.GetLibraryItemsGenre]? = nil, grandparentArt: String? = nil, grandparentGuid: String? = nil, grandparentKey: String? = nil, grandparentRatingKey: String? = nil, grandparentSlug: String? = nil, grandparentTheme: String? = nil, grandparentThumb: String? = nil, grandparentTitle: String? = nil, hasPremiumExtras: String? = nil, hasPremiumPrimaryExtra: String? = nil, image: [Operations.GetLibraryItemsImage]? = nil, index: Int? = nil, lastViewedAt: Int? = nil, leafCount: Int? = nil, librarySectionID: Int? = nil, librarySectionKey: String? = nil, librarySectionTitle: String? = nil, location: [Operations.GetLibraryItemsLocation]? = nil, media: [Operations.GetLibraryItemsMedia]? = nil, mediaGuid: [Operations.GetLibraryItemsMediaGuid]? = nil, metaDataRating: [Operations.GetLibraryItemsMetaDataRating]? = nil, originallyAvailableAt: Date? = nil, originalTitle: String? = nil, parentGuid: String? = nil, parentIndex: Int? = nil, parentKey: String? = nil, parentRatingKey: String? = nil, parentSlug: String? = nil, parentStudio: String? = nil, parentTheme: String? = nil, parentThumb: String? = nil, parentTitle: String? = nil, parentYear: Int? = nil, primaryExtraKey: String? = nil, rating: Double? = nil, ratingImage: String? = nil, role: [Operations.GetLibraryItemsRole]? = nil, seasonCount: Int? = nil, showOrdering: Operations.GetLibraryItemsShowOrdering? = nil, skipChildren: Bool? = nil, skipCount: Int? = nil, slug: String? = nil, studio: String? = nil, tagline: String? = nil, theme: String? = nil, thumb: String? = nil, titleSort: String? = nil, ultraBlurColors: Operations.GetLibraryItemsUltraBlurColors? = nil, updatedAt: Int? = nil, viewCount: Int? = nil, viewedLeafCount: Int? = nil, viewOffset: Int? = nil, writer: [Operations.GetLibraryItemsWriter]? = nil, year: Int? = nil) {
+        public init(addedAt: Int, guid: String, key: String, ratingKey: String, summary: String, title: String, type: Operations.GetLibraryItemsLibraryType, art: String? = nil, audienceRating: Double? = nil, audienceRatingImage: String? = nil, banner: String? = nil, chapterSource: String? = nil, childCount: Int? = nil, collection: [Operations.GetLibraryItemsCollection]? = nil, contentRating: String? = nil, country: [Operations.GetLibraryItemsCountry]? = nil, director: [Operations.GetLibraryItemsDirector]? = nil, duration: Int? = nil, enableCreditsMarkerGeneration: Operations.EnableCreditsMarkerGeneration? = nil, episodeSort: Operations.EpisodeSort? = nil, flattenSeasons: Operations.FlattenSeasons? = nil, genre: [Operations.GetLibraryItemsGenre]? = nil, grandparentArt: String? = nil, grandparentGuid: String? = nil, grandparentKey: String? = nil, grandparentRatingKey: String? = nil, grandparentSlug: String? = nil, grandparentTheme: String? = nil, grandparentThumb: String? = nil, grandparentTitle: String? = nil, hasPremiumExtras: String? = nil, hasPremiumPrimaryExtra: String? = nil, image: [Operations.GetLibraryItemsImage]? = nil, index: Int? = nil, lastViewedAt: Int? = nil, leafCount: Int? = nil, librarySectionID: Int? = nil, librarySectionKey: String? = nil, librarySectionTitle: String? = nil, location: [Operations.GetLibraryItemsLocation]? = nil, media: [Operations.GetLibraryItemsMedia]? = nil, mediaGuid: [Operations.MediaGuid]? = nil, metaDataRating: [Operations.MetaDataRating]? = nil, originallyAvailableAt: Date? = nil, originalTitle: String? = nil, parentGuid: String? = nil, parentIndex: Int? = nil, parentKey: String? = nil, parentRatingKey: String? = nil, parentSlug: String? = nil, parentStudio: String? = nil, parentTheme: String? = nil, parentThumb: String? = nil, parentTitle: String? = nil, parentYear: Int? = nil, primaryExtraKey: String? = nil, rating: Double? = nil, ratingImage: String? = nil, role: [Operations.GetLibraryItemsRole]? = nil, seasonCount: Int? = nil, showOrdering: Operations.ShowOrdering? = nil, skipChildren: Bool? = nil, skipCount: Int? = nil, slug: String? = nil, studio: String? = nil, tagline: String? = nil, theme: String? = nil, thumb: String? = nil, titleSort: String? = nil, ultraBlurColors: Operations.GetLibraryItemsUltraBlurColors? = nil, updatedAt: Int? = nil, viewCount: Int? = nil, viewedLeafCount: Int? = nil, viewOffset: Int? = nil, writer: [Operations.GetLibraryItemsWriter]? = nil, year: Int? = nil) {
             self.addedAt = addedAt
             self.guid = guid
             self.key = key
@@ -314,9 +314,9 @@ extension Operations.GetLibraryItemsMetadata: Codable {
         self.country = try container.decodeIfPresent([Operations.GetLibraryItemsCountry].self, forKey: .country)
         self.director = try container.decodeIfPresent([Operations.GetLibraryItemsDirector].self, forKey: .director)
         self.duration = try container.decodeIfPresent(Int.self, forKey: .duration)
-        self.enableCreditsMarkerGeneration = try container.decodeIfPresent(Operations.GetLibraryItemsEnableCreditsMarkerGeneration.self, forKey: .enableCreditsMarkerGeneration)
-        self.episodeSort = try container.decodeIfPresent(Operations.GetLibraryItemsEpisodeSort.self, forKey: .episodeSort)
-        self.flattenSeasons = try container.decodeIfPresent(Operations.GetLibraryItemsFlattenSeasons.self, forKey: .flattenSeasons)
+        self.enableCreditsMarkerGeneration = try container.decodeIfPresent(Operations.EnableCreditsMarkerGeneration.self, forKey: .enableCreditsMarkerGeneration)
+        self.episodeSort = try container.decodeIfPresent(Operations.EpisodeSort.self, forKey: .episodeSort)
+        self.flattenSeasons = try container.decodeIfPresent(Operations.FlattenSeasons.self, forKey: .flattenSeasons)
         self.genre = try container.decodeIfPresent([Operations.GetLibraryItemsGenre].self, forKey: .genre)
         self.grandparentArt = try container.decodeIfPresent(String.self, forKey: .grandparentArt)
         self.grandparentGuid = try container.decodeIfPresent(String.self, forKey: .grandparentGuid)
@@ -337,8 +337,8 @@ extension Operations.GetLibraryItemsMetadata: Codable {
         self.librarySectionTitle = try container.decodeIfPresent(String.self, forKey: .librarySectionTitle)
         self.location = try container.decodeIfPresent([Operations.GetLibraryItemsLocation].self, forKey: .location)
         self.media = try container.decodeIfPresent([Operations.GetLibraryItemsMedia].self, forKey: .media)
-        self.mediaGuid = try container.decodeIfPresent([Operations.GetLibraryItemsMediaGuid].self, forKey: .mediaGuid)
-        self.metaDataRating = try container.decodeIfPresent([Operations.GetLibraryItemsMetaDataRating].self, forKey: .metaDataRating)
+        self.mediaGuid = try container.decodeIfPresent([Operations.MediaGuid].self, forKey: .mediaGuid)
+        self.metaDataRating = try container.decodeIfPresent([Operations.MetaDataRating].self, forKey: .metaDataRating)
         self._originallyAvailableAt = try container.decodeIfPresent(DateOnly<Date?>.self, forKey: .originallyAvailableAt) ?? DateOnly<Date?>(wrappedValue: nil)
         self.originalTitle = try container.decodeIfPresent(String.self, forKey: .originalTitle)
         self.parentGuid = try container.decodeIfPresent(String.self, forKey: .parentGuid)
@@ -356,7 +356,7 @@ extension Operations.GetLibraryItemsMetadata: Codable {
         self.ratingImage = try container.decodeIfPresent(String.self, forKey: .ratingImage)
         self.role = try container.decodeIfPresent([Operations.GetLibraryItemsRole].self, forKey: .role)
         self.seasonCount = try container.decodeIfPresent(Int.self, forKey: .seasonCount)
-        self.showOrdering = try container.decodeIfPresent(Operations.GetLibraryItemsShowOrdering.self, forKey: .showOrdering)
+        self.showOrdering = try container.decodeIfPresent(Operations.ShowOrdering.self, forKey: .showOrdering)
         self.skipChildren = try container.decodeIfPresent(Bool.self, forKey: .skipChildren)
         self.skipCount = try container.decodeIfPresent(Int.self, forKey: .skipCount)
         self.slug = try container.decodeIfPresent(String.self, forKey: .slug)

@@ -148,7 +148,6 @@ case .empty:
 - ``Operations/GetLibraryHubsBadRequest``
 - ``Operations/GetMetadataChildrenBadRequest``
 - ``Operations/GetMyPlexAccountBadRequest``
-- ``Operations/GetOnDeckBadRequest``
 - ``Operations/GetPinBadRequest``
 - ``Operations/GetPlaylistBadRequest``
 - ``Operations/GetPlaylistContentsBadRequest``
@@ -231,7 +230,6 @@ case .empty:
 - ``Operations/GetLibraryHubsResponse``
 - ``Operations/GetMetadataChildrenResponse``
 - ``Operations/GetMyPlexAccountResponse``
-- ``Operations/GetOnDeckResponse``
 - ``Operations/GetPinResponse``
 - ``Operations/GetPlaylistResponse``
 - ``Operations/GetPlaylistContentsResponse``
@@ -379,8 +377,10 @@ case .empty:
 - ``Operations/GetAllMediaLibraryFieldType``
 - ``Operations/GetAllMediaLibraryFilter``
 - ``Operations/GetAllMediaLibraryGenre``
+- ``Operations/GetAllMediaLibraryGuids``
 - ``Operations/GetAllMediaLibraryHasThumbnail``
 - ``Operations/GetAllMediaLibraryImage``
+- ``Operations/GetAllMediaLibraryLibrary1``
 - ``Operations/GetAllMediaLibraryLibraryErrors``
 - ``Operations/GetAllMediaLibraryLibraryOptimizedForStreaming``
 - ``Operations/GetAllMediaLibraryLibraryResponseType``
@@ -441,13 +441,10 @@ case .empty:
 - ``Operations/GetLibraryItemsCountry``
 - ``Operations/GetLibraryItemsDefaultDirection``
 - ``Operations/GetLibraryItemsDirector``
-- ``Operations/GetLibraryItemsEnableCreditsMarkerGeneration``
-- ``Operations/GetLibraryItemsEpisodeSort``
 - ``Operations/GetLibraryItemsErrors``
 - ``Operations/GetLibraryItemsField``
 - ``Operations/GetLibraryItemsFieldType``
 - ``Operations/GetLibraryItemsFilter``
-- ``Operations/GetLibraryItemsFlattenSeasons``
 - ``Operations/GetLibraryItemsGenre``
 - ``Operations/GetLibraryItemsHasThumbnail``
 - ``Operations/GetLibraryItemsImage``
@@ -465,10 +462,8 @@ case .empty:
 - ``Operations/GetLibraryItemsLocation``
 - ``Operations/GetLibraryItemsMedia``
 - ``Operations/GetLibraryItemsMediaContainer``
-- ``Operations/GetLibraryItemsMediaGuid``
 - ``Operations/GetLibraryItemsMeta``
 - ``Operations/GetLibraryItemsMetadata``
-- ``Operations/GetLibraryItemsMetaDataRating``
 - ``Operations/GetLibraryItemsOperator``
 - ``Operations/GetLibraryItemsOptimizedForStreaming``
 - ``Operations/GetLibraryItemsPart``
@@ -477,7 +472,6 @@ case .empty:
 - ``Operations/GetLibraryItemsRequest``
 - ``Operations/GetLibraryItemsResponseBody``
 - ``Operations/GetLibraryItemsRole``
-- ``Operations/GetLibraryItemsShowOrdering``
 - ``Operations/GetLibraryItemsSort``
 - ``Operations/GetLibraryItemsStream``
 - ``Operations/GetLibraryItemsType``
@@ -501,9 +495,11 @@ case .empty:
 - ``Operations/GetMediaMetaDataMetadata``
 - ``Operations/GetMediaMetaDataOptimizedForStreaming``
 - ``Operations/GetMediaMetaDataPart``
+- ``Operations/GetMediaMetaDataProducer``
 - ``Operations/GetMediaMetaDataRequest``
 - ``Operations/GetMediaMetaDataResponseBody``
 - ``Operations/GetMediaMetaDataRole``
+- ``Operations/GetMediaMetaDataSimilar``
 - ``Operations/GetMediaMetaDataStream``
 - ``Operations/GetMediaMetaDataUltraBlurColors``
 - ``Operations/GetMediaMetaDataUnauthorized``
@@ -515,6 +511,7 @@ case .empty:
 - ``Operations/GetMediaProvidersResponseBody``
 - ``Operations/GetMediaProvidersServerErrors``
 - ``Operations/GetMediaProvidersUnauthorized``
+- ``Operations/GetRecentlyAdded1``
 - ``Operations/GetRecentlyAddedActiveDirection``
 - ``Operations/GetRecentlyAddedDefaultDirection``
 - ``Operations/GetRecentlyAddedField``
@@ -526,6 +523,7 @@ case .empty:
 - ``Operations/GetRecentlyAddedMediaContainer``
 - ``Operations/GetRecentlyAddedMetadata``
 - ``Operations/GetRecentlyAddedOperator``
+- ``Operations/GetRecentlyAddedOptimizedForStreaming``
 - ``Operations/GetRecentlyAddedRequest``
 - ``Operations/GetRecentlyAddedResponseBody``
 - ``Operations/GetRecentlyAddedSort``
@@ -683,16 +681,6 @@ case .empty:
 - ``Operations/GetMyPlexAccountResponseBody``
 - ``Operations/GetMyPlexAccountServerErrors``
 - ``Operations/GetMyPlexAccountUnauthorized``
-- ``Operations/GetOnDeckErrors``
-- ``Operations/GetOnDeckGuids``
-- ``Operations/GetOnDeckLibraryErrors``
-- ``Operations/GetOnDeckMedia``
-- ``Operations/GetOnDeckMediaContainer``
-- ``Operations/GetOnDeckMetadata``
-- ``Operations/GetOnDeckPart``
-- ``Operations/GetOnDeckResponseBody``
-- ``Operations/GetOnDeckStream``
-- ``Operations/GetOnDeckUnauthorized``
 - ``Operations/GetPinAuthPinContainer``
 - ``Operations/GetPinErrors``
 - ``Operations/GetPinRequest``
@@ -942,6 +930,7 @@ case .empty:
 - ``Operations/QueryParamOnlyTransient``
 - ``Operations/QueryParamSmart``
 - ``Operations/QueryParamType``
+- ``Operations/Rating``
 - ``Operations/Ratings``
 - ``Operations/Release``
 - ``Operations/ResponseBody``

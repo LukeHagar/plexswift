@@ -3,159 +3,244 @@
 import Foundation
 
 extension Operations {
-    /// A model object
+    /// Unknown
+    /// 
     public struct GetRecentlyAddedMetadata {
-        /// Unix epoch datetime in seconds
         public let addedAt: Int
-        public let guid: String
-        public let key: String
-        /// The rating key (Media ID) of this media item.
-        /// Note: This is always an integer, but is represented as a string in the API.
-        /// 
-        public let ratingKey: String
-        public let summary: String
-        public let title: String
-        /// The type of media content
-        /// 
-        public let type: Operations.GetRecentlyAddedHubsType
-        public let art: String?
+        /// The art image URL for the media item.
+        public let art: String
+        /// The audience rating for the media item.
         @DecimalSerialized
-        public private(set) var audienceRating: Double?
+        public private(set) var audienceRating: Double
+        /// The number of child items associated with this media item.
+        public let childCount: Int
+        /// The duration of the media item in milliseconds.
+        public let duration: Int
+        /// The globally unique identifier for the media item.
+        public let guid: String
+        /// The index position of the media item.
+        public let index: Int
+        /// The unique key for the media item.
+        public let key: String
+        /// The identifier for the library section.
+        public let librarySectionID: Int
+        /// The key corresponding to the library section.
+        public let librarySectionKey: String
+        /// The title of the library section.
+        public let librarySectionTitle: String
+        /// The original release date of the media item.
+        @DateOnly
+        public private(set) var originallyAvailableAt: Date
+        /// The studio of the parent media item.
+        public let parentStudio: String
+        /// The theme URL for the parent media item.
+        public let parentTheme: String
+        /// The critic rating for the media item.
+        @DecimalSerialized
+        public private(set) var rating: Double
+        /// The rating key (Media ID) of this media item. Note: Although this is always an integer, it is represented as a string in the API.
+        public let ratingKey: String
+        /// The total number of seasons (for TV shows).
+        public let seasonCount: Int
+        /// A URL‐friendly version of the media title.
+        public let slug: String
+        /// A synopsis of the media item.
+        public let summary: String
+        /// A brief tagline for the media item.
+        public let tagline: String
+        /// The theme URL for the media item.
+        public let theme: String
+        /// The thumbnail image URL for the media item.
+        public let thumb: String
+        /// The title of the media item.
+        public let title: String
+        /// The sort title used for ordering media items.
+        public let titleSort: String
+        public let type: Operations.GetRecentlyAddedHubsType
+        /// The URL for the audience rating image.
         public let audienceRatingImage: String?
-        public let banner: String?
+        /// The source from which chapter data is derived.
         public let chapterSource: String?
-        public let childCount: Int?
         public let collection: [Operations.Collection]?
+        /// The content rating for the media item.
         public let contentRating: String?
         public let country: [Operations.Country]?
+        /// The accuracy of the creation timestamp. This value indicates the format(s) provided (for example, 'epoch,local' means both epoch and local time formats are available).
+        public let createdAtAccuracy: String?
+        /// The time zone offset for the creation timestamp, represented as a string. This offset indicates the difference from UTC.
+        public let createdAtTZOffset: String?
         public let director: [Operations.Director]?
-        public let duration: Int?
-        /// Setting that indicates if credits markers detection is enabled. (-1 = Library default, 0 = Disabled).
-        public let enableCreditsMarkerGeneration: Operations.EnableCreditsMarkerGeneration?
-        /// Setting that indicates how episodes are sorted for the show. (-1 = Library default, 0 = Oldest first, 1 = Newest first).
-        public let episodeSort: Operations.EpisodeSort?
-        /// Setting that indicates if seasons are set to hidden for the show. (-1 = Library default, 0 = Hide, 1 = Show).
-        public let flattenSeasons: Operations.FlattenSeasons?
         public let genre: [Operations.Genre]?
+        /// The art URL for the grandparent media item.
         public let grandparentArt: String?
+        /// The GUID of the grandparent media item.
         public let grandparentGuid: String?
+        /// The key of the grandparent media item.
         public let grandparentKey: String?
+        /// The rating key of the grandparent media item.
         public let grandparentRatingKey: String?
+        /// The slug for the grandparent media item.
         public let grandparentSlug: String?
+        /// The theme URL for the grandparent media item.
         public let grandparentTheme: String?
+        /// The thumbnail URL for the grandparent media item.
         public let grandparentThumb: String?
+        /// The title of the grandparent media item.
         public let grandparentTitle: String?
-        public let hasPremiumExtras: String?
-        public let hasPremiumPrimaryExtra: String?
+        public let guids: [Operations.Guids]?
         public let image: [Operations.GetRecentlyAddedImage]?
-        public let index: Int?
+        /// The Unix timestamp representing the last time the item was rated.
+        public let lastRatedAt: Int?
+        /// Unix timestamp for when the media item was last viewed.
         public let lastViewedAt: Int?
+        /// The number of leaf items (end nodes) under this media item.
         public let leafCount: Int?
-        public let librarySectionID: Int?
-        public let librarySectionKey: String?
-        public let librarySectionTitle: String?
         public let location: [Operations.Location]?
-        /// The Media object is only included when type query is `4` or higher.
-        /// 
         public let media: [Operations.Media]?
-        /// The Guid object is only included in the response if the `includeGuids` parameter is set to `1`.
-        /// 
-        public let mediaGuid: [Operations.MediaGuid]?
-        public let metaDataRating: [Operations.MetaDataRating]?
-        @DateOnly
-        public private(set) var originallyAvailableAt: Date?
+        /// The original title of the media item (if different).
         public let originalTitle: String?
+        /// The GUID of the parent media item.
         public let parentGuid: String?
+        /// The index position of the parent media item.
         public let parentIndex: Int?
+        /// The key of the parent media item.
         public let parentKey: String?
-        /// The rating key of the parent item.
-        /// 
+        /// The rating key of the parent media item.
         public let parentRatingKey: String?
+        /// The slug for the parent media item.
         public let parentSlug: String?
-        public let parentStudio: String?
-        public let parentTheme: String?
+        /// The thumbnail URL for the parent media item.
         public let parentThumb: String?
+        /// The title of the parent media item.
         public let parentTitle: String?
+        /// The release year of the parent media item.
         public let parentYear: Int?
+        /// The primary extra key associated with this media item.
         public let primaryExtraKey: String?
-        @DecimalSerialized
-        public private(set) var rating: Double?
+        public let producer: [Operations.Producer]?
+        public let rating1: [Operations.Rating]?
+        /// The URL for the rating image.
         public let ratingImage: String?
         public let role: [Operations.Role]?
-        public let seasonCount: Int?
-        /// Setting that indicates the episode ordering for the show.
-        /// None = Library default,
-        /// tmdbAiring = The Movie Database (Aired),
-        /// aired = TheTVDB (Aired),
-        /// dvd = TheTVDB (DVD),
-        /// absolute = TheTVDB (Absolute)).
-        /// 
-        public let showOrdering: Operations.ShowOrdering?
-        public let skipChildren: Bool?
+        public let similar: [Operations.Similar]?
+        /// The number of times this media item has been skipped.
         public let skipCount: Int?
-        public let slug: String?
+        /// The studio that produced the media item.
         public let studio: String?
-        public let tagline: String?
-        public let theme: String?
-        public let thumb: String?
-        public let titleSort: String?
+        /// A classification that further describes the type of media item. For example, 'clip' indicates that the item is a short video clip.
+        public let subtype: String?
         public let ultraBlurColors: Operations.UltraBlurColors?
         /// Unix epoch datetime in seconds
         public let updatedAt: Int?
+        /// The rating provided by a user for the item. This value is expressed as a decimal number.
+        @DecimalSerialized
+        public private(set) var userRating: Double?
+        /// The number of times this media item has been viewed.
         public let viewCount: Int?
+        /// The number of leaf items that have been viewed.
         public let viewedLeafCount: Int?
+        /// The current playback offset (in milliseconds).
         public let viewOffset: Int?
         public let writer: [Operations.Writer]?
+        /// The release year of the media item.
         public let year: Int?
 
         /// Creates an object with the specified parameters
         ///
-        /// - Parameter addedAt: Unix epoch datetime in seconds
-        /// - Parameter ratingKey: The rating key (Media ID) of this media item.
-        /// Note: This is always an integer, but is represented as a string in the API.
-        /// 
-        /// - Parameter type: The type of media content
-        /// 
-        /// - Parameter enableCreditsMarkerGeneration: Setting that indicates if credits markers detection is enabled. (-1 = Library default, 0 = Disabled).
-        /// - Parameter episodeSort: Setting that indicates how episodes are sorted for the show. (-1 = Library default, 0 = Oldest first, 1 = Newest first).
-        /// - Parameter flattenSeasons: Setting that indicates if seasons are set to hidden for the show. (-1 = Library default, 0 = Hide, 1 = Show).
-        /// - Parameter media: The Media object is only included when type query is `4` or higher.
-        /// 
-        /// - Parameter mediaGuid: The Guid object is only included in the response if the `includeGuids` parameter is set to `1`.
-        /// 
-        /// - Parameter parentRatingKey: The rating key of the parent item.
-        /// 
-        /// - Parameter showOrdering: Setting that indicates the episode ordering for the show.
-        /// None = Library default,
-        /// tmdbAiring = The Movie Database (Aired),
-        /// aired = TheTVDB (Aired),
-        /// dvd = TheTVDB (DVD),
-        /// absolute = TheTVDB (Absolute)).
-        /// 
+        /// - Parameter art: The art image URL for the media item.
+        /// - Parameter audienceRating: The audience rating for the media item.
+        /// - Parameter childCount: The number of child items associated with this media item.
+        /// - Parameter duration: The duration of the media item in milliseconds.
+        /// - Parameter guid: The globally unique identifier for the media item.
+        /// - Parameter index: The index position of the media item.
+        /// - Parameter key: The unique key for the media item.
+        /// - Parameter librarySectionID: The identifier for the library section.
+        /// - Parameter librarySectionKey: The key corresponding to the library section.
+        /// - Parameter librarySectionTitle: The title of the library section.
+        /// - Parameter originallyAvailableAt: The original release date of the media item.
+        /// - Parameter parentStudio: The studio of the parent media item.
+        /// - Parameter parentTheme: The theme URL for the parent media item.
+        /// - Parameter rating: The critic rating for the media item.
+        /// - Parameter ratingKey: The rating key (Media ID) of this media item. Note: Although this is always an integer, it is represented as a string in the API.
+        /// - Parameter seasonCount: The total number of seasons (for TV shows).
+        /// - Parameter slug: A URL‐friendly version of the media title.
+        /// - Parameter summary: A synopsis of the media item.
+        /// - Parameter tagline: A brief tagline for the media item.
+        /// - Parameter theme: The theme URL for the media item.
+        /// - Parameter thumb: The thumbnail image URL for the media item.
+        /// - Parameter title: The title of the media item.
+        /// - Parameter titleSort: The sort title used for ordering media items.
+        /// - Parameter audienceRatingImage: The URL for the audience rating image.
+        /// - Parameter chapterSource: The source from which chapter data is derived.
+        /// - Parameter contentRating: The content rating for the media item.
+        /// - Parameter createdAtAccuracy: The accuracy of the creation timestamp. This value indicates the format(s) provided (for example, 'epoch,local' means both epoch and local time formats are available).
+        /// - Parameter createdAtTZOffset: The time zone offset for the creation timestamp, represented as a string. This offset indicates the difference from UTC.
+        /// - Parameter grandparentArt: The art URL for the grandparent media item.
+        /// - Parameter grandparentGuid: The GUID of the grandparent media item.
+        /// - Parameter grandparentKey: The key of the grandparent media item.
+        /// - Parameter grandparentRatingKey: The rating key of the grandparent media item.
+        /// - Parameter grandparentSlug: The slug for the grandparent media item.
+        /// - Parameter grandparentTheme: The theme URL for the grandparent media item.
+        /// - Parameter grandparentThumb: The thumbnail URL for the grandparent media item.
+        /// - Parameter grandparentTitle: The title of the grandparent media item.
+        /// - Parameter lastRatedAt: The Unix timestamp representing the last time the item was rated.
+        /// - Parameter lastViewedAt: Unix timestamp for when the media item was last viewed.
+        /// - Parameter leafCount: The number of leaf items (end nodes) under this media item.
+        /// - Parameter originalTitle: The original title of the media item (if different).
+        /// - Parameter parentGuid: The GUID of the parent media item.
+        /// - Parameter parentIndex: The index position of the parent media item.
+        /// - Parameter parentKey: The key of the parent media item.
+        /// - Parameter parentRatingKey: The rating key of the parent media item.
+        /// - Parameter parentSlug: The slug for the parent media item.
+        /// - Parameter parentThumb: The thumbnail URL for the parent media item.
+        /// - Parameter parentTitle: The title of the parent media item.
+        /// - Parameter parentYear: The release year of the parent media item.
+        /// - Parameter primaryExtraKey: The primary extra key associated with this media item.
+        /// - Parameter ratingImage: The URL for the rating image.
+        /// - Parameter skipCount: The number of times this media item has been skipped.
+        /// - Parameter studio: The studio that produced the media item.
+        /// - Parameter subtype: A classification that further describes the type of media item. For example, 'clip' indicates that the item is a short video clip.
         /// - Parameter updatedAt: Unix epoch datetime in seconds
+        /// - Parameter userRating: The rating provided by a user for the item. This value is expressed as a decimal number.
+        /// - Parameter viewCount: The number of times this media item has been viewed.
+        /// - Parameter viewedLeafCount: The number of leaf items that have been viewed.
+        /// - Parameter viewOffset: The current playback offset (in milliseconds).
+        /// - Parameter year: The release year of the media item.
         ///
-        public init(addedAt: Int, guid: String, key: String, ratingKey: String, summary: String, title: String, type: Operations.GetRecentlyAddedHubsType, art: String? = nil, audienceRating: Double? = nil, audienceRatingImage: String? = nil, banner: String? = nil, chapterSource: String? = nil, childCount: Int? = nil, collection: [Operations.Collection]? = nil, contentRating: String? = nil, country: [Operations.Country]? = nil, director: [Operations.Director]? = nil, duration: Int? = nil, enableCreditsMarkerGeneration: Operations.EnableCreditsMarkerGeneration? = nil, episodeSort: Operations.EpisodeSort? = nil, flattenSeasons: Operations.FlattenSeasons? = nil, genre: [Operations.Genre]? = nil, grandparentArt: String? = nil, grandparentGuid: String? = nil, grandparentKey: String? = nil, grandparentRatingKey: String? = nil, grandparentSlug: String? = nil, grandparentTheme: String? = nil, grandparentThumb: String? = nil, grandparentTitle: String? = nil, hasPremiumExtras: String? = nil, hasPremiumPrimaryExtra: String? = nil, image: [Operations.GetRecentlyAddedImage]? = nil, index: Int? = nil, lastViewedAt: Int? = nil, leafCount: Int? = nil, librarySectionID: Int? = nil, librarySectionKey: String? = nil, librarySectionTitle: String? = nil, location: [Operations.Location]? = nil, media: [Operations.Media]? = nil, mediaGuid: [Operations.MediaGuid]? = nil, metaDataRating: [Operations.MetaDataRating]? = nil, originallyAvailableAt: Date? = nil, originalTitle: String? = nil, parentGuid: String? = nil, parentIndex: Int? = nil, parentKey: String? = nil, parentRatingKey: String? = nil, parentSlug: String? = nil, parentStudio: String? = nil, parentTheme: String? = nil, parentThumb: String? = nil, parentTitle: String? = nil, parentYear: Int? = nil, primaryExtraKey: String? = nil, rating: Double? = nil, ratingImage: String? = nil, role: [Operations.Role]? = nil, seasonCount: Int? = nil, showOrdering: Operations.ShowOrdering? = nil, skipChildren: Bool? = nil, skipCount: Int? = nil, slug: String? = nil, studio: String? = nil, tagline: String? = nil, theme: String? = nil, thumb: String? = nil, titleSort: String? = nil, ultraBlurColors: Operations.UltraBlurColors? = nil, updatedAt: Int? = nil, viewCount: Int? = nil, viewedLeafCount: Int? = nil, viewOffset: Int? = nil, writer: [Operations.Writer]? = nil, year: Int? = nil) {
+        public init(addedAt: Int, art: String, audienceRating: Double, childCount: Int, duration: Int, guid: String, index: Int, key: String, librarySectionID: Int, librarySectionKey: String, librarySectionTitle: String, originallyAvailableAt: Date, parentStudio: String, parentTheme: String, rating: Double, ratingKey: String, seasonCount: Int, slug: String, summary: String, tagline: String, theme: String, thumb: String, title: String, titleSort: String, type: Operations.GetRecentlyAddedHubsType, audienceRatingImage: String? = nil, chapterSource: String? = nil, collection: [Operations.Collection]? = nil, contentRating: String? = nil, country: [Operations.Country]? = nil, createdAtAccuracy: String? = nil, createdAtTZOffset: String? = nil, director: [Operations.Director]? = nil, genre: [Operations.Genre]? = nil, grandparentArt: String? = nil, grandparentGuid: String? = nil, grandparentKey: String? = nil, grandparentRatingKey: String? = nil, grandparentSlug: String? = nil, grandparentTheme: String? = nil, grandparentThumb: String? = nil, grandparentTitle: String? = nil, guids: [Operations.Guids]? = nil, image: [Operations.GetRecentlyAddedImage]? = nil, lastRatedAt: Int? = nil, lastViewedAt: Int? = nil, leafCount: Int? = nil, location: [Operations.Location]? = nil, media: [Operations.Media]? = nil, originalTitle: String? = nil, parentGuid: String? = nil, parentIndex: Int? = nil, parentKey: String? = nil, parentRatingKey: String? = nil, parentSlug: String? = nil, parentThumb: String? = nil, parentTitle: String? = nil, parentYear: Int? = nil, primaryExtraKey: String? = nil, producer: [Operations.Producer]? = nil, rating1: [Operations.Rating]? = nil, ratingImage: String? = nil, role: [Operations.Role]? = nil, similar: [Operations.Similar]? = nil, skipCount: Int? = nil, studio: String? = nil, subtype: String? = nil, ultraBlurColors: Operations.UltraBlurColors? = nil, updatedAt: Int? = nil, userRating: Double? = nil, viewCount: Int? = nil, viewedLeafCount: Int? = nil, viewOffset: Int? = nil, writer: [Operations.Writer]? = nil, year: Int? = nil) {
             self.addedAt = addedAt
-            self.guid = guid
-            self.key = key
-            self.ratingKey = ratingKey
-            self.summary = summary
-            self.title = title
-            self.type = type
             self.art = art
-            self._audienceRating = DecimalSerialized<Double?>(wrappedValue: audienceRating)
-            self.audienceRatingImage = audienceRatingImage
-            self.banner = banner
-            self.chapterSource = chapterSource
+            self._audienceRating = DecimalSerialized<Double>(wrappedValue: audienceRating)
             self.childCount = childCount
+            self.duration = duration
+            self.guid = guid
+            self.index = index
+            self.key = key
+            self.librarySectionID = librarySectionID
+            self.librarySectionKey = librarySectionKey
+            self.librarySectionTitle = librarySectionTitle
+            self._originallyAvailableAt = DateOnly<Date>(wrappedValue: originallyAvailableAt)
+            self.parentStudio = parentStudio
+            self.parentTheme = parentTheme
+            self._rating = DecimalSerialized<Double>(wrappedValue: rating)
+            self.ratingKey = ratingKey
+            self.seasonCount = seasonCount
+            self.slug = slug
+            self.summary = summary
+            self.tagline = tagline
+            self.theme = theme
+            self.thumb = thumb
+            self.title = title
+            self.titleSort = titleSort
+            self.type = type
+            self.audienceRatingImage = audienceRatingImage
+            self.chapterSource = chapterSource
             self.collection = collection
             self.contentRating = contentRating
             self.country = country
+            self.createdAtAccuracy = createdAtAccuracy
+            self.createdAtTZOffset = createdAtTZOffset
             self.director = director
-            self.duration = duration
-            self.enableCreditsMarkerGeneration = enableCreditsMarkerGeneration
-            self.episodeSort = episodeSort
-            self.flattenSeasons = flattenSeasons
             self.genre = genre
             self.grandparentArt = grandparentArt
             self.grandparentGuid = grandparentGuid
@@ -165,47 +250,34 @@ extension Operations {
             self.grandparentTheme = grandparentTheme
             self.grandparentThumb = grandparentThumb
             self.grandparentTitle = grandparentTitle
-            self.hasPremiumExtras = hasPremiumExtras
-            self.hasPremiumPrimaryExtra = hasPremiumPrimaryExtra
+            self.guids = guids
             self.image = image
-            self.index = index
+            self.lastRatedAt = lastRatedAt
             self.lastViewedAt = lastViewedAt
             self.leafCount = leafCount
-            self.librarySectionID = librarySectionID
-            self.librarySectionKey = librarySectionKey
-            self.librarySectionTitle = librarySectionTitle
             self.location = location
             self.media = media
-            self.mediaGuid = mediaGuid
-            self.metaDataRating = metaDataRating
-            self._originallyAvailableAt = DateOnly<Date?>(wrappedValue: originallyAvailableAt)
             self.originalTitle = originalTitle
             self.parentGuid = parentGuid
             self.parentIndex = parentIndex
             self.parentKey = parentKey
             self.parentRatingKey = parentRatingKey
             self.parentSlug = parentSlug
-            self.parentStudio = parentStudio
-            self.parentTheme = parentTheme
             self.parentThumb = parentThumb
             self.parentTitle = parentTitle
             self.parentYear = parentYear
             self.primaryExtraKey = primaryExtraKey
-            self._rating = DecimalSerialized<Double?>(wrappedValue: rating)
+            self.producer = producer
+            self.rating1 = rating1
             self.ratingImage = ratingImage
             self.role = role
-            self.seasonCount = seasonCount
-            self.showOrdering = showOrdering
-            self.skipChildren = skipChildren
+            self.similar = similar
             self.skipCount = skipCount
-            self.slug = slug
             self.studio = studio
-            self.tagline = tagline
-            self.theme = theme
-            self.thumb = thumb
-            self.titleSort = titleSort
+            self.subtype = subtype
             self.ultraBlurColors = ultraBlurColors
             self.updatedAt = updatedAt
+            self._userRating = DecimalSerialized<Double?>(wrappedValue: userRating)
             self.viewCount = viewCount
             self.viewedLeafCount = viewedLeafCount
             self.viewOffset = viewOffset
@@ -217,26 +289,38 @@ extension Operations {
 extension Operations.GetRecentlyAddedMetadata: Codable {
     enum CodingKeys: String, CodingKey {
         case addedAt
-        case guid
-        case key
-        case ratingKey
-        case summary
-        case title
-        case type
         case art
         case audienceRating
-        case audienceRatingImage
-        case banner
-        case chapterSource
         case childCount
+        case duration
+        case guid
+        case index
+        case key
+        case librarySectionID
+        case librarySectionKey
+        case librarySectionTitle
+        case originallyAvailableAt
+        case parentStudio
+        case parentTheme
+        case rating
+        case ratingKey
+        case seasonCount
+        case slug
+        case summary
+        case tagline
+        case theme
+        case thumb
+        case title
+        case titleSort
+        case type
+        case audienceRatingImage
+        case chapterSource
         case collection = "Collection"
         case contentRating
         case country = "Country"
+        case createdAtAccuracy
+        case createdAtTZOffset
         case director = "Director"
-        case duration
-        case enableCreditsMarkerGeneration
-        case episodeSort
-        case flattenSeasons
         case genre = "Genre"
         case grandparentArt
         case grandparentGuid
@@ -246,47 +330,34 @@ extension Operations.GetRecentlyAddedMetadata: Codable {
         case grandparentTheme
         case grandparentThumb
         case grandparentTitle
-        case hasPremiumExtras
-        case hasPremiumPrimaryExtra
+        case guids = "Guid"
         case image = "Image"
-        case index
+        case lastRatedAt
         case lastViewedAt
         case leafCount
-        case librarySectionID
-        case librarySectionKey
-        case librarySectionTitle
         case location = "Location"
         case media = "Media"
-        case mediaGuid = "Guid"
-        case metaDataRating = "Rating"
-        case originallyAvailableAt
         case originalTitle
         case parentGuid
         case parentIndex
         case parentKey
         case parentRatingKey
         case parentSlug
-        case parentStudio
-        case parentTheme
         case parentThumb
         case parentTitle
         case parentYear
         case primaryExtraKey
-        case rating
+        case producer = "Producer"
+        case rating1 = "Rating"
         case ratingImage
         case role = "Role"
-        case seasonCount
-        case showOrdering
-        case skipChildren
+        case similar = "Similar"
         case skipCount
-        case slug
         case studio
-        case tagline
-        case theme
-        case thumb
-        case titleSort
+        case subtype
         case ultraBlurColors = "UltraBlurColors"
         case updatedAt
+        case userRating
         case viewCount
         case viewedLeafCount
         case viewOffset
@@ -297,26 +368,38 @@ extension Operations.GetRecentlyAddedMetadata: Codable {
     public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         self.addedAt = try container.decode(Int.self, forKey: .addedAt)
+        self.art = try container.decode(String.self, forKey: .art)
+        self._audienceRating = try container.decode(DecimalSerialized<Double>.self, forKey: .audienceRating)
+        self.childCount = try container.decode(Int.self, forKey: .childCount)
+        self.duration = try container.decode(Int.self, forKey: .duration)
         self.guid = try container.decode(String.self, forKey: .guid)
+        self.index = try container.decode(Int.self, forKey: .index)
         self.key = try container.decode(String.self, forKey: .key)
+        self.librarySectionID = try container.decode(Int.self, forKey: .librarySectionID)
+        self.librarySectionKey = try container.decode(String.self, forKey: .librarySectionKey)
+        self.librarySectionTitle = try container.decode(String.self, forKey: .librarySectionTitle)
+        self._originallyAvailableAt = try container.decode(DateOnly<Date>.self, forKey: .originallyAvailableAt)
+        self.parentStudio = try container.decode(String.self, forKey: .parentStudio)
+        self.parentTheme = try container.decode(String.self, forKey: .parentTheme)
+        self._rating = try container.decode(DecimalSerialized<Double>.self, forKey: .rating)
         self.ratingKey = try container.decode(String.self, forKey: .ratingKey)
+        self.seasonCount = try container.decode(Int.self, forKey: .seasonCount)
+        self.slug = try container.decode(String.self, forKey: .slug)
         self.summary = try container.decode(String.self, forKey: .summary)
+        self.tagline = try container.decode(String.self, forKey: .tagline)
+        self.theme = try container.decode(String.self, forKey: .theme)
+        self.thumb = try container.decode(String.self, forKey: .thumb)
         self.title = try container.decode(String.self, forKey: .title)
+        self.titleSort = try container.decode(String.self, forKey: .titleSort)
         self.type = try container.decode(Operations.GetRecentlyAddedHubsType.self, forKey: .type)
-        self.art = try container.decodeIfPresent(String.self, forKey: .art)
-        self._audienceRating = try container.decodeIfPresent(DecimalSerialized<Double?>.self, forKey: .audienceRating) ?? DecimalSerialized<Double?>(wrappedValue: nil)
         self.audienceRatingImage = try container.decodeIfPresent(String.self, forKey: .audienceRatingImage)
-        self.banner = try container.decodeIfPresent(String.self, forKey: .banner)
         self.chapterSource = try container.decodeIfPresent(String.self, forKey: .chapterSource)
-        self.childCount = try container.decodeIfPresent(Int.self, forKey: .childCount)
         self.collection = try container.decodeIfPresent([Operations.Collection].self, forKey: .collection)
         self.contentRating = try container.decodeIfPresent(String.self, forKey: .contentRating)
         self.country = try container.decodeIfPresent([Operations.Country].self, forKey: .country)
+        self.createdAtAccuracy = try container.decodeIfPresent(String.self, forKey: .createdAtAccuracy)
+        self.createdAtTZOffset = try container.decodeIfPresent(String.self, forKey: .createdAtTZOffset)
         self.director = try container.decodeIfPresent([Operations.Director].self, forKey: .director)
-        self.duration = try container.decodeIfPresent(Int.self, forKey: .duration)
-        self.enableCreditsMarkerGeneration = try container.decodeIfPresent(Operations.EnableCreditsMarkerGeneration.self, forKey: .enableCreditsMarkerGeneration)
-        self.episodeSort = try container.decodeIfPresent(Operations.EpisodeSort.self, forKey: .episodeSort)
-        self.flattenSeasons = try container.decodeIfPresent(Operations.FlattenSeasons.self, forKey: .flattenSeasons)
         self.genre = try container.decodeIfPresent([Operations.Genre].self, forKey: .genre)
         self.grandparentArt = try container.decodeIfPresent(String.self, forKey: .grandparentArt)
         self.grandparentGuid = try container.decodeIfPresent(String.self, forKey: .grandparentGuid)
@@ -326,47 +409,34 @@ extension Operations.GetRecentlyAddedMetadata: Codable {
         self.grandparentTheme = try container.decodeIfPresent(String.self, forKey: .grandparentTheme)
         self.grandparentThumb = try container.decodeIfPresent(String.self, forKey: .grandparentThumb)
         self.grandparentTitle = try container.decodeIfPresent(String.self, forKey: .grandparentTitle)
-        self.hasPremiumExtras = try container.decodeIfPresent(String.self, forKey: .hasPremiumExtras)
-        self.hasPremiumPrimaryExtra = try container.decodeIfPresent(String.self, forKey: .hasPremiumPrimaryExtra)
+        self.guids = try container.decodeIfPresent([Operations.Guids].self, forKey: .guids)
         self.image = try container.decodeIfPresent([Operations.GetRecentlyAddedImage].self, forKey: .image)
-        self.index = try container.decodeIfPresent(Int.self, forKey: .index)
+        self.lastRatedAt = try container.decodeIfPresent(Int.self, forKey: .lastRatedAt)
         self.lastViewedAt = try container.decodeIfPresent(Int.self, forKey: .lastViewedAt)
         self.leafCount = try container.decodeIfPresent(Int.self, forKey: .leafCount)
-        self.librarySectionID = try container.decodeIfPresent(Int.self, forKey: .librarySectionID)
-        self.librarySectionKey = try container.decodeIfPresent(String.self, forKey: .librarySectionKey)
-        self.librarySectionTitle = try container.decodeIfPresent(String.self, forKey: .librarySectionTitle)
         self.location = try container.decodeIfPresent([Operations.Location].self, forKey: .location)
         self.media = try container.decodeIfPresent([Operations.Media].self, forKey: .media)
-        self.mediaGuid = try container.decodeIfPresent([Operations.MediaGuid].self, forKey: .mediaGuid)
-        self.metaDataRating = try container.decodeIfPresent([Operations.MetaDataRating].self, forKey: .metaDataRating)
-        self._originallyAvailableAt = try container.decodeIfPresent(DateOnly<Date?>.self, forKey: .originallyAvailableAt) ?? DateOnly<Date?>(wrappedValue: nil)
         self.originalTitle = try container.decodeIfPresent(String.self, forKey: .originalTitle)
         self.parentGuid = try container.decodeIfPresent(String.self, forKey: .parentGuid)
         self.parentIndex = try container.decodeIfPresent(Int.self, forKey: .parentIndex)
         self.parentKey = try container.decodeIfPresent(String.self, forKey: .parentKey)
         self.parentRatingKey = try container.decodeIfPresent(String.self, forKey: .parentRatingKey)
         self.parentSlug = try container.decodeIfPresent(String.self, forKey: .parentSlug)
-        self.parentStudio = try container.decodeIfPresent(String.self, forKey: .parentStudio)
-        self.parentTheme = try container.decodeIfPresent(String.self, forKey: .parentTheme)
         self.parentThumb = try container.decodeIfPresent(String.self, forKey: .parentThumb)
         self.parentTitle = try container.decodeIfPresent(String.self, forKey: .parentTitle)
         self.parentYear = try container.decodeIfPresent(Int.self, forKey: .parentYear)
         self.primaryExtraKey = try container.decodeIfPresent(String.self, forKey: .primaryExtraKey)
-        self._rating = try container.decodeIfPresent(DecimalSerialized<Double?>.self, forKey: .rating) ?? DecimalSerialized<Double?>(wrappedValue: nil)
+        self.producer = try container.decodeIfPresent([Operations.Producer].self, forKey: .producer)
+        self.rating1 = try container.decodeIfPresent([Operations.Rating].self, forKey: .rating1)
         self.ratingImage = try container.decodeIfPresent(String.self, forKey: .ratingImage)
         self.role = try container.decodeIfPresent([Operations.Role].self, forKey: .role)
-        self.seasonCount = try container.decodeIfPresent(Int.self, forKey: .seasonCount)
-        self.showOrdering = try container.decodeIfPresent(Operations.ShowOrdering.self, forKey: .showOrdering)
-        self.skipChildren = try container.decodeIfPresent(Bool.self, forKey: .skipChildren)
+        self.similar = try container.decodeIfPresent([Operations.Similar].self, forKey: .similar)
         self.skipCount = try container.decodeIfPresent(Int.self, forKey: .skipCount)
-        self.slug = try container.decodeIfPresent(String.self, forKey: .slug)
         self.studio = try container.decodeIfPresent(String.self, forKey: .studio)
-        self.tagline = try container.decodeIfPresent(String.self, forKey: .tagline)
-        self.theme = try container.decodeIfPresent(String.self, forKey: .theme)
-        self.thumb = try container.decodeIfPresent(String.self, forKey: .thumb)
-        self.titleSort = try container.decodeIfPresent(String.self, forKey: .titleSort)
+        self.subtype = try container.decodeIfPresent(String.self, forKey: .subtype)
         self.ultraBlurColors = try container.decodeIfPresent(Operations.UltraBlurColors.self, forKey: .ultraBlurColors)
         self.updatedAt = try container.decodeIfPresent(Int.self, forKey: .updatedAt)
+        self._userRating = try container.decodeIfPresent(DecimalSerialized<Double?>.self, forKey: .userRating) ?? DecimalSerialized<Double?>(wrappedValue: nil)
         self.viewCount = try container.decodeIfPresent(Int.self, forKey: .viewCount)
         self.viewedLeafCount = try container.decodeIfPresent(Int.self, forKey: .viewedLeafCount)
         self.viewOffset = try container.decodeIfPresent(Int.self, forKey: .viewOffset)
@@ -377,28 +447,38 @@ extension Operations.GetRecentlyAddedMetadata: Codable {
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode(self.addedAt, forKey: .addedAt)
+        try container.encode(self.art, forKey: .art)
+        try container.encode(self._audienceRating, forKey: .audienceRating)
+        try container.encode(self.childCount, forKey: .childCount)
+        try container.encode(self.duration, forKey: .duration)
         try container.encode(self.guid, forKey: .guid)
+        try container.encode(self.index, forKey: .index)
         try container.encode(self.key, forKey: .key)
+        try container.encode(self.librarySectionID, forKey: .librarySectionID)
+        try container.encode(self.librarySectionKey, forKey: .librarySectionKey)
+        try container.encode(self.librarySectionTitle, forKey: .librarySectionTitle)
+        try container.encode(self._originallyAvailableAt, forKey: .originallyAvailableAt)
+        try container.encode(self.parentStudio, forKey: .parentStudio)
+        try container.encode(self.parentTheme, forKey: .parentTheme)
+        try container.encode(self._rating, forKey: .rating)
         try container.encode(self.ratingKey, forKey: .ratingKey)
+        try container.encode(self.seasonCount, forKey: .seasonCount)
+        try container.encode(self.slug, forKey: .slug)
         try container.encode(self.summary, forKey: .summary)
+        try container.encode(self.tagline, forKey: .tagline)
+        try container.encode(self.theme, forKey: .theme)
+        try container.encode(self.thumb, forKey: .thumb)
         try container.encode(self.title, forKey: .title)
+        try container.encode(self.titleSort, forKey: .titleSort)
         try container.encode(self.type, forKey: .type)
-        try container.encodeIfPresent(self.art, forKey: .art)
-        if self.audienceRating != nil {
-            try container.encode(self._audienceRating, forKey: .audienceRating)
-        }
         try container.encodeIfPresent(self.audienceRatingImage, forKey: .audienceRatingImage)
-        try container.encodeIfPresent(self.banner, forKey: .banner)
         try container.encodeIfPresent(self.chapterSource, forKey: .chapterSource)
-        try container.encodeIfPresent(self.childCount, forKey: .childCount)
         try container.encodeIfPresent(self.collection, forKey: .collection)
         try container.encodeIfPresent(self.contentRating, forKey: .contentRating)
         try container.encodeIfPresent(self.country, forKey: .country)
+        try container.encodeIfPresent(self.createdAtAccuracy, forKey: .createdAtAccuracy)
+        try container.encodeIfPresent(self.createdAtTZOffset, forKey: .createdAtTZOffset)
         try container.encodeIfPresent(self.director, forKey: .director)
-        try container.encodeIfPresent(self.duration, forKey: .duration)
-        try container.encodeIfPresent(self.enableCreditsMarkerGeneration, forKey: .enableCreditsMarkerGeneration)
-        try container.encodeIfPresent(self.episodeSort, forKey: .episodeSort)
-        try container.encodeIfPresent(self.flattenSeasons, forKey: .flattenSeasons)
         try container.encodeIfPresent(self.genre, forKey: .genre)
         try container.encodeIfPresent(self.grandparentArt, forKey: .grandparentArt)
         try container.encodeIfPresent(self.grandparentGuid, forKey: .grandparentGuid)
@@ -408,51 +488,36 @@ extension Operations.GetRecentlyAddedMetadata: Codable {
         try container.encodeIfPresent(self.grandparentTheme, forKey: .grandparentTheme)
         try container.encodeIfPresent(self.grandparentThumb, forKey: .grandparentThumb)
         try container.encodeIfPresent(self.grandparentTitle, forKey: .grandparentTitle)
-        try container.encodeIfPresent(self.hasPremiumExtras, forKey: .hasPremiumExtras)
-        try container.encodeIfPresent(self.hasPremiumPrimaryExtra, forKey: .hasPremiumPrimaryExtra)
+        try container.encodeIfPresent(self.guids, forKey: .guids)
         try container.encodeIfPresent(self.image, forKey: .image)
-        try container.encodeIfPresent(self.index, forKey: .index)
+        try container.encodeIfPresent(self.lastRatedAt, forKey: .lastRatedAt)
         try container.encodeIfPresent(self.lastViewedAt, forKey: .lastViewedAt)
         try container.encodeIfPresent(self.leafCount, forKey: .leafCount)
-        try container.encodeIfPresent(self.librarySectionID, forKey: .librarySectionID)
-        try container.encodeIfPresent(self.librarySectionKey, forKey: .librarySectionKey)
-        try container.encodeIfPresent(self.librarySectionTitle, forKey: .librarySectionTitle)
         try container.encodeIfPresent(self.location, forKey: .location)
         try container.encodeIfPresent(self.media, forKey: .media)
-        try container.encodeIfPresent(self.mediaGuid, forKey: .mediaGuid)
-        try container.encodeIfPresent(self.metaDataRating, forKey: .metaDataRating)
-        if self.originallyAvailableAt != nil {
-            try container.encode(self._originallyAvailableAt, forKey: .originallyAvailableAt)
-        }
         try container.encodeIfPresent(self.originalTitle, forKey: .originalTitle)
         try container.encodeIfPresent(self.parentGuid, forKey: .parentGuid)
         try container.encodeIfPresent(self.parentIndex, forKey: .parentIndex)
         try container.encodeIfPresent(self.parentKey, forKey: .parentKey)
         try container.encodeIfPresent(self.parentRatingKey, forKey: .parentRatingKey)
         try container.encodeIfPresent(self.parentSlug, forKey: .parentSlug)
-        try container.encodeIfPresent(self.parentStudio, forKey: .parentStudio)
-        try container.encodeIfPresent(self.parentTheme, forKey: .parentTheme)
         try container.encodeIfPresent(self.parentThumb, forKey: .parentThumb)
         try container.encodeIfPresent(self.parentTitle, forKey: .parentTitle)
         try container.encodeIfPresent(self.parentYear, forKey: .parentYear)
         try container.encodeIfPresent(self.primaryExtraKey, forKey: .primaryExtraKey)
-        if self.rating != nil {
-            try container.encode(self._rating, forKey: .rating)
-        }
+        try container.encodeIfPresent(self.producer, forKey: .producer)
+        try container.encodeIfPresent(self.rating1, forKey: .rating1)
         try container.encodeIfPresent(self.ratingImage, forKey: .ratingImage)
         try container.encodeIfPresent(self.role, forKey: .role)
-        try container.encodeIfPresent(self.seasonCount, forKey: .seasonCount)
-        try container.encodeIfPresent(self.showOrdering, forKey: .showOrdering)
-        try container.encodeIfPresent(self.skipChildren, forKey: .skipChildren)
+        try container.encodeIfPresent(self.similar, forKey: .similar)
         try container.encodeIfPresent(self.skipCount, forKey: .skipCount)
-        try container.encodeIfPresent(self.slug, forKey: .slug)
         try container.encodeIfPresent(self.studio, forKey: .studio)
-        try container.encodeIfPresent(self.tagline, forKey: .tagline)
-        try container.encodeIfPresent(self.theme, forKey: .theme)
-        try container.encodeIfPresent(self.thumb, forKey: .thumb)
-        try container.encodeIfPresent(self.titleSort, forKey: .titleSort)
+        try container.encodeIfPresent(self.subtype, forKey: .subtype)
         try container.encodeIfPresent(self.ultraBlurColors, forKey: .ultraBlurColors)
         try container.encodeIfPresent(self.updatedAt, forKey: .updatedAt)
+        if self.userRating != nil {
+            try container.encode(self._userRating, forKey: .userRating)
+        }
         try container.encodeIfPresent(self.viewCount, forKey: .viewCount)
         try container.encodeIfPresent(self.viewedLeafCount, forKey: .viewedLeafCount)
         try container.encodeIfPresent(self.viewOffset, forKey: .viewOffset)
@@ -462,13 +527,16 @@ extension Operations.GetRecentlyAddedMetadata: Codable {
 }
 
 extension Operations.GetRecentlyAddedMetadata {
-    var ratingWrapper: DecimalSerialized<Double?> {
-        return _rating
-    }
-    var audienceRatingWrapper: DecimalSerialized<Double?> {
+    var audienceRatingWrapper: DecimalSerialized<Double> {
         return _audienceRating
     }
-    var originallyAvailableAtWrapper: DateOnly<Date?> {
+    var originallyAvailableAtWrapper: DateOnly<Date> {
         return _originallyAvailableAt
+    }
+    var ratingWrapper: DecimalSerialized<Double> {
+        return _rating
+    }
+    var userRatingWrapper: DecimalSerialized<Double?> {
+        return _userRating
     }
 }

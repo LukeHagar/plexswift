@@ -5,41 +5,53 @@ import Foundation
 extension Operations {
     /// A model object
     public struct GetRecentlyAddedMediaContainer {
+        /// Indicates whether syncing is allowed.
+        public let allowSync: Bool
+        /// An plugin identifier for the media container.
+        public let identifier: String
+        /// Offset value for pagination.
+        public let offset: Int
+        /// Number of media items returned in this response.
         public let size: Int
-        public let allowSync: Bool?
-        public let identifier: String?
+        /// Total number of media items in the library.
+        public let totalSize: Int
         /// The Meta object is only included in the response if the `includeMeta` parameter is set to `1`.
         /// 
         public let meta: Operations.Meta?
+        /// An array of metadata items.
         public let metadata: [Operations.GetRecentlyAddedMetadata]?
-        public let offset: Int?
-        public let totalSize: Int?
 
         /// Creates an object with the specified parameters
         ///
+        /// - Parameter allowSync: Indicates whether syncing is allowed.
+        /// - Parameter identifier: An plugin identifier for the media container.
+        /// - Parameter offset: Offset value for pagination.
+        /// - Parameter size: Number of media items returned in this response.
+        /// - Parameter totalSize: Total number of media items in the library.
         /// - Parameter meta: The Meta object is only included in the response if the `includeMeta` parameter is set to `1`.
         /// 
+        /// - Parameter metadata: An array of metadata items.
         ///
-        public init(size: Int, allowSync: Bool? = nil, identifier: String? = nil, meta: Operations.Meta? = nil, metadata: [Operations.GetRecentlyAddedMetadata]? = nil, offset: Int? = nil, totalSize: Int? = nil) {
-            self.size = size
+        public init(allowSync: Bool, identifier: String, offset: Int, size: Int, totalSize: Int, meta: Operations.Meta? = nil, metadata: [Operations.GetRecentlyAddedMetadata]? = nil) {
             self.allowSync = allowSync
             self.identifier = identifier
+            self.offset = offset
+            self.size = size
+            self.totalSize = totalSize
             self.meta = meta
             self.metadata = metadata
-            self.offset = offset
-            self.totalSize = totalSize
         }
     }}
 
 extension Operations.GetRecentlyAddedMediaContainer: Codable {
     enum CodingKeys: String, CodingKey {
-        case size
         case allowSync
         case identifier
+        case offset
+        case size
+        case totalSize
         case meta = "Meta"
         case metadata = "Metadata"
-        case offset
-        case totalSize
     }
 }
 

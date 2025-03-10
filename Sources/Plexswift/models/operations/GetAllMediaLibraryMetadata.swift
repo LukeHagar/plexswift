@@ -47,8 +47,6 @@ extension Operations {
         /// The sort title used for ordering media items.
         public let titleSort: String
         public let type: Operations.GetAllMediaLibraryLibraryType
-        /// The release year of the media item.
-        public let year: Int
         /// The URL for the audience rating image.
         public let audienceRatingImage: String?
         /// The source from which chapter data is derived.
@@ -79,7 +77,7 @@ extension Operations {
         public let grandparentThumb: String?
         /// The title of the grandparent media item.
         public let grandparentTitle: String?
-        public let guids: [Operations.Guids]?
+        public let guids: [Operations.GetAllMediaLibraryGuids]?
         public let image: [Operations.GetAllMediaLibraryImage]?
         /// The Unix timestamp representing the last time the item was rated.
         public let lastRatedAt: Int?
@@ -126,6 +124,8 @@ extension Operations {
         /// The current playback offset (in milliseconds).
         public let viewOffset: Int?
         public let writer: [Operations.GetAllMediaLibraryWriter]?
+        /// The release year of the media item.
+        public let year: Int?
 
         /// Creates an object with the specified parameters
         ///
@@ -147,7 +147,6 @@ extension Operations {
         /// - Parameter thumb: The thumbnail image URL for the media item.
         /// - Parameter title: The title of the media item.
         /// - Parameter titleSort: The sort title used for ordering media items.
-        /// - Parameter year: The release year of the media item.
         /// - Parameter audienceRatingImage: The URL for the audience rating image.
         /// - Parameter chapterSource: The source from which chapter data is derived.
         /// - Parameter contentRating: The content rating for the media item.
@@ -181,8 +180,9 @@ extension Operations {
         /// - Parameter viewCount: The number of times this media item has been viewed.
         /// - Parameter viewedLeafCount: The number of leaf items that have been viewed.
         /// - Parameter viewOffset: The current playback offset (in milliseconds).
+        /// - Parameter year: The release year of the media item.
         ///
-        public init(addedAt: Int, art: String, audienceRating: Double, childCount: Int, duration: Int, guid: String, index: Int, key: String, originallyAvailableAt: Date, rating: Double, ratingKey: String, seasonCount: Int, slug: String, summary: String, tagline: String, theme: String, thumb: String, title: String, titleSort: String, type: Operations.GetAllMediaLibraryLibraryType, year: Int, audienceRatingImage: String? = nil, chapterSource: String? = nil, collection: [Operations.GetAllMediaLibraryCollection]? = nil, contentRating: String? = nil, country: [Operations.GetAllMediaLibraryCountry]? = nil, createdAtAccuracy: String? = nil, createdAtTZOffset: String? = nil, director: [Operations.GetAllMediaLibraryDirector]? = nil, genre: [Operations.GetAllMediaLibraryGenre]? = nil, grandparentArt: String? = nil, grandparentGuid: String? = nil, grandparentKey: String? = nil, grandparentRatingKey: String? = nil, grandparentSlug: String? = nil, grandparentTheme: String? = nil, grandparentThumb: String? = nil, grandparentTitle: String? = nil, guids: [Operations.Guids]? = nil, image: [Operations.GetAllMediaLibraryImage]? = nil, lastRatedAt: Int? = nil, lastViewedAt: Int? = nil, leafCount: Int? = nil, media: [Operations.GetAllMediaLibraryMedia]? = nil, originalTitle: String? = nil, parentGuid: String? = nil, parentIndex: Int? = nil, parentKey: String? = nil, parentRatingKey: String? = nil, parentThumb: String? = nil, parentTitle: String? = nil, primaryExtraKey: String? = nil, ratingImage: String? = nil, role: [Operations.GetAllMediaLibraryRole]? = nil, skipCount: Int? = nil, studio: String? = nil, subtype: String? = nil, ultraBlurColors: Operations.GetAllMediaLibraryUltraBlurColors? = nil, updatedAt: Int? = nil, userRating: Double? = nil, viewCount: Int? = nil, viewedLeafCount: Int? = nil, viewOffset: Int? = nil, writer: [Operations.GetAllMediaLibraryWriter]? = nil) {
+        public init(addedAt: Int, art: String, audienceRating: Double, childCount: Int, duration: Int, guid: String, index: Int, key: String, originallyAvailableAt: Date, rating: Double, ratingKey: String, seasonCount: Int, slug: String, summary: String, tagline: String, theme: String, thumb: String, title: String, titleSort: String, type: Operations.GetAllMediaLibraryLibraryType, audienceRatingImage: String? = nil, chapterSource: String? = nil, collection: [Operations.GetAllMediaLibraryCollection]? = nil, contentRating: String? = nil, country: [Operations.GetAllMediaLibraryCountry]? = nil, createdAtAccuracy: String? = nil, createdAtTZOffset: String? = nil, director: [Operations.GetAllMediaLibraryDirector]? = nil, genre: [Operations.GetAllMediaLibraryGenre]? = nil, grandparentArt: String? = nil, grandparentGuid: String? = nil, grandparentKey: String? = nil, grandparentRatingKey: String? = nil, grandparentSlug: String? = nil, grandparentTheme: String? = nil, grandparentThumb: String? = nil, grandparentTitle: String? = nil, guids: [Operations.GetAllMediaLibraryGuids]? = nil, image: [Operations.GetAllMediaLibraryImage]? = nil, lastRatedAt: Int? = nil, lastViewedAt: Int? = nil, leafCount: Int? = nil, media: [Operations.GetAllMediaLibraryMedia]? = nil, originalTitle: String? = nil, parentGuid: String? = nil, parentIndex: Int? = nil, parentKey: String? = nil, parentRatingKey: String? = nil, parentThumb: String? = nil, parentTitle: String? = nil, primaryExtraKey: String? = nil, ratingImage: String? = nil, role: [Operations.GetAllMediaLibraryRole]? = nil, skipCount: Int? = nil, studio: String? = nil, subtype: String? = nil, ultraBlurColors: Operations.GetAllMediaLibraryUltraBlurColors? = nil, updatedAt: Int? = nil, userRating: Double? = nil, viewCount: Int? = nil, viewedLeafCount: Int? = nil, viewOffset: Int? = nil, writer: [Operations.GetAllMediaLibraryWriter]? = nil, year: Int? = nil) {
             self.addedAt = addedAt
             self.art = art
             self._audienceRating = DecimalSerialized<Double>(wrappedValue: audienceRating)
@@ -203,7 +203,6 @@ extension Operations {
             self.title = title
             self.titleSort = titleSort
             self.type = type
-            self.year = year
             self.audienceRatingImage = audienceRatingImage
             self.chapterSource = chapterSource
             self.collection = collection
@@ -247,6 +246,7 @@ extension Operations {
             self.viewedLeafCount = viewedLeafCount
             self.viewOffset = viewOffset
             self.writer = writer
+            self.year = year
         }
     }}
 
@@ -272,7 +272,6 @@ extension Operations.GetAllMediaLibraryMetadata: Codable {
         case title
         case titleSort
         case type
-        case year
         case audienceRatingImage
         case chapterSource
         case collection = "Collection"
@@ -316,6 +315,7 @@ extension Operations.GetAllMediaLibraryMetadata: Codable {
         case viewedLeafCount
         case viewOffset
         case writer = "Writer"
+        case year
     }
 
     public init(from decoder: Decoder) throws {
@@ -340,7 +340,6 @@ extension Operations.GetAllMediaLibraryMetadata: Codable {
         self.title = try container.decode(String.self, forKey: .title)
         self.titleSort = try container.decode(String.self, forKey: .titleSort)
         self.type = try container.decode(Operations.GetAllMediaLibraryLibraryType.self, forKey: .type)
-        self.year = try container.decode(Int.self, forKey: .year)
         self.audienceRatingImage = try container.decodeIfPresent(String.self, forKey: .audienceRatingImage)
         self.chapterSource = try container.decodeIfPresent(String.self, forKey: .chapterSource)
         self.collection = try container.decodeIfPresent([Operations.GetAllMediaLibraryCollection].self, forKey: .collection)
@@ -358,7 +357,7 @@ extension Operations.GetAllMediaLibraryMetadata: Codable {
         self.grandparentTheme = try container.decodeIfPresent(String.self, forKey: .grandparentTheme)
         self.grandparentThumb = try container.decodeIfPresent(String.self, forKey: .grandparentThumb)
         self.grandparentTitle = try container.decodeIfPresent(String.self, forKey: .grandparentTitle)
-        self.guids = try container.decodeIfPresent([Operations.Guids].self, forKey: .guids)
+        self.guids = try container.decodeIfPresent([Operations.GetAllMediaLibraryGuids].self, forKey: .guids)
         self.image = try container.decodeIfPresent([Operations.GetAllMediaLibraryImage].self, forKey: .image)
         self.lastRatedAt = try container.decodeIfPresent(Int.self, forKey: .lastRatedAt)
         self.lastViewedAt = try container.decodeIfPresent(Int.self, forKey: .lastViewedAt)
@@ -384,6 +383,7 @@ extension Operations.GetAllMediaLibraryMetadata: Codable {
         self.viewedLeafCount = try container.decodeIfPresent(Int.self, forKey: .viewedLeafCount)
         self.viewOffset = try container.decodeIfPresent(Int.self, forKey: .viewOffset)
         self.writer = try container.decodeIfPresent([Operations.GetAllMediaLibraryWriter].self, forKey: .writer)
+        self.year = try container.decodeIfPresent(Int.self, forKey: .year)
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -408,7 +408,6 @@ extension Operations.GetAllMediaLibraryMetadata: Codable {
         try container.encode(self.title, forKey: .title)
         try container.encode(self.titleSort, forKey: .titleSort)
         try container.encode(self.type, forKey: .type)
-        try container.encode(self.year, forKey: .year)
         try container.encodeIfPresent(self.audienceRatingImage, forKey: .audienceRatingImage)
         try container.encodeIfPresent(self.chapterSource, forKey: .chapterSource)
         try container.encodeIfPresent(self.collection, forKey: .collection)
@@ -454,6 +453,7 @@ extension Operations.GetAllMediaLibraryMetadata: Codable {
         try container.encodeIfPresent(self.viewedLeafCount, forKey: .viewedLeafCount)
         try container.encodeIfPresent(self.viewOffset, forKey: .viewOffset)
         try container.encodeIfPresent(self.writer, forKey: .writer)
+        try container.encodeIfPresent(self.year, forKey: .year)
     }
 }
 

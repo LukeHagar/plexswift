@@ -5,14 +5,14 @@ import Foundation
 extension Operations {
     /// Has this media been optimized for streaming. NOTE: This can be 0, 1, false or true
     public enum GetAllMediaLibraryLibraryOptimizedForStreaming {
-        case getAllMediaLibrary1(Operations.GetAllMediaLibrary1)
+        case getAllMediaLibraryLibrary1(Operations.GetAllMediaLibraryLibrary1)
         case bool(Bool)
     }}
 
 extension Operations.GetAllMediaLibraryLibraryOptimizedForStreaming: Codable {
     public init(from decoder: Decoder) throws {
-        if let value = try? Operations.GetAllMediaLibrary1(from: decoder) {
-            self = .getAllMediaLibrary1(value)
+        if let value = try? Operations.GetAllMediaLibraryLibrary1(from: decoder) {
+            self = .getAllMediaLibraryLibrary1(value)
         } else if let value = try? Bool(from: decoder) {
             self = .bool(value)
         } else {
@@ -22,7 +22,7 @@ extension Operations.GetAllMediaLibraryLibraryOptimizedForStreaming: Codable {
 
     public func encode(to encoder: Encoder) throws {
         switch self {
-        case .getAllMediaLibrary1(let value):
+        case .getAllMediaLibraryLibrary1(let value):
             try value.encode(to: encoder)
         case .bool(let value):
             try value.encode(to: encoder)

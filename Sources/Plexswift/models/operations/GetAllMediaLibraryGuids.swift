@@ -4,18 +4,22 @@ import Foundation
 
 extension Operations {
     /// A model object
-    public struct GetOnDeckGuids {
+    public struct GetAllMediaLibraryGuids {
+        /// The unique identifier for the Guid. Can be imdb://tt0286347, tmdb://1763, tvdb://2337
+        /// 
         public let id: String?
 
         /// Creates an object with the specified parameters
         ///
+        /// - Parameter id: The unique identifier for the Guid. Can be imdb://tt0286347, tmdb://1763, tvdb://2337
+        /// 
         ///
         public init(id: String? = nil) {
             self.id = id
         }
     }}
 
-extension Operations.GetOnDeckGuids: Codable {
+extension Operations.GetAllMediaLibraryGuids: Codable {
     enum CodingKeys: String, CodingKey {
         case id
     }

@@ -5,34 +5,30 @@ import Foundation
 extension Operations {
     /// A model object
     public struct Producer {
-        /// The filter string for the role.
+        /// The filter string used to query this producer.
         public let filter: String
-        /// The unique role identifier.
+        /// Unique identifier for the producer.
         public let id: Int
-        /// The actor's name.
+        /// The name of the producer
         public let tag: String
-        /// A key associated with the actor tag.
-        public let tagKey: String
-        /// The character name or role.
-        public let role: String?
-        /// URL for the role thumbnail image.
+        /// A unique key associated with the producer's tag, used for internal identification.
+        public let tagKey: String?
+        /// The URL of the thumbnail image for the actor.
         public let thumb: String?
 
         /// Creates an object with the specified parameters
         ///
-        /// - Parameter filter: The filter string for the role.
-        /// - Parameter id: The unique role identifier.
-        /// - Parameter tag: The actor's name.
-        /// - Parameter tagKey: A key associated with the actor tag.
-        /// - Parameter role: The character name or role.
-        /// - Parameter thumb: URL for the role thumbnail image.
+        /// - Parameter filter: The filter string used to query this producer.
+        /// - Parameter id: Unique identifier for the producer.
+        /// - Parameter tag: The name of the producer
+        /// - Parameter tagKey: A unique key associated with the producer's tag, used for internal identification.
+        /// - Parameter thumb: The URL of the thumbnail image for the actor.
         ///
-        public init(filter: String, id: Int, tag: String, tagKey: String, role: String? = nil, thumb: String? = nil) {
+        public init(filter: String, id: Int, tag: String, tagKey: String? = nil, thumb: String? = nil) {
             self.filter = filter
             self.id = id
             self.tag = tag
             self.tagKey = tagKey
-            self.role = role
             self.thumb = thumb
         }
     }}
@@ -43,7 +39,6 @@ extension Operations.Producer: Codable {
         case id
         case tag
         case tagKey
-        case role
         case thumb
     }
 }

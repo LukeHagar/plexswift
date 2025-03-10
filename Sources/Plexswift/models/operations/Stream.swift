@@ -5,119 +5,152 @@ import Foundation
 extension Operations {
     /// A model object
     public struct Stream {
-        /// Codec used by the stream
+        /// Codec used by the stream.
         public let codec: String
+        /// Display title for the stream.
+        public let displayTitle: String
+        /// Extended display title for the stream.
+        public let extendedDisplayTitle: String
+        /// Unique stream identifier.
         public let id: Int
-        /// The index of the stream
+        /// Index of the stream.
         public let index: Int
-        /// Type of stream (1 = video, 2 = audio, 3 = subtitle)
+        /// Stream type (1=video, 2=audio, 3=subtitle).
         public let streamType: Int
-        /// The audio channel layout
+        /// Audio channel layout.
         public let audioChannelLayout: String?
-        /// The bit depth of the video stream
+        /// Bit depth of the video stream.
         public let bitDepth: Int?
-        /// The bitrate of the stream in kbps
+        /// Bitrate of the stream.
         public let bitrate: Int?
-        /// Indicates if the subtitle stream can auto-sync
+        /// Indicates if the stream can auto-sync.
         public let canAutoSync: Bool?
-        /// Number of audio channels (for audio streams)
+        /// Number of audio channels (for audio streams).
         public let channels: Int?
-        /// The chroma location of the video stream
+        /// Chroma sample location.
         public let chromaLocation: String?
-        /// The chroma subsampling format
+        /// Chroma subsampling format.
         public let chromaSubsampling: String?
         public let closedCaptions: Bool?
-        /// The coded height of the video stream
+        /// Coded video height.
         public let codedHeight: Int?
-        /// The coded width of the video stream
+        /// Coded video width.
         public let codedWidth: Int?
-        /// The color primaries of the video stream
+        /// Color primaries used.
         public let colorPrimaries: String?
-        /// The color range of the video stream
+        /// Color range (e.g., tv).
         public let colorRange: String?
-        /// The color space of the video stream
+        /// Color space.
         public let colorSpace: String?
-        /// The transfer characteristics (TRC) of the video stream
+        /// Color transfer characteristics.
         public let colorTrc: String?
-        /// Indicates if this is the default stream
+        /// Indicates if this stream is default.
         public let `default`: Bool?
-        /// Display title of the stream
-        public let displayTitle: String?
+        /// Dolby Vision BL compatibility ID.
+        public let doviblCompatID: Int?
+        /// Indicates if Dolby Vision BL is present.
+        public let doviblPresent: Bool?
+        /// Indicates if Dolby Vision EL is present.
+        public let dovielPresent: Bool?
+        /// Dolby Vision level.
+        public let doviLevel: Int?
+        /// Indicates if Dolby Vision is present.
+        public let doviPresent: Bool?
+        /// Dolby Vision profile.
+        public let doviProfile: Int?
+        /// Indicates if Dolby Vision RPU is present.
+        public let dovirpuPresent: Bool?
+        /// Dolby Vision version.
+        public let doviVersion: String?
+        /// Indicates if the stream is a dub.
+        public let dub: Bool?
         public let embeddedInVideo: String?
-        /// Extended display title of the stream
-        public let extendedDisplayTitle: String?
-        /// The frame rate of the video stream
+        public let forced: Bool?
+        /// Frame rate of the stream.
         @DecimalSerialized
         public private(set) var frameRate: Double?
-        /// Indicates if the stream has a scaling matrix
         public let hasScalingMatrix: Bool?
+        /// Indicates whether header compression is enabled.
+        public let headerCompression: Bool?
+        /// Indicates if the stream is for the hearing impaired.
         public let hearingImpaired: Bool?
-        /// The height of the video stream
+        /// Height of the video stream.
         public let height: Int?
-        /// The language of the stream (for audio/subtitle streams)
+        /// Language of the stream.
         public let language: String?
-        /// Language code of the stream
+        /// ISO language code.
         public let languageCode: String?
-        /// Language tag of the stream
+        /// Language tag (e.g., en).
         public let languageTag: String?
-        /// The level of the video codec
+        /// Video level.
         public let level: Int?
-        /// The profile of the video codec
+        /// Indicates if this is the original stream.
+        public let original: Bool?
+        /// Video profile.
         public let profile: String?
-        /// Number of reference frames
+        /// Number of reference frames.
         public let refFrames: Int?
-        /// Sampling rate of the audio stream in Hz
+        /// Sampling rate for the audio stream.
         public let samplingRate: Int?
-        /// The scan type (progressive or interlaced)
         public let scanType: String?
-        /// Indicates if the stream is selected
+        /// Indicates if this stream is selected (applicable for audio streams).
         public let selected: Bool?
-        /// The identifier of the video stream
-        public let streamIdentifier: String?
-        /// Title of the subtitle track (for subtitle streams)
+        /// Optional title for the stream (e.g., language variant).
         public let title: String?
-        /// The width of the video stream
+        /// Width of the video stream.
         public let width: Int?
 
         /// Creates an object with the specified parameters
         ///
-        /// - Parameter codec: Codec used by the stream
-        /// - Parameter index: The index of the stream
-        /// - Parameter streamType: Type of stream (1 = video, 2 = audio, 3 = subtitle)
-        /// - Parameter audioChannelLayout: The audio channel layout
-        /// - Parameter bitDepth: The bit depth of the video stream
-        /// - Parameter bitrate: The bitrate of the stream in kbps
-        /// - Parameter canAutoSync: Indicates if the subtitle stream can auto-sync
-        /// - Parameter channels: Number of audio channels (for audio streams)
-        /// - Parameter chromaLocation: The chroma location of the video stream
-        /// - Parameter chromaSubsampling: The chroma subsampling format
-        /// - Parameter codedHeight: The coded height of the video stream
-        /// - Parameter codedWidth: The coded width of the video stream
-        /// - Parameter colorPrimaries: The color primaries of the video stream
-        /// - Parameter colorRange: The color range of the video stream
-        /// - Parameter colorSpace: The color space of the video stream
-        /// - Parameter colorTrc: The transfer characteristics (TRC) of the video stream
-        /// - Parameter `default`: Indicates if this is the default stream
-        /// - Parameter displayTitle: Display title of the stream
-        /// - Parameter extendedDisplayTitle: Extended display title of the stream
-        /// - Parameter frameRate: The frame rate of the video stream
-        /// - Parameter hasScalingMatrix: Indicates if the stream has a scaling matrix
-        /// - Parameter height: The height of the video stream
-        /// - Parameter language: The language of the stream (for audio/subtitle streams)
-        /// - Parameter languageCode: Language code of the stream
-        /// - Parameter languageTag: Language tag of the stream
-        /// - Parameter level: The level of the video codec
-        /// - Parameter profile: The profile of the video codec
-        /// - Parameter refFrames: Number of reference frames
-        /// - Parameter samplingRate: Sampling rate of the audio stream in Hz
-        /// - Parameter scanType: The scan type (progressive or interlaced)
-        /// - Parameter selected: Indicates if the stream is selected
-        /// - Parameter streamIdentifier: The identifier of the video stream
-        /// - Parameter title: Title of the subtitle track (for subtitle streams)
-        /// - Parameter width: The width of the video stream
+        /// - Parameter codec: Codec used by the stream.
+        /// - Parameter displayTitle: Display title for the stream.
+        /// - Parameter extendedDisplayTitle: Extended display title for the stream.
+        /// - Parameter id: Unique stream identifier.
+        /// - Parameter index: Index of the stream.
+        /// - Parameter streamType: Stream type (1=video, 2=audio, 3=subtitle).
+        /// - Parameter audioChannelLayout: Audio channel layout.
+        /// - Parameter bitDepth: Bit depth of the video stream.
+        /// - Parameter bitrate: Bitrate of the stream.
+        /// - Parameter canAutoSync: Indicates if the stream can auto-sync.
+        /// - Parameter channels: Number of audio channels (for audio streams).
+        /// - Parameter chromaLocation: Chroma sample location.
+        /// - Parameter chromaSubsampling: Chroma subsampling format.
+        /// - Parameter codedHeight: Coded video height.
+        /// - Parameter codedWidth: Coded video width.
+        /// - Parameter colorPrimaries: Color primaries used.
+        /// - Parameter colorRange: Color range (e.g., tv).
+        /// - Parameter colorSpace: Color space.
+        /// - Parameter colorTrc: Color transfer characteristics.
+        /// - Parameter `default`: Indicates if this stream is default.
+        /// - Parameter doviblCompatID: Dolby Vision BL compatibility ID.
+        /// - Parameter doviblPresent: Indicates if Dolby Vision BL is present.
+        /// - Parameter dovielPresent: Indicates if Dolby Vision EL is present.
+        /// - Parameter doviLevel: Dolby Vision level.
+        /// - Parameter doviPresent: Indicates if Dolby Vision is present.
+        /// - Parameter doviProfile: Dolby Vision profile.
+        /// - Parameter dovirpuPresent: Indicates if Dolby Vision RPU is present.
+        /// - Parameter doviVersion: Dolby Vision version.
+        /// - Parameter dub: Indicates if the stream is a dub.
+        /// - Parameter frameRate: Frame rate of the stream.
+        /// - Parameter headerCompression: Indicates whether header compression is enabled.
+        /// - Parameter hearingImpaired: Indicates if the stream is for the hearing impaired.
+        /// - Parameter height: Height of the video stream.
+        /// - Parameter language: Language of the stream.
+        /// - Parameter languageCode: ISO language code.
+        /// - Parameter languageTag: Language tag (e.g., en).
+        /// - Parameter level: Video level.
+        /// - Parameter original: Indicates if this is the original stream.
+        /// - Parameter profile: Video profile.
+        /// - Parameter refFrames: Number of reference frames.
+        /// - Parameter samplingRate: Sampling rate for the audio stream.
+        /// - Parameter selected: Indicates if this stream is selected (applicable for audio streams).
+        /// - Parameter title: Optional title for the stream (e.g., language variant).
+        /// - Parameter width: Width of the video stream.
         ///
-        public init(codec: String, id: Int, index: Int, streamType: Int, audioChannelLayout: String? = nil, bitDepth: Int? = nil, bitrate: Int? = nil, canAutoSync: Bool? = nil, channels: Int? = nil, chromaLocation: String? = nil, chromaSubsampling: String? = nil, closedCaptions: Bool? = nil, codedHeight: Int? = nil, codedWidth: Int? = nil, colorPrimaries: String? = nil, colorRange: String? = nil, colorSpace: String? = nil, colorTrc: String? = nil, `default`: Bool? = nil, displayTitle: String? = nil, embeddedInVideo: String? = nil, extendedDisplayTitle: String? = nil, frameRate: Double? = nil, hasScalingMatrix: Bool? = nil, hearingImpaired: Bool? = nil, height: Int? = nil, language: String? = nil, languageCode: String? = nil, languageTag: String? = nil, level: Int? = nil, profile: String? = nil, refFrames: Int? = nil, samplingRate: Int? = nil, scanType: String? = nil, selected: Bool? = nil, streamIdentifier: String? = nil, title: String? = nil, width: Int? = nil) {
+        public init(codec: String, displayTitle: String, extendedDisplayTitle: String, id: Int, index: Int, streamType: Int, audioChannelLayout: String? = nil, bitDepth: Int? = nil, bitrate: Int? = nil, canAutoSync: Bool? = nil, channels: Int? = nil, chromaLocation: String? = nil, chromaSubsampling: String? = nil, closedCaptions: Bool? = nil, codedHeight: Int? = nil, codedWidth: Int? = nil, colorPrimaries: String? = nil, colorRange: String? = nil, colorSpace: String? = nil, colorTrc: String? = nil, `default`: Bool? = nil, doviblCompatID: Int? = nil, doviblPresent: Bool? = nil, dovielPresent: Bool? = nil, doviLevel: Int? = nil, doviPresent: Bool? = nil, doviProfile: Int? = nil, dovirpuPresent: Bool? = nil, doviVersion: String? = nil, dub: Bool? = nil, embeddedInVideo: String? = nil, forced: Bool? = nil, frameRate: Double? = nil, hasScalingMatrix: Bool? = nil, headerCompression: Bool? = nil, hearingImpaired: Bool? = nil, height: Int? = nil, language: String? = nil, languageCode: String? = nil, languageTag: String? = nil, level: Int? = nil, original: Bool? = nil, profile: String? = nil, refFrames: Int? = nil, samplingRate: Int? = nil, scanType: String? = nil, selected: Bool? = nil, title: String? = nil, width: Int? = nil) {
             self.codec = codec
+            self.displayTitle = displayTitle
+            self.extendedDisplayTitle = extendedDisplayTitle
             self.id = id
             self.index = index
             self.streamType = streamType
@@ -136,23 +169,32 @@ extension Operations {
             self.colorSpace = colorSpace
             self.colorTrc = colorTrc
             self.`default` = `default`
-            self.displayTitle = displayTitle
+            self.doviblCompatID = doviblCompatID
+            self.doviblPresent = doviblPresent
+            self.dovielPresent = dovielPresent
+            self.doviLevel = doviLevel
+            self.doviPresent = doviPresent
+            self.doviProfile = doviProfile
+            self.dovirpuPresent = dovirpuPresent
+            self.doviVersion = doviVersion
+            self.dub = dub
             self.embeddedInVideo = embeddedInVideo
-            self.extendedDisplayTitle = extendedDisplayTitle
+            self.forced = forced
             self._frameRate = DecimalSerialized<Double?>(wrappedValue: frameRate)
             self.hasScalingMatrix = hasScalingMatrix
+            self.headerCompression = headerCompression
             self.hearingImpaired = hearingImpaired
             self.height = height
             self.language = language
             self.languageCode = languageCode
             self.languageTag = languageTag
             self.level = level
+            self.original = original
             self.profile = profile
             self.refFrames = refFrames
             self.samplingRate = samplingRate
             self.scanType = scanType
             self.selected = selected
-            self.streamIdentifier = streamIdentifier
             self.title = title
             self.width = width
         }
@@ -161,6 +203,8 @@ extension Operations {
 extension Operations.Stream: Codable {
     enum CodingKeys: String, CodingKey {
         case codec
+        case displayTitle
+        case extendedDisplayTitle
         case id
         case index
         case streamType
@@ -179,23 +223,32 @@ extension Operations.Stream: Codable {
         case colorSpace
         case colorTrc
         case `default` = "default"
-        case displayTitle
+        case doviblCompatID = "DOVIBLCompatID"
+        case doviblPresent = "DOVIBLPresent"
+        case dovielPresent = "DOVIELPresent"
+        case doviLevel = "DOVILevel"
+        case doviPresent = "DOVIPresent"
+        case doviProfile = "DOVIProfile"
+        case dovirpuPresent = "DOVIRPUPresent"
+        case doviVersion = "DOVIVersion"
+        case dub
         case embeddedInVideo
-        case extendedDisplayTitle
+        case forced
         case frameRate
         case hasScalingMatrix
+        case headerCompression
         case hearingImpaired
         case height
         case language
         case languageCode
         case languageTag
         case level
+        case original
         case profile
         case refFrames
         case samplingRate
         case scanType
         case selected
-        case streamIdentifier
         case title
         case width
     }
@@ -203,6 +256,8 @@ extension Operations.Stream: Codable {
     public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         self.codec = try container.decode(String.self, forKey: .codec)
+        self.displayTitle = try container.decode(String.self, forKey: .displayTitle)
+        self.extendedDisplayTitle = try container.decode(String.self, forKey: .extendedDisplayTitle)
         self.id = try container.decode(Int.self, forKey: .id)
         self.index = try container.decode(Int.self, forKey: .index)
         self.streamType = try container.decode(Int.self, forKey: .streamType)
@@ -221,23 +276,32 @@ extension Operations.Stream: Codable {
         self.colorSpace = try container.decodeIfPresent(String.self, forKey: .colorSpace)
         self.colorTrc = try container.decodeIfPresent(String.self, forKey: .colorTrc)
         self.`default` = try container.decodeIfPresent(Bool.self, forKey: .`default`)
-        self.displayTitle = try container.decodeIfPresent(String.self, forKey: .displayTitle)
+        self.doviblCompatID = try container.decodeIfPresent(Int.self, forKey: .doviblCompatID)
+        self.doviblPresent = try container.decodeIfPresent(Bool.self, forKey: .doviblPresent)
+        self.dovielPresent = try container.decodeIfPresent(Bool.self, forKey: .dovielPresent)
+        self.doviLevel = try container.decodeIfPresent(Int.self, forKey: .doviLevel)
+        self.doviPresent = try container.decodeIfPresent(Bool.self, forKey: .doviPresent)
+        self.doviProfile = try container.decodeIfPresent(Int.self, forKey: .doviProfile)
+        self.dovirpuPresent = try container.decodeIfPresent(Bool.self, forKey: .dovirpuPresent)
+        self.doviVersion = try container.decodeIfPresent(String.self, forKey: .doviVersion)
+        self.dub = try container.decodeIfPresent(Bool.self, forKey: .dub)
         self.embeddedInVideo = try container.decodeIfPresent(String.self, forKey: .embeddedInVideo)
-        self.extendedDisplayTitle = try container.decodeIfPresent(String.self, forKey: .extendedDisplayTitle)
+        self.forced = try container.decodeIfPresent(Bool.self, forKey: .forced)
         self._frameRate = try container.decodeIfPresent(DecimalSerialized<Double?>.self, forKey: .frameRate) ?? DecimalSerialized<Double?>(wrappedValue: nil)
         self.hasScalingMatrix = try container.decodeIfPresent(Bool.self, forKey: .hasScalingMatrix)
+        self.headerCompression = try container.decodeIfPresent(Bool.self, forKey: .headerCompression)
         self.hearingImpaired = try container.decodeIfPresent(Bool.self, forKey: .hearingImpaired)
         self.height = try container.decodeIfPresent(Int.self, forKey: .height)
         self.language = try container.decodeIfPresent(String.self, forKey: .language)
         self.languageCode = try container.decodeIfPresent(String.self, forKey: .languageCode)
         self.languageTag = try container.decodeIfPresent(String.self, forKey: .languageTag)
         self.level = try container.decodeIfPresent(Int.self, forKey: .level)
+        self.original = try container.decodeIfPresent(Bool.self, forKey: .original)
         self.profile = try container.decodeIfPresent(String.self, forKey: .profile)
         self.refFrames = try container.decodeIfPresent(Int.self, forKey: .refFrames)
         self.samplingRate = try container.decodeIfPresent(Int.self, forKey: .samplingRate)
         self.scanType = try container.decodeIfPresent(String.self, forKey: .scanType)
         self.selected = try container.decodeIfPresent(Bool.self, forKey: .selected)
-        self.streamIdentifier = try container.decodeIfPresent(String.self, forKey: .streamIdentifier)
         self.title = try container.decodeIfPresent(String.self, forKey: .title)
         self.width = try container.decodeIfPresent(Int.self, forKey: .width)
     }
@@ -245,6 +309,8 @@ extension Operations.Stream: Codable {
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode(self.codec, forKey: .codec)
+        try container.encode(self.displayTitle, forKey: .displayTitle)
+        try container.encode(self.extendedDisplayTitle, forKey: .extendedDisplayTitle)
         try container.encode(self.id, forKey: .id)
         try container.encode(self.index, forKey: .index)
         try container.encode(self.streamType, forKey: .streamType)
@@ -263,25 +329,34 @@ extension Operations.Stream: Codable {
         try container.encodeIfPresent(self.colorSpace, forKey: .colorSpace)
         try container.encodeIfPresent(self.colorTrc, forKey: .colorTrc)
         try container.encodeIfPresent(self.`default`, forKey: .`default`)
-        try container.encodeIfPresent(self.displayTitle, forKey: .displayTitle)
+        try container.encodeIfPresent(self.doviblCompatID, forKey: .doviblCompatID)
+        try container.encodeIfPresent(self.doviblPresent, forKey: .doviblPresent)
+        try container.encodeIfPresent(self.dovielPresent, forKey: .dovielPresent)
+        try container.encodeIfPresent(self.doviLevel, forKey: .doviLevel)
+        try container.encodeIfPresent(self.doviPresent, forKey: .doviPresent)
+        try container.encodeIfPresent(self.doviProfile, forKey: .doviProfile)
+        try container.encodeIfPresent(self.dovirpuPresent, forKey: .dovirpuPresent)
+        try container.encodeIfPresent(self.doviVersion, forKey: .doviVersion)
+        try container.encodeIfPresent(self.dub, forKey: .dub)
         try container.encodeIfPresent(self.embeddedInVideo, forKey: .embeddedInVideo)
-        try container.encodeIfPresent(self.extendedDisplayTitle, forKey: .extendedDisplayTitle)
+        try container.encodeIfPresent(self.forced, forKey: .forced)
         if self.frameRate != nil {
             try container.encode(self._frameRate, forKey: .frameRate)
         }
         try container.encodeIfPresent(self.hasScalingMatrix, forKey: .hasScalingMatrix)
+        try container.encodeIfPresent(self.headerCompression, forKey: .headerCompression)
         try container.encodeIfPresent(self.hearingImpaired, forKey: .hearingImpaired)
         try container.encodeIfPresent(self.height, forKey: .height)
         try container.encodeIfPresent(self.language, forKey: .language)
         try container.encodeIfPresent(self.languageCode, forKey: .languageCode)
         try container.encodeIfPresent(self.languageTag, forKey: .languageTag)
         try container.encodeIfPresent(self.level, forKey: .level)
+        try container.encodeIfPresent(self.original, forKey: .original)
         try container.encodeIfPresent(self.profile, forKey: .profile)
         try container.encodeIfPresent(self.refFrames, forKey: .refFrames)
         try container.encodeIfPresent(self.samplingRate, forKey: .samplingRate)
         try container.encodeIfPresent(self.scanType, forKey: .scanType)
         try container.encodeIfPresent(self.selected, forKey: .selected)
-        try container.encodeIfPresent(self.streamIdentifier, forKey: .streamIdentifier)
         try container.encodeIfPresent(self.title, forKey: .title)
         try container.encodeIfPresent(self.width, forKey: .width)
     }

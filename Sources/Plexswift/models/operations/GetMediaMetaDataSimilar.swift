@@ -3,18 +3,20 @@
 import Foundation
 
 extension Operations {
-    /// The filter query string for similar items.
-    public struct Genre {
+    /// A model object
+    public struct GetMediaMetaDataSimilar {
+        /// The filter string for similar items.
         public let filter: String
+        /// The unique similar item identifier.
         public let id: Int
-        /// The genre name of this media-item
-        /// 
+        /// The tag or title of the similar content.
         public let tag: String
 
         /// Creates an object with the specified parameters
         ///
-        /// - Parameter tag: The genre name of this media-item
-        /// 
+        /// - Parameter filter: The filter string for similar items.
+        /// - Parameter id: The unique similar item identifier.
+        /// - Parameter tag: The tag or title of the similar content.
         ///
         public init(filter: String, id: Int, tag: String) {
             self.filter = filter
@@ -23,7 +25,7 @@ extension Operations {
         }
     }}
 
-extension Operations.Genre: Codable {
+extension Operations.GetMediaMetaDataSimilar: Codable {
     enum CodingKeys: String, CodingKey {
         case filter
         case id

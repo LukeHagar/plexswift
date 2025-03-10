@@ -153,15 +153,6 @@ class _LibraryAPI: LibraryAPI {
             handleResponse: handleGetTopWatchedContentResponse
         )
     }
-    
-    public func getOnDeck() async throws -> Response<Operations.GetOnDeckResponse> {
-        return try await client.makeRequest(
-            configureRequest: { configuration in
-                try configureGetOnDeckRequest(with: configuration)
-            },
-            handleResponse: handleGetOnDeckResponse
-        )
-    }
 
 }
 
@@ -286,12 +277,6 @@ private func configureGetTopWatchedContentRequest(with configuration: URLRequest
     configuration.path = "/library/all/top"
     configuration.method = .get
     configuration.queryParameterSerializable = request
-    configuration.telemetryHeader = .userAgent
-}
-
-private func configureGetOnDeckRequest(with configuration: URLRequestConfiguration) throws {
-    configuration.path = "/library/onDeck"
-    configuration.method = .get
     configuration.telemetryHeader = .userAgent
 }
 
@@ -792,38 +777,6 @@ private func handleGetTopWatchedContentResponse(response: Client.APIResponse) th
         if httpResponse.contentType.matchContentType(pattern: "application/json"), let data = response.data {
             do {
                 return .unauthorized(try JSONDecoder().decode(Operations.GetTopWatchedContentUnauthorized.self, from: data))
-            } catch {
-                throw ResponseHandlerError.failedToDecodeJSON(error)
-            }
-        }
-    }
-
-    return .empty
-}
-
-private func handleGetOnDeckResponse(response: Client.APIResponse) throws -> Operations.GetOnDeckResponse {
-    let httpResponse = response.httpResponse
-    
-    if httpResponse.statusCode == 200 { 
-        if httpResponse.contentType.matchContentType(pattern: "application/json"), let data = response.data {
-            do {
-                return .object(try JSONDecoder().decode(Operations.GetOnDeckResponseBody.self, from: data))
-            } catch {
-                throw ResponseHandlerError.failedToDecodeJSON(error)
-            }
-        }
-    } else if httpResponse.statusCode == 400 { 
-        if httpResponse.contentType.matchContentType(pattern: "application/json"), let data = response.data {
-            do {
-                return .badRequest(try JSONDecoder().decode(Operations.GetOnDeckBadRequest.self, from: data))
-            } catch {
-                throw ResponseHandlerError.failedToDecodeJSON(error)
-            }
-        }
-    } else if httpResponse.statusCode == 401 { 
-        if httpResponse.contentType.matchContentType(pattern: "application/json"), let data = response.data {
-            do {
-                return .unauthorized(try JSONDecoder().decode(Operations.GetOnDeckUnauthorized.self, from: data))
             } catch {
                 throw ResponseHandlerError.failedToDecodeJSON(error)
             }

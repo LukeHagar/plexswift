@@ -3,14 +3,14 @@
 import Foundation
 
 extension Operations {
-    /// A model object
+    /// The folder path for the media item.
     public struct Location {
-        public let path: String?
+        public let path: String
 
         /// Creates an object with the specified parameters
         ///
         ///
-        public init(path: String? = nil) {
+        public init(path: String) {
             self.path = path
         }
     }}

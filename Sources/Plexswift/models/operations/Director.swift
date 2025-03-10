@@ -5,12 +5,14 @@ import Foundation
 extension Operations {
     /// A model object
     public struct Director {
-        public let tag: String?
+        /// The role of Director
+        public let tag: String
 
         /// Creates an object with the specified parameters
         ///
+        /// - Parameter tag: The role of Director
         ///
-        public init(tag: String? = nil) {
+        public init(tag: String) {
             self.tag = tag
         }
     }}

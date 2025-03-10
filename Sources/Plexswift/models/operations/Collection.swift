@@ -5,12 +5,14 @@ import Foundation
 extension Operations {
     /// A model object
     public struct Collection {
-        public let tag: String?
+        /// The user-made collection this media item belongs to
+        public let tag: String
 
         /// Creates an object with the specified parameters
         ///
+        /// - Parameter tag: The user-made collection this media item belongs to
         ///
-        public init(tag: String? = nil) {
+        public init(tag: String) {
             self.tag = tag
         }
     }}

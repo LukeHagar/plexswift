@@ -5,12 +5,12 @@ import Foundation
 extension Operations {
     /// A model object
     public struct GetAllMediaLibraryRole {
-        /// The name of the actor for this role
+        /// The display tag for the actor (typically the actor's name).
         public let tag: String
 
         /// Creates an object with the specified parameters
         ///
-        /// - Parameter tag: The name of the actor for this role
+        /// - Parameter tag: The display tag for the actor (typically the actor's name).
         ///
         public init(tag: String) {
             self.tag = tag

@@ -3,6 +3,7 @@
 import Foundation
 
 extension Operations {
+    /// Indicates if the part has a thumbnail.
     public enum HasThumbnail: String, Codable, APIValue {
         case `false` = "0"
         case `true` = "1"

@@ -3,7 +3,7 @@
 
 import Foundation
 
-extension Operations.OptimizedForStreaming: Serializable {
+extension Operations.GetRecentlyAddedOptimizedForStreaming: Serializable {
     func serialize(with format: SerializableFormat) throws -> String {
         return ""
     }

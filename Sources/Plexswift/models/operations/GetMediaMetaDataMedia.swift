@@ -5,12 +5,8 @@ import Foundation
 extension Operations {
     /// A model object
     public struct GetMediaMetaDataMedia {
-        /// Indicates whether voice activity is detected.
-        public let hasVoiceActivity: Bool
         /// Unique media identifier.
         public let id: Int
-        /// An array of parts for this media item.
-        public let part: [Operations.GetMediaMetaDataPart]
         /// Aspect ratio of the video.
         @DecimalSerialized
         public private(set) var aspectRatio: Double?
@@ -28,10 +24,14 @@ extension Operations {
         /// Duration of the media in milliseconds.
         public let duration: Int?
         public let has64bitOffsets: Bool?
+        /// Indicates whether voice activity is detected.
+        public let hasVoiceActivity: Bool?
         /// Video height in pixels.
         public let height: Int?
         /// Has this media been optimized for streaming. NOTE: This can be 0, 1, false or true
         public let optimizedForStreaming: Operations.GetMediaMetaDataOptimizedForStreaming?
+        /// An array of parts for this media item.
+        public let part: [Operations.GetMediaMetaDataPart]?
         /// Video codec used.
         public let videoCodec: String?
         /// Frame rate of the video. Values found include NTSC, PAL, 24p
@@ -46,9 +46,7 @@ extension Operations {
 
         /// Creates an object with the specified parameters
         ///
-        /// - Parameter hasVoiceActivity: Indicates whether voice activity is detected.
         /// - Parameter id: Unique media identifier.
-        /// - Parameter part: An array of parts for this media item.
         /// - Parameter aspectRatio: Aspect ratio of the video.
         /// - Parameter audioChannels: Number of audio channels.
         /// - Parameter audioCodec: Audio codec used.
@@ -56,8 +54,10 @@ extension Operations {
         /// - Parameter bitrate: Bitrate in bits per second.
         /// - Parameter container: File container type.
         /// - Parameter duration: Duration of the media in milliseconds.
+        /// - Parameter hasVoiceActivity: Indicates whether voice activity is detected.
         /// - Parameter height: Video height in pixels.
         /// - Parameter optimizedForStreaming: Has this media been optimized for streaming. NOTE: This can be 0, 1, false or true
+        /// - Parameter part: An array of parts for this media item.
         /// - Parameter videoCodec: Video codec used.
         /// - Parameter videoFrameRate: Frame rate of the video. Values found include NTSC, PAL, 24p
         /// 
@@ -65,10 +65,8 @@ extension Operations {
         /// - Parameter videoResolution: Video resolution (e.g., 4k).
         /// - Parameter width: Video width in pixels.
         ///
-        public init(hasVoiceActivity: Bool, id: Int, part: [Operations.GetMediaMetaDataPart], aspectRatio: Double? = nil, audioChannels: Int? = nil, audioCodec: String? = nil, audioProfile: String? = nil, bitrate: Int? = nil, container: String? = nil, displayOffset: Int? = nil, duration: Int? = nil, has64bitOffsets: Bool? = nil, height: Int? = nil, optimizedForStreaming: Operations.GetMediaMetaDataOptimizedForStreaming? = nil, videoCodec: String? = nil, videoFrameRate: String? = nil, videoProfile: String? = nil, videoResolution: String? = nil, width: Int? = nil) {
-            self.hasVoiceActivity = hasVoiceActivity
+        public init(id: Int, aspectRatio: Double? = nil, audioChannels: Int? = nil, audioCodec: String? = nil, audioProfile: String? = nil, bitrate: Int? = nil, container: String? = nil, displayOffset: Int? = nil, duration: Int? = nil, has64bitOffsets: Bool? = nil, hasVoiceActivity: Bool? = nil, height: Int? = nil, optimizedForStreaming: Operations.GetMediaMetaDataOptimizedForStreaming? = nil, part: [Operations.GetMediaMetaDataPart]? = nil, videoCodec: String? = nil, videoFrameRate: String? = nil, videoProfile: String? = nil, videoResolution: String? = nil, width: Int? = nil) {
             self.id = id
-            self.part = part
             self._aspectRatio = DecimalSerialized<Double?>(wrappedValue: aspectRatio)
             self.audioChannels = audioChannels
             self.audioCodec = audioCodec
@@ -78,8 +76,10 @@ extension Operations {
             self.displayOffset = displayOffset
             self.duration = duration
             self.has64bitOffsets = has64bitOffsets
+            self.hasVoiceActivity = hasVoiceActivity
             self.height = height
             self.optimizedForStreaming = optimizedForStreaming
+            self.part = part
             self.videoCodec = videoCodec
             self.videoFrameRate = videoFrameRate
             self.videoProfile = videoProfile
@@ -90,9 +90,7 @@ extension Operations {
 
 extension Operations.GetMediaMetaDataMedia: Codable {
     enum CodingKeys: String, CodingKey {
-        case hasVoiceActivity
         case id
-        case part = "Part"
         case aspectRatio
         case audioChannels
         case audioCodec
@@ -102,8 +100,10 @@ extension Operations.GetMediaMetaDataMedia: Codable {
         case displayOffset
         case duration
         case has64bitOffsets
+        case hasVoiceActivity
         case height
         case optimizedForStreaming
+        case part = "Part"
         case videoCodec
         case videoFrameRate
         case videoProfile
@@ -113,9 +113,7 @@ extension Operations.GetMediaMetaDataMedia: Codable {
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        self.hasVoiceActivity = try container.decode(Bool.self, forKey: .hasVoiceActivity)
         self.id = try container.decode(Int.self, forKey: .id)
-        self.part = try container.decode([Operations.GetMediaMetaDataPart].self, forKey: .part)
         self._aspectRatio = try container.decodeIfPresent(DecimalSerialized<Double?>.self, forKey: .aspectRatio) ?? DecimalSerialized<Double?>(wrappedValue: nil)
         self.audioChannels = try container.decodeIfPresent(Int.self, forKey: .audioChannels)
         self.audioCodec = try container.decodeIfPresent(String.self, forKey: .audioCodec)
@@ -125,8 +123,10 @@ extension Operations.GetMediaMetaDataMedia: Codable {
         self.displayOffset = try container.decodeIfPresent(Int.self, forKey: .displayOffset)
         self.duration = try container.decodeIfPresent(Int.self, forKey: .duration)
         self.has64bitOffsets = try container.decodeIfPresent(Bool.self, forKey: .has64bitOffsets)
+        self.hasVoiceActivity = try container.decodeIfPresent(Bool.self, forKey: .hasVoiceActivity)
         self.height = try container.decodeIfPresent(Int.self, forKey: .height)
         self.optimizedForStreaming = try container.decodeIfPresent(Operations.GetMediaMetaDataOptimizedForStreaming.self, forKey: .optimizedForStreaming)
+        self.part = try container.decodeIfPresent([Operations.GetMediaMetaDataPart].self, forKey: .part)
         self.videoCodec = try container.decodeIfPresent(String.self, forKey: .videoCodec)
         self.videoFrameRate = try container.decodeIfPresent(String.self, forKey: .videoFrameRate)
         self.videoProfile = try container.decodeIfPresent(String.self, forKey: .videoProfile)
@@ -136,9 +136,7 @@ extension Operations.GetMediaMetaDataMedia: Codable {
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encode(self.hasVoiceActivity, forKey: .hasVoiceActivity)
         try container.encode(self.id, forKey: .id)
-        try container.encode(self.part, forKey: .part)
         if self.aspectRatio != nil {
             try container.encode(self._aspectRatio, forKey: .aspectRatio)
         }
@@ -150,8 +148,10 @@ extension Operations.GetMediaMetaDataMedia: Codable {
         try container.encodeIfPresent(self.displayOffset, forKey: .displayOffset)
         try container.encodeIfPresent(self.duration, forKey: .duration)
         try container.encodeIfPresent(self.has64bitOffsets, forKey: .has64bitOffsets)
+        try container.encodeIfPresent(self.hasVoiceActivity, forKey: .hasVoiceActivity)
         try container.encodeIfPresent(self.height, forKey: .height)
         try container.encodeIfPresent(self.optimizedForStreaming, forKey: .optimizedForStreaming)
+        try container.encodeIfPresent(self.part, forKey: .part)
         try container.encodeIfPresent(self.videoCodec, forKey: .videoCodec)
         try container.encodeIfPresent(self.videoFrameRate, forKey: .videoFrameRate)
         try container.encodeIfPresent(self.videoProfile, forKey: .videoProfile)

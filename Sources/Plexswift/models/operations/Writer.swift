@@ -5,19 +5,36 @@ import Foundation
 extension Operations {
     /// A model object
     public struct Writer {
-        public let tag: String?
+        /// The filter string used to query this writer.
+        public let filter: String
+        /// Unique identifier for the writer.
+        public let id: Int
+        /// The role of Writer
+        public let tag: String
+        /// A unique key associated with the writers tag, used for internal identification.
+        public let tagKey: String?
 
         /// Creates an object with the specified parameters
         ///
+        /// - Parameter filter: The filter string used to query this writer.
+        /// - Parameter id: Unique identifier for the writer.
+        /// - Parameter tag: The role of Writer
+        /// - Parameter tagKey: A unique key associated with the writers tag, used for internal identification.
         ///
-        public init(tag: String? = nil) {
+        public init(filter: String, id: Int, tag: String, tagKey: String? = nil) {
+            self.filter = filter
+            self.id = id
             self.tag = tag
+            self.tagKey = tagKey
         }
     }}
 
 extension Operations.Writer: Codable {
     enum CodingKeys: String, CodingKey {
+        case filter
+        case id
         case tag
+        case tagKey
     }
 }
 

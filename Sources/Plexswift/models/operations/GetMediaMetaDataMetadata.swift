@@ -96,7 +96,7 @@ extension Operations {
         public let parentTitle: String?
         public let primaryExtraKey: String?
         /// An array of Writer roles.
-        public let producer: [Operations.Producer]?
+        public let producer: [Operations.GetMediaMetaDataProducer]?
         /// The general rating
         @DecimalSerialized
         public private(set) var rating: Double?
@@ -107,7 +107,7 @@ extension Operations {
         /// An array of Actor roles.
         public let role: [Operations.GetMediaMetaDataRole]?
         /// An array of similar content objects.
-        public let similar: [Operations.Similar]?
+        public let similar: [Operations.GetMediaMetaDataSimilar]?
         /// The number of times the item has been skipped.
         public let skipCount: Int?
         /// A URL-friendly identifier for the item.
@@ -183,7 +183,7 @@ extension Operations {
         /// - Parameter viewedLeafCount: The number of episodes that have been viewed.
         /// - Parameter writer: An array of Writer roles.
         ///
-        public init(addedAt: Int, art: String, duration: Int, guid: String, image: [Operations.GetMediaMetaDataImage], key: String, librarySectionID: Int, librarySectionKey: String, librarySectionTitle: String, ratingKey: String, summary: String, thumb: String, title: String, type: String, ultraBlurColors: Operations.GetMediaMetaDataUltraBlurColors, updatedAt: Int, year: Int, audienceRating: Double? = nil, audienceRatingImage: String? = nil, chapterSource: String? = nil, childCount: Int? = nil, contentRating: String? = nil, country: [Operations.GetMediaMetaDataCountry]? = nil, director: [Operations.GetMediaMetaDataDirector]? = nil, genre: [Operations.GetMediaMetaDataGenre]? = nil, grandparentArt: String? = nil, grandparentGuid: String? = nil, grandparentKey: String? = nil, grandparentRatingKey: String? = nil, grandparentSlug: String? = nil, grandparentThumb: String? = nil, grandparentTitle: String? = nil, guids: [Operations.GetMediaMetaDataGuids]? = nil, index: Int? = nil, lastViewedAt: Int? = nil, leafCount: Int? = nil, location: [Operations.GetMediaMetaDataLocation]? = nil, media: [Operations.GetMediaMetaDataMedia]? = nil, originallyAvailableAt: Date? = nil, originalTitle: String? = nil, parentGuid: String? = nil, parentIndex: Int? = nil, parentKey: String? = nil, parentRatingKey: String? = nil, parentThumb: String? = nil, parentTitle: String? = nil, primaryExtraKey: String? = nil, producer: [Operations.Producer]? = nil, rating: Double? = nil, ratingImage: String? = nil, ratings: [Operations.Ratings]? = nil, role: [Operations.GetMediaMetaDataRole]? = nil, similar: [Operations.Similar]? = nil, skipCount: Int? = nil, slug: String? = nil, studio: String? = nil, tagline: String? = nil, theme: String? = nil, viewCount: Int? = nil, viewedLeafCount: Int? = nil, writer: [Operations.GetMediaMetaDataWriter]? = nil) {
+        public init(addedAt: Int, art: String, duration: Int, guid: String, image: [Operations.GetMediaMetaDataImage], key: String, librarySectionID: Int, librarySectionKey: String, librarySectionTitle: String, ratingKey: String, summary: String, thumb: String, title: String, type: String, ultraBlurColors: Operations.GetMediaMetaDataUltraBlurColors, updatedAt: Int, year: Int, audienceRating: Double? = nil, audienceRatingImage: String? = nil, chapterSource: String? = nil, childCount: Int? = nil, contentRating: String? = nil, country: [Operations.GetMediaMetaDataCountry]? = nil, director: [Operations.GetMediaMetaDataDirector]? = nil, genre: [Operations.GetMediaMetaDataGenre]? = nil, grandparentArt: String? = nil, grandparentGuid: String? = nil, grandparentKey: String? = nil, grandparentRatingKey: String? = nil, grandparentSlug: String? = nil, grandparentThumb: String? = nil, grandparentTitle: String? = nil, guids: [Operations.GetMediaMetaDataGuids]? = nil, index: Int? = nil, lastViewedAt: Int? = nil, leafCount: Int? = nil, location: [Operations.GetMediaMetaDataLocation]? = nil, media: [Operations.GetMediaMetaDataMedia]? = nil, originallyAvailableAt: Date? = nil, originalTitle: String? = nil, parentGuid: String? = nil, parentIndex: Int? = nil, parentKey: String? = nil, parentRatingKey: String? = nil, parentThumb: String? = nil, parentTitle: String? = nil, primaryExtraKey: String? = nil, producer: [Operations.GetMediaMetaDataProducer]? = nil, rating: Double? = nil, ratingImage: String? = nil, ratings: [Operations.Ratings]? = nil, role: [Operations.GetMediaMetaDataRole]? = nil, similar: [Operations.GetMediaMetaDataSimilar]? = nil, skipCount: Int? = nil, slug: String? = nil, studio: String? = nil, tagline: String? = nil, theme: String? = nil, viewCount: Int? = nil, viewedLeafCount: Int? = nil, writer: [Operations.GetMediaMetaDataWriter]? = nil) {
             self.addedAt = addedAt
             self.art = art
             self.duration = duration
@@ -362,12 +362,12 @@ extension Operations.GetMediaMetaDataMetadata: Codable {
         self.parentThumb = try container.decodeIfPresent(String.self, forKey: .parentThumb)
         self.parentTitle = try container.decodeIfPresent(String.self, forKey: .parentTitle)
         self.primaryExtraKey = try container.decodeIfPresent(String.self, forKey: .primaryExtraKey)
-        self.producer = try container.decodeIfPresent([Operations.Producer].self, forKey: .producer)
+        self.producer = try container.decodeIfPresent([Operations.GetMediaMetaDataProducer].self, forKey: .producer)
         self._rating = try container.decodeIfPresent(DecimalSerialized<Double?>.self, forKey: .rating) ?? DecimalSerialized<Double?>(wrappedValue: nil)
         self.ratingImage = try container.decodeIfPresent(String.self, forKey: .ratingImage)
         self.ratings = try container.decodeIfPresent([Operations.Ratings].self, forKey: .ratings)
         self.role = try container.decodeIfPresent([Operations.GetMediaMetaDataRole].self, forKey: .role)
-        self.similar = try container.decodeIfPresent([Operations.Similar].self, forKey: .similar)
+        self.similar = try container.decodeIfPresent([Operations.GetMediaMetaDataSimilar].self, forKey: .similar)
         self.skipCount = try container.decodeIfPresent(Int.self, forKey: .skipCount)
         self.slug = try container.decodeIfPresent(String.self, forKey: .slug)
         self.studio = try container.decodeIfPresent(String.self, forKey: .studio)

@@ -3,7 +3,30 @@
 import Foundation
 
 extension Operations {
-    public enum OptimizedForStreaming: Int, Codable, APIValue {
-        case disable = 0
-        case enable = 1
+    /// Has this media been optimized for streaming. NOTE: This can be 0, 1, false or true
+    public enum OptimizedForStreaming {
+        case one(Operations.One)
+        case bool(Bool)
     }}
+
+extension Operations.OptimizedForStreaming: Codable {
+    public init(from decoder: Decoder) throws {
+        if let value = try? Operations.One(from: decoder) {
+            self = .one(value)
+        } else if let value = try? Bool(from: decoder) {
+            self = .bool(value)
+        } else {
+            throw PlexswiftError.failedToHandleResponse(.failedToDecodeResponse)
+        }
+    }
+
+    public func encode(to encoder: Encoder) throws {
+        switch self {
+        case .one(let value):
+            try value.encode(to: encoder)
+        case .bool(let value):
+            try value.encode(to: encoder)
+        }
+    }
+}
+

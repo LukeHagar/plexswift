@@ -749,7 +749,6 @@ public protocol SearchAPI {
 /// - ``getMediaMetaData(request:)``
 /// - ``getMetadataChildren(request:)``
 /// - ``getTopWatchedContent(request:)``
-/// - ``getOnDeck()``
 ///
 public protocol LibraryAPI {
     /// This resource returns hash values for local files
@@ -956,13 +955,6 @@ public protocol LibraryAPI {
     /// - Returns: A ``Operations/GetTopWatchedContentResponse`` object describing the result of the API operation
     /// - Throws: An error of type ``PlexswiftError``
     func getTopWatchedContent(request: Operations.GetTopWatchedContentRequest) async throws -> Response<Operations.GetTopWatchedContentResponse>
-
-    /// This endpoint will return the on deck content.
-    /// 
-    /// 
-    /// - Returns: A ``Operations/GetOnDeckResponse`` object describing the result of the API operation
-    /// - Throws: An error of type ``PlexswiftError``
-    func getOnDeck() async throws -> Response<Operations.GetOnDeckResponse>
 }
 
 // MARK: - WatchlistAPI

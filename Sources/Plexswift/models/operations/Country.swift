@@ -3,21 +3,29 @@
 import Foundation
 
 extension Operations {
-    /// A model object
+    /// The filter query string for country media items.
     public struct Country {
-        public let tag: String?
+        public let id: Int
+        /// The country of origin of this media item
+        public let tag: String
+        public let filter: String?
 
         /// Creates an object with the specified parameters
         ///
+        /// - Parameter tag: The country of origin of this media item
         ///
-        public init(tag: String? = nil) {
+        public init(id: Int, tag: String, filter: String? = nil) {
+            self.id = id
             self.tag = tag
+            self.filter = filter
         }
     }}
 
 extension Operations.Country: Codable {
     enum CodingKeys: String, CodingKey {
+        case id
         case tag
+        case filter
     }
 }
 

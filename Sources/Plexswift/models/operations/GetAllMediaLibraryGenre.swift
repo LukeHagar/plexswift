@@ -5,12 +5,14 @@ import Foundation
 extension Operations {
     /// A model object
     public struct GetAllMediaLibraryGenre {
-        /// The country of origin of this media item
+        /// The genre name of this media-item
+        /// 
         public let tag: String
 
         /// Creates an object with the specified parameters
         ///
-        /// - Parameter tag: The country of origin of this media item
+        /// - Parameter tag: The genre name of this media-item
+        /// 
         ///
         public init(tag: String) {
             self.tag = tag

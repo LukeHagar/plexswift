@@ -3,7 +3,7 @@
 
 import Foundation
 
-extension Operations.GetLibraryItemsEnableCreditsMarkerGeneration: Serializable {
+extension Operations.GetAllMediaLibraryLibrary1: Serializable {
     func serialize(with format: SerializableFormat) throws -> String {
         return try rawValue.serialize(with: format)
     }

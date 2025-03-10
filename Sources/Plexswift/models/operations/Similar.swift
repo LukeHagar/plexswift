@@ -3,20 +3,14 @@
 import Foundation
 
 extension Operations {
-    /// A model object
+    /// The display tag for the similar item, typically the title.
     public struct Similar {
-        /// The filter string for similar items.
         public let filter: String
-        /// The unique similar item identifier.
         public let id: Int
-        /// The tag or title of the similar content.
         public let tag: String
 
         /// Creates an object with the specified parameters
         ///
-        /// - Parameter filter: The filter string for similar items.
-        /// - Parameter id: The unique similar item identifier.
-        /// - Parameter tag: The tag or title of the similar content.
         ///
         public init(filter: String, id: Int, tag: String) {
             self.filter = filter

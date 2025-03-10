@@ -586,33 +586,6 @@ actions:
         - lang: swift
           label: image
           source: "import Foundation\nimport Plexswift\n\nlet client = Client(security: .accessToken(\"<YOUR_API_KEY_HERE>\"))\n\nlet response = try await client.media.getThumbImage(\n    request: Operations.GetThumbImageRequest(\n        height: 396, \n        minSize: 1, \n        ratingKey: 9518, \n        upscale: 1, \n        width: 396, \n        xPlexToken: \"CV5xoxjTpFKUzBTShsaf\"\n    )\n)\n\nswitch response.data {\ncase .bytes(let bytes):\n    // Handle response\n    break\ncase .badRequest(let badRequest):\n    // Handle response\n    break\ncase .unauthorized(let unauthorized):\n    // Handle response\n    break\ncase .empty:\n    // Handle empty response\n    break\n}"
-  - target: $["paths"]["/library/onDeck"]["get"]
-    update:
-      x-codeSamples:
-        - lang: swift
-          label: getOnDeck
-          source: |-
-            import Foundation
-            import Plexswift
-
-            let client = Client(security: .accessToken("<YOUR_API_KEY_HERE>"))
-
-            let response = try await client.library.getOnDeck()
-
-            switch response.data {
-            case .object(let object):
-                // Handle response
-                break
-            case .badRequest(let badRequest):
-                // Handle response
-                break
-            case .unauthorized(let unauthorized):
-                // Handle response
-                break
-            case .empty:
-                // Handle empty response
-                break
-            }
   - target: $["paths"]["/library/recentlyAdded"]["get"]
     update:
       x-codeSamples:

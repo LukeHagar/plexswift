@@ -3,21 +3,15 @@
 import Foundation
 
 extension Operations {
-    /// A model object
-    public struct GetLibraryItemsMetaDataRating {
-        /// A URI or path to the rating image.
+    /// The type of rating, for example 'audience' or 'critic'.
+    public struct Rating {
         public let image: String
-        /// The type of rating (e.g., audience, critic).
         public let type: String
-        /// The value of the rating.
         @DecimalSerialized
         public private(set) var value: Double
 
         /// Creates an object with the specified parameters
         ///
-        /// - Parameter image: A URI or path to the rating image.
-        /// - Parameter type: The type of rating (e.g., audience, critic).
-        /// - Parameter value: The value of the rating.
         ///
         public init(image: String, type: String, value: Double) {
             self.image = image
@@ -26,7 +20,7 @@ extension Operations {
         }
     }}
 
-extension Operations.GetLibraryItemsMetaDataRating: Codable {
+extension Operations.Rating: Codable {
     enum CodingKeys: String, CodingKey {
         case image
         case type
@@ -48,7 +42,7 @@ extension Operations.GetLibraryItemsMetaDataRating: Codable {
     }
 }
 
-extension Operations.GetLibraryItemsMetaDataRating {
+extension Operations.Rating {
     var valueWrapper: DecimalSerialized<Double> {
         return _value
     }

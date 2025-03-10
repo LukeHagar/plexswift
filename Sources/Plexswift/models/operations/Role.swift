@@ -5,33 +5,33 @@ import Foundation
 extension Operations {
     /// A model object
     public struct Role {
-        /// The filter used to find the actor or tag.
-        public let filter: String?
-        /// The ID of the tag or actor.
-        public let id: Int?
-        /// The role of the actor or tag in the media.
+        /// The filter string used to query this actor. For example, it may indicate that this is an actor with a given key.
+        public let filter: String
+        /// Unique identifier for the actor or role.
+        public let id: Int
+        /// The display tag for the actor (typically the actor's name).
+        public let tag: String
+        /// The role played by the actor in the media item.
         public let role: String?
-        /// The name of the tag or actor.
-        public let tag: String?
-        /// Unique identifier for the tag.
+        /// A unique key associated with the actor's tag, used for internal identification.
         public let tagKey: String?
-        /// The thumbnail of the actor
+        /// The URL of the thumbnail image for the actor.
         public let thumb: String?
 
         /// Creates an object with the specified parameters
         ///
-        /// - Parameter filter: The filter used to find the actor or tag.
-        /// - Parameter id: The ID of the tag or actor.
-        /// - Parameter role: The role of the actor or tag in the media.
-        /// - Parameter tag: The name of the tag or actor.
-        /// - Parameter tagKey: Unique identifier for the tag.
-        /// - Parameter thumb: The thumbnail of the actor
+        /// - Parameter filter: The filter string used to query this actor. For example, it may indicate that this is an actor with a given key.
+        /// - Parameter id: Unique identifier for the actor or role.
+        /// - Parameter tag: The display tag for the actor (typically the actor's name).
+        /// - Parameter role: The role played by the actor in the media item.
+        /// - Parameter tagKey: A unique key associated with the actor's tag, used for internal identification.
+        /// - Parameter thumb: The URL of the thumbnail image for the actor.
         ///
-        public init(filter: String? = nil, id: Int? = nil, role: String? = nil, tag: String? = nil, tagKey: String? = nil, thumb: String? = nil) {
+        public init(filter: String, id: Int, tag: String, role: String? = nil, tagKey: String? = nil, thumb: String? = nil) {
             self.filter = filter
             self.id = id
-            self.role = role
             self.tag = tag
+            self.role = role
             self.tagKey = tagKey
             self.thumb = thumb
         }
@@ -41,8 +41,8 @@ extension Operations.Role: Codable {
     enum CodingKeys: String, CodingKey {
         case filter
         case id
-        case role
         case tag
+        case role
         case tagKey
         case thumb
     }

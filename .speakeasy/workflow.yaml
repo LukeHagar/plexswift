@@ -9,6 +9,8 @@ targets:
         target: swift
         source: plexapi
         codeSamples:
+            labelOverride: 
+                fixedValue: PlexSwift
             output: codeSamples.yaml
             registry:
                 location: registry.speakeasyapi.dev/plexapi/plexapi/code-samples-swift-plexswift
